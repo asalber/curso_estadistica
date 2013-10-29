@@ -1,0 +1,309 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%DocumentNeededResources: font Helvetica
+%%+ font Helvetica-Bold
+%%+ font Helvetica-Oblique
+%%+ font Helvetica-BoldOblique
+%%+ font Symbol
+%%Title: R Graphics Output
+%%Creator: R Software
+%%Pages: (atend)
+%%BoundingBox: 0 0 360 360
+%%EndComments
+%%BeginProlog
+/bp  { gs gs } def
+% begin .ps.prolog
+/gs  { gsave } def
+/gr  { grestore } def
+/ep  { showpage gr gr } def
+/m   { moveto } def
+/l  { rlineto } def
+/np  { newpath } def
+/cp  { closepath } def
+/f   { fill } def
+/o   { stroke } def
+/c   { newpath 0 360 arc } def
+/r   { 4 2 roll moveto 1 copy 3 -1 roll exch 0 exch rlineto 0 rlineto -1 mul 0 exch rlineto closepath } def
+/p1  { stroke } def
+/p2  { gsave bg fill grestore newpath } def
+/p3  { gsave bg fill grestore stroke } def
+/t   { 6 -2 roll moveto gsave rotate
+       ps mul neg 0 2 1 roll rmoveto
+       1 index stringwidth pop
+       mul neg 0 rmoveto show grestore } def
+/cl  { grestore gsave newpath 3 index 3 index moveto 1 index
+       4 -1 roll lineto  exch 1 index lineto lineto
+       closepath clip newpath } def
+/rgb { setrgbcolor } def
+/s   { scalefont setfont } def
+% end   .ps.prolog
+%%IncludeResource: font Helvetica
+/Helvetica findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font1 exch definefont pop
+%%IncludeResource: font Helvetica-Bold
+/Helvetica-Bold findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font2 exch definefont pop
+%%IncludeResource: font Helvetica-Oblique
+/Helvetica-Oblique findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font3 exch definefont pop
+%%IncludeResource: font Helvetica-BoldOblique
+/Helvetica-BoldOblique findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding ISOLatin1Encoding def
+  currentdict
+  end
+/Font4 exch definefont pop
+%%IncludeResource: font Symbol
+/Symbol findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  currentdict
+  end
+/Font5 exch definefont pop
+%%EndProlog
+%%Page: 1 1
+bp
+49.20 61.20 334.80 310.80 cl
+0 setgray
+0.75 setlinewidth
+[] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
+np
+59.78 70.44 m
+2.67 0.25 l
+2.67 0.31 l
+2.67 0.36 l
+2.67 0.44 l
+2.67 0.53 l
+2.67 0.63 l
+2.68 0.74 l
+2.67 0.87 l
+2.67 1.03 l
+2.67 1.20 l
+2.67 1.39 l
+2.67 1.60 l
+2.67 1.85 l
+2.67 2.10 l
+2.68 2.40 l
+2.67 2.72 l
+2.67 3.05 l
+2.67 3.42 l
+2.67 3.81 l
+2.67 4.21 l
+2.67 4.64 l
+2.67 5.08 l
+2.67 5.54 l
+2.68 5.99 l
+2.67 6.45 l
+2.67 6.90 l
+2.67 7.33 l
+2.67 7.75 l
+2.67 8.14 l
+2.67 8.48 l
+2.67 8.78 l
+2.67 9.03 l
+2.68 9.21 l
+2.67 9.32 l
+2.67 9.37 l
+2.67 9.31 l
+2.67 9.19 l
+2.67 8.96 l
+2.67 8.63 l
+2.67 8.23 l
+2.68 7.72 l
+2.67 7.13 l
+2.67 6.45 l
+2.67 5.68 l
+2.67 4.86 l
+2.67 3.96 l
+2.67 3.02 l
+2.67 2.03 l
+2.67 1.03 l
+2.68 0 l
+2.67 -1.03 l
+2.67 -2.03 l
+2.67 -3.02 l
+2.67 -3.96 l
+2.67 -4.86 l
+2.67 -5.68 l
+2.67 -6.45 l
+2.67 -7.13 l
+2.68 -7.72 l
+2.67 -8.23 l
+2.67 -8.63 l
+2.67 -8.96 l
+2.67 -9.19 l
+2.67 -9.31 l
+2.67 -9.37 l
+2.67 -9.32 l
+2.68 -9.21 l
+2.67 -9.03 l
+2.67 -8.78 l
+2.67 -8.48 l
+2.67 -8.14 l
+2.67 -7.75 l
+2.67 -7.33 l
+2.67 -6.90 l
+2.67 -6.45 l
+2.68 -5.99 l
+2.67 -5.54 l
+2.67 -5.08 l
+2.67 -4.64 l
+2.67 -4.21 l
+2.67 -3.81 l
+2.67 -3.42 l
+2.67 -3.05 l
+2.67 -2.72 l
+2.68 -2.40 l
+2.67 -2.10 l
+2.67 -1.85 l
+2.67 -1.60 l
+2.67 -1.39 l
+2.67 -1.20 l
+2.67 -1.03 l
+2.67 -0.87 l
+2.68 -0.74 l
+2.67 -0.63 l
+2.67 -0.53 l
+2.67 -0.44 l
+2.67 -0.36 l
+2.67 -0.31 l
+2.67 -0.25 l
+o
+0.00 0.00 360.00 360.00 cl
+0 setgray
+0.75 setlinewidth
+[] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
+np
+71.47 61.20 m
+241.06 0 l
+o
+np
+71.47 61.20 m
+0 -6.00 l
+o
+np
+111.65 61.20 m
+0 -6.00 l
+o
+np
+151.82 61.20 m
+0 -6.00 l
+o
+np
+192.00 61.20 m
+0 -6.00 l
+o
+np
+232.18 61.20 m
+0 -6.00 l
+o
+np
+272.35 61.20 m
+0 -6.00 l
+o
+np
+312.53 61.20 m
+0 -6.00 l
+o
+/ps 12 def /Font1 findfont 12 s
+71.47 39.60 (-3) .5 0 0 t
+111.65 39.60 (-2) .5 0 0 t
+151.82 39.60 (-1) .5 0 0 t
+192.00 39.60 (0) .5 0 0 t
+232.18 39.60 (1) .5 0 0 t
+272.35 39.60 (2) .5 0 0 t
+312.53 39.60 (3) .5 0 0 t
+np
+49.20 69.41 m
+0 232.89 l
+o
+np
+49.20 69.41 m
+-6.00 0 l
+o
+np
+49.20 127.63 m
+-6.00 0 l
+o
+np
+49.20 185.86 m
+-6.00 0 l
+o
+np
+49.20 244.08 m
+-6.00 0 l
+o
+np
+49.20 302.30 m
+-6.00 0 l
+o
+34.80 69.41 (0.0) .5 0 90 t
+34.80 127.63 (0.1) .5 0 90 t
+34.80 185.86 (0.2) .5 0 90 t
+34.80 244.08 (0.3) .5 0 90 t
+34.80 302.30 (0.4) .5 0 90 t
+np
+49.20 61.20 m
+285.60 0 l
+0 249.60 l
+-285.60 0 l
+0 -249.60 l
+o
+0.00 0.00 360.00 360.00 cl
+/ps 15 def /Font1 findfont 15 s
+0 setgray
+45.46 331.57 (Distribución normal estándar N\() 0 0 0 t
+/ps 15 def /Font5 findfont 15 s
+256.64 331.57 (m) 0 0 0 t
+/ps 15 def /Font1 findfont 15 s
+265.28 331.57 ( = 0, ) 0 0 0 t
+/ps 15 def /Font5 findfont 15 s
+299.06 331.57 (s) 0 0 0 t
+/ps 15 def /Font1 findfont 15 s
+308.11 331.57 ( = 1\)) 0 0 0 t
+192.00 15.60 (X) .5 0 0 t
+9.76 85.64 (Densidad de probabilidad ) 0 0 90 t
+/ps 15 def /Font3 findfont 15 s
+9.76 259.89 (f) 0 0 90 t
+/ps 18 def /Font5 findfont 18 s
+9.76 265.70 (\() 0 0 90 t
+/ps 15 def /Font3 findfont 15 s
+9.76 271.69 (x) 0 0 90 t
+/ps 18 def /Font5 findfont 18 s
+9.76 280.37 (\)) 0 0 90 t
+49.20 61.20 334.80 310.80 cl
+0.7451 setgray
+0.75 setlinewidth
+[] 0 setdash
+1 setlinecap
+1 setlinejoin
+10.00 setmiterlimit
+np
+49.20 69.41 m
+285.60 0 l
+o
+ep
+%%Trailer
+%%Pages: 1
+%%EOF

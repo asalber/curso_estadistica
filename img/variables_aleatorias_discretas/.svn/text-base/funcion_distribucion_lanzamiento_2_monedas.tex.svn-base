@@ -1,0 +1,55 @@
+%% Input file name: /media/datos/ceu/docencia/materiales/estadistica/presentaciones/curso_estadistica/img/variables_aleatorias_discretas/funcion_distribucion_lanzamiento_2_monedas.fig
+%% FIG version: 3.2
+%% Orientation: Landscape
+%% Justification: Flush Left
+%% Units: Inches
+%% Paper size: A4
+%% Magnification: 100.0
+%% Resolution: 1200ppi
+
+\begin{pspicture}(5.87cm,3.48cm)(16.66cm,13.45cm)
+\psset{unit=0.8cm}
+%%
+%% Depth: 2147483647
+%%
+\newrgbcolor{mycolor0}{1.00 0.50 0.31}\definecolor{mycolor0}{rgb}{1.00,0.50,0.31}
+\newgray{mycolor1}{0.74}\definecolor{mycolor1}{gray}{0.74}
+\newrgbcolor{mycolor2}{0.25 0.41 0.88}\definecolor{mycolor2}{rgb}{0.25,0.41,0.88}
+%%
+%% Depth: 100
+%%
+\psset{linestyle=none,fillstyle=solid,fillcolor=mycolor0}
+\pscircle(10.61,8.84){0.1}
+\pscircle(15.27,12.91){0.1}
+\pscircle(19.94,14.95){0.1}
+\psset{linestyle=solid,linecolor=black,fillstyle=none}
+\psline(10.61,6.47)(19.94,6.47)
+\psline(10.61,6.47)(10.61,6.26)
+\psline(15.27,6.47)(15.27,6.26)
+\psline(19.94,6.47)(19.94,6.26)
+\rput(10.61,5.71){0.0}
+\rput(15.27,5.71){1.0}
+\rput(19.94,5.71){2.0}
+\psline(10.23,6.80)(10.23,14.95)
+\psline(10.23,6.80)(10.02,6.80)
+\psline(10.23,8.43)(10.02,8.43)
+\psline(10.23,10.06)(10.02,10.06)
+\psline(10.23,11.69)(10.02,11.69)
+\psline(10.23,13.32)(10.02,13.32)
+\psline(10.23,14.95)(10.02,14.95)
+\rput{90}(9.73,6.80){0.0}
+\rput{90}(9.73,8.43){0.2}
+\rput{90}(9.73,10.06){0.4}
+\rput{90}(9.73,11.69){0.6}
+\rput{90}(9.73,13.32){0.8}
+\rput{90}(9.73,14.95){1.0}
+\psline(10.23,6.47)(20.31,6.47)(20.31,15.28)(10.23,15.28)(10.23,6.47)
+\rput(15.27,15.99){Lanzamiento de dos monedas}
+\rput(15.27,4.86){Nº de caras}
+\rput{90}(8.88,10.88){Probabilidad acumulada}
+\psset{linecolor=mycolor1}
+\psline(10.23,6.80)(20.31,6.80)
+\psset{linewidth=0.0635,linecolor=mycolor2}
+\psline(10.23,6.80)(10.61,6.80)(10.61,8.84)(15.27,8.84)(15.27,12.91)(19.94,12.91)(19.94,14.95)(20.31,14.95)
+\end{pspicture}
+%% End

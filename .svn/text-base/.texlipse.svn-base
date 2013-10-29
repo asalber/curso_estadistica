@@ -1,0 +1,13 @@
+#TeXlipse project settings
+#Mon Dec 13 12:55:09 CET 2010
+builderNum=6
+outputDir=
+makeIndSty=
+bibrefDir=
+outputFormat=pdf
+tempDir=tmp
+mainTexFile=curso_estadistica.tex
+outputFile=curso_estadistica.pdf
+langSpell=es
+markDer=true
+srcDir=

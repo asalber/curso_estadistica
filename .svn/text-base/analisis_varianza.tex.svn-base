@@ -1,0 +1,21 @@
+%Version control information
+%$HeadURL$} {$LastChangedDate$
+%$LastChangedRevision$
+%$LastChangedBy$
+
+\section{Análisis de la Varianza}
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+  \frametitle{Análisis de la Varianza}
+  \tableofcontents[sectionstyle=show/hide,hideothersubsections]
+\end{frame}
+
+
+\subsection{Contraste de igualdad de varianzas}
+%---------------------------------------------------------------------slide----
+\begin{frame}
+  \frametitle{}
+
+\end{frame}
+

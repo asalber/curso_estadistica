@@ -1,0 +1,240 @@
+%Version control information
+%$HeadURL: https://curso-estadistica.googlecode.com/svn/trunk/descriptiva.tex $} {$LastChangedDate: 2011-12-05 12:17:24 +0100 (lun 05 de dic de 2011) $
+%$LastChangedRevision: 15 $
+%$LastChangedBy: asalber $
+
+\title{Curso básico de Estadística\\
+{\bfseries \emph{Construcción de tablas de frecuencias}}}
+\author[]{Alfredo Sánchez Alberca (\texttt{\url{asalber@ceu.es}})} 
+%\institute[USP CEU]{\includegraphics[scale=0.2]{img/logo_uspceu_01}}
+\date{\textcopyleft Copyleft}
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Contenidos}
+\videobox
+\begin{enumerate}
+\setbeamertemplate{enumerate item}{\insertenumlabel.}
+\setbeamertemplate{enumerate subitem}{\insertenumlabel.\insertsubenumlabel}
+\item Tipos de frecuencias
+\item Construcción de tablas de frecuencias 
+\begin{enumerate}
+\item Datos sin agrupar
+\item Datos agrupados
+\item Atributos
+\end{enumerate}
+\end{enumerate}
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Frecuencias muestrales}
+\videobox
+\vspace{1cm}
+\begin{itemize}
+\item \structure{Frecuencia absoluta $n_i$}:
+\vspace{1cm} 
+\item \structure{Frecuencia relativa $f_i$}: 
+\vspace{1cm} 
+\item \structure{Frecuencia absoluta acumulada $N_i$}:
+\vspace{1cm}  
+\item \structure{Frecuencia relativa acumulada $F_i$}:
+\vspace{1cm}  
+\end{itemize}
+\note{Existen distintos tipos de frecuencias que pueden calcularse. 
+Dada una muestra de tamaño $n$ de una variable $X$, para cada valor de la variable $x_i$ observado en la muestra, se define
+\begin{itemize}
+\item La frecuencia absoluta, que se representa como $n_i$, es el número de individuos de la
+muestra que presentan el valor $x_i$, es decir el número de veces que se repite dicho valor.
+\item La frecuencia relativa, que se denota $f_i$, es la proporción de individuos de
+la muestra que presentan el valor $x_i$. La frecuencia relativa se calcula dividiendo la frecuencia absoluta entre el
+tamaño de la muestra.
+\[
+f_i = \frac{n_i}{n}
+\]
+Cuando se multiplica por 100 se convierte en un porcentaje.
+\item La frecuencia absoluta acumulada, que se escribe $N_i$, es el número de
+individuos de la muestra que presentan un valor menor o igual que $x_i$. Se calcula acumulando las frecuencias
+absolutas de los valores menores o iguales a $x_i$ y de ahí su nombre.
+\[
+N_i = n_1 + \cdots + n_i
+\]
+\item La frecuencia relativa acumulada, que se escribre $F_i$, es la proporción de
+individuos de la muestra que presentan un valor menor o igual que $x_i$. Puede calcularse acumulando las frecuencias
+relativas de los valores menores o iguales que $x_i$ o bien dividiendo la frecuencia absoluta cumulada de $x_i$ entre
+el tamaño de la muestra.
+\[
+F_i = \frac{N_i}{n}
+\]
+Al igual que la frecuencia relativa, si se multiplica por 100 se convierte en el porcentaje acumulado.
+\end{itemize}
+ }
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Tabla de frecuencias}
+\videobox
+\[
+\setlength\arraycolsep{10mm}
+\begin{array}{|c|c|c|c|c|}
+\hline
+ & & & & \\[1cm]
+\hline
+ & & & & \\[4cm]
+\hline
+\end{array}
+\]
+\note{Normalmente las frecuencias muestrales suelen organizarse en forma de tabla en la que cada fila corresponde a un
+valor de la variable o un intervalo de valores, que se ordenan, siempre que sea posible, de menor a mayor, y cada
+columna corresponde a una frecuencia.
+
+En esta tabla siempre se debe cumplir que la suma de las frecuencias absolutas es igual al tamaño de la muestra, la
+suma de las frecuencias relativas vale 1, la última frecuencia absoluta acumulada es el tamaño de la muestra y la
+última frecuencia relativa acumulada es 1. De no ser así, habríamos cometido algún error en el cálculo de las
+frecuencias.}
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Tabla de frecuencias}
+\framesubtitle{Ejemplo de datos sin agrupar}
+\videobox
+$X$= Número de hijos en una familia
+\begin{center}
+1, 2, 4, 2, 2, 2, 3, 2, 1, 1, 0, 2, 2, \\
+ 0, 2, 2, 1, 2, 2, 3, 1, 2, 2, 1, 2
+\end{center}
+Tabla de frecuencias
+\[
+\setlength\arraycolsep{5mm}
+\setlength\arrayrulewidth{0.5pt}
+\begin{array}{|c|c|c|c|c|}
+\hline
+x_i & n_i & f_i & N_i & F_i\\
+\hline
+ & & & & \\[3cm]
+
+\hline 
+ & & & & \\
+\hline
+\end{array}
+\]
+\note{En este ejemplo se han tomado 25 matrimonios en los que se ha medido el número de hijos que tenían. Se trata de
+una variable cuantitativa discreta puesto que sólo puede tomar valores enteros positivos y además en la muestra sólo
+aparece 5 valores disntintos que son 0, 1, 2, 3 y 4 hijos, por lo que no es necesario agrupar los datos en intervalos.
+
+Para construir la tabla de frecuencias se comienza por el recuento de las frecuencias absolutas. Como puede observarse
+en la muestra, hay dos matrimonios que tienen 0 hijos, y por tanto, la frecuencia absoluta del 0 es 2, el 1
+aparece 6 veces, el 2, 3 veces, el 3, 2 veces y finalmente el 4 sólo aparece una vez. Observese cómo la suma de las
+frecuencias absolutas da 25 que es el tamaño muestral.
+
+A continuación se calculan las frecuencias relativas, simplemente dividiendo cada frecuencia absoluta por el tamaño de
+la muestra que es 25. Por ejemplo, la frecuencia relativa del 0 es 2 entre 25 que es 0.08, y es la proporción de
+matrimonios en la muestra que tienen 0 hijos.  Si se multiplica por 100 da un 8\%, es decir, el 8\% de los matrimonios
+tienen 0 hijos. Obsérvese cómo la suma de las frecuencias relativas vale 1. 
+
+Después se calculan las frecuencias absolutas acumuladas. Así, por ejemplo, la frecuencia absoluta acumulada del 0 es
+el número de matrimonios que tienen 0 o menos hijos, y al ser el 0 el menor de los valores de la muestra, coincide con
+la su frecuencia absoluta, que vale 2. La frecuencia absoluta acumulada del 1 es el número de matrimonios que tienen 1
+o menos hijos, de manera que habría que acumula la frecuencia absoluta del 1 y del 0, es decir, 2 mas 6, que da un
+total de 8, y así sucesivamente. En general para calcular cada frecuencia absoluta acumulada se puede tomar la
+frecuencia absoluta acumulada anterior y sumarle la frecuencia absoluta del valor. 8+14=22, 22+2=24 y 24+1=25.
+Obsérvese cómo la última frecuencia absoluta acumulada vale 25 que es el tamaño de la muestra.
+
+Finalmente, se calculan las frecuencias relativas acumuladas, que pueden calcularse, bien acumulando las frecuencias
+relativas del mismo modo que se acumulaban las absolutas, o bien dividiendo las frecuencias absolutas acumuladas por el
+tamaño de la muestra. Así, por ejemplo, la frecuencia relativa acumulada del 0 es 2 entre 25, que vale 0.08 y coincide
+con su frecuencia relativa. La frecuencia relativa acumulada del 1 es 8 entre 25 que vale 0.32 y es la proporción de
+matrimonios en la muestra con 1 o menos hijos. Si se multiplica por 100 tenemos que hay un 32\% de matrimonios con 1 o
+menos hijos. Y del mismo modo se calculan el resto de frecuencias relativas acumuladas, hasta llegar a la última que
+siempre vale 1.
+}
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Tabla de frecuencias}
+\framesubtitle{Ejemplo de datos agrupados}
+\videobox
+$X$= Estatura en cm
+\begin{center}
+179, 173, 181, 170, 158, 174, 172, 166, 194, 185,\\
+162, 187, 198, 177, 178, 165, 154, 188, 166, 171,\\
+175, 182, 167, 169, 172, 186, 172, 176, 168, 187.
+\end{center}
+Tabla de frecuencias
+\[
+\setlength\arraycolsep{5mm}
+\setlength\arrayrulewidth{0.5pt}
+\begin{array}{|c|c|c|c|c|}
+\hline
+x_i & n_i & f_i & N_i & F_i\\
+\hline
+ & & & & \\[3cm]
+
+\hline 
+ & & & & \\
+\hline
+\end{array}
+\]
+\note{En este otro ejemplo, se han medido las estaturas de 30 universitarios. Ahora se trata de una variable
+cuantitativa continua, y como siempre ocurre con este tipo de variables, el número de valores disntintos que aparece en
+la muestra suele ser demasiado grande, por lo que se tiene a agruparlos en intervalos.
+
+En este caso se ha optado por construir 5 intervalos de amplitud 10 cm, empezando en 150 cm y terminando en 200 cm. 
+
+El cálculo de frecuencias absolutas es similar al caso anterior, salvo que ahora no se cuenta el número de estaturas
+que se repiten, sino el número de estaturas que caen en cada intervalo. Por ejemplo, la frecuencia
+absoluta del intervalo $(150,160]$ es 2 ya que en la muestra hay dos personas, una que mide 158 y otra que mide 154, que caerían en este intervalo.
+Una vez calculadas las frecuencias abolutas, el cálculo del resto de frecuencias es idéntico al caso de datos no
+agrupados.}
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Tabla de frecuencias}
+\framesubtitle{Ejemplo con un atributo}
+\videobox
+$X$= Grupo sanguineo
+\begin{center}
+A, B, B, A, AB, 0, 0, A, B, B, A, A, A, A, AB,\\
+A, A, A, B, 0, B, B, B, A, A, A, 0, A, AB, 0. 
+\end{center}
+\[
+\setlength\arraycolsep{5mm}
+\setlength\arrayrulewidth{0.5pt}
+\begin{array}{|c|c|c|c|c|}
+\hline
+x_i & n_i & f_i & N_i & F_i\\
+\hline
+ & & & & \\[3cm]
+
+\hline 
+ & & & & \\
+\hline
+\end{array}
+\]
+\note{En este otro ejemplo, se ha medido el grupo sanguíneo de un grupo de 30 personas. Ahora se trata de un atributo
+nominal, de manera que como no hay orden entre sus valores, puden ordenarse de cualquier manera en la tabla de
+frecuencias, pero el cálculo de frecuencias se realiza como en casos anteriores, con la particularidad de que en este
+caso no tiene sentido calcular las frecuencias acumuladas. ¿Te imaginas por qué?}
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Sumario}
+\videobox
+\end{frame}

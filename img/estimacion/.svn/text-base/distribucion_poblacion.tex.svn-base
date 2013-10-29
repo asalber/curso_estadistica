@@ -1,0 +1,59 @@
+%% Input file name: estimacion/distribucion_poblacion.fig
+%% FIG version: 3.2
+%% Orientation: Landscape
+%% Justification: Flush Left
+%% Units: Inches
+%% Paper size: Letter
+%% Magnification: 100.0
+%% Resolution: 1200ppi
+%% Include the following in the preamble:
+%% \usepackage{textcomp}
+%% End
+
+\begin{pspicture}(5.04cm,3.71cm)(15.96cm,13.69cm)
+\psset{unit=0.8cm}
+%%
+%% Depth: 2147483647
+%%
+\newrgbcolor{mycolor0}{1.00 0.50 0.31}\definecolor{mycolor0}{rgb}{1.00,0.50,0.31}
+\newgray{mycolor1}{0.74}\definecolor{mycolor1}{gray}{0.74}
+%%
+%% Depth: 100
+%%
+\psset{linestyle=solid,linewidth=0.254,linecolor=mycolor0,fillstyle=none}
+\psline(9.73,7.09)(9.73,11.17)
+\psline(14.39,7.09)(14.39,15.25)
+\psline(19.06,7.09)(19.06,11.17)
+\psset{linewidth=0.03175,linecolor=black}
+\psline(9.73,6.77)(19.06,6.77)
+\psline(9.73,6.77)(9.73,6.56)
+\psline(12.06,6.77)(12.06,6.56)
+\psline(14.39,6.77)(14.39,6.56)
+\psline(16.73,6.77)(16.73,6.56)
+\psline(19.06,6.77)(19.06,6.56)
+\rput[B](9.73,6.00){0.0}
+\rput[B](12.06,6.00){0.5}
+\rput[B](14.39,6.00){1.0}
+\rput[B](16.73,6.00){1.5}
+\rput[B](19.06,6.00){2.0}
+\psline(9.36,7.09)(9.36,15.25)
+\psline(9.36,7.09)(9.14,7.09)
+\psline(9.36,8.72)(9.14,8.72)
+\psline(9.36,10.35)(9.14,10.35)
+\psline(9.36,11.98)(9.14,11.98)
+\psline(9.36,13.61)(9.14,13.61)
+\psline(9.36,15.25)(9.14,15.25)
+\rput[B]{90}(8.85,7.09){0.0}
+\rput[B]{90}(8.85,8.72){0.1}
+\rput[B]{90}(8.85,10.35){0.2}
+\rput[B]{90}(8.85,11.98){0.3}
+\rput[B]{90}(8.85,13.61){0.4}
+\rput[B]{90}(8.85,15.25){0.5}
+\psline(9.36,6.77)(19.43,6.77)(19.43,15.57)(9.36,15.57)(9.36,6.77)
+\rput[B](14.39,16.29){Distribución poblacional}
+\rput[B](14.39,5.16){Nº de hijos}
+\rput[B]{90}(8.00,11.17){Probabilidad}
+\psset{linecolor=mycolor1}
+\psline(9.36,7.09)(19.43,7.09)
+\end{pspicture}
+%% End

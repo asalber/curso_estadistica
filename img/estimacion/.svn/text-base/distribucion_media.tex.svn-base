@@ -1,0 +1,62 @@
+%% Input file name: estimacion/distribucion_media.fig
+%% FIG version: 3.2
+%% Orientation: Landscape
+%% Justification: Flush Left
+%% Units: Inches
+%% Paper size: Letter
+%% Magnification: 100.0
+%% Resolution: 1200ppi
+%% Include the following in the preamble:
+%% \usepackage{textcomp}
+%% End
+
+\begin{pspicture}(5.04cm,3.71cm)(15.96cm,13.76cm)
+\psset{unit=0.8cm}
+%%
+%% Depth: 2147483647
+%%
+\newrgbcolor{mycolor0}{1.00 0.50 0.31}\definecolor{mycolor0}{rgb}{1.00,0.50,0.31}
+\newgray{mycolor1}{0.74}\definecolor{mycolor1}{gray}{0.74}
+%%
+%% Depth: 100
+%%
+\psset{linestyle=solid,linewidth=0.254,linecolor=mycolor0,fillstyle=none}
+\psline(9.73,7.18)(9.73,8.28)
+\psline(12.06,7.18)(12.06,11.25)
+\psline(14.39,7.18)(14.39,13.29)
+\psline(16.73,7.18)(16.73,11.25)
+\psline(19.06,7.18)(19.06,8.28)
+\psset{linewidth=0.03175,linecolor=black}
+\psline(9.73,6.85)(19.06,6.85)
+\psline(9.73,6.85)(9.73,6.64)
+\psline(12.06,6.85)(12.06,6.64)
+\psline(14.39,6.85)(14.39,6.64)
+\psline(16.73,6.85)(16.73,6.64)
+\psline(19.06,6.85)(19.06,6.64)
+\rput[B](9.73,6.09){0.0}
+\rput[B](12.06,6.09){0.5}
+\rput[B](14.39,6.09){1.0}
+\rput[B](16.73,6.09){1.5}
+\rput[B](19.06,6.09){2.0}
+\psline(9.36,7.18)(9.36,15.33)
+\psline(9.36,7.18)(9.14,7.18)
+\psline(9.36,8.81)(9.14,8.81)
+\psline(9.36,10.44)(9.14,10.44)
+\psline(9.36,12.07)(9.14,12.07)
+\psline(9.36,13.70)(9.14,13.70)
+\psline(9.36,15.33)(9.14,15.33)
+\rput[B]{90}(8.85,7.18){0.0}
+\rput[B]{90}(8.85,8.81){0.1}
+\rput[B]{90}(8.85,10.44){0.2}
+\rput[B]{90}(8.85,12.07){0.3}
+\rput[B]{90}(8.85,13.70){0.4}
+\rput[B]{90}(8.85,15.33){0.5}
+\psline(9.36,6.85)(19.43,6.85)(19.43,15.65)(9.36,15.65)(9.36,6.85)
+\rput[lB](12.83,16.37){Distribució de }
+\rput[lB](15.75,16.37){$\bar x$}
+\rput[lB](14.29,5.16){$\bar x$}
+\rput[B]{90}(8.00,11.25){Probabilidad}
+\psset{linecolor=mycolor1}
+\psline(9.36,7.18)(19.43,7.18)
+\end{pspicture}
+%% End

@@ -1,0 +1,71 @@
+%% Input file name: funcion_probabilidad_poisson.fig
+%% FIG version: 3.2
+%% Orientation: Landscape
+%% Justification: Flush Left
+%% Units: Inches
+%% Paper size: A4
+%% Magnification: 100.0
+%% Resolution: 1200ppi
+%% Include the following in the preamble:
+%% \usepackage{textcomp}
+%% End
+
+\begin{pspicture}(5.45cm,3.48cm)(16.66cm,13.45cm)
+\psset{unit=0.8cm}
+%%
+%% Depth: 2147483647
+%%
+\newrgbcolor{mycolor0}{1.00 0.50 0.31}\definecolor{mycolor0}{rgb}{1.00,0.50,0.31}
+\newgray{mycolor1}{0.74}\definecolor{mycolor1}{gray}{0.74}
+%%
+%% Depth: 100
+%%
+\psset{linestyle=solid,linewidth=0.03175,linecolor=mycolor0}
+\qdisk(10.61,7.55){0.1}
+\qdisk(11.39,9.79){0.1}
+\qdisk(12.16,12.77){0.1}
+\qdisk(12.94,14.76){0.1}
+\qdisk(13.72,14.76){0.1}
+\qdisk(14.49,13.17){0.1}
+\qdisk(15.27,11.05){0.1}
+\qdisk(16.05,9.23){0.1}
+\qdisk(16.83,8.01){0.1}
+\qdisk(17.60,7.34){0.1}
+\qdisk(18.38,7.01){0.1}
+\qdisk(19.16,6.88){0.1}
+\qdisk(19.94,6.83){0.1}
+\psset{linecolor=black,fillstyle=none}
+\psline(10.61,6.47)(19.94,6.47)
+\psline(10.61,6.47)(10.61,6.26)
+\psline(12.16,6.47)(12.16,6.26)
+\psline(13.72,6.47)(13.72,6.26)
+\psline(15.27,6.47)(15.27,6.26)
+\psline(16.83,6.47)(16.83,6.26)
+\psline(18.38,6.47)(18.38,6.26)
+\psline(19.94,6.47)(19.94,6.26)
+\rput(10.61,5.71){0}
+\rput(12.16,5.71){2}
+\rput(13.72,5.71){4}
+\rput(15.27,5.71){6}
+\rput(16.83,5.71){8}
+\rput(18.38,5.71){10}
+\rput(19.94,5.71){12}
+\psline(10.23,6.80)(10.23,14.95)
+\psline(10.23,6.80)(10.02,6.80)
+\psline(10.23,8.84)(10.02,8.84)
+\psline(10.23,10.88)(10.02,10.88)
+\psline(10.23,12.91)(10.02,12.91)
+\psline(10.23,14.95)(10.02,14.95)
+\rput{90}(9.73,6.80){0.00}
+\rput{90}(9.73,8.84){0.05}
+\rput{90}(9.73,10.88){0.10}
+\rput{90}(9.73,12.91){0.15}
+\rput{90}(9.73,14.95){0.20}
+\psline(10.23,6.47)(20.31,6.47)(20.31,15.28)(10.23,15.28)(10.23,6.47)
+\rput(15.27,15.99){Función de probabilidad de una Poisson $P(4)$}
+\rput(15.27,4.86){$X$}
+\rput{90}(8.88,10.88){Probabilidad $f(x)$}
+\psset{linecolor=mycolor1}
+\psline(10.23,6.80)(20.31,6.80)
+\end{pspicture}
+%% End

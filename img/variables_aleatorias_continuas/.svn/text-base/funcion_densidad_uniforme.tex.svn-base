@@ -1,0 +1,62 @@
+%% Input file name: funcion_densidad_uniforme.fig
+%% FIG version: 3.2
+%% Orientation: Landscape
+%% Justification: Flush Left
+%% Units: Inches
+%% Paper size: A4
+%% Magnification: 100.0
+%% Resolution: 1200ppi
+%% Include the following in the preamble:
+%% \usepackage{textcomp}
+%% End
+
+\begin{pspicture}(6.68cm,3.48cm)(16.66cm,13.45cm)
+\psset{unit=0.8cm}
+%%
+%% Depth: 2147483647
+%%
+\newgray{mycolor0}{0.74}\definecolor{mycolor0}{gray}{0.74}
+%%
+%% Depth: 100
+%%
+\psset{linestyle=solid,linewidth=0.03175,linecolor=black,fillstyle=none}
+\psline(11.39,13.59)(12.25,13.59)(13.11,13.59)(13.98,13.59)(14.84,13.59)(15.70,13.59)(16.57,13.59)(17.43,13.59)(18.30,13.59)(19.16,13.59)
+\psline(11.39,6.47)(19.16,6.47)
+\psline(11.39,6.47)(11.39,6.26)
+\psline(12.94,6.47)(12.94,6.26)
+\psline(14.49,6.47)(14.49,6.26)
+\psline(16.05,6.47)(16.05,6.26)
+\psline(17.60,6.47)(17.60,6.26)
+\psline(19.16,6.47)(19.16,6.26)
+\rput(11.39,5.71){0.0}
+\rput(12.94,5.71){0.2}
+\rput(14.49,5.71){0.4}
+\rput(16.05,5.71){0.6}
+\rput(17.60,5.71){0.8}
+\rput(19.16,5.71){1.0}
+\psline(10.23,6.80)(10.23,14.95)
+\psline(10.23,6.80)(10.02,6.80)
+\psline(10.23,8.16)(10.02,8.16)
+\psline(10.23,9.52)(10.02,9.52)
+\psline(10.23,10.88)(10.02,10.88)
+\psline(10.23,12.23)(10.02,12.23)
+\psline(10.23,13.59)(10.02,13.59)
+\psline(10.23,14.95)(10.02,14.95)
+\rput{90}(9.73,6.80){0.0}
+\rput{90}(9.73,8.16){0.2}
+\rput{90}(9.73,9.52){0.4}
+\rput{90}(9.73,10.88){0.6}
+\rput{90}(9.73,12.23){0.8}
+\rput{90}(9.73,13.59){1.0}
+\rput{90}(9.73,14.95){1.2}
+\psline(10.23,6.47)(20.31,6.47)(20.31,15.28)(10.23,15.28)(10.23,6.47)
+\rput(15.27,15.99){Distribución Uniforme $U(0,1)$}
+\rput(15.27,4.86){$X$}
+\rput[l]{90}(8.86,9.54){Densidad $f(x)$}
+\psset{linecolor=mycolor0}
+\psline(10.23,6.80)(20.31,6.80)
+\psset{linestyle=dashed}
+\psline(11.39,6.80)(11.39,13.59)
+\psline(19.16,6.80)(19.16,13.59)
+\end{pspicture}
+%% End

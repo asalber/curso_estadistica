@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 31
+/svn/!svn/ver/8/trunk/.settings
+END
+org.eclipse.mylyn.tasks.ui.prefs
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/10/trunk/.settings/org.eclipse.mylyn.tasks.ui.prefs
+END
+org.eclipse.core.resources.prefs
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/8/trunk/.settings/org.eclipse.core.resources.prefs
+END

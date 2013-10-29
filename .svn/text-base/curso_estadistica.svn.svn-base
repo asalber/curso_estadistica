@@ -1,0 +1,19 @@
+% SVN Keyword cache
+
+% Global values:
+\def \svnrev {14}
+\def \svndate {2011-02-23 07:48:58 +0100 (mié, 23 feb 2011)}
+\def \svnauthor {asalber}
+\def \svnyear {2011}
+\def \svnmonth {02}
+\def \svnday {23}
+\def \svnhour {07}
+\def \svnminute {48}
+\def \svnsecond {58}
+\def \svntimezonehour {+01}
+\def \svntimezoneminute {00}
+\svn@gdefverb \svnurl {https://curso-estadistica.googlecode.com/svn/trunk/curso_estadistica.tex}
+\svn@gdefverb \svnfname {curso_estadistica.tex}
+
+
+

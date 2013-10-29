@@ -1,0 +1,62 @@
+%% Input file name: anova2/medias_sin_interaccion.fig
+%% FIG version: 3.2
+%% Orientation: Landscape
+%% Justification: Flush Left
+%% Units: Inches
+%% Paper size: A4
+%% Magnification: 100.0
+%% Resolution: 1200ppi
+
+\begin{pspicture}(5.84cm,3.48cm)(16.66cm,13.45cm)
+\psset{unit=0.8cm}
+%%
+%% Depth: 2147483647
+%%
+\newrgbcolor{mycolor0}{1.00 0.50 0.31}\definecolor{mycolor0}{rgb}{1.00,0.50,0.31}
+\newrgbcolor{mycolor1}{0.25 0.41 0.88}\definecolor{mycolor1}{rgb}{0.25,0.41,0.88}
+%%
+%% Depth: 100
+%%
+\psset{linestyle=dashed,linewidth=0.03175,linecolor=mycolor0,fillstyle=none}
+\psline(11.50,6.88)(18.07,9.77)
+\psset{linestyle=solid,linecolor=black,fillstyle=solid,fillcolor=mycolor0}
+\pspolygon(11.22,6.72)(11.38,6.72)(11.38,6.88)(11.22,6.88)(11.22,6.72)
+\pspolygon(18.19,9.78)(18.35,9.78)(18.35,9.94)(18.19,9.94)(18.19,9.78)
+\psset{linecolor=black,fillstyle=none}
+\psline(10.23,6.80)(10.23,14.95)
+\psline(10.23,6.80)(10.02,6.80)
+\psline(10.23,8.84)(10.02,8.84)
+\psline(10.23,10.88)(10.02,10.88)
+\psline(10.23,12.91)(10.02,12.91)
+\psline(10.23,14.95)(10.02,14.95)
+\rput{90}(9.73,6.80){0}
+\rput{90}(9.73,8.84){2}
+\rput{90}(9.73,10.88){4}
+\rput{90}(9.73,12.91){6}
+\rput{90}(9.73,14.95){8}
+\psline(10.23,6.47)(20.31,6.47)(20.31,15.28)(10.23,15.28)(10.23,6.47)
+\rput(15.27,15.99){Medias de peso perdido}
+\rput(15.27,4.86){Dieta}
+\rput{90}(8.88,10.88){Kilogramos}
+\psset{linecolor=mycolor1}
+\psline(11.50,11.98)(18.07,14.87)
+\psset{linecolor=black,fillstyle=solid,fillcolor=mycolor1}
+\pspolygon(11.22,11.90)(11.31,11.97)(11.38,11.90)(11.31,11.82)(11.22,11.90)
+\pspolygon(18.19,14.95)(18.27,15.03)(18.35,14.95)(18.27,14.87)(18.19,14.95)
+\rput(11.31,5.71){no}
+\rput(18.27,5.71){si}
+\rput[l](18.61,14.42){Fármaco}
+\psset{linecolor=black,fillstyle=none}
+\pspolygon(18.61,14.14)(18.61,12.87)(20.21,12.87)(20.21,14.14)(18.61,14.14)
+\psset{linecolor=mycolor1}
+\psline(18.71,13.71)(19.34,13.71)
+\psset{linestyle=dashed,linecolor=mycolor0}
+\psline(18.71,13.29)(19.34,13.29)
+\psset{linestyle=solid,linecolor=black,fillstyle=solid,fillcolor=mycolor1}
+\pspolygon(18.95,13.71)(19.03,13.79)(19.11,13.71)(19.03,13.63)(18.95,13.71)
+\psset{fillcolor=mycolor0}
+\pspolygon(18.95,13.21)(19.11,13.21)(19.11,13.37)(18.95,13.37)(18.95,13.21)
+\rput[l](19.66,13.59){si}
+\rput[l](19.66,13.16){no}
+\end{pspicture}
+%% End

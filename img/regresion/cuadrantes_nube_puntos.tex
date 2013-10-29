@@ -1,0 +1,43 @@
+%% Input file name: desviaciones.fig
+%% FIG version: 3.2
+%% Orientation: Landscape
+%% Justification: Flush Left
+%% Units: Inches
+%% Paper size: A4
+%% Magnification: 100.0
+%% Resolution: 1200ppi
+
+\begin{pspicture}(6.76cm,4.29cm)(16.66cm,14.52cm)
+\psset{unit=0.8cm}
+%%
+%% Depth: 2147483647
+%%
+\newrgbcolor{mycolor0}{1.00 0.50 0.31}\definecolor{mycolor0}{rgb}{1.00,0.50,0.31}
+\newgray{mycolor1}{0.74}\definecolor{mycolor1}{gray}{0.74}
+\newrgbcolor{mycolor2}{0.28 0.46 1.00}\definecolor{mycolor2}{rgb}{0.28,0.46,1.00}
+%%
+%% Depth: 100
+%%
+\psset{linestyle=solid,linewidth=0.03175,linecolor=mycolor0}
+\rput[b](15,17){\large Signo del producto de desviaciones}
+\rput[l](15.16,5.88){$X$}
+\rput[l]{90}(8.96,11.86){$Y$}
+\psset{linecolor=black,fillstyle=none}
+\psline(10.23,7.58)(20.31,7.58)(20.31,16.38)(10.23,16.38)(10.23,7.58)
+\rput[lt](10.6,16){\Large 2}
+\rput[rt](20,16){\Large 1}
+\rput[lb](10.6,8){\Large 3}
+\rput[rb](20,8){\Large 4}
+\psset{linestyle=dashed,linecolor=mycolor1}
+\psline(10.23,12.1)(20.31,12.1)
+\psline(15.21,7.58)(15.21,16.38)
+\psset{linestyle=solid,linecolor=mycolor2}
+\qdisk(15.21,12.1){0.1}
+\rput[b](15.21,7,4){$\bar x$}
+\rput[r](10,12.1){$\bar y$}
+\rput[b](12.7,14){\Huge \alert{$-$}}
+\rput[b](17.5,14){\Huge \alert{$+$}}
+\rput[b](12.7,9.6){\Huge \alert{$+$}}
+\rput[b](17.5,9.6){\Huge \alert{$-$}}
+\end{pspicture}
+%% End
