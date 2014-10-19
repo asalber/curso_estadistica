@@ -26,7 +26,7 @@
 %\usecolortheme{lily}
 \usecolortheme{whale}
 \usecolortheme{rose}
-%\setbeamercovered{transparent}
+%\setbeamercovered{transparent} 
 
 %\beamertemplateshadingbackground{blue!10}{yellow!10} 
 
@@ -90,6 +90,7 @@
 % SPACE BETWEEN PARAGRAFS
 \setlength{\parskip}{0.5em}
 
+% THEORMEM ENVIRONMENTS
 \theoremstyle{definition}
 \newtheorem{definicion}[theorem]{\translation{Definición}}
 \newtheorem{teorema}[theorem]{\translation{Teorema}}
@@ -115,10 +116,11 @@
 \titleformat{\subsection}{\color{royalblue1}\normalfont\large\bfseries}{\color{royalblue1}\thesubsection}{1em}{}
 }
 
-
 % SET COLOR TEXT
 \definecolor{gris}{gray}{0.2}
 \color{gris}
+
+%=====================================================================BODY=====
 
 %---------------------------------------------------------------------cover----
 \mode<article>{\title{\Huge \ssfamily Curso Básico de Estadística}}
@@ -157,7 +159,7 @@ Alfredo Sánchez Alberca (\texttt{\url{asalber@ceu.es}})
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \mode<presentation>{\frametitle{Contenidos}}
-  \tableofcontents[hideallsubsections]
+\tableofcontents[hideallsubsections]
 \end{frame}
 
 \include{introduccion}
