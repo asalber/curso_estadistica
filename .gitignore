@@ -1,26 +1,49 @@
-# In .gitignore
+## Core xelatex files
 *.aux
-*.glo
-*.idx
 *.log
-*.toc
-*.ist
-*.acn
-*.acr
-*.alg
+*.out
+
+## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
+*.bcf
 *.blg
-*.dvi
-*.glg
-*.gls
+*-blx.aux
+*-blx.bib
+*.brf
+*.run.xml
+
+## Build tool auxiliary files:
+*.fdb_latexmk
+*.synctex
+*.synctex.gz
+*.synctex.gz(busy)
+*.pdfsync
+
+# amsthm
+*.thm
+
+# beamer
+*.nav
+*.snm
+*.vrb
+
+# hyperref
+*.brf
+
+# listings
+*.lol
+
+# makeidx
+*.idx
 *.ilg
 *.ind
-*.lof
-*.lot
-*.maf
-*.mtc
-*.mtc1
-*.out
-*.synctex.gz
-tmp/*
-/curso_estadistica.pdf
+*.ist
+
+# TikZ & PGF
+*.dpth
+*.md5
+*.auxlock
+
+#Others
+*.sh
+/tmp/*

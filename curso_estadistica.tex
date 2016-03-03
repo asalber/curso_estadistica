@@ -1,10 +1,11 @@
 % Desarrollado por Alfredo Sánchez Alberca (asalber@gmail.com)
 % ASPECT RATIO FOR YOUTUBE VIDEO
-\documentclass[aspectratio=1610,mathserif,profesionalfont,10pt,dvips,red,xcolor=table]{beamer}
+%\documentclass[aspectratio=1610,mathserif,profesionalfont,10pt,dvips,red,xcolor=table]{beamer}
 % ASPECT RATIO FOR PROJECTOR
 %\documentclass[mathserif,profesionalfont,10pt,dvips,red,xcolor=table]{beamer}
 % ARTICLE VERSION 
-%\documentclass[10pt,a4paper,titlepage]{article} \usepackage{beamerarticle}
+\documentclass[10pt,a4paper,titlepage]{article} 
+\usepackage[hyperref]{beamerarticle}
 
 \usepackage{pxfonts}
 %\usepackage{lucidaso} 
@@ -78,14 +79,27 @@
 \usepackage[spanish]{babel}
 
 
+% COLORS
 %\usepackage{macros}
+\usepackage[table]{xcolor}
+\usepackage{colortbl}
+\definecolor{color1}{RGB}{5,161,230}
+\definecolor{color2}{RGB}{238,50,36}
+\definecolor{ocre}{RGB}{243,102,25} % Define the orange color used for highlighting throughout the book
+\definecolor{blueceu}{RGB}{5,161,230} % Blue color of CEU logo
+\definecolor{greenceu}{RGB}{185,209,16} % Green color of CEU logo
+\definecolor{redceu}{RGB}{238,50,36} % Red color of CEU logo
+\definecolor{grayceu}{RGB}{111,107,83} % Gray color of CEU logo
+\definecolor{coral}{rgb}{1,0.5,0.31} % Orange color for graphics
+\definecolor{royalblue1}{rgb}{0.28,0.46,1} % Blue color for graphics
+\definecolor{mygreen}{rgb}{0,0.8,0} % Green color for graphics
+\definecolor{chaptergrey}{RGB}{5,161,230} % Blue color of CEU logo
 \definecolor{vollgrau}{rgb}{0.9,0.9,0.9}
 \definecolor{colKeys}{rgb}{0,0,1}
 \definecolor{colIdentifier}{rgb}{0,0,0}
 \definecolor{colComments}{rgb}{1,0.5,0}
 \definecolor{colString}{rgb}{0,0.5,0}
-\definecolor{coral}{rgb}{1,0.5,0.31}
-\definecolor{royalblue1}{rgb}{0.28,0.46,1}
+
 
 % SPACE BETWEEN PARAGRAFS
 \setlength{\parskip}{0.5em}
@@ -123,7 +137,7 @@
 %=====================================================================BODY=====
 
 %---------------------------------------------------------------------cover----
-\mode<article>{\title{\Huge \ssfamily Curso Básico de Estadística}}
+\mode<article>{\title{\Huge \ssfamily \textcolor{color1}{Curso Básico de Estadística}}}
 \mode<presentation>{\title{Curso Básico de Estadística}}
 \author[]{
 Santiago Angulo Díaz-Parreño (\texttt{\url{sangulo@ceu.es}})\\
@@ -143,13 +157,14 @@ Alfredo Sánchez Alberca (\texttt{\url{asalber@ceu.es}})
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\titlepage 
+\titlepage  
 \end{frame} 
-
+ 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Licencia \includegraphics[scale=0.06]{img/cc-logo}}
-\mode<article>{\null \vfill \hrule depth 3pt \smallskip}
+\mode<presentation>{\frametitle{Licencia \includegraphics[scale=0.06]{img/cc-logo}}}
+\mode<article>{\null \vfill \noindent \textbf{\Large Licencia} \includegraphics[scale=0.06]{img/cc-logo} \medskip \hrule depth 3pt
+\smallskip}
 \input{licencia}
 \mode<article>{\smallskip \hrule depth 3pt}
 \end{frame} 
@@ -163,7 +178,7 @@ Alfredo Sánchez Alberca (\texttt{\url{asalber@ceu.es}})
 \end{frame}
 
 \include{introduccion}
-\include{descriptiva} 
+\include{descriptiva}  
 \include{regresion}
 \include{probabilidad} 
 \include{variables_aleatorias}

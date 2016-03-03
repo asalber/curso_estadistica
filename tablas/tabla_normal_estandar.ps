@@ -1,7 +1,7 @@
 %!PS-Adobe-2.0
-%%Creator: dvips(k) 5.992 Copyright 2012 Radical Eye Software
+%%Creator: dvips(k) 5.995 Copyright 2015 Radical Eye Software
 %%Title: tabla_normal_estandar.dvi
-%%CreationDate: Tue Dec 18 17:59:38 2012
+%%CreationDate: Tue Jan 12 15:32:57 2016
 %%Pages: 2
 %%PageOrder: Ascend
 %%BoundingBox: 0 0 596 842
@@ -10,10 +10,9 @@
 %%DocumentPaperSizes: a4
 %%EndComments
 %DVIPSWebPage: (www.radicaleye.com)
-%DVIPSCommandLine: dvips -o tabla_normal_estandar.ps
-%+ tabla_normal_estandar.dvi
+%DVIPSCommandLine: dvips tabla_normal_estandar.dvi
 %DVIPSParameters: dpi=600
-%DVIPSSource:  TeX output 2012.12.18:1759
+%DVIPSSource:  TeX output 2016.01.12:1532
 %%BeginProcSet: tex.pro 0 0
 %!
 /TeXDict 300 dict def TeXDict begin/N{def}def/B{bind def}N/S{exch}N/X{S
@@ -63,10 +62,10 @@ B/g{0 M}B/h{1 M}B/i{2 M}B/j{3 M}B/k{4 M}B/w{0 rmoveto}B/l{p -4 w}B/m{p
 
 %%EndProcSet
 %%BeginProcSet: pstricks.pro 0 0
-% $Id: pstricks.pro 700 2012-08-13 21:04:25Z herbert $
+% $Id: pstricks.pro 919 2014-05-19 18:42:47Z herbert $
 %
 %% PostScript prologue for pstricks.tex.
-%% Version 1.15, 2012/08/24
+%% Version 1.23, 2014/07/31
 %%
 %% This program can be redistributed and/or modified under the terms
 %% of the LaTeX Project Public License Distributed from CTAN archives
@@ -81,7 +80,7 @@ systemdict /.setshapealpha known not {/.setshapealpha { pop } def } if
 %
 /tx@Dict 200 dict def 				% the main PSTricks dictionary
 tx@Dict begin
-/ADict 25 dict def				% The arrow dictionaray
+/ADict 25 dict def				% The arrow dictionary
 /CM { matrix currentmatrix } bind def
 /SLW /setlinewidth load def
 /CLW /currentlinewidth load def
@@ -94,10 +93,8 @@ tx@Dict begin
 /Sqrt { dup 0 lt { pop 0 } { sqrt } ifelse } def  % return 0 for negative arguments 
 /Atan { /atan load stopped { pop pop 0 } if } def % return 0 if atan not known
 /ATAN1 {neg -1 atan 180 sub } def		% atan(x) (only one parameter)
-/Div { 						% control the division
-  dup 0 eq { pop 0 lt { -1e30 }			% -y/0
-                      {  1e30 } ifelse }	% +y/0
-       { div } ifelse } def
+/Div { dup 0 eq { pop } { div } ifelse } def  	% control the division
+/Log { dup 1e-20 lt { pop -1e30 }{ log } ifelse } def % control the log
 /tan { dup cos abs 1.e-10 lt 
   { pop 1.e10 } 				% return 1.e10 as infinit
   { dup sin exch cos div } ifelse 		% default sin/cos
@@ -105,6 +102,14 @@ tx@Dict begin
 /Tan { dup sin exch cos Div } def 		% sin(x)/cos(x) x in degrees
 /Acos {dup dup mul neg 1 add dup 0 lt {		% arc cos, returns 0 when negative root
   pop pop 0 }{ sqrt exch atan} ifelse } def
+/Acos2 { 2 dict begin 
+  /x ED /y ED
+  y abs 1.0e-20 lt { 1.0e30 } if
+  x y div 
+  dup dup mul neg 1 add dup 0 lt {		% arc cos needs two values x,y
+  pop pop 0 }{ sqrt exch atan} ifelse 
+  y 0 lt { 180 add } if
+} def
 /NET { neg exch neg exch T } def	      	% change coordinate system to the negative one		
 /Pyth { dup mul exch dup mul add sqrt } def   	% Pythagoras, expects 2 parameter
 /Pyth2 {					% Pythagoras, xA yA xB yB
@@ -113,8 +118,10 @@ tx@Dict begin
   3 1 roll 		% yB-yA xA xB
   sub			% yB-yA xA-xB
   Pyth } def
-/PtoC { 2 copy cos mul 3 1 roll sin mul } def 	% Polar to Cartesian
-/Rand { rand 4294967295 div } def		% a real random number
+/PtoC { 2 copy cos mul 3 1 roll sin mul } def % Polar to Cartesian
+/PtoCab { dup cos 4 -1 roll mul 3 1 roll sin mul } def % Polar to Cartesian (Ellipse) a b phi-> x y 
+%/Rand { rand 4294967295 div } def		% a real random number
+/Rand { rand 2147483447 div } def		% a real random number between 0 and 1
 %----------------- hv added 20050516 ---------------
 /PiDiv2 1.57079632680 def
 /Pi 3.14159265359 def 
@@ -124,6 +131,13 @@ tx@Dict begin
 %
 /RadtoDeg { 180 mul Pi div } bind def 		% convert from radian to degrees
 /DegtoRad { Pi mul 180 div } bind def 		% viceversa
+%
+/startGlobal { true setglobal globaldict begin } bind def
+/endGlobal { end false setglobal } bind def
+/pssetRGBcolor /setrgbcolor load def
+/pssetCMYKcolor /setcmykcolor load def
+/pssetGraycolor /setgray load def
+%
 %----------------- hv end---------------------------
 /PathLength@ { /z z y y1 sub x x1 sub Pyth add def /y1 y def /x1 x def } def
 %
@@ -191,7 +205,6 @@ tx@Dict begin
     /YLength YB YA sub def
     /PAngle YLength XLength Atan def
     /XYLength XLength YLength Pyth def
-
     %% for negative SymStep we calculate the distance 
     SymStep 0 lt 
       { %XYLength SymStep div abs cvi 
@@ -338,7 +351,6 @@ gsave
   /kite_colour ED 
   /dart_colour ED
   clip 
-
   newpath 
   gsave
   100 100 translate
@@ -785,6 +797,100 @@ gsave
   CurvePath 
 } def
 %
+/CalcBezierSpline {%  Christoph Bersch
+  10 dict begin
+  /getX { Points exch 2 mul get } def
+  /getY { Points exch 2 mul 1 add get } def
+  /n Points length 1 sub 2 idiv def
+  /GetFirstControlPoints {
+    /x n array def
+    /tmp n array def
+    /b 2 def
+    x 0 rhs 0 get b div put
+    1 1 n 1 sub {
+      /i exch def
+      tmp i 1 b div dup 4 1 roll put
+      i n 1 sub lt { 4 }{ 3.5 } ifelse exch sub /b exch def
+      x i rhs i get x i 1 sub get sub b div put
+    } for
+    1 1 n 1 sub {
+      n exch sub
+      dup dup x exch 1 sub 2 copy 6 2 roll
+      get 3 1 roll tmp exch get
+      exch x exch get mul sub
+      put	
+    } for
+    x
+  } def
+  % 
+  n 1 eq {
+    0 getX 2 mul 1 getX add 3 div
+    0 getY 2 mul 1 getY add 3 div
+    exch dup 3 1 roll 2 mul 0 getX sub
+    exch dup 3 1 roll 2 mul 0 getY sub
+    [ 0 getX 0 getY 7 3 roll 1 getX 1 getY ] /outPoints exch def
+  } {
+    /outPoints 6 n mul 2 add array def
+    0 1 n {
+      dup dup 6 mul dup 1 add
+      outPoints exch 5 -1 roll getY put
+      outPoints exch 3 -1 roll getX put
+    } for
+    /rhs n array def
+    1 1 n 2 sub {
+      rhs exch dup dup getX 4 mul exch 1 add getX 2 mul add put
+    } for
+    rhs 0 0 getX 1 getX 2 mul add put
+    rhs n 1 sub dup getX 8 mul n getX add 2 div put
+    GetFirstControlPoints
+    1 1 n 2 sub {
+      rhs exch dup dup getY 4 mul exch 1 add getY 2 mul add put
+    } for
+    rhs 0 0 getY 1 getY 2 mul add put
+    rhs n 1 sub dup getY 8 mul n getY add 2 div put
+    GetFirstControlPoints
+    0 1 n 1 sub {
+      /i exch def
+      2 copy
+      i get outPoints 6 i mul 3 add 3 -1 roll put
+      i get outPoints 6 i mul 2 add 3 -1 roll put
+      2 copy
+      i n 1 sub lt {
+        i 1 add get i 1 add getY 2 mul exch sub outPoints 6 i mul 5 add 3 -1 roll put
+        i 1 add get i 1 add getX 2 mul exch sub outPoints 6 i mul 4 add 3 -1 roll put
+      }{
+        n 1 sub get n getY add 2 div outPoints 6 n 1 sub mul 5 add 3 -1 roll put
+        n 1 sub get n getX add 2 div outPoints 6 n 1 sub mul 4 add 3 -1 roll put
+      } ifelse
+    } for
+    pop pop
+  } ifelse
+  outPoints
+  end
+} def
+/Spline {
+  /showpoints ED
+  counttomark 2 div dup cvi /n ED
+  n eq not { exch pop } if
+  ] /Points ED
+  n 1 gt {
+    CalcBezierSpline
+    mark exch aload pop
+    ArrowA
+    n 2 sub {
+      6 2 roll 4 2 roll curveto
+    } repeat
+    6 2 roll 4 2 roll ArrowB curveto
+  } if
+} def
+/OpenSymbolSpline {
+  Spline
+  0.1 setflat
+  /Shift Symbol stringwidth pop 2 div def 
+  CurvePath 
+} def
+
+%
 /SQ { /r ED r r moveto r r neg L r neg r neg L r neg r L fill } def
 /ST { /y ED /x ED x y moveto x neg y L 0 x L fill } def
 /SP { /r ED gsave 0 r moveto 4 { 72 rotate 0 r L } repeat fill grestore } def
@@ -995,12 +1101,18 @@ gsave
   mul neg d 
 } def
 %
+%
+/isbool { type (booleantype) cvn eq } def
+%
 /Ellipse { 
+  dup isbool { /MoveToStart ED }{ /MoveToStart false def }ifelse  % false or true
   /rotAngle ED
   /mtrx CM def 
   T 
   rotAngle rotate
-  scale 0 0 1 5 3 roll arc 
+  scale 
+  MoveToStart { 0 0 moveto 1 0 rmoveto } if  % move to the start position
+  0 0 1 5 3 roll arc 
   mtrx setmatrix 
 } def
 %
@@ -1122,7 +1234,7 @@ dup angle0 sub dup abs 180 gt { 180 add 360 div floor 360 mul sub } { pop } ifel
 /PutBegin { /TMatrix [ TMatrix CM ] cvx def CP 4 2 roll T moveto } def
 /PutEnd { CP /TMatrix [ TMatrix setmatrix ] cvx def moveto } def
 %
-/Uput { 
+/Uput {
   /a ED 
   add 2 div /h ED 2 
   div /w ED 
@@ -1137,6 +1249,7 @@ dup angle0 sub dup abs 180 gt { 180 add 360 div floor 360 mul sub } { pop } ifel
 } def
 %
 /UUput { 
+  5 dict begin
   /z ED 
   abs /y ED 
   /x ED 
@@ -1147,73 +1260,6 @@ dup angle0 sub dup abs 180 gt { 180 add 360 div floor 360 mul sub } { pop } ifel
   a PtoC 
   h1 add exch 
   w1 add exch 
-} def
-%
-/BeginOL { 
-  dup (all) eq exch TheOL eq or 
-    { IfVisible not { Visible /IfVisible true def } if } 
-    { IfVisible { Invisible /IfVisible false def } if } ifelse 
-} def
-%
-/InitOL { 
-  /OLUnit [ 3000 3000 matrix defaultmatrix dtransform ] cvx def
-  /Visible { CP OLUnit idtransform T moveto } def 
-  /Invisible { CP OLUnit neg exch neg exch idtransform T moveto } def 
-  /BOL { BeginOL } def
-  /IfVisible true def 
-} def
-%
-%%%%%%%%%%%%%%%%% tools %%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% ### bubblesort ###
-%% syntax : array bubblesort --> array2 trie par ordre croissant
-%% code de Bill Casselman
-%% http://www.math.ubc.ca/people/faculty/cass/graphics/text/www/
-/bubblesort {
-4 dict begin
-   /a exch def
-   /n a length 1 sub def
-   n 0 gt {
-      % at this point only the n+1 items in the bottom of a remain to
-      % the sorted largest item in that blocks is to be moved up into
-      % position n
-      n {
-         0 1 n 1 sub {
-            /i exch def
-            a i get a i 1 add get gt {
-               % if a[i] > a[i+1] swap a[i] and a[i+1]
-               a i 1 add
-               a i get
-               a i a i 1 add get
-               % set new a[i] = old a[i+1]
-               put
-               % set new a[i+1] = old a[i]
-               put
-            } if
-         } for
-         /n n 1 sub def
-      } repeat
-   } if
-   a
-end
-} def
-%
-%
-/concatstringarray{  %  [(a) (b) ... (z)] --> (ab...z)  20100422
-  0 1 index { length add } forall 
-  string     
-  0 3 2 roll      
-  { 3 copy putinterval length add }forall 
-  pop  
-} bind def
-%
-/dot2comma {% on stack a string (...) 
-  2 dict begin
-  /Output exch def
-  0 1 Output length 1 sub { 
-    /Index exch def 
-    Output Index get 46 eq { Output Index 44 put } if 
-  } for
-  Output
   end
 } def
 %
@@ -1224,10 +1270,10 @@ end
 
 %%EndProcSet
 %%BeginProcSet: pst-algparser.pro 0 0
-% $Id: pst-algparser.pro 594 2011-10-31 18:13:18Z herbert $
+% $Id: pst-algparser.pro 919 2014-05-19 18:42:47Z herbert $
 %%
 %% PostScript prologue for PSTricks algorithm parser
-%% Version 0.04, 2011/10/21
+%% Version 0.07, 2014/08/01
 %%
 %% This program can be redistributed and/or modified under the terms
 %% of the LaTeX Project Public License Distributed from CTAN archives
@@ -1235,7 +1281,10 @@ end
 %%
 %%-----------------------------------------------------------------------------%
 %
+%currentdict /Pi known not { /Pi 3.14159265359 def } if
+%
 /AlgParser { tx@AlgToPs begin AlgToPs end } def  % Dominique Rodriguez
+/I2P { AlgParser cvx exec } def  % Infix to Postfix
 %
 /tx@CoreAnalyzerDict 100 dict def tx@CoreAnalyzerDict begin
 %
@@ -1530,7 +1579,7 @@ end
 %% (name) ->
 /TrigoFunc {
   dup (cos) eq 1 index (sin) eq or exch (tan) eq or
-  { /ExpressionVector ExpressionVector aload length Pi /div cvx 180 /mul cvx 5 -1 roll 4 add
+  { /ExpressionVector ExpressionVector aload length 3.1415926 /div cvx 180 /mul cvx 5 -1 roll 4 add
     array astore def
   } if
 } def
@@ -1577,7 +1626,7 @@ end   %tx@CoreAnalyzerDict
 %%increase ^^ for each function added
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% algExpr variable -> PSVector
-/Derive {%
+/Derive {
   10240 string 3 1 roll 0 3 1 roll
   /Variable exch def
   tx@CoreAnalyzerDict begin InitParser AnalyzeListOfE end
@@ -1794,6 +1843,10 @@ end   %tx@CoreAnalyzerDict
   PreCommonFunc
   { (1/\(1+\() StrConcat 5 index StrConcat (\)^2\)\)) StrConcat } if
   PostCommonFunc } def
+/EvalFunc_floor {%
+  PreCommonFunc
+  {  dup 0 eq { (1) StrConcat } { 1 sub } ifelse (/\() StrConcat 5 index StrConcat AddClPar } if
+  PostCommonFunc } def
 /EvalFunc_ln {%
   PreCommonFunc
   {  dup 0 eq { (1) StrConcat } { 1 sub } ifelse (/\() StrConcat 5 index StrConcat AddClPar } if
@@ -1993,10 +2046,10 @@ end
 
 %%EndProcSet
 %%BeginProcSet: pst-tools.pro 0 0
-% $Id: pst-tools.pro 622 2012-01-01 15:36:14Z herbert $
+% $Id: pst-tools.pro 842 2013-10-26 10:25:41Z herbert $
 %
 %% PostScript tools prologue for pstricks.tex.
-%% Version 0.02, 2012/01/01
+%% Version 0.04, 2013/10/26
 %%
 %% This program can be redistributed and/or modified under the terms
 %% of the LaTeX Project Public License Distributed from CTAN archives
@@ -2018,6 +2071,15 @@ end
   end
 } def
 %
+/ps@ReverseOrderOfPoints { % on stack [P1 P2 P3 ...Pn]=>[Pn,Pn-1,...,P2,P1]
+  5 dict begin       % all local
+  aload length /n ED % number of coors
+  n 2 div cvi /m ED  % number of Points
+  /n1 n def
+  m { n1 2 roll /n1 n1 2 sub def } repeat
+  n array astore
+  end
+} def
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % subroutines for complex numbers, given as an array [a b] 
 % which is a+bi = Real+i Imag
@@ -2207,12 +2269,56 @@ end
   end
 } def
 %
+/rightTrim { % on stack the string and the character number to be stripped  
+  /charNo exch def
+  dup
+  length 1 sub -1 0 { 
+    /i exch def dup i get charNo ne { exit } if 
+  } for
+  0 i 1 add getinterval
+  dup length string copy
+} bind def  % leaves the stripped string on the stack
+
+/psStringwidth /stringwidth load def
+/psShow /show load def
+
+%/stringwidth{ 32 rightTrim psStringwidth } bind def
+
+%/show { 32 rightTrim psShow } bind def
+%-----------------------------------------------------------------------------%
+
+/pgffunctions {
+    /pgfsc{}bind def% stroke color is empty by default
+    /pgffc{}bind def% fill color is empty by default
+    /pgfstr{stroke}bind def%
+    /pgffill{fill}bind def%
+    /pgfeofill{eofill}bind def%
+    /pgfe{a dup 0 rlineto exch 0 exch rlineto neg 0 rlineto closepath}bind def% rectangle
+    /pgfw{setlinewidth}bind def% setlinewidth
+    /pgfs{save pgfpd 72 Resolution div 72 VResolution div neg scale 
+      magscale{1 DVImag div dup scale}if 
+      pgfx neg pgfy neg translate pgffoa .setopacityalpha}bind def% save
+    /pgfr{pgfsd restore}bind def %restore
+    userdict begin%
+    /pgfo{pgfsd /pgfx currentpoint /pgfy exch def def @beginspecial}bind def %open
+    /pgfc{newpath @endspecial pgfpd}bind def %close
+    /pgfsd{globaldict /pgfdelta /delta where {pop delta} {0} ifelse put}bind def% save delta
+    /pgfpd{/delta globaldict /pgfdelta get def}bind def % put delta
+    /.setopacityalpha where {pop} {/.setopacityalpha{pop}def} ifelse % install .setopacityalpha 
+    /.pgfsetfillopacityalpha{/pgffoa exch def
+      /pgffill{gsave pgffoa .setopacityalpha fill 1 .setopacityalpha newpath fill grestore newpath}bind def
+      /pgfeofill{gsave pgffoa .setopacityalpha eofill 1 .setopacityalpha newpath eofill grestore newpath}bind def}bind def
+    /.pgfsetstrokeopacityalpha{/pgfsoa exch def /pgfstr{gsave pgfsoa .setopacityalpha stroke grestore newpath}bind def}bind def
+    /pgffoa 1 def
+    /pgfsoa 1 def
+    end
+} def
 %-----------------------------------------------------------------------------%
 % END pst-tools.pro
 
 %%EndProcSet
 %%BeginProcSet: pst-dots.pro 0 0
-% $Id: pst-dots.pro 130 2009-08-27 08:55:03Z herbert $
+% $Id: pst-dots.pro 801 2013-07-09 18:10:41Z herbert $
 %
 %% PostScript prologue for pstricks.tex.
 %% Version 2.02,  2009/06/16
@@ -2435,32 +2541,22 @@ neg sub neg TR}if xflip yflip not and{TR pop pop 90 rotate ppr 3 get ppr
 -1 roll add 2 div 3 1 roll add 2 div 2 copy TR .96 dup scale neg S neg S
 TR}if}N/cp{pop pop showpage pm restore}N end}if}if}N/normalscale{
 Resolution 72 div VResolution 72 div neg scale magscale{DVImag dup scale
-}if 0 setgray}N/psfts{S 65781.76 div N}N/startTexFig{/psf$SavedState
-save N userdict maxlength dict begin/magscale true def normalscale
-currentpoint TR/psf$ury psfts/psf$urx psfts/psf$lly psfts/psf$llx psfts
-/psf$y psfts/psf$x psfts currentpoint/psf$cy X/psf$cx X/psf$sx psf$x
-psf$urx psf$llx sub div N/psf$sy psf$y psf$ury psf$lly sub div N psf$sx
-psf$sy scale psf$cx psf$sx div psf$llx sub psf$cy psf$sy div psf$ury sub
-TR/showpage{}N/erasepage{}N/setpagedevice{pop}N/copypage{}N/p 3 def
-@MacSetUp}N/doclip{psf$llx psf$lly psf$urx psf$ury currentpoint 6 2 roll
-newpath 4 copy 4 2 roll moveto 6 -1 roll S lineto S lineto S lineto
-closepath clip newpath moveto}N/endTexFig{end psf$SavedState restore}N
-/@beginspecial{SDict begin/SpecialSave save N gsave normalscale
-currentpoint TR @SpecialDefaults count/ocount X/dcount countdictstack N}
-N/@setspecial{CLIP 1 eq{newpath 0 0 moveto hs 0 rlineto 0 vs rlineto hs
-neg 0 rlineto closepath clip}if ho vo TR hsc vsc scale ang rotate
-rwiSeen{rwi urx llx sub div rhiSeen{rhi ury lly sub div}{dup}ifelse
-scale llx neg lly neg TR}{rhiSeen{rhi ury lly sub div dup scale llx neg
-lly neg TR}if}ifelse CLIP 2 eq{newpath llx lly moveto urx lly lineto urx
-ury lineto llx ury lineto closepath clip}if/showpage{}N/erasepage{}N
-/setpagedevice{pop}N/copypage{}N newpath}N/@endspecial{count ocount sub{
-pop}repeat countdictstack dcount sub{end}repeat grestore SpecialSave
-restore end}N/@defspecial{SDict begin}N/@fedspecial{end}B/li{lineto}B
-/rl{rlineto}B/rc{rcurveto}B/np{/SaveX currentpoint/SaveY X N 1
-setlinecap newpath}N/st{stroke SaveX SaveY moveto}N/fil{fill SaveX SaveY
-moveto}N/ellipse{/endangle X/startangle X/yrad X/xrad X/savematrix
-matrix currentmatrix N TR xrad yrad scale 0 0 1 startangle endangle arc
-savematrix setmatrix}N end
+}if 0 setgray}N/@beginspecial{SDict begin/SpecialSave save N gsave
+normalscale currentpoint TR @SpecialDefaults count/ocount X/dcount
+countdictstack N}N/@setspecial{CLIP 1 eq{newpath 0 0 moveto hs 0 rlineto
+0 vs rlineto hs neg 0 rlineto closepath clip}if ho vo TR hsc vsc scale
+ang rotate rwiSeen{rwi urx llx sub div rhiSeen{rhi ury lly sub div}{dup}
+ifelse scale llx neg lly neg TR}{rhiSeen{rhi ury lly sub div dup scale
+llx neg lly neg TR}if}ifelse CLIP 2 eq{newpath llx lly moveto urx lly
+lineto urx ury lineto llx ury lineto closepath clip}if/showpage{}N
+/erasepage{}N/setpagedevice{pop}N/copypage{}N newpath}N/@endspecial{
+count ocount sub{pop}repeat countdictstack dcount sub{end}repeat
+grestore SpecialSave restore end}N/@defspecial{SDict begin}N
+/@fedspecial{end}B/li{lineto}B/rl{rlineto}B/rc{rcurveto}B/np{/SaveX
+currentpoint/SaveY X N 1 setlinecap newpath}N/st{stroke SaveX SaveY
+moveto}N/fil{fill SaveX SaveY moveto}N/ellipse{/endangle X/startangle X
+/yrad X/xrad X/savematrix matrix currentmatrix N TR xrad yrad scale 0 0
+1 startangle endangle arc savematrix setmatrix}N end
 
 %%EndProcSet
 %%BeginProcSet: color.pro 0 0
@@ -2532,7 +2628,6 @@ FontDirectory/CMBX10 known{/CMBX10 findfont dup/UniqueID known{dup
 /FontMatrix [0.001 0 0 0.001 0 0 ]readonly def
 /FontName /CMBX10 def
 /FontBBox {-56 -250 1164 750 }readonly def
-/UniqueID 5000768 def
 /PaintType 0 def
 /FontInfo 9 dict dup begin
 /version (003.002) readonly def
@@ -2895,7 +2990,6 @@ FontDirectory/CMSY10 known{/CMSY10 findfont dup/UniqueID known{dup
 /FontMatrix [0.001 0 0 0.001 0 0 ]readonly def
 /FontName /CMSY10 def
 /FontBBox {-29 -960 1116 775 }readonly def
-/UniqueID 5096651 def
 /PaintType 0 def
 /FontInfo 9 dict dup begin
 /version (003.002) readonly def
@@ -3143,7 +3237,6 @@ FontDirectory/CMMI10 known{/CMMI10 findfont dup/UniqueID known{dup
 /FontMatrix [0.001 0 0 0.001 0 0 ]readonly def
 /FontName /CMMI10 def
 /FontBBox {-32 -250 1048 750 }readonly def
-/UniqueID 5087385 def
 /PaintType 0 def
 /FontInfo 10 dict dup begin
 /version (003.002) readonly def
@@ -3415,7 +3508,6 @@ FontDirectory/CMR10 known{/CMR10 findfont dup/UniqueID known{dup
 /FontMatrix [0.001 0 0 0.001 0 0 ]readonly def
 /FontName /CMR10 def
 /FontBBox {-40 -250 1009 750 }readonly def
-/UniqueID 5000793 def
 /PaintType 0 def
 /FontInfo 9 dict dup begin
 /version (003.002) readonly def
@@ -3852,7 +3944,6 @@ FontDirectory/CMR12 known{/CMR12 findfont dup/UniqueID known{dup
 /FontMatrix [0.001 0 0 0.001 0 0 ]readonly def
 /FontName /CMR12 def
 /FontBBox {-34 -251 988 750 }readonly def
-/UniqueID 5000794 def
 /PaintType 0 def
 /FontInfo 9 dict dup begin
 /version (003.002) readonly def
@@ -4105,7 +4196,6 @@ FontDirectory/CMMI12 known{/CMMI12 findfont dup/UniqueID known{dup
 /FontMatrix [0.001 0 0 0.001 0 0 ]readonly def
 /FontName /CMMI12 def
 /FontBBox {-31 -250 1026 750 }readonly def
-/UniqueID 5087386 def
 /PaintType 0 def
 /FontInfo 10 dict dup begin
 /version (003.002) readonly def
@@ -4351,7 +4441,6 @@ FontDirectory/CMMIB10 known{/CMMIB10 findfont dup/UniqueID known{dup
 /FontMatrix [0.001 0 0 0.001 0 0 ]readonly def
 /FontName /CMMIB10 def
 /FontBBox {-15 -250 1216 750 }readonly def
-/UniqueID 5087392 def
 /PaintType 0 def
 /FontInfo 8 dict dup begin
 /version (003.002) readonly def
@@ -4587,7 +4676,6 @@ FontDirectory/CMBX12 known{/CMBX12 findfont dup/UniqueID known{dup
 /FontMatrix [0.001 0 0 0.001 0 0 ]readonly def
 /FontName /CMBX12 def
 /FontBBox {-53 -251 1139 750 }readonly def
-/UniqueID 5000769 def
 /PaintType 0 def
 /FontInfo 9 dict dup begin
 /version (003.002) readonly def
@@ -4926,7 +5014,6 @@ FontDirectory/CMSSI10 known{/CMSSI10 findfont dup/UniqueID known{dup
 /FontMatrix [0.001 0 0 0.001 0 0 ]readonly def
 /FontName /CMSSI10 def
 /FontBBox {-97 -250 1077 759 }readonly def
-/UniqueID 5000810 def
 /PaintType 0 def
 /FontInfo 9 dict dup begin
 /version (003.002) readonly def
@@ -4941,14 +5028,18 @@ FontDirectory/CMSSI10 known{/CMSSI10 findfont dup/UniqueID known{dup
 end readonly def
 /Encoding 256 array
 0 1 255 {1 index exch /.notdef put} for
+dup 16 /dotlessi put
 dup 19 /acute put
-dup 67 /C put
+dup 65 /A put
 dup 68 /D put
+dup 69 /E put
 dup 77 /M put
 dup 97 /a put
+dup 99 /c put
 dup 100 /d put
 dup 101 /e put
 dup 105 /i put
+dup 108 /l put
 dup 109 /m put
 dup 110 /n put
 dup 111 /o put
@@ -4956,8 +5047,7 @@ dup 112 /p put
 dup 114 /r put
 dup 115 /s put
 dup 116 /t put
-dup 117 /u put
-dup 118 /v put
+dup 121 /y put
 readonly def
 currentdict end
 currentfile eexec
@@ -5143,73 +5233,81 @@ BDC14AFFD80F49365D5006821F2A4A2F801820D4D1DA9D11F02CA514EED93425
 BC8BA0C569C7DDE62033CE401D65C35DF34D2875D4E6E83E7854E73F44EDBADA
 9368225FE24670C9B44536F724F83C7A7563D090FA9FB71201D625F00EEBB6FA
 5D427979ACBF85B44CA596641C33E6F388E1C1C7834626B4C96C5C20E4F6AC8D
-47EF32CCEA3A27074C017CEBA3A38EE6BA2063A650CBC87EB9D1C2DBC3515DE6
-DBFABEB6C1F9A8F6BB2062C082C2C9FBA012A7EFF1C66B148E036AFB7FF007F1
-8AAB4CAA2CEDB34892D103CCED885841ECE762E3C3BE03C7C33CB54D544F2930
-E596BD6CB249A05F229CDC2C7B3F4693D291E544643B9C3417305B2906D26756
-132ABB51B16E156CFFE2D1DE3A9C4D5F986B5B114CE454186605D4920CF2EA9A
-9EB6A509DA1BF86D9FD25FFDD017B801DD54F5C8978A29D9EBA59FC8A90C9219
-7813BB75CE86CDADD89612DFAB1CDA3060102F3D177E335A4CF2E8234E082AB1
-A8B1E58558B6864C1646F45EA63BA74E3B67BE5BB67C5C7C106F31DDBA1EF0E7
-7FC12D31A86FBAB3682AC5CA7A769D28281EEDDAF4DD9418EDA9C9AE191BE1D4
-35D3DCAA2D629A9302CCFA0546594A576959331A66D7743E3C1CB6D0EFD3741E
-4F5E274CA6DE5DF8932D9AA08DEE37DE952DD7B49CE32AF3C79418F1DE694E92
-3BE4FA8D652C820FC70BDB7DF6A7F863C841B265CA794A7B92CDDF4C6C67FBC2
-93683BB7173FC5EC5AC6EF406A63D109E7857DF2702C85A9A60F89CABBB06F48
-159CF40F39B440B567E6AF7A3D1FBDA692A81B1DB7A8D036EDA7821F716B84A3
-D113277C78DF369729D4DCF333565FE2AFCE644EF6B75F89F2A97DFA30B3A728
-56787DECDD729EF15544F00E505E8B3E7BA9377F2C5D58BA0DDD6C54A36A49B3
-6ACED327CEDCA5A4E0AC820A8493F96BF8657C79EFD27F6F235B65CB39A3F2C7
-1229F4F873D98DDFB8DBCD2473B36AFFFB3E716D05A3EC9FBB3FADA42EB102D6
-1AD9AD1B4AE11BDA06C2A6B5BD56383B3D8CF72E0AF5EB9DE91288566213788D
-1C7CF039433EA8848C4986C9D43B719FFCA195898566A515E327A692C2D72C31
-582A578E0595AE41DF417ED02ED130F57EDBDB2C5BAC48468535487483985EE5
-8D5ECFE863C25A36EFE59C1F4CE7C340A74036F0CC40B0B22708897C0EAC3D5E
-F84B1B9C984F887B7156ACC9475C301818482BED45D7E4AC6EE29D74E7CDCC6D
-3571B87593C6C4284D55FC55D17BE8462429096C334D0BBFE4187579FA2DDA71
-44A82CCD3E59DDA9FDDF5D7BC3394593C5B714D1C0EC1E5AB3860752BE18CD54
-E1536D009BF54B9A00140502BD804FC1E33BAFDB11A198965F3B1A9ADD7E02D9
-7F5AB7BDF1B547346C8915A7C33AE615A39F62D165773BBA36F5A7260D2C21D2
-8686F772443D08BB92EDC153BA006714A0D53D182ADE382631175A94D25FAD4F
-087EEDD7C89DD3F0B32849DF1C3D1B92B44583F98A4691598D366FC7E1AFAFDE
-1A3EB1435AAE0115479619436140D607BF1F9F08B4B63B35876C6C0CEB56BADD
-AFD82D22FAF36FB9F9F279319CEBCBC78A7D37C65889CA840D4E132CCDED0D44
-6008998B960B03514BDCB15FC5A225136B0981212B2B4679E1575E6469D1F409
-7B1723BADD9A780E3211EFB72B127DC0E5414B991B3793B95E166C0A24705A54
-78829BE9F3C43D4A5880F90EFFAC0919A48F94247F8AADD61953385E15C2FF34
-1B160036ED1F5149DE4582E414C3B0C77080BD9F8BDE5545ADBABBC83D40721F
-6D046209BAA59191F566C08FCD052C0F5ABD6567C33F8B015C96BC47D68930CC
-B62D0B76B43081D1B7EB34C1A86C8785FD20025F71EBE5D60C8662ECC911ACA1
-E28CDC17AD3F2BE918A0C8622C774FFD0287F73B164BB0BE849593BD5300DC1D
-BCA09D1B580AE5F39A73ACDC8B4AC3B1943878A682911CE6E71A3F8EC8CB5112
-05DBCA26754AAA0DCF1FB4E504124170C0C296942085DD709EE6405861C3B416
-24837A7C283E1F462A7FD92004164F8DAD02870C07BD2674C4759DC01E782B81
-731A4A8F3A096077D400AC85DA22DE061EC8D3C9A3D4FA57B8A21677534690A4
-FEC12E0DA9F74BD39E510BB5C710CA2D1DD54151A75C0ADCD15BAA71D088FF1A
-4F51AC030EEBC738BD0AFB8A9470FA707F75A4726F1DCB2783FB3560EF267045
-6E0A239D6BC4183FE1CD56ADE4CFB37D2B233E6CE5816F92B144AC09B1D3D055
-9503CBCD120BC278E83FB7E3B72EA7F968D24BCDAE034BBB60E3A3FA665A48E2
-4742C13C01C04CF82E9987E6E8113307936E0BA89C370BB1800833B91A9FBA1A
-A2CAC4341BFF5824770E0778EB7BF97FC87D8E7E6EFD3516DC4160460172F6DB
-F91705DB2B2884C9CDD12647DEB00A1726777794253749B317D8A88D0B1C3481
-A119B39885344287BC1D40F5083305C53D6ABDAB8CA8AA9B0A7F33D29BFAF2C8
-181F058A78B23CD5DB17EB5142C4B8893BDEFB884C9839762117650C8F7ED576
-20863326EBDA1D95D1331323E2DD0ACFA01B3075EC56F004DD93154BBB91FFE2
-C7A5FBF11B743579FE668E1D721637F37925FD33B1D3D45CBE9A9B8D03F75717
-BFDE3816111DE5B656AFFBC88CCBF5D68B6E1FDD5AADB993F671A3D5302E0150
-A6FCDD68F117EBE6AF8D59B0EA45FE35970DD6D846B7E947F3F6C05C8C4C22C1
-EE5C65415194EBB0BAC317E272215D8FF301C90458CE63FE51E30756AE02D3AC
-3606B542DE81220F500DD30FE0EA5DAD91EC6B9D7A8DE1281A73048111BF6CD5
-F140D06CD012FAD4256A99CC66C6374E684525A6D0BCA95D17E87B438F128D64
-AA1BB77E481505CFBB095854F7E0F555F7D5BD5EA407AC8A3E5D1C9B9B15489B
-B2AF1F29D84187DC2CBEEF92C3E2A261858EACE19950A265C7F4DCF3AD64CAD4
-DCF70B7DD3F966202751BBAD0C0CA047E32EF1663DD3F8C76BDD4F1574A08C16
-1F6240314C67E811340FF65757B66A48A5742EB9208012FEA7B5A83BBBC41D1D
-3F637F19FFB7511DE2DFBFBBFA4C53C49BD86B24F32B30A8AD02942FFFCF7C7D
-8E703FCBAD4E8F2BAB6FF8B676A8B816AF16AB863DF7E2B387C59761E1A3555B
-9853BBC9B3C76F3E1D7B717EC5EA1D943DB8EFF04E1814F4EB6CACF1B2F0E979
-2F298B2FF3F38D55A2900800E3BB9D466A8265777AE05579332AFEAEF0B9E8AB
-38174C0CAAFB9586284F9E9718AC517E8059170DA1E92CA8CFAFD898C70614
+47EF32CCEA3A27074C0178A467ED1223C8CF29FDCADB5EBBE89A170EC4EE20D0
+D070EE364ED35373A9784D02E65604DC7FF738CDD6EB1B5BF1F8E8CF86FC87EA
+F14699937EC5E60FFB3A13AC9FCE3CC664E3B6EAA7F80BDFF45A5C9C32C0BAB4
+8CE9F69477C819EE42C213CB237B187A7B54F41B54433526B5BCF139EED8809D
+EB8E04A2EA0661B96E1A4172B9D4452D2F9BC4CDA3C2AC3A46DAD7BA069CF80E
+2A626FBA2FB7C717977A24C48C184E2BC43534B3CBA542C2C3C8DD4FC89880FE
+FF2DA83D890FE20793343B5F1DA8C37CD161CE528876AE34B0A1841077EA5E39
+0660C11B97A685552364280712CD4929164774D5C13AD7388AB72585BD378192
+057B2BF52E3C5B106DF695D6DD88C048E99BE97280ED370DBEF2FF3DCC79774E
+2F5D87B4714F51B71531B23E798024B6B57314216D7D41199554B6B864EE527A
+5CCDE74E2CBE14A20F56A2878B90F9F54FC822A3F35DD4946516799B1BDEEA2A
+7928CDD09504630D4DDD93D551BF42330327E860A37828702857EDDDC1AF0EAE
+5A97DDC272FF70D7BBFADB72266E24517C5970E250B4DA6122F7E36D1DC35852
+B6F99BE96CC932F14E1192E9E447F20DCC5F0B5345153477C5C1FD823AF0E35B
+2F04B9A3A02C1033D9793F0025A713D3EC19CB40F4BB4E7BDA33C33E0F0DBC83
+D4BC5DBA1030150CFB62B8578A589C9240461F795408CF393A228483FCABBE54
+CB9DE73EB328EA9CED30891422952AAE8CDA6C5BE985667D6CEA6B9F46380C78
+55EEC149F95C85DC0D3FE55494066873A19321FF6C5CBD4F635A969E25DC59B1
+A5B5A0EE56EF718C6D9E183953AA8F648757396436643A2D0E5EE6F9E99C9335
+CCC0C684FEA193EC02ED8F6E46597F7C1AE466B0C21A84E744536C75139FEE93
+8163FA917D30FA36FAEE9812D119A7C96B76847FCA1912C426BF373C7B0D91D2
+81606F687277B039310312EBF090FBD762AFEBD71243A1B582D881BFE7010A73
+510AD1D0821946ED6747592A85822E0B838C0A7DC1E7DC9C16AF9CE796783B3F
+2A13DCC05347CA8063D6D717BB30A4A86076D343E7362757C4FB6E4A744AB6F9
+0585C75CD51E1C9AC0FD2488F0A1C1972E3027B512B22DE47F4566006178B695
+F941542EB9B779D196C6603D244580E9BCC29C98A0F8D04B116790E106D46769
+210E48A493B5A3EA570335E4483D2FE17FABC0DF42C07C05E7EBC7E81973346F
+B72B0BFBD5F4A6583ABBFE58B7EAE714A19F1CB23FFD4BF28AD9049048AC6728
+3867AC95602148B2901B4E7C9AB67A2D386BBAECA5C0A4BCF182CB1FE91856F6
+3AEA6CBB11393739C80E6317BCC6B8EC1668A5A15D3A4400CF61369D41B5F93B
+7D699BF203A909C7E7AE2163A3589E7B38363923E1861C6EF2D880C2EC55587C
+653C4413FEF7FE8BB04CA8F66038A2B8CF1BBC19E007231FDB4CF16123266B94
+582E34382B5135D28EF7CA68801EB8C9525003E31CB8CDC6A81F3D635084605B
+ED4619BF937745A94B98F561E3088446207B1FEFE66DA64781D23A97F7B32CA0
+4BC20EF687A164D57B8CC0B58176243BEC2C725AC1534F508307C9464DD38C3C
+AEDF90AEE7B7A3E777C8306A9254C7A228D37AED24A6B7BD3002EA95A2243DA2
+71AE59583B5F81EF1C874E6110B13F4DBDEA7C926B8DAA048FC10A52C36C781E
+893C90FA6C9916D47916A80B5F15CA3B9A0A09D6DB5657A0F71DE364445F80BC
+DC04C3BFD14FB139F8A972D69D32658B818AD29BD2EE462DCA0C7F90F554D903
+1F88657D51DB45CBEA560E0F6EADAE7F00FA38AE1A5A09EC408BE0DBDF5A293A
+71C5F8E3DA4B0BD4F5B2AF40EF1641D9F3AAE99C7C72F71561FB4D758AE9A8D9
+B1766FAD1374FE190DB63D26151CF9CF2D4F423A223E5816708BD85A91A36310
+4756652314C8D02C53EB746C57B05E8304A43319C55CDF8710F2A20A325CD055
+2C669DCADDB1D176FC7698331EDAB51F0C82896CB6AF88F9F6ABB03CFA0E7A84
+5223DF809954FC061FB4707598D0965272235F4FE63E131F50ACCCE91921C0E6
+AD4810C5BE0E14B233F2F5F09B98C202D6B36D49791152E46CD081D1AD378957
+E06E6F0685DECA3C120736A72E1DD47944E74A261954FD96905093A7DEB7DA08
+B301FD92C7EC9B22FFE2A15839EEA4E7B288B258DDC9AD2C924DDB98B3A6BD76
+3D9EAB4E69DB7ADFDFB188D98663B67CE84F8A07A8B2B3DE016502124FD4A63A
+8D7F67B7B0B14061339CA364B129BF36CAA480240D154E32EF8B7BDA62BEEEF6
+1F7273B238EA423E0A8FD49E121F92CAD60E09130BADDACD8981640773679BA1
+DBDDF9415C3F1AA6009118FFCFED0DE47AF7CCF8E47DB9D55D390C18F0A4589E
+52C6512432384DEA0CB2CBF1C8FCF630C3FDC8B381993132C09C93021E48C277
+11E7D3B01D5D350745ED4AEB7B7D1050239035266747295516D1023A6D4DB0B6
+EA9AF3F018A704F85C6FD786D147AF35DD9D35C1A7275150D82CEE420B04C7E0
+B51D7DBECABB91B166742DBC1F976351D4CCD68E20A0CB76007C1EAC8BACF29D
+8AD309C8B3744D64AD5BB8A26DACAC976CC61244AFA1A096033D21CF5F4AD851
+77013854B10911B6AB62D9CF8DA8B3F32069362D005D2F34AA91A8944B49F2F5
+3BD35A5F4B098B74230156B0DBF8E33E4B4F17E6231F44E9E103398895BE1E35
+B98C5EB89FE02713AA41FB8FE44233E4E54C8C02F1D1C4C72CAE7B31F7068DB4
+81918CD38114C299AF666522E2249BA2D9EE7F53BEA04E4E1C75001AE9954BA5
+350C67B21D5B982DB98B12C58E08A7FC8A1D168E2EB23034CF10392ECF1B22C8
+92FB7DC582BAFB20BABF702CF12536897E49F3EB4321998E2FACF497B0C7D08F
+D421BA8C79CD8F6875C9267A1226B352A8A1B9B2D0CA44289581E63F86203892
+CDEE915E4E61BC65823D51D593EC011ADDEA8CB02D60D33C87DB8C72012E29C4
+159E7E3C96A902A93B3D127F34DB222508BC420651C7108628BF373C3D21495B
+E381FF9A92832CD72EFE624B5E8FF8666AA85D41FCD19DA86D47FF663B0C4CB2
+FE12404933695EA0B4040A7BE8445E329CF096C6B18B600FFBCFA5C1908CC030
+C7D64A6C124DE70D363C1140CFBF27E160E292F887965C917AA08DF69B7E388F
+C52E6CAD45566D9AEE25226D50183163EF102C81488BAF9DDFA02A2A760D93D5
+8912C5EE9CCD589342CABCE69B1EE6A31116E4C1C21A90C2C7E59246B71F57EB
+258156DE06DF80B8D4E2C09BF496922DFCFDA1E704DCCD454DB3386A6940E89D
+E24889D289A053B271B37DE7FE07CF23FAD837CA79C4D377B653F695AC2DEDB1
+70CDE2A8362D637A2643CFB337CB6E57C693A8211ABD56C4E1D4387D54E6CC38
+A1BF0D
 0000000000000000000000000000000000000000000000000000000000000000
 0000000000000000000000000000000000000000000000000000000000000000
 0000000000000000000000000000000000000000000000000000000000000000
@@ -5241,7 +5339,6 @@ FontDirectory/CMCSC10 known{/CMCSC10 findfont dup/UniqueID known{dup
 /FontMatrix [0.001 0 0 0.001 0 0 ]readonly def
 /FontName /CMCSC10 def
 /FontBBox {14 -250 1077 750 }readonly def
-/UniqueID 5087402 def
 /PaintType 0 def
 /FontInfo 10 dict dup begin
 /version (003.002) readonly def
@@ -5576,11 +5673,11 @@ TeXDict begin 39158274 55380987 1000 600 600 (tabla_normal_estandar.dvi)
 /Fg 231[93 24[{}1 119.552 /CMSY10 rf /Fh 165[92 90[{}1
 119.552 /CMMIB10 rf /Fi 138[75 52 53 55 2[67 75 112 37
 2[37 3[61 75 60 75 65 18[105 7[85 88 103 48[67 19[{}19
-119.552 /CMBX12 rf /Fj 137[38 43 30 32 28 1[43 42 43
-66 3[20 3[37 43 2[40 19[73 8[60 53 47[42 19[{}17 83.022
-/CMSSI10 rf /Fk 137[51 2[38 50 2[53 51 1[43 2[25 3[46
-52 1[48 51 11[68 1[51 2[62 10[62 1[65 67[{}16 83.022
-/CMCSC10 rf end
+119.552 /CMBX12 rf /Fj 134[38 4[30 32 28 1[43 42 43 66
+20 2[20 3[37 43 37 1[40 19[73 7[50 60 2[55 45[42 2[20
+16[{}20 83.022 /CMSSI10 rf /Fk 137[51 2[38 50 2[53 51
+1[43 2[25 3[46 52 1[48 51 11[68 1[51 2[62 10[62 1[65
+67[{}16 83.022 /CMCSC10 rf end
 %%EndProlog
 %%BeginSetup
 %%Feature: *Resolution 600dpi
@@ -5596,12 +5693,16 @@ ifelse
 %%Page: 1 1
 TeXDict begin 1 0 bop 0 TeXcolorgray 0.00 0.00 0.50 TeXcolorrgb
 0 -129 a Fk(Universid)n(ad)31 b(San)g(P)-7 b(ablo)30
-b(CEU)p 0 TeXcolorgray 0.00 0.00 0.50 TeXcolorrgb 1149
-w Fj(Depa)n(rtamento)c(de)i(M)n(\023)-39 b(eto)r(dos)25
-b(Cuantitativos)p 0 TeXcolorgray Black 0 109 a
+b(CEU)p 0 TeXcolorgray 0.00 0.00 0.50 TeXcolorrgb 733
+w Fj(Depa)n(rtamento)c(de)i(Matem)o(\023)-41 b(atica)26
+b(Aplicada)h(y)h(Estad)-11 b(\023)-31 b(\020stica)p 0
+TeXcolorgray Black 0 109 a
+ /pssetRGBcolor /setrgbcolor load def /pssetCMYKcolor /setcmykcolor
+load def /pssetGraycolor /setgray load def
+ 0 109 a 0 109 a
 tx@Dict begin  gsave STV CP T /ps@rot 0 def grestore  end
- 0 109
-a 0 109 a
+ 0 109 a 0
+109 a
 tx@Dict begin  gsave STV CP T /ps@refangle 0.  def grestore  end
  0 109 a 0 TeXcolorgray 89 x Fi(F)-11 b(unci\023)-67
 b(on)44 b(de)h(Distribuci\023)-67 b(on)45 b(de)g(la)h(Normal)g(Est)o
@@ -5636,7 +5737,7 @@ translate
 155.92177 256.75851 155.46643 255.16534 155.23894 253.57181 155.0111
 252.20613 154.78358 250.61261 154.55574 249.01942 154.32825 247.65375
 154.10075 246.06023 154.10075 244.46704 153.87291 242.87352 153.87291
-241.50783 153.6454    /Lineto /lineto load def 0  setlinejoin false
+241.50783 153.6454   /Lineto /lineto load def 0  setlinejoin false
 Line  gsave 1 0.5 0.31  setrgbcolor  1. .setopacityalpha  fill  grestore
 gsave 0.72278 SLW 0  setgray  1. .setopacityalpha   0  setlinejoin
 0  setlinecap stroke  grestore end
@@ -5684,22 +5785,22 @@ gsave 0.72278 SLW 0  setgray  1. .setopacityalpha   0  setlinejoin
 156.14928 258.35205 155.92177 256.75851 155.46643 255.16534 155.23894
 253.57181 155.0111 252.20613 154.78358 250.61261 154.55574 249.01942
 154.32825 247.65375 154.10075 246.06023 154.10075 244.46704 153.87291
-242.87352 153.87291 241.50783 153.6454    /Lineto /lineto load def
-0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
+242.87352 153.87291 241.50783 153.6454   /Lineto /lineto load def 0
+ setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
 @endspecial @beginspecial
 @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-439.53963 146.36131 256.07568 146.36131    /Lineto /lineto load def
+439.53963 146.36131 256.07568 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
 @endspecial @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-256.07568 141.58142 256.07568 146.36131    /Lineto /lineto load def
+256.07568 141.58142 256.07568 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
@@ -5707,7 +5808,7 @@ gsave 0.72278 SLW 0  setgray  1. .setopacityalpha   0  setlinejoin
 @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-286.57706 141.58142 286.57706 146.36131    /Lineto /lineto load def
+286.57706 141.58142 286.57706 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
@@ -5715,14 +5816,14 @@ gsave 0.72278 SLW 0  setgray  1. .setopacityalpha   0  setlinejoin
 @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-317.30627 141.58142 317.30627 146.36131    /Lineto /lineto load def
+317.30627 141.58142 317.30627 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
 @endspecial @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-347.80765 141.58142 347.80765 146.36131    /Lineto /lineto load def
+347.80765 141.58142 347.80765 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
@@ -5730,7 +5831,7 @@ gsave 0.72278 SLW 0  setgray  1. .setopacityalpha   0  setlinejoin
 @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-378.30904 141.58142 378.30904 146.36131    /Lineto /lineto load def
+378.30904 141.58142 378.30904 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
@@ -5738,379 +5839,453 @@ gsave 0.72278 SLW 0  setgray  1. .setopacityalpha   0  setlinejoin
 @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-408.81076 141.58142 408.81076 146.36131    /Lineto /lineto load def
+408.81076 141.58142 408.81076 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
 @endspecial @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-439.53963 141.58142 439.53963 146.36131    /Lineto /lineto load def
-0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
-  0  setlinejoin 0  setlinecap stroke  grestore end
- 
-@endspecial
-1818 1387 a Fd(-3)183 b(-2)j(-1)197 b(0)211 b(1)g(2)i(3)-273
-2432 y @beginspecial @setspecial
-  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
- 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-232.85805 339.84071 232.85805 153.41791    /Lineto /lineto load def
-0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
-  0  setlinejoin 0  setlinecap stroke  grestore end
- 
-@endspecial @beginspecial
-@setspecial
-  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
- 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-228.07817 153.41791 232.85805 153.41791    /Lineto /lineto load def
-0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
-  0  setlinejoin 0  setlinecap stroke  grestore end
- 
-@endspecial @beginspecial @setspecial
-  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
- 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-228.07817 199.85281 232.85805 199.85281    /Lineto /lineto load def
-0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
-  0  setlinejoin 0  setlinecap stroke  grestore end
- 
-@endspecial
-@beginspecial @setspecial
-  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
- 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-228.07817 246.51556 232.85805 246.51556    /Lineto /lineto load def
-0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
-  0  setlinejoin 0  setlinecap stroke  grestore end
- 
-@endspecial @beginspecial
-@setspecial
-  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
- 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-228.07817 293.17831 232.85805 293.17831    /Lineto /lineto load def
-0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
-  0  setlinejoin 0  setlinecap stroke  grestore end
- 
-@endspecial @beginspecial @setspecial
-  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
- 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-228.07817 339.84071 232.85805 339.84071    /Lineto /lineto load def
+439.53963 141.58142 439.53963 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
 @endspecial
 -273 2432 a
-tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
- -273 2432 a 1566 1158 a
-tx@Dict begin ps@rot  RotBegin  end
- 1566 1158 a 1513
-1185 a Fd(0.0)1566 1158 y
-tx@Dict begin RotEnd  end
- 1566 1158 a -273 2432 a
-tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
- -273
-2432 a 1566 773 a
-tx@Dict begin ps@rot  RotBegin  end
- 1566 773 a 1513 799 a Fd(0.1)1566 773
-y
-tx@Dict begin RotEnd  end
- 1566 773 a -273 2432 a
-tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
- -273 2432 a 1566 385 a
-tx@Dict begin ps@rot  RotBegin  end
- 1566
-385 a 1513 412 a Fd(0.2)1566 385 y
-tx@Dict begin RotEnd  end
- 1566 385 a -273 2432
+tx@Dict begin { 256.07568 129.0621 } PutCoor PutBegin  end
+ -273 2432 a -308 2458 a Fd(-3)-273 2432 y
+tx@Dict begin  PutEnd  end
+
+-273 2432 a -273 2432 a
+tx@Dict begin { 286.57706 129.0621 } PutCoor PutBegin  end
+ -273 2432 a -308 2458 a Fd(-2)-273
+2432 y
+tx@Dict begin  PutEnd  end
+ -273 2432 a -273 2432 a
+tx@Dict begin { 317.30627 129.0621 } PutCoor PutBegin  end
+ -273 2432 a -308 2458
+a Fd(-1)-273 2432 y
+tx@Dict begin  PutEnd  end
+ -273 2432 a -273 2432 a
+tx@Dict begin { 347.80765 129.0621 } PutCoor PutBegin  end
+ -273 2432
+a -294 2458 a Fd(0)-273 2432 y
+tx@Dict begin  PutEnd  end
+ -273 2432 a -273 2432
 a
-tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
- -273 2432 a 1566 -2 a
-tx@Dict begin ps@rot  RotBegin  end
- 1566 -2 a 1513 24 a Fd(0.3)1566
--2 y
-tx@Dict begin RotEnd  end
- 1566 -2 a -273 2432 a
-tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
- -273 2432 a 1566 -390 a
-tx@Dict begin ps@rot  RotBegin  end
- 1566
--390 a 1513 -363 a Fd(0.4)1566 -390 y
-tx@Dict begin RotEnd  end
- 1566 -390 a -273
-2432 a @beginspecial @setspecial
+tx@Dict begin { 378.30904 129.0621 } PutCoor PutBegin  end
+ -273 2432 a -294 2458 a Fd(1)-273 2432 y
+tx@Dict begin  PutEnd  end
+ -273 2432
+a -273 2432 a
+tx@Dict begin { 408.81076 129.0621 } PutCoor PutBegin  end
+ -273 2432 a -294 2458 a Fd(2)-273 2432
+y
+tx@Dict begin  PutEnd  end
+ -273 2432 a -273 2432 a
+tx@Dict begin { 439.53963 129.0621 } PutCoor PutBegin  end
+ -273 2432 a -294 2458 a Fd(3)-273
+2432 y
+tx@Dict begin  PutEnd  end
+ -273 2432 a @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-232.85805 146.36131 232.85805 346.66946 462.30191 346.66946 462.30191
-146.36131 232.85805 146.36131    /Lineto /lineto load def 0  setlinejoin
-false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha   0 
-setlinejoin 0  setlinecap stroke  grestore end
- 
-@endspecial 2581 1549
-a Fc(Z)-273 2432 y
-tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
- -273 2432 a 1401 636 a
-tx@Dict begin ps@rot  RotBegin  end
- 1401 636 a
-21 x Fd(Densidad)28 b Fc(f)9 b Fd(\()p Fc(z)t Fd(\))1401
-636 y
-tx@Dict begin RotEnd  end
- 1401 636 a -273 2432 a @beginspecial @setspecial
-  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
- 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-363.74118 146.36131 363.74118 146.36131    /Lineto /lineto load def
+232.85805 339.84071 232.85805 153.41791   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
-
-
+ 
+@endspecial
+@beginspecial @setspecial
+  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
+ 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
+228.07817 153.41791 232.85805 153.41791   /Lineto /lineto load def
+0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
+  0  setlinejoin 0  setlinecap stroke  grestore end
+ 
+@endspecial @beginspecial
+@setspecial
+  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
+ 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
+228.07817 199.85281 232.85805 199.85281   /Lineto /lineto load def
+0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
+  0  setlinejoin 0  setlinecap stroke  grestore end
+ 
 @endspecial @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-363.74118 141.58142 363.74118 146.36131    /Lineto /lineto load def
+228.07817 246.51556 232.85805 246.51556   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
-@endspecial 2115
-965 a Fc(F)j Fd(\()p Fc(z)t Fd(\))23 b(=)g Fc(P)12 b
-Fd(\()p Fc(Z)29 b Fb(\024)22 b Fc(z)t Fd(\))-273 2432
-y @beginspecial @setspecial
+@endspecial
+@beginspecial @setspecial
+  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
+ 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
+228.07817 293.17831 232.85805 293.17831   /Lineto /lineto load def
+0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
+  0  setlinejoin 0  setlinecap stroke  grestore end
+ 
+@endspecial @beginspecial
+@setspecial
+  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
+ 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
+228.07817 339.84071 232.85805 339.84071   /Lineto /lineto load def
+0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
+  0  setlinejoin 0  setlinecap stroke  grestore end
+ 
+@endspecial -273 2432 a
+tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
+ -273 2432 a -273
+2432 a
+tx@Dict begin { 221.47691 153.41791 } PutCoor PutBegin  end
+ -273 2432 a -273 2432 a
+tx@Dict begin ps@rot  RotBegin  end
+ -273 2432 a -326 2458
+a Fd(0.0)-273 2432 y
+tx@Dict begin RotEnd  end
+ -273 2432 a -273 2432 a
+tx@Dict begin  PutEnd  end
+ -273 2432
+a -273 2432 a
+tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
+ -273 2432 a -273 2432 a
+tx@Dict begin { 221.47691 199.85281 } PutCoor PutBegin  end
+ -273 2432 a -273
+2432 a
+tx@Dict begin ps@rot  RotBegin  end
+ -273 2432 a -326 2458 a Fd(0.1)-273 2432 y
+tx@Dict begin RotEnd  end
+ -273
+2432 a -273 2432 a
+tx@Dict begin  PutEnd  end
+ -273 2432 a -273 2432 a
+tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
+ -273 2432
+a -273 2432 a
+tx@Dict begin { 221.47691 246.51556 } PutCoor PutBegin  end
+ -273 2432 a -273 2432 a
+tx@Dict begin ps@rot  RotBegin  end
+ -273 2432 a -326
+2458 a Fd(0.2)-273 2432 y
+tx@Dict begin RotEnd  end
+ -273 2432 a -273 2432 a
+tx@Dict begin  PutEnd  end
+ -273
+2432 a -273 2432 a
+tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
+ -273 2432 a -273 2432 a
+tx@Dict begin { 221.47691 293.17831 } PutCoor PutBegin  end
+ -273 2432
+a -273 2432 a
+tx@Dict begin ps@rot  RotBegin  end
+ -273 2432 a -326 2458 a Fd(0.3)-273 2432
+y
+tx@Dict begin RotEnd  end
+ -273 2432 a -273 2432 a
+tx@Dict begin  PutEnd  end
+ -273 2432 a -273 2432 a
+tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
+ -273
+2432 a -273 2432 a
+tx@Dict begin { 221.47691 339.84071 } PutCoor PutBegin  end
+ -273 2432 a -273 2432 a
+tx@Dict begin ps@rot  RotBegin  end
+ -273 2432
+a -326 2458 a Fd(0.4)-273 2432 y
+tx@Dict begin RotEnd  end
+ -273 2432 a -273 2432
+a
+tx@Dict begin  PutEnd  end
+ -273 2432 a @beginspecial @setspecial
+  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
+ 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
+232.85805 146.36131 232.85805 346.66946 462.30191 346.66946 462.30191
+146.36131 232.85805 146.36131   /Lineto /lineto load def 0  setlinejoin
+false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha   0 
+setlinejoin 0  setlinecap stroke  grestore end
+ 
+@endspecial
+-273 2432 a
+tx@Dict begin { 347.58015 109.71437 } PutCoor PutBegin  end
+ -273 2432 a -304 2460 a Fc(Z)-273 2432 y
+tx@Dict begin  PutEnd  end
+
+-273 2432 a -273 2432 a
+tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
+ -273 2432 a -273 2432 a
+tx@Dict begin { 201.67384 216.24168 } PutCoor PutBegin  end
+ -273
+2432 a -273 2432 a
+tx@Dict begin ps@rot  RotBegin  end
+ -273 2432 a 20 x Fd(Densidad)28 b
+Fc(f)9 b Fd(\()p Fc(z)t Fd(\))-273 2432 y
+tx@Dict begin RotEnd  end
+ -273 2432 a
+-273 2432 a
+tx@Dict begin  PutEnd  end
+ -273 2432 a @beginspecial @setspecial
+  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
+ 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
+363.74118 146.36131 363.74118 146.36131   /Lineto /lineto load def
+0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
+  0  setlinejoin 0  setlinecap stroke  grestore end
+ 
+@endspecial
+@beginspecial @setspecial
+  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
+ 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
+363.74118 141.58142 363.74118 146.36131   /Lineto /lineto load def
+0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
+  0  setlinejoin 0  setlinecap stroke  grestore end
+ 
+@endspecial -273 2432 a
+tx@Dict begin { 325.50072 179.13905 } PutCoor PutBegin  end
+ -273
+2432 a -587 2452 a Fc(F)j Fd(\()p Fc(z)t Fd(\))23 b(=)g
+Fc(P)12 b Fd(\()p Fc(Z)28 b Fb(\024)23 b Fc(z)t Fd(\))-273
+2432 y
+tx@Dict begin  PutEnd  end
+ -273 2432 a @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0.74  setgray  /ArrowA { moveto } def /ArrowB { } def
- [ 462.30191 153.41791 232.85805 153.41791    /Lineto /lineto load
-def 0  setlinejoin false Line  gsave 0.72278 SLW 0.74  setgray  1.
-.setopacityalpha   0  setlinejoin 0  setlinecap stroke  grestore end
+ [ 462.30191 153.41791 232.85805 153.41791   /Lineto /lineto load def
+0  setlinejoin false Line  gsave 0.72278 SLW 0.74  setgray  1. .setopacityalpha
+  0  setlinejoin 0  setlinecap stroke  grestore end
  
-@endspecial 1277 1619 a
+@endspecial
+1277 1619 a
  currentpoint currentpoint translate 1 0.5 div 1 0.5 div scale neg
 exch neg exch translate
-
-1277 1619 a 0 TeXcolorgray 0 TeXcolorgray 94 1714 3573
-4 v 92 1813 4 100 v 200 1784 a Fa(z)p 346 1813 V 362
-1813 V 202 w(0,00)p 693 1813 V 160 w(0,01)p 1023 1813
-V 159 w(0,02)p 1353 1813 V 159 w(0,03)p 1683 1813 V 159
-w(0,04)p 2014 1813 V 160 w(0,05)p 2344 1813 V 159 w(0,06)p
-2674 1813 V 159 w(0,07)p 3004 1813 V 159 w(0,08)p 3335
-1813 V 160 w(0,09)p 3665 1813 V 94 1817 3573 4 v 94 1833
-V 92 1933 4 100 v 144 1903 a(-3,4)p 346 1933 V 362 1933
-V 115 w Fd(0,0003)p 693 1933 V 97 w(0,0003)p 1023 1933
-V 97 w(0,0003)p 1353 1933 V 98 w(0,0003)p 1683 1933 V
-97 w(0,0003)p 2014 1933 V 97 w(0,0003)p 2344 1933 V 97
-w(0,0003)p 2674 1933 V 98 w(0,0003)p 3004 1933 V 97 w(0,0003)p
-3335 1933 V 97 w(0,0002)p 3665 1933 V 94 1936 3573 4
-v 92 2036 4 100 v 144 2006 a Fa(-3,3)p 346 2036 V 362
-2036 V 115 w Fd(0,0005)p 693 2036 V 97 w(0,0005)p 1023
-2036 V 97 w(0,0005)p 1353 2036 V 98 w(0,0004)p 1683 2036
-V 97 w(0,0004)p 2014 2036 V 97 w(0,0004)p 2344 2036 V
-97 w(0,0004)p 2674 2036 V 98 w(0,0004)p 3004 2036 V 97
-w(0,0004)p 3335 2036 V 97 w(0,0003)p 3665 2036 V 94 2039
-3573 4 v 92 2139 4 100 v 144 2109 a Fa(-3,2)p 346 2139
-V 362 2139 V 115 w Fd(0,0007)p 693 2139 V 97 w(0,0007)p
-1023 2139 V 97 w(0,0006)p 1353 2139 V 98 w(0,0006)p 1683
-2139 V 97 w(0,0006)p 2014 2139 V 97 w(0,0006)p 2344 2139
-V 97 w(0,0006)p 2674 2139 V 98 w(0,0005)p 3004 2139 V
-97 w(0,0005)p 3335 2139 V 97 w(0,0005)p 3665 2139 V 94
-2142 3573 4 v 92 2242 4 100 v 144 2212 a Fa(-3,1)p 346
-2242 V 362 2242 V 115 w Fd(0,0010)p 693 2242 V 97 w(0,0009)p
-1023 2242 V 97 w(0,0009)p 1353 2242 V 98 w(0,0009)p 1683
-2242 V 97 w(0,0008)p 2014 2242 V 97 w(0,0008)p 2344 2242
-V 97 w(0,0008)p 2674 2242 V 98 w(0,0008)p 3004 2242 V
-97 w(0,0007)p 3335 2242 V 97 w(0,0007)p 3665 2242 V 94
-2245 3573 4 v 92 2345 4 100 v 144 2315 a Fa(-3,0)p 346
-2345 V 362 2345 V 115 w Fd(0,0013)p 693 2345 V 97 w(0,0013)p
-1023 2345 V 97 w(0,0013)p 1353 2345 V 98 w(0,0012)p 1683
-2345 V 97 w(0,0012)p 2014 2345 V 97 w(0,0011)p 2344 2345
-V 97 w(0,0011)p 2674 2345 V 98 w(0,0011)p 3004 2345 V
-97 w(0,0010)p 3335 2345 V 97 w(0,0010)p 3665 2345 V 94
-2348 3573 4 v 92 2448 4 100 v 144 2418 a Fa(-2,9)p 346
-2448 V 362 2448 V 115 w Fd(0,0019)p 693 2448 V 97 w(0,0018)p
-1023 2448 V 97 w(0,0018)p 1353 2448 V 98 w(0,0017)p 1683
-2448 V 97 w(0,0016)p 2014 2448 V 97 w(0,0016)p 2344 2448
-V 97 w(0,0015)p 2674 2448 V 98 w(0,0015)p 3004 2448 V
-97 w(0,0014)p 3335 2448 V 97 w(0,0014)p 3665 2448 V 94
-2451 3573 4 v 92 2551 4 100 v 144 2521 a Fa(-2,8)p 346
-2551 V 362 2551 V 115 w Fd(0,0026)p 693 2551 V 97 w(0,0025)p
-1023 2551 V 97 w(0,0024)p 1353 2551 V 98 w(0,0023)p 1683
-2551 V 97 w(0,0023)p 2014 2551 V 97 w(0,0022)p 2344 2551
-V 97 w(0,0021)p 2674 2551 V 98 w(0,0021)p 3004 2551 V
-97 w(0,0020)p 3335 2551 V 97 w(0,0019)p 3665 2551 V 94
-2554 3573 4 v 92 2654 4 100 v 144 2624 a Fa(-2,7)p 346
-2654 V 362 2654 V 115 w Fd(0,0035)p 693 2654 V 97 w(0,0034)p
-1023 2654 V 97 w(0,0033)p 1353 2654 V 98 w(0,0032)p 1683
-2654 V 97 w(0,0031)p 2014 2654 V 97 w(0,0030)p 2344 2654
-V 97 w(0,0029)p 2674 2654 V 98 w(0,0028)p 3004 2654 V
-97 w(0,0027)p 3335 2654 V 97 w(0,0026)p 3665 2654 V 94
-2657 3573 4 v 92 2757 4 100 v 144 2727 a Fa(-2,6)p 346
-2757 V 362 2757 V 115 w Fd(0,0047)p 693 2757 V 97 w(0,0045)p
-1023 2757 V 97 w(0,0044)p 1353 2757 V 98 w(0,0043)p 1683
-2757 V 97 w(0,0041)p 2014 2757 V 97 w(0,0040)p 2344 2757
-V 97 w(0,0039)p 2674 2757 V 98 w(0,0038)p 3004 2757 V
-97 w(0,0037)p 3335 2757 V 97 w(0,0036)p 3665 2757 V 94
-2760 3573 4 v 92 2859 4 100 v 144 2830 a Fa(-2,5)p 346
-2859 V 362 2859 V 115 w Fd(0,0062)p 693 2859 V 97 w(0,0060)p
-1023 2859 V 97 w(0,0059)p 1353 2859 V 98 w(0,0057)p 1683
-2859 V 97 w(0,0055)p 2014 2859 V 97 w(0,0054)p 2344 2859
-V 97 w(0,0052)p 2674 2859 V 98 w(0,0051)p 3004 2859 V
-97 w(0,0049)p 3335 2859 V 97 w(0,0048)p 3665 2859 V 94
-2863 3573 4 v 92 2962 4 100 v 144 2933 a Fa(-2,4)p 346
-2962 V 362 2962 V 115 w Fd(0,0082)p 693 2962 V 97 w(0,0080)p
-1023 2962 V 97 w(0,0078)p 1353 2962 V 98 w(0,0075)p 1683
-2962 V 97 w(0,0073)p 2014 2962 V 97 w(0,0071)p 2344 2962
-V 97 w(0,0069)p 2674 2962 V 98 w(0,0068)p 3004 2962 V
-97 w(0,0066)p 3335 2962 V 97 w(0,0064)p 3665 2962 V 94
-2966 3573 4 v 92 3065 4 100 v 144 3035 a Fa(-2,3)p 346
-3065 V 362 3065 V 115 w Fd(0,0107)p 693 3065 V 97 w(0,0104)p
-1023 3065 V 97 w(0,0102)p 1353 3065 V 98 w(0,0099)p 1683
-3065 V 97 w(0,0096)p 2014 3065 V 97 w(0,0094)p 2344 3065
-V 97 w(0,0091)p 2674 3065 V 98 w(0,0089)p 3004 3065 V
-97 w(0,0087)p 3335 3065 V 97 w(0,0084)p 3665 3065 V 94
-3069 3573 4 v 92 3168 4 100 v 144 3138 a Fa(-2,2)p 346
-3168 V 362 3168 V 115 w Fd(0,0139)p 693 3168 V 97 w(0,0136)p
-1023 3168 V 97 w(0,0132)p 1353 3168 V 98 w(0,0129)p 1683
-3168 V 97 w(0,0125)p 2014 3168 V 97 w(0,0122)p 2344 3168
-V 97 w(0,0119)p 2674 3168 V 98 w(0,0116)p 3004 3168 V
-97 w(0,0113)p 3335 3168 V 97 w(0,0110)p 3665 3168 V 94
-3172 3573 4 v 92 3271 4 100 v 144 3241 a Fa(-2,1)p 346
-3271 V 362 3271 V 115 w Fd(0,0179)p 693 3271 V 97 w(0,0174)p
-1023 3271 V 97 w(0,0170)p 1353 3271 V 98 w(0,0166)p 1683
-3271 V 97 w(0,0162)p 2014 3271 V 97 w(0,0158)p 2344 3271
-V 97 w(0,0154)p 2674 3271 V 98 w(0,0150)p 3004 3271 V
-97 w(0,0146)p 3335 3271 V 97 w(0,0143)p 3665 3271 V 94
-3275 3573 4 v 92 3374 4 100 v 144 3344 a Fa(-2,0)p 346
-3374 V 362 3374 V 115 w Fd(0,0228)p 693 3374 V 97 w(0,0222)p
-1023 3374 V 97 w(0,0217)p 1353 3374 V 98 w(0,0212)p 1683
-3374 V 97 w(0,0207)p 2014 3374 V 97 w(0,0202)p 2344 3374
-V 97 w(0,0197)p 2674 3374 V 98 w(0,0192)p 3004 3374 V
-97 w(0,0188)p 3335 3374 V 97 w(0,0183)p 3665 3374 V 94
-3378 3573 4 v 92 3477 4 100 v 144 3447 a Fa(-1,9)p 346
-3477 V 362 3477 V 115 w Fd(0,0287)p 693 3477 V 97 w(0,0281)p
-1023 3477 V 97 w(0,0274)p 1353 3477 V 98 w(0,0268)p 1683
-3477 V 97 w(0,0262)p 2014 3477 V 97 w(0,0256)p 2344 3477
-V 97 w(0,0250)p 2674 3477 V 98 w(0,0244)p 3004 3477 V
-97 w(0,0239)p 3335 3477 V 97 w(0,0233)p 3665 3477 V 94
-3480 3573 4 v 92 3580 4 100 v 144 3550 a Fa(-1,8)p 346
-3580 V 362 3580 V 115 w Fd(0,0359)p 693 3580 V 97 w(0,0351)p
-1023 3580 V 97 w(0,0344)p 1353 3580 V 98 w(0,0336)p 1683
-3580 V 97 w(0,0329)p 2014 3580 V 97 w(0,0322)p 2344 3580
-V 97 w(0,0314)p 2674 3580 V 98 w(0,0307)p 3004 3580 V
-97 w(0,0301)p 3335 3580 V 97 w(0,0294)p 3665 3580 V 94
-3583 3573 4 v 92 3683 4 100 v 144 3653 a Fa(-1,7)p 346
-3683 V 362 3683 V 115 w Fd(0,0446)p 693 3683 V 97 w(0,0436)p
-1023 3683 V 97 w(0,0427)p 1353 3683 V 98 w(0,0418)p 1683
-3683 V 97 w(0,0409)p 2014 3683 V 97 w(0,0401)p 2344 3683
-V 97 w(0,0392)p 2674 3683 V 98 w(0,0384)p 3004 3683 V
-97 w(0,0375)p 3335 3683 V 97 w(0,0367)p 3665 3683 V 94
-3686 3573 4 v 92 3786 4 100 v 144 3756 a Fa(-1,6)p 346
-3786 V 362 3786 V 115 w Fd(0,0548)p 693 3786 V 97 w(0,0537)p
-1023 3786 V 97 w(0,0526)p 1353 3786 V 98 w(0,0516)p 1683
-3786 V 97 w(0,0505)p 2014 3786 V 97 w(0,0495)p 2344 3786
-V 97 w(0,0485)p 2674 3786 V 98 w(0,0475)p 3004 3786 V
-97 w(0,0465)p 3335 3786 V 97 w(0,0455)p 3665 3786 V 94
-3789 3573 4 v 92 3889 4 100 v 144 3859 a Fa(-1,5)p 346
-3889 V 362 3889 V 115 w Fd(0,0668)p 693 3889 V 97 w(0,0655)p
-1023 3889 V 97 w(0,0643)p 1353 3889 V 98 w(0,0630)p 1683
-3889 V 97 w(0,0618)p 2014 3889 V 97 w(0,0606)p 2344 3889
-V 97 w(0,0594)p 2674 3889 V 98 w(0,0582)p 3004 3889 V
-97 w(0,0571)p 3335 3889 V 97 w(0,0559)p 3665 3889 V 94
-3892 3573 4 v 92 3992 4 100 v 144 3962 a Fa(-1,4)p 346
-3992 V 362 3992 V 115 w Fd(0,0808)p 693 3992 V 97 w(0,0793)p
-1023 3992 V 97 w(0,0778)p 1353 3992 V 98 w(0,0764)p 1683
-3992 V 97 w(0,0749)p 2014 3992 V 97 w(0,0735)p 2344 3992
-V 97 w(0,0721)p 2674 3992 V 98 w(0,0708)p 3004 3992 V
-97 w(0,0694)p 3335 3992 V 97 w(0,0681)p 3665 3992 V 94
-3995 3573 4 v 92 4095 4 100 v 144 4065 a Fa(-1,3)p 346
-4095 V 362 4095 V 115 w Fd(0,0968)p 693 4095 V 97 w(0,0951)p
-1023 4095 V 97 w(0,0934)p 1353 4095 V 98 w(0,0918)p 1683
-4095 V 97 w(0,0901)p 2014 4095 V 97 w(0,0885)p 2344 4095
-V 97 w(0,0869)p 2674 4095 V 98 w(0,0853)p 3004 4095 V
-97 w(0,0838)p 3335 4095 V 97 w(0,0823)p 3665 4095 V 94
-4098 3573 4 v 92 4198 4 100 v 144 4168 a Fa(-1,2)p 346
-4198 V 362 4198 V 115 w Fd(0,1151)p 693 4198 V 97 w(0,1131)p
-1023 4198 V 97 w(0,1112)p 1353 4198 V 98 w(0,1093)p 1683
-4198 V 97 w(0,1075)p 2014 4198 V 97 w(0,1056)p 2344 4198
-V 97 w(0,1038)p 2674 4198 V 98 w(0,1020)p 3004 4198 V
-97 w(0,1003)p 3335 4198 V 97 w(0,0985)p 3665 4198 V 94
-4201 3573 4 v 92 4301 4 100 v 144 4271 a Fa(-1,1)p 346
-4301 V 362 4301 V 115 w Fd(0,1357)p 693 4301 V 97 w(0,1335)p
-1023 4301 V 97 w(0,1314)p 1353 4301 V 98 w(0,1292)p 1683
-4301 V 97 w(0,1271)p 2014 4301 V 97 w(0,1251)p 2344 4301
-V 97 w(0,1230)p 2674 4301 V 98 w(0,1210)p 3004 4301 V
-97 w(0,1190)p 3335 4301 V 97 w(0,1170)p 3665 4301 V 94
-4304 3573 4 v 92 4404 4 100 v 144 4374 a Fa(-1,0)p 346
-4404 V 362 4404 V 115 w Fd(0,1587)p 693 4404 V 97 w(0,1562)p
-1023 4404 V 97 w(0,1539)p 1353 4404 V 98 w(0,1515)p 1683
-4404 V 97 w(0,1492)p 2014 4404 V 97 w(0,1469)p 2344 4404
-V 97 w(0,1446)p 2674 4404 V 98 w(0,1423)p 3004 4404 V
-97 w(0,1401)p 3335 4404 V 97 w(0,1379)p 3665 4404 V 94
-4407 3573 4 v 92 4507 4 100 v 144 4477 a Fa(-0,9)p 346
-4507 V 362 4507 V 115 w Fd(0,1841)p 693 4507 V 97 w(0,1814)p
-1023 4507 V 97 w(0,1788)p 1353 4507 V 98 w(0,1762)p 1683
-4507 V 97 w(0,1736)p 2014 4507 V 97 w(0,1711)p 2344 4507
-V 97 w(0,1685)p 2674 4507 V 98 w(0,1660)p 3004 4507 V
-97 w(0,1635)p 3335 4507 V 97 w(0,1611)p 3665 4507 V 94
-4510 3573 4 v 92 4610 4 100 v 144 4580 a Fa(-0,8)p 346
-4610 V 362 4610 V 115 w Fd(0,2119)p 693 4610 V 97 w(0,2090)p
-1023 4610 V 97 w(0,2061)p 1353 4610 V 98 w(0,2033)p 1683
-4610 V 97 w(0,2005)p 2014 4610 V 97 w(0,1977)p 2344 4610
-V 97 w(0,1949)p 2674 4610 V 98 w(0,1922)p 3004 4610 V
-97 w(0,1894)p 3335 4610 V 97 w(0,1867)p 3665 4610 V 94
-4613 3573 4 v 92 4713 4 100 v 144 4683 a Fa(-0,7)p 346
-4713 V 362 4713 V 115 w Fd(0,2420)p 693 4713 V 97 w(0,2389)p
-1023 4713 V 97 w(0,2358)p 1353 4713 V 98 w(0,2327)p 1683
-4713 V 97 w(0,2296)p 2014 4713 V 97 w(0,2266)p 2344 4713
-V 97 w(0,2236)p 2674 4713 V 98 w(0,2206)p 3004 4713 V
-97 w(0,2177)p 3335 4713 V 97 w(0,2148)p 3665 4713 V 94
-4716 3573 4 v 92 4815 4 100 v 144 4786 a Fa(-0,6)p 346
-4815 V 362 4815 V 115 w Fd(0,2743)p 693 4815 V 97 w(0,2709)p
-1023 4815 V 97 w(0,2676)p 1353 4815 V 98 w(0,2643)p 1683
-4815 V 97 w(0,2611)p 2014 4815 V 97 w(0,2578)p 2344 4815
-V 97 w(0,2546)p 2674 4815 V 98 w(0,2514)p 3004 4815 V
-97 w(0,2483)p 3335 4815 V 97 w(0,2451)p 3665 4815 V 94
-4819 3573 4 v 92 4918 4 100 v 144 4889 a Fa(-0,5)p 346
-4918 V 362 4918 V 115 w Fd(0,3085)p 693 4918 V 97 w(0,3050)p
-1023 4918 V 97 w(0,3015)p 1353 4918 V 98 w(0,2981)p 1683
-4918 V 97 w(0,2946)p 2014 4918 V 97 w(0,2912)p 2344 4918
-V 97 w(0,2877)p 2674 4918 V 98 w(0,2843)p 3004 4918 V
-97 w(0,2810)p 3335 4918 V 97 w(0,2776)p 3665 4918 V 94
-4922 3573 4 v 92 5021 4 100 v 144 4991 a Fa(-0,4)p 346
-5021 V 362 5021 V 115 w Fd(0,3446)p 693 5021 V 97 w(0,3409)p
-1023 5021 V 97 w(0,3372)p 1353 5021 V 98 w(0,3336)p 1683
-5021 V 97 w(0,3300)p 2014 5021 V 97 w(0,3264)p 2344 5021
-V 97 w(0,3228)p 2674 5021 V 98 w(0,3192)p 3004 5021 V
-97 w(0,3156)p 3335 5021 V 97 w(0,3121)p 3665 5021 V 94
-5025 3573 4 v 92 5124 4 100 v 144 5094 a Fa(-0,3)p 346
-5124 V 362 5124 V 115 w Fd(0,3821)p 693 5124 V 97 w(0,3783)p
-1023 5124 V 97 w(0,3745)p 1353 5124 V 98 w(0,3707)p 1683
-5124 V 97 w(0,3669)p 2014 5124 V 97 w(0,3632)p 2344 5124
-V 97 w(0,3594)p 2674 5124 V 98 w(0,3557)p 3004 5124 V
-97 w(0,3520)p 3335 5124 V 97 w(0,3483)p 3665 5124 V 94
-5128 3573 4 v 92 5227 4 100 v 144 5197 a Fa(-0,2)p 346
-5227 V 362 5227 V 115 w Fd(0,4207)p 693 5227 V 97 w(0,4168)p
-1023 5227 V 97 w(0,4129)p 1353 5227 V 98 w(0,4090)p 1683
-5227 V 97 w(0,4052)p 2014 5227 V 97 w(0,4013)p 2344 5227
-V 97 w(0,3974)p 2674 5227 V 98 w(0,3936)p 3004 5227 V
-97 w(0,3897)p 3335 5227 V 97 w(0,3859)p 3665 5227 V 94
-5231 3573 4 v 92 5330 4 100 v 144 5300 a Fa(-0,1)p 346
-5330 V 362 5330 V 115 w Fd(0,4602)p 693 5330 V 97 w(0,4562)p
-1023 5330 V 97 w(0,4522)p 1353 5330 V 98 w(0,4483)p 1683
-5330 V 97 w(0,4443)p 2014 5330 V 97 w(0,4404)p 2344 5330
-V 97 w(0,4364)p 2674 5330 V 98 w(0,4325)p 3004 5330 V
-97 w(0,4286)p 3335 5330 V 97 w(0,4247)p 3665 5330 V 94
-5334 3573 4 v 92 5433 4 100 v 144 5403 a Fa(-0,0)p 346
-5433 V 362 5433 V 115 w Fd(0,5000)p 693 5433 V 97 w(0,4960)p
-1023 5433 V 97 w(0,4920)p 1353 5433 V 98 w(0,4880)p 1683
-5433 V 97 w(0,4840)p 2014 5433 V 97 w(0,4801)p 2344 5433
-V 97 w(0,4761)p 2674 5433 V 98 w(0,4721)p 3004 5433 V
-97 w(0,4681)p 3335 5433 V 97 w(0,4641)p 3665 5433 V 94
-5436 3573 4 v 0 TeXcolorgray 1860 5956 a(1)p 0 TeXcolorgray
+ 1277 1619 a 0 TeXcolorgray 0 TeXcolorgray
+94 1714 3573 4 v 92 1813 4 100 v 200 1784 a Fa(z)p 346
+1813 V 362 1813 V 202 w(0,00)p 693 1813 V 160 w(0,01)p
+1023 1813 V 159 w(0,02)p 1353 1813 V 159 w(0,03)p 1683
+1813 V 159 w(0,04)p 2014 1813 V 160 w(0,05)p 2344 1813
+V 159 w(0,06)p 2674 1813 V 159 w(0,07)p 3004 1813 V 159
+w(0,08)p 3335 1813 V 160 w(0,09)p 3665 1813 V 94 1817
+3573 4 v 94 1833 V 92 1933 4 100 v 144 1903 a(-3,4)p
+346 1933 V 362 1933 V 115 w Fd(0,0003)p 693 1933 V 97
+w(0,0003)p 1023 1933 V 97 w(0,0003)p 1353 1933 V 98 w(0,0003)p
+1683 1933 V 97 w(0,0003)p 2014 1933 V 97 w(0,0003)p 2344
+1933 V 97 w(0,0003)p 2674 1933 V 98 w(0,0003)p 3004 1933
+V 97 w(0,0003)p 3335 1933 V 97 w(0,0002)p 3665 1933 V
+94 1936 3573 4 v 92 2036 4 100 v 144 2006 a Fa(-3,3)p
+346 2036 V 362 2036 V 115 w Fd(0,0005)p 693 2036 V 97
+w(0,0005)p 1023 2036 V 97 w(0,0005)p 1353 2036 V 98 w(0,0004)p
+1683 2036 V 97 w(0,0004)p 2014 2036 V 97 w(0,0004)p 2344
+2036 V 97 w(0,0004)p 2674 2036 V 98 w(0,0004)p 3004 2036
+V 97 w(0,0004)p 3335 2036 V 97 w(0,0003)p 3665 2036 V
+94 2039 3573 4 v 92 2139 4 100 v 144 2109 a Fa(-3,2)p
+346 2139 V 362 2139 V 115 w Fd(0,0007)p 693 2139 V 97
+w(0,0007)p 1023 2139 V 97 w(0,0006)p 1353 2139 V 98 w(0,0006)p
+1683 2139 V 97 w(0,0006)p 2014 2139 V 97 w(0,0006)p 2344
+2139 V 97 w(0,0006)p 2674 2139 V 98 w(0,0005)p 3004 2139
+V 97 w(0,0005)p 3335 2139 V 97 w(0,0005)p 3665 2139 V
+94 2142 3573 4 v 92 2242 4 100 v 144 2212 a Fa(-3,1)p
+346 2242 V 362 2242 V 115 w Fd(0,0010)p 693 2242 V 97
+w(0,0009)p 1023 2242 V 97 w(0,0009)p 1353 2242 V 98 w(0,0009)p
+1683 2242 V 97 w(0,0008)p 2014 2242 V 97 w(0,0008)p 2344
+2242 V 97 w(0,0008)p 2674 2242 V 98 w(0,0008)p 3004 2242
+V 97 w(0,0007)p 3335 2242 V 97 w(0,0007)p 3665 2242 V
+94 2245 3573 4 v 92 2345 4 100 v 144 2315 a Fa(-3,0)p
+346 2345 V 362 2345 V 115 w Fd(0,0013)p 693 2345 V 97
+w(0,0013)p 1023 2345 V 97 w(0,0013)p 1353 2345 V 98 w(0,0012)p
+1683 2345 V 97 w(0,0012)p 2014 2345 V 97 w(0,0011)p 2344
+2345 V 97 w(0,0011)p 2674 2345 V 98 w(0,0011)p 3004 2345
+V 97 w(0,0010)p 3335 2345 V 97 w(0,0010)p 3665 2345 V
+94 2348 3573 4 v 92 2448 4 100 v 144 2418 a Fa(-2,9)p
+346 2448 V 362 2448 V 115 w Fd(0,0019)p 693 2448 V 97
+w(0,0018)p 1023 2448 V 97 w(0,0018)p 1353 2448 V 98 w(0,0017)p
+1683 2448 V 97 w(0,0016)p 2014 2448 V 97 w(0,0016)p 2344
+2448 V 97 w(0,0015)p 2674 2448 V 98 w(0,0015)p 3004 2448
+V 97 w(0,0014)p 3335 2448 V 97 w(0,0014)p 3665 2448 V
+94 2451 3573 4 v 92 2551 4 100 v 144 2521 a Fa(-2,8)p
+346 2551 V 362 2551 V 115 w Fd(0,0026)p 693 2551 V 97
+w(0,0025)p 1023 2551 V 97 w(0,0024)p 1353 2551 V 98 w(0,0023)p
+1683 2551 V 97 w(0,0023)p 2014 2551 V 97 w(0,0022)p 2344
+2551 V 97 w(0,0021)p 2674 2551 V 98 w(0,0021)p 3004 2551
+V 97 w(0,0020)p 3335 2551 V 97 w(0,0019)p 3665 2551 V
+94 2554 3573 4 v 92 2654 4 100 v 144 2624 a Fa(-2,7)p
+346 2654 V 362 2654 V 115 w Fd(0,0035)p 693 2654 V 97
+w(0,0034)p 1023 2654 V 97 w(0,0033)p 1353 2654 V 98 w(0,0032)p
+1683 2654 V 97 w(0,0031)p 2014 2654 V 97 w(0,0030)p 2344
+2654 V 97 w(0,0029)p 2674 2654 V 98 w(0,0028)p 3004 2654
+V 97 w(0,0027)p 3335 2654 V 97 w(0,0026)p 3665 2654 V
+94 2657 3573 4 v 92 2757 4 100 v 144 2727 a Fa(-2,6)p
+346 2757 V 362 2757 V 115 w Fd(0,0047)p 693 2757 V 97
+w(0,0045)p 1023 2757 V 97 w(0,0044)p 1353 2757 V 98 w(0,0043)p
+1683 2757 V 97 w(0,0041)p 2014 2757 V 97 w(0,0040)p 2344
+2757 V 97 w(0,0039)p 2674 2757 V 98 w(0,0038)p 3004 2757
+V 97 w(0,0037)p 3335 2757 V 97 w(0,0036)p 3665 2757 V
+94 2760 3573 4 v 92 2859 4 100 v 144 2830 a Fa(-2,5)p
+346 2859 V 362 2859 V 115 w Fd(0,0062)p 693 2859 V 97
+w(0,0060)p 1023 2859 V 97 w(0,0059)p 1353 2859 V 98 w(0,0057)p
+1683 2859 V 97 w(0,0055)p 2014 2859 V 97 w(0,0054)p 2344
+2859 V 97 w(0,0052)p 2674 2859 V 98 w(0,0051)p 3004 2859
+V 97 w(0,0049)p 3335 2859 V 97 w(0,0048)p 3665 2859 V
+94 2863 3573 4 v 92 2962 4 100 v 144 2933 a Fa(-2,4)p
+346 2962 V 362 2962 V 115 w Fd(0,0082)p 693 2962 V 97
+w(0,0080)p 1023 2962 V 97 w(0,0078)p 1353 2962 V 98 w(0,0075)p
+1683 2962 V 97 w(0,0073)p 2014 2962 V 97 w(0,0071)p 2344
+2962 V 97 w(0,0069)p 2674 2962 V 98 w(0,0068)p 3004 2962
+V 97 w(0,0066)p 3335 2962 V 97 w(0,0064)p 3665 2962 V
+94 2966 3573 4 v 92 3065 4 100 v 144 3035 a Fa(-2,3)p
+346 3065 V 362 3065 V 115 w Fd(0,0107)p 693 3065 V 97
+w(0,0104)p 1023 3065 V 97 w(0,0102)p 1353 3065 V 98 w(0,0099)p
+1683 3065 V 97 w(0,0096)p 2014 3065 V 97 w(0,0094)p 2344
+3065 V 97 w(0,0091)p 2674 3065 V 98 w(0,0089)p 3004 3065
+V 97 w(0,0087)p 3335 3065 V 97 w(0,0084)p 3665 3065 V
+94 3069 3573 4 v 92 3168 4 100 v 144 3138 a Fa(-2,2)p
+346 3168 V 362 3168 V 115 w Fd(0,0139)p 693 3168 V 97
+w(0,0136)p 1023 3168 V 97 w(0,0132)p 1353 3168 V 98 w(0,0129)p
+1683 3168 V 97 w(0,0125)p 2014 3168 V 97 w(0,0122)p 2344
+3168 V 97 w(0,0119)p 2674 3168 V 98 w(0,0116)p 3004 3168
+V 97 w(0,0113)p 3335 3168 V 97 w(0,0110)p 3665 3168 V
+94 3172 3573 4 v 92 3271 4 100 v 144 3241 a Fa(-2,1)p
+346 3271 V 362 3271 V 115 w Fd(0,0179)p 693 3271 V 97
+w(0,0174)p 1023 3271 V 97 w(0,0170)p 1353 3271 V 98 w(0,0166)p
+1683 3271 V 97 w(0,0162)p 2014 3271 V 97 w(0,0158)p 2344
+3271 V 97 w(0,0154)p 2674 3271 V 98 w(0,0150)p 3004 3271
+V 97 w(0,0146)p 3335 3271 V 97 w(0,0143)p 3665 3271 V
+94 3275 3573 4 v 92 3374 4 100 v 144 3344 a Fa(-2,0)p
+346 3374 V 362 3374 V 115 w Fd(0,0228)p 693 3374 V 97
+w(0,0222)p 1023 3374 V 97 w(0,0217)p 1353 3374 V 98 w(0,0212)p
+1683 3374 V 97 w(0,0207)p 2014 3374 V 97 w(0,0202)p 2344
+3374 V 97 w(0,0197)p 2674 3374 V 98 w(0,0192)p 3004 3374
+V 97 w(0,0188)p 3335 3374 V 97 w(0,0183)p 3665 3374 V
+94 3378 3573 4 v 92 3477 4 100 v 144 3447 a Fa(-1,9)p
+346 3477 V 362 3477 V 115 w Fd(0,0287)p 693 3477 V 97
+w(0,0281)p 1023 3477 V 97 w(0,0274)p 1353 3477 V 98 w(0,0268)p
+1683 3477 V 97 w(0,0262)p 2014 3477 V 97 w(0,0256)p 2344
+3477 V 97 w(0,0250)p 2674 3477 V 98 w(0,0244)p 3004 3477
+V 97 w(0,0239)p 3335 3477 V 97 w(0,0233)p 3665 3477 V
+94 3480 3573 4 v 92 3580 4 100 v 144 3550 a Fa(-1,8)p
+346 3580 V 362 3580 V 115 w Fd(0,0359)p 693 3580 V 97
+w(0,0351)p 1023 3580 V 97 w(0,0344)p 1353 3580 V 98 w(0,0336)p
+1683 3580 V 97 w(0,0329)p 2014 3580 V 97 w(0,0322)p 2344
+3580 V 97 w(0,0314)p 2674 3580 V 98 w(0,0307)p 3004 3580
+V 97 w(0,0301)p 3335 3580 V 97 w(0,0294)p 3665 3580 V
+94 3583 3573 4 v 92 3683 4 100 v 144 3653 a Fa(-1,7)p
+346 3683 V 362 3683 V 115 w Fd(0,0446)p 693 3683 V 97
+w(0,0436)p 1023 3683 V 97 w(0,0427)p 1353 3683 V 98 w(0,0418)p
+1683 3683 V 97 w(0,0409)p 2014 3683 V 97 w(0,0401)p 2344
+3683 V 97 w(0,0392)p 2674 3683 V 98 w(0,0384)p 3004 3683
+V 97 w(0,0375)p 3335 3683 V 97 w(0,0367)p 3665 3683 V
+94 3686 3573 4 v 92 3786 4 100 v 144 3756 a Fa(-1,6)p
+346 3786 V 362 3786 V 115 w Fd(0,0548)p 693 3786 V 97
+w(0,0537)p 1023 3786 V 97 w(0,0526)p 1353 3786 V 98 w(0,0516)p
+1683 3786 V 97 w(0,0505)p 2014 3786 V 97 w(0,0495)p 2344
+3786 V 97 w(0,0485)p 2674 3786 V 98 w(0,0475)p 3004 3786
+V 97 w(0,0465)p 3335 3786 V 97 w(0,0455)p 3665 3786 V
+94 3789 3573 4 v 92 3889 4 100 v 144 3859 a Fa(-1,5)p
+346 3889 V 362 3889 V 115 w Fd(0,0668)p 693 3889 V 97
+w(0,0655)p 1023 3889 V 97 w(0,0643)p 1353 3889 V 98 w(0,0630)p
+1683 3889 V 97 w(0,0618)p 2014 3889 V 97 w(0,0606)p 2344
+3889 V 97 w(0,0594)p 2674 3889 V 98 w(0,0582)p 3004 3889
+V 97 w(0,0571)p 3335 3889 V 97 w(0,0559)p 3665 3889 V
+94 3892 3573 4 v 92 3992 4 100 v 144 3962 a Fa(-1,4)p
+346 3992 V 362 3992 V 115 w Fd(0,0808)p 693 3992 V 97
+w(0,0793)p 1023 3992 V 97 w(0,0778)p 1353 3992 V 98 w(0,0764)p
+1683 3992 V 97 w(0,0749)p 2014 3992 V 97 w(0,0735)p 2344
+3992 V 97 w(0,0721)p 2674 3992 V 98 w(0,0708)p 3004 3992
+V 97 w(0,0694)p 3335 3992 V 97 w(0,0681)p 3665 3992 V
+94 3995 3573 4 v 92 4095 4 100 v 144 4065 a Fa(-1,3)p
+346 4095 V 362 4095 V 115 w Fd(0,0968)p 693 4095 V 97
+w(0,0951)p 1023 4095 V 97 w(0,0934)p 1353 4095 V 98 w(0,0918)p
+1683 4095 V 97 w(0,0901)p 2014 4095 V 97 w(0,0885)p 2344
+4095 V 97 w(0,0869)p 2674 4095 V 98 w(0,0853)p 3004 4095
+V 97 w(0,0838)p 3335 4095 V 97 w(0,0823)p 3665 4095 V
+94 4098 3573 4 v 92 4198 4 100 v 144 4168 a Fa(-1,2)p
+346 4198 V 362 4198 V 115 w Fd(0,1151)p 693 4198 V 97
+w(0,1131)p 1023 4198 V 97 w(0,1112)p 1353 4198 V 98 w(0,1093)p
+1683 4198 V 97 w(0,1075)p 2014 4198 V 97 w(0,1056)p 2344
+4198 V 97 w(0,1038)p 2674 4198 V 98 w(0,1020)p 3004 4198
+V 97 w(0,1003)p 3335 4198 V 97 w(0,0985)p 3665 4198 V
+94 4201 3573 4 v 92 4301 4 100 v 144 4271 a Fa(-1,1)p
+346 4301 V 362 4301 V 115 w Fd(0,1357)p 693 4301 V 97
+w(0,1335)p 1023 4301 V 97 w(0,1314)p 1353 4301 V 98 w(0,1292)p
+1683 4301 V 97 w(0,1271)p 2014 4301 V 97 w(0,1251)p 2344
+4301 V 97 w(0,1230)p 2674 4301 V 98 w(0,1210)p 3004 4301
+V 97 w(0,1190)p 3335 4301 V 97 w(0,1170)p 3665 4301 V
+94 4304 3573 4 v 92 4404 4 100 v 144 4374 a Fa(-1,0)p
+346 4404 V 362 4404 V 115 w Fd(0,1587)p 693 4404 V 97
+w(0,1562)p 1023 4404 V 97 w(0,1539)p 1353 4404 V 98 w(0,1515)p
+1683 4404 V 97 w(0,1492)p 2014 4404 V 97 w(0,1469)p 2344
+4404 V 97 w(0,1446)p 2674 4404 V 98 w(0,1423)p 3004 4404
+V 97 w(0,1401)p 3335 4404 V 97 w(0,1379)p 3665 4404 V
+94 4407 3573 4 v 92 4507 4 100 v 144 4477 a Fa(-0,9)p
+346 4507 V 362 4507 V 115 w Fd(0,1841)p 693 4507 V 97
+w(0,1814)p 1023 4507 V 97 w(0,1788)p 1353 4507 V 98 w(0,1762)p
+1683 4507 V 97 w(0,1736)p 2014 4507 V 97 w(0,1711)p 2344
+4507 V 97 w(0,1685)p 2674 4507 V 98 w(0,1660)p 3004 4507
+V 97 w(0,1635)p 3335 4507 V 97 w(0,1611)p 3665 4507 V
+94 4510 3573 4 v 92 4610 4 100 v 144 4580 a Fa(-0,8)p
+346 4610 V 362 4610 V 115 w Fd(0,2119)p 693 4610 V 97
+w(0,2090)p 1023 4610 V 97 w(0,2061)p 1353 4610 V 98 w(0,2033)p
+1683 4610 V 97 w(0,2005)p 2014 4610 V 97 w(0,1977)p 2344
+4610 V 97 w(0,1949)p 2674 4610 V 98 w(0,1922)p 3004 4610
+V 97 w(0,1894)p 3335 4610 V 97 w(0,1867)p 3665 4610 V
+94 4613 3573 4 v 92 4713 4 100 v 144 4683 a Fa(-0,7)p
+346 4713 V 362 4713 V 115 w Fd(0,2420)p 693 4713 V 97
+w(0,2389)p 1023 4713 V 97 w(0,2358)p 1353 4713 V 98 w(0,2327)p
+1683 4713 V 97 w(0,2296)p 2014 4713 V 97 w(0,2266)p 2344
+4713 V 97 w(0,2236)p 2674 4713 V 98 w(0,2206)p 3004 4713
+V 97 w(0,2177)p 3335 4713 V 97 w(0,2148)p 3665 4713 V
+94 4716 3573 4 v 92 4815 4 100 v 144 4786 a Fa(-0,6)p
+346 4815 V 362 4815 V 115 w Fd(0,2743)p 693 4815 V 97
+w(0,2709)p 1023 4815 V 97 w(0,2676)p 1353 4815 V 98 w(0,2643)p
+1683 4815 V 97 w(0,2611)p 2014 4815 V 97 w(0,2578)p 2344
+4815 V 97 w(0,2546)p 2674 4815 V 98 w(0,2514)p 3004 4815
+V 97 w(0,2483)p 3335 4815 V 97 w(0,2451)p 3665 4815 V
+94 4819 3573 4 v 92 4918 4 100 v 144 4889 a Fa(-0,5)p
+346 4918 V 362 4918 V 115 w Fd(0,3085)p 693 4918 V 97
+w(0,3050)p 1023 4918 V 97 w(0,3015)p 1353 4918 V 98 w(0,2981)p
+1683 4918 V 97 w(0,2946)p 2014 4918 V 97 w(0,2912)p 2344
+4918 V 97 w(0,2877)p 2674 4918 V 98 w(0,2843)p 3004 4918
+V 97 w(0,2810)p 3335 4918 V 97 w(0,2776)p 3665 4918 V
+94 4922 3573 4 v 92 5021 4 100 v 144 4991 a Fa(-0,4)p
+346 5021 V 362 5021 V 115 w Fd(0,3446)p 693 5021 V 97
+w(0,3409)p 1023 5021 V 97 w(0,3372)p 1353 5021 V 98 w(0,3336)p
+1683 5021 V 97 w(0,3300)p 2014 5021 V 97 w(0,3264)p 2344
+5021 V 97 w(0,3228)p 2674 5021 V 98 w(0,3192)p 3004 5021
+V 97 w(0,3156)p 3335 5021 V 97 w(0,3121)p 3665 5021 V
+94 5025 3573 4 v 92 5124 4 100 v 144 5094 a Fa(-0,3)p
+346 5124 V 362 5124 V 115 w Fd(0,3821)p 693 5124 V 97
+w(0,3783)p 1023 5124 V 97 w(0,3745)p 1353 5124 V 98 w(0,3707)p
+1683 5124 V 97 w(0,3669)p 2014 5124 V 97 w(0,3632)p 2344
+5124 V 97 w(0,3594)p 2674 5124 V 98 w(0,3557)p 3004 5124
+V 97 w(0,3520)p 3335 5124 V 97 w(0,3483)p 3665 5124 V
+94 5128 3573 4 v 92 5227 4 100 v 144 5197 a Fa(-0,2)p
+346 5227 V 362 5227 V 115 w Fd(0,4207)p 693 5227 V 97
+w(0,4168)p 1023 5227 V 97 w(0,4129)p 1353 5227 V 98 w(0,4090)p
+1683 5227 V 97 w(0,4052)p 2014 5227 V 97 w(0,4013)p 2344
+5227 V 97 w(0,3974)p 2674 5227 V 98 w(0,3936)p 3004 5227
+V 97 w(0,3897)p 3335 5227 V 97 w(0,3859)p 3665 5227 V
+94 5231 3573 4 v 92 5330 4 100 v 144 5300 a Fa(-0,1)p
+346 5330 V 362 5330 V 115 w Fd(0,4602)p 693 5330 V 97
+w(0,4562)p 1023 5330 V 97 w(0,4522)p 1353 5330 V 98 w(0,4483)p
+1683 5330 V 97 w(0,4443)p 2014 5330 V 97 w(0,4404)p 2344
+5330 V 97 w(0,4364)p 2674 5330 V 98 w(0,4325)p 3004 5330
+V 97 w(0,4286)p 3335 5330 V 97 w(0,4247)p 3665 5330 V
+94 5334 3573 4 v 92 5433 4 100 v 144 5403 a Fa(-0,0)p
+346 5433 V 362 5433 V 115 w Fd(0,5000)p 693 5433 V 97
+w(0,4960)p 1023 5433 V 97 w(0,4920)p 1353 5433 V 98 w(0,4880)p
+1683 5433 V 97 w(0,4840)p 2014 5433 V 97 w(0,4801)p 2344
+5433 V 97 w(0,4761)p 2674 5433 V 98 w(0,4721)p 3004 5433
+V 97 w(0,4681)p 3335 5433 V 97 w(0,4641)p 3665 5433 V
+94 5436 3573 4 v 0 TeXcolorgray 1860 5956 a(1)p 0 TeXcolorgray
 eop end
 %%Page: 2 2
 TeXDict begin 2 1 bop 0 TeXcolorgray 0 TeXcolorgray 0.00 0.00 0.50
 TeXcolorrgb 0 -129 a Fk(Universid)n(ad)31 b(San)g(P)-7
 b(ablo)30 b(CEU)p 0 TeXcolorgray 0.00 0.00 0.50 TeXcolorrgb
-1149 w Fj(Depa)n(rtamento)c(de)i(M)n(\023)-39 b(eto)r(dos)25
-b(Cuantitativos)p 0 TeXcolorgray 0 TeXcolorgray 0 TeXcolorgray
-0 TeXcolorgray 1277 1583 a
+733 w Fj(Depa)n(rtamento)c(de)i(Matem)o(\023)-41 b(atica)26
+b(Aplicada)h(y)h(Estad)-11 b(\023)-31 b(\020stica)p 0
+TeXcolorgray 0 TeXcolorgray 0 TeXcolorgray 0 TeXcolorgray
+1277 1583 a
  currentpoint currentpoint translate 0.5 0.5 scale neg exch neg exch
 translate
- 1277 1583 a -273 2396 a @beginspecial
-@setspecial
+ 1277 1583 a -273 2396 a @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
 363.74118 153.6454 363.74118 315.9406 362.14801 319.81015 360.55447
@@ -6136,11 +6311,12 @@ translate
 155.92177 256.75851 155.46643 255.16534 155.23894 253.57181 155.0111
 252.20613 154.78358 250.61261 154.55574 249.01942 154.32825 247.65375
 154.10075 246.06023 154.10075 244.46704 153.87291 242.87352 153.87291
-241.50783 153.6454    /Lineto /lineto load def 0  setlinejoin false
+241.50783 153.6454   /Lineto /lineto load def 0  setlinejoin false
 Line  gsave 1 0.5 0.31  setrgbcolor  1. .setopacityalpha  fill  grestore
 gsave 0.72278 SLW 0  setgray  1. .setopacityalpha   0  setlinejoin
 0  setlinecap stroke  grestore end
- 
+
+
 @endspecial @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
@@ -6183,30 +6359,22 @@ gsave 0.72278 SLW 0  setgray  1. .setopacityalpha   0  setlinejoin
 156.14928 258.35205 155.92177 256.75851 155.46643 255.16534 155.23894
 253.57181 155.0111 252.20613 154.78358 250.61261 154.55574 249.01942
 154.32825 247.65375 154.10075 246.06023 154.10075 244.46704 153.87291
-242.87352 153.87291 241.50783 153.6454    /Lineto /lineto load def
-0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
-  0  setlinejoin 0  setlinecap stroke  grestore end
- 
-@endspecial
-@beginspecial @setspecial
-  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
- 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-439.53963 146.36131 256.07568 146.36131    /Lineto /lineto load def
-0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
+242.87352 153.87291 241.50783 153.6454   /Lineto /lineto load def 0
+ setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
 @endspecial @beginspecial
 @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-256.07568 141.58142 256.07568 146.36131    /Lineto /lineto load def
+439.53963 146.36131 256.07568 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
 @endspecial @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-286.57706 141.58142 286.57706 146.36131    /Lineto /lineto load def
+256.07568 141.58142 256.07568 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
@@ -6214,7 +6382,7 @@ gsave 0.72278 SLW 0  setgray  1. .setopacityalpha   0  setlinejoin
 @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-317.30627 141.58142 317.30627 146.36131    /Lineto /lineto load def
+286.57706 141.58142 286.57706 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
@@ -6222,14 +6390,14 @@ gsave 0.72278 SLW 0  setgray  1. .setopacityalpha   0  setlinejoin
 @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-347.80765 141.58142 347.80765 146.36131    /Lineto /lineto load def
+317.30627 141.58142 317.30627 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
 @endspecial @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-378.30904 141.58142 378.30904 146.36131    /Lineto /lineto load def
+347.80765 141.58142 347.80765 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
@@ -6237,7 +6405,7 @@ gsave 0.72278 SLW 0  setgray  1. .setopacityalpha   0  setlinejoin
 @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-408.81076 141.58142 408.81076 146.36131    /Lineto /lineto load def
+378.30904 141.58142 378.30904 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
@@ -6245,38 +6413,58 @@ gsave 0.72278 SLW 0  setgray  1. .setopacityalpha   0  setlinejoin
 @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-439.53963 141.58142 439.53963 146.36131    /Lineto /lineto load def
+408.81076 141.58142 408.81076 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
-@endspecial 1818 1351 a Fd(-3)183 b(-2)j(-1)197
-b(0)211 b(1)g(2)i(3)-273 2396 y @beginspecial @setspecial
+@endspecial @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-232.85805 339.84071 232.85805 153.41791    /Lineto /lineto load def
+439.53963 141.58142 439.53963 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
+ 
+@endspecial
+-273 2396 a
+tx@Dict begin { 256.07568 129.0621 } PutCoor PutBegin  end
+ -273 2396 a -308 2423 a Fd(-3)-273 2396 y
+tx@Dict begin  PutEnd  end
 
-
-@endspecial @beginspecial @setspecial
+-273 2396 a -273 2396 a
+tx@Dict begin { 286.57706 129.0621 } PutCoor PutBegin  end
+ -273 2396 a -308 2423 a Fd(-2)-273
+2396 y
+tx@Dict begin  PutEnd  end
+ -273 2396 a -273 2396 a
+tx@Dict begin { 317.30627 129.0621 } PutCoor PutBegin  end
+ -273 2396 a -308 2423
+a Fd(-1)-273 2396 y
+tx@Dict begin  PutEnd  end
+ -273 2396 a -273 2396 a
+tx@Dict begin { 347.80765 129.0621 } PutCoor PutBegin  end
+ -273 2396
+a -294 2423 a Fd(0)-273 2396 y
+tx@Dict begin  PutEnd  end
+ -273 2396 a -273 2396
+a
+tx@Dict begin { 378.30904 129.0621 } PutCoor PutBegin  end
+ -273 2396 a -294 2423 a Fd(1)-273 2396 y
+tx@Dict begin  PutEnd  end
+ -273 2396
+a -273 2396 a
+tx@Dict begin { 408.81076 129.0621 } PutCoor PutBegin  end
+ -273 2396 a -294 2423 a Fd(2)-273 2396
+y
+tx@Dict begin  PutEnd  end
+ -273 2396 a -273 2396 a
+tx@Dict begin { 439.53963 129.0621 } PutCoor PutBegin  end
+ -273 2396 a -294 2423 a Fd(3)-273
+2396 y
+tx@Dict begin  PutEnd  end
+ -273 2396 a @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-228.07817 153.41791 232.85805 153.41791    /Lineto /lineto load def
-0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
-  0  setlinejoin 0  setlinecap stroke  grestore end
- 
-@endspecial @beginspecial
-@setspecial
-  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
- 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-228.07817 199.85281 232.85805 199.85281    /Lineto /lineto load def
-0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
-  0  setlinejoin 0  setlinecap stroke  grestore end
- 
-@endspecial @beginspecial @setspecial
-  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
- 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-228.07817 246.51556 232.85805 246.51556    /Lineto /lineto load def
+232.85805 339.84071 232.85805 153.41791   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
@@ -6284,7 +6472,7 @@ b(0)211 b(1)g(2)i(3)-273 2396 y @beginspecial @setspecial
 @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-228.07817 293.17831 232.85805 293.17831    /Lineto /lineto load def
+228.07817 153.41791 232.85805 153.41791   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
@@ -6292,313 +6480,374 @@ b(0)211 b(1)g(2)i(3)-273 2396 y @beginspecial @setspecial
 @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-228.07817 339.84071 232.85805 339.84071    /Lineto /lineto load def
+228.07817 199.85281 232.85805 199.85281   /Lineto /lineto load def
+0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
+  0  setlinejoin 0  setlinecap stroke  grestore end
+ 
+@endspecial @beginspecial @setspecial
+  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
+ 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
+228.07817 246.51556 232.85805 246.51556   /Lineto /lineto load def
+0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
+  0  setlinejoin 0  setlinecap stroke  grestore end
+ 
+@endspecial
+@beginspecial @setspecial
+  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
+ 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
+228.07817 293.17831 232.85805 293.17831   /Lineto /lineto load def
+0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
+  0  setlinejoin 0  setlinecap stroke  grestore end
+ 
+@endspecial @beginspecial
+@setspecial
+  tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
+ 0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
+228.07817 339.84071 232.85805 339.84071   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
 @endspecial -273 2396 a
 tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
- -273 2396 a 1566
-1122 a
+ -273 2396 a -273
+2396 a
+tx@Dict begin { 221.47691 153.41791 } PutCoor PutBegin  end
+ -273 2396 a -273 2396 a
 tx@Dict begin ps@rot  RotBegin  end
- 1566 1122 a 1513 1149 a Fd(0.0)1566 1122 y
+ -273 2396 a -326 2423
+a Fd(0.0)-273 2396 y
 tx@Dict begin RotEnd  end
- 1566
-1122 a -273 2396 a
+ -273 2396 a -273 2396 a
+tx@Dict begin  PutEnd  end
+ -273 2396
+a -273 2396 a
 tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
- -273 2396 a 1566 737 a
+ -273 2396 a -273 2396 a
+tx@Dict begin { 221.47691 199.85281 } PutCoor PutBegin  end
+ -273 2396 a -273
+2396 a
 tx@Dict begin ps@rot  RotBegin  end
- 1566 737 a
-1513 764 a Fd(0.1)1566 737 y
+ -273 2396 a -326 2423 a Fd(0.1)-273 2396 y
 tx@Dict begin RotEnd  end
- 1566 737 a -273 2396 a
-tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
  -273
-2396 a 1566 349 a
+2396 a -273 2396 a
+tx@Dict begin  PutEnd  end
+ -273 2396 a -273 2396 a
+tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
+ -273 2396
+a -273 2396 a
+tx@Dict begin { 221.47691 246.51556 } PutCoor PutBegin  end
+ -273 2396 a -273 2396 a
 tx@Dict begin ps@rot  RotBegin  end
- 1566 349 a 1513 376 a Fd(0.2)1566 349
+ -273 2396 a -326
+2423 a Fd(0.2)-273 2396 y
+tx@Dict begin RotEnd  end
+ -273 2396 a -273 2396 a
+tx@Dict begin  PutEnd  end
+ -273
+2396 a -273 2396 a
+tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
+ -273 2396 a -273 2396 a
+tx@Dict begin { 221.47691 293.17831 } PutCoor PutBegin  end
+ -273 2396
+a -273 2396 a
+tx@Dict begin ps@rot  RotBegin  end
+ -273 2396 a -326 2423 a Fd(0.3)-273 2396
 y
 tx@Dict begin RotEnd  end
- 1566 349 a -273 2396 a
+ -273 2396 a -273 2396 a
+tx@Dict begin  PutEnd  end
+ -273 2396 a -273 2396 a
 tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
- -273 2396 a 1566 -38 a
+ -273
+2396 a -273 2396 a
+tx@Dict begin { 221.47691 339.84071 } PutCoor PutBegin  end
+ -273 2396 a -273 2396 a
 tx@Dict begin ps@rot  RotBegin  end
- 1566
--38 a 1513 -11 a Fd(0.3)1566 -38 y
+ -273 2396
+a -326 2423 a Fd(0.4)-273 2396 y
 tx@Dict begin RotEnd  end
- 1566 -38 a -273 2396
+ -273 2396 a -273 2396
 a
-tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
- -273 2396 a 1566 -425 a
-tx@Dict begin ps@rot  RotBegin  end
- 1566 -425 a 1513 -399 a Fd(0.4)1566
--425 y
-tx@Dict begin RotEnd  end
- 1566 -425 a -273 2396 a @beginspecial @setspecial
+tx@Dict begin  PutEnd  end
+ -273 2396 a @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
 232.85805 146.36131 232.85805 346.66946 462.30191 346.66946 462.30191
-146.36131 232.85805 146.36131    /Lineto /lineto load def 0  setlinejoin
+146.36131 232.85805 146.36131   /Lineto /lineto load def 0  setlinejoin
 false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha   0 
 setlinejoin 0  setlinecap stroke  grestore end
+ 
+@endspecial
+-273 2396 a
+tx@Dict begin { 347.58015 109.71437 } PutCoor PutBegin  end
+ -273 2396 a -304 2424 a Fc(Z)-273 2396 y
+tx@Dict begin  PutEnd  end
 
-
-@endspecial 2581 1513 a Fc(Z)-273 2396 y
+-273 2396 a -273 2396 a
 tx@Dict begin  gsave STV CP T /ps@rot 90. def grestore  end
- -273 2396 a
-1401 601 a
+ -273 2396 a -273 2396 a
+tx@Dict begin { 201.67384 216.24168 } PutCoor PutBegin  end
+ -273
+2396 a -273 2396 a
 tx@Dict begin ps@rot  RotBegin  end
- 1401 601 a 20 x Fd(Densidad)28 b Fc(f)9 b
-Fd(\()p Fc(z)t Fd(\))1401 601 y
+ -273 2396 a 21 x Fd(Densidad)28 b
+Fc(f)9 b Fd(\()p Fc(z)t Fd(\))-273 2396 y
 tx@Dict begin RotEnd  end
- 1401 601 a -273 2396
-a @beginspecial @setspecial
+ -273 2396 a
+-273 2396 a
+tx@Dict begin  PutEnd  end
+ -273 2396 a @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-363.74118 146.36131 363.74118 146.36131    /Lineto /lineto load def
+363.74118 146.36131 363.74118 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
-@endspecial @beginspecial
-@setspecial
+@endspecial
+@beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0  setgray  /ArrowA { moveto } def /ArrowB { } def  [
-363.74118 141.58142 363.74118 146.36131    /Lineto /lineto load def
+363.74118 141.58142 363.74118 146.36131   /Lineto /lineto load def
 0  setlinejoin false Line  gsave 0.72278 SLW 0  setgray  1. .setopacityalpha
   0  setlinejoin 0  setlinecap stroke  grestore end
  
-@endspecial 2115 930 a Fc(F)j Fd(\()p Fc(z)t
-Fd(\))23 b(=)g Fc(P)12 b Fd(\()p Fc(Z)29 b Fb(\024)22
-b Fc(z)t Fd(\))-273 2396 y @beginspecial @setspecial
+@endspecial -273 2396 a
+tx@Dict begin { 325.50072 179.13905 } PutCoor PutBegin  end
+ -273
+2396 a -587 2417 a Fc(F)j Fd(\()p Fc(z)t Fd(\))23 b(=)g
+Fc(P)12 b Fd(\()p Fc(Z)28 b Fb(\024)23 b Fc(z)t Fd(\))-273
+2396 y
+tx@Dict begin  PutEnd  end
+ -273 2396 a @beginspecial @setspecial
   tx@Dict begin STP newpath /ArrowA { moveto } def /ArrowB { } def
  0.72278 SLW 0.74  setgray  /ArrowA { moveto } def /ArrowB { } def
- [ 462.30191 153.41791 232.85805 153.41791    /Lineto /lineto load
-def 0  setlinejoin false Line  gsave 0.72278 SLW 0.74  setgray  1.
-.setopacityalpha   0  setlinejoin 0  setlinecap stroke  grestore end
-
-
-@endspecial 1277 1583 a
+ [ 462.30191 153.41791 232.85805 153.41791   /Lineto /lineto load def
+0  setlinejoin false Line  gsave 0.72278 SLW 0.74  setgray  1. .setopacityalpha
+  0  setlinejoin 0  setlinecap stroke  grestore end
+ 
+@endspecial
+1277 1583 a
  currentpoint currentpoint translate 1 0.5 div 1 0.5 div scale neg
 exch neg exch translate
- 1277 1583 a 110 1678 3541 4
-v 108 1778 4 100 v 200 1748 a Fa(z)p 330 1778 V 347 1778
-V 186 w(0,00)p 677 1778 V 160 w(0,01)p 1007 1778 V 159
-w(0,02)p 1337 1778 V 159 w(0,03)p 1668 1778 V 159 w(0,04)p
-1998 1778 V 160 w(0,05)p 2328 1778 V 159 w(0,06)p 2658
-1778 V 159 w(0,07)p 2988 1778 V 159 w(0,08)p 3319 1778
-V 160 w(0,09)p 3649 1778 V 110 1781 3541 4 v 110 1798
-V 108 1897 4 100 v 160 1867 a(0,0)p 330 1897 V 347 1897
-V 115 w Fd(0,5000)p 677 1897 V 97 w(0,5040)p 1007 1897
-V 98 w(0,5080)p 1337 1897 V 97 w(0,5120)p 1668 1897 V
-97 w(0,5160)p 1998 1897 V 97 w(0,5199)p 2328 1897 V 97
-w(0,5239)p 2658 1897 V 98 w(0,5279)p 2988 1897 V 97 w(0,5319)p
-3319 1897 V 97 w(0,5359)p 3649 1897 V 110 1901 3541 4
-v 108 2000 4 100 v 160 1970 a Fa(0,1)p 330 2000 V 347
-2000 V 115 w Fd(0,5398)p 677 2000 V 97 w(0,5438)p 1007
-2000 V 98 w(0,5478)p 1337 2000 V 97 w(0,5517)p 1668 2000
-V 97 w(0,5557)p 1998 2000 V 97 w(0,5596)p 2328 2000 V
-97 w(0,5636)p 2658 2000 V 98 w(0,5675)p 2988 2000 V 97
-w(0,5714)p 3319 2000 V 97 w(0,5753)p 3649 2000 V 110
-2003 3541 4 v 108 2103 4 100 v 160 2073 a Fa(0,2)p 330
-2103 V 347 2103 V 115 w Fd(0,5793)p 677 2103 V 97 w(0,5832)p
-1007 2103 V 98 w(0,5871)p 1337 2103 V 97 w(0,5910)p 1668
-2103 V 97 w(0,5948)p 1998 2103 V 97 w(0,5987)p 2328 2103
-V 97 w(0,6026)p 2658 2103 V 98 w(0,6064)p 2988 2103 V
-97 w(0,6103)p 3319 2103 V 97 w(0,6141)p 3649 2103 V 110
-2106 3541 4 v 108 2206 4 100 v 160 2176 a Fa(0,3)p 330
-2206 V 347 2206 V 115 w Fd(0,6179)p 677 2206 V 97 w(0,6217)p
-1007 2206 V 98 w(0,6255)p 1337 2206 V 97 w(0,6293)p 1668
-2206 V 97 w(0,6331)p 1998 2206 V 97 w(0,6368)p 2328 2206
-V 97 w(0,6406)p 2658 2206 V 98 w(0,6443)p 2988 2206 V
-97 w(0,6480)p 3319 2206 V 97 w(0,6517)p 3649 2206 V 110
-2209 3541 4 v 108 2309 4 100 v 160 2279 a Fa(0,4)p 330
-2309 V 347 2309 V 115 w Fd(0,6554)p 677 2309 V 97 w(0,6591)p
-1007 2309 V 98 w(0,6628)p 1337 2309 V 97 w(0,6664)p 1668
-2309 V 97 w(0,6700)p 1998 2309 V 97 w(0,6736)p 2328 2309
-V 97 w(0,6772)p 2658 2309 V 98 w(0,6808)p 2988 2309 V
-97 w(0,6844)p 3319 2309 V 97 w(0,6879)p 3649 2309 V 110
-2312 3541 4 v 108 2412 4 100 v 160 2382 a Fa(0,5)p 330
-2412 V 347 2412 V 115 w Fd(0,6915)p 677 2412 V 97 w(0,6950)p
-1007 2412 V 98 w(0,6985)p 1337 2412 V 97 w(0,7019)p 1668
-2412 V 97 w(0,7054)p 1998 2412 V 97 w(0,7088)p 2328 2412
-V 97 w(0,7123)p 2658 2412 V 98 w(0,7157)p 2988 2412 V
-97 w(0,7190)p 3319 2412 V 97 w(0,7224)p 3649 2412 V 110
-2415 3541 4 v 108 2515 4 100 v 160 2485 a Fa(0,6)p 330
-2515 V 347 2515 V 115 w Fd(0,7257)p 677 2515 V 97 w(0,7291)p
-1007 2515 V 98 w(0,7324)p 1337 2515 V 97 w(0,7357)p 1668
-2515 V 97 w(0,7389)p 1998 2515 V 97 w(0,7422)p 2328 2515
-V 97 w(0,7454)p 2658 2515 V 98 w(0,7486)p 2988 2515 V
-97 w(0,7517)p 3319 2515 V 97 w(0,7549)p 3649 2515 V 110
-2518 3541 4 v 108 2618 4 100 v 160 2588 a Fa(0,7)p 330
-2618 V 347 2618 V 115 w Fd(0,7580)p 677 2618 V 97 w(0,7611)p
-1007 2618 V 98 w(0,7642)p 1337 2618 V 97 w(0,7673)p 1668
-2618 V 97 w(0,7704)p 1998 2618 V 97 w(0,7734)p 2328 2618
-V 97 w(0,7764)p 2658 2618 V 98 w(0,7794)p 2988 2618 V
-97 w(0,7823)p 3319 2618 V 97 w(0,7852)p 3649 2618 V 110
-2621 3541 4 v 108 2721 4 100 v 160 2691 a Fa(0,8)p 330
-2721 V 347 2721 V 115 w Fd(0,7881)p 677 2721 V 97 w(0,7910)p
-1007 2721 V 98 w(0,7939)p 1337 2721 V 97 w(0,7967)p 1668
-2721 V 97 w(0,7995)p 1998 2721 V 97 w(0,8023)p 2328 2721
-V 97 w(0,8051)p 2658 2721 V 98 w(0,8078)p 2988 2721 V
-97 w(0,8106)p 3319 2721 V 97 w(0,8133)p 3649 2721 V 110
-2724 3541 4 v 108 2824 4 100 v 160 2794 a Fa(0,9)p 330
-2824 V 347 2824 V 115 w Fd(0,8159)p 677 2824 V 97 w(0,8186)p
-1007 2824 V 98 w(0,8212)p 1337 2824 V 97 w(0,8238)p 1668
-2824 V 97 w(0,8264)p 1998 2824 V 97 w(0,8289)p 2328 2824
-V 97 w(0,8315)p 2658 2824 V 98 w(0,8340)p 2988 2824 V
-97 w(0,8365)p 3319 2824 V 97 w(0,8389)p 3649 2824 V 110
-2827 3541 4 v 108 2927 4 100 v 160 2897 a Fa(1,0)p 330
-2927 V 347 2927 V 115 w Fd(0,8413)p 677 2927 V 97 w(0,8438)p
-1007 2927 V 98 w(0,8461)p 1337 2927 V 97 w(0,8485)p 1668
-2927 V 97 w(0,8508)p 1998 2927 V 97 w(0,8531)p 2328 2927
-V 97 w(0,8554)p 2658 2927 V 98 w(0,8577)p 2988 2927 V
-97 w(0,8599)p 3319 2927 V 97 w(0,8621)p 3649 2927 V 110
-2930 3541 4 v 108 3030 4 100 v 160 3000 a Fa(1,1)p 330
-3030 V 347 3030 V 115 w Fd(0,8643)p 677 3030 V 97 w(0,8665)p
-1007 3030 V 98 w(0,8686)p 1337 3030 V 97 w(0,8708)p 1668
-3030 V 97 w(0,8729)p 1998 3030 V 97 w(0,8749)p 2328 3030
-V 97 w(0,8770)p 2658 3030 V 98 w(0,8790)p 2988 3030 V
-97 w(0,8810)p 3319 3030 V 97 w(0,8830)p 3649 3030 V 110
-3033 3541 4 v 108 3133 4 100 v 160 3103 a Fa(1,2)p 330
-3133 V 347 3133 V 115 w Fd(0,8849)p 677 3133 V 97 w(0,8869)p
-1007 3133 V 98 w(0,8888)p 1337 3133 V 97 w(0,8907)p 1668
-3133 V 97 w(0,8925)p 1998 3133 V 97 w(0,8944)p 2328 3133
-V 97 w(0,8962)p 2658 3133 V 98 w(0,8980)p 2988 3133 V
-97 w(0,8997)p 3319 3133 V 97 w(0,9015)p 3649 3133 V 110
-3136 3541 4 v 108 3236 4 100 v 160 3206 a Fa(1,3)p 330
-3236 V 347 3236 V 115 w Fd(0,9032)p 677 3236 V 97 w(0,9049)p
-1007 3236 V 98 w(0,9066)p 1337 3236 V 97 w(0,9082)p 1668
-3236 V 97 w(0,9099)p 1998 3236 V 97 w(0,9115)p 2328 3236
-V 97 w(0,9131)p 2658 3236 V 98 w(0,9147)p 2988 3236 V
-97 w(0,9162)p 3319 3236 V 97 w(0,9177)p 3649 3236 V 110
-3239 3541 4 v 108 3338 4 100 v 160 3309 a Fa(1,4)p 330
-3338 V 347 3338 V 115 w Fd(0,9192)p 677 3338 V 97 w(0,9207)p
-1007 3338 V 98 w(0,9222)p 1337 3338 V 97 w(0,9236)p 1668
-3338 V 97 w(0,9251)p 1998 3338 V 97 w(0,9265)p 2328 3338
-V 97 w(0,9279)p 2658 3338 V 98 w(0,9292)p 2988 3338 V
-97 w(0,9306)p 3319 3338 V 97 w(0,9319)p 3649 3338 V 110
-3342 3541 4 v 108 3441 4 100 v 160 3412 a Fa(1,5)p 330
-3441 V 347 3441 V 115 w Fd(0,9332)p 677 3441 V 97 w(0,9345)p
-1007 3441 V 98 w(0,9357)p 1337 3441 V 97 w(0,9370)p 1668
-3441 V 97 w(0,9382)p 1998 3441 V 97 w(0,9394)p 2328 3441
-V 97 w(0,9406)p 2658 3441 V 98 w(0,9418)p 2988 3441 V
-97 w(0,9429)p 3319 3441 V 97 w(0,9441)p 3649 3441 V 110
-3445 3541 4 v 108 3544 4 100 v 160 3514 a Fa(1,6)p 330
-3544 V 347 3544 V 115 w Fd(0,9452)p 677 3544 V 97 w(0,9463)p
-1007 3544 V 98 w(0,9474)p 1337 3544 V 97 w(0,9484)p 1668
-3544 V 97 w(0,9495)p 1998 3544 V 97 w(0,9505)p 2328 3544
-V 97 w(0,9515)p 2658 3544 V 98 w(0,9525)p 2988 3544 V
-97 w(0,9535)p 3319 3544 V 97 w(0,9545)p 3649 3544 V 110
-3548 3541 4 v 108 3647 4 100 v 160 3617 a Fa(1,7)p 330
-3647 V 347 3647 V 115 w Fd(0,9554)p 677 3647 V 97 w(0,9564)p
-1007 3647 V 98 w(0,9573)p 1337 3647 V 97 w(0,9582)p 1668
-3647 V 97 w(0,9591)p 1998 3647 V 97 w(0,9599)p 2328 3647
-V 97 w(0,9608)p 2658 3647 V 98 w(0,9616)p 2988 3647 V
-97 w(0,9625)p 3319 3647 V 97 w(0,9633)p 3649 3647 V 110
-3651 3541 4 v 108 3750 4 100 v 160 3720 a Fa(1,8)p 330
-3750 V 347 3750 V 115 w Fd(0,9641)p 677 3750 V 97 w(0,9649)p
-1007 3750 V 98 w(0,9656)p 1337 3750 V 97 w(0,9664)p 1668
-3750 V 97 w(0,9671)p 1998 3750 V 97 w(0,9678)p 2328 3750
-V 97 w(0,9686)p 2658 3750 V 98 w(0,9693)p 2988 3750 V
-97 w(0,9699)p 3319 3750 V 97 w(0,9706)p 3649 3750 V 110
-3754 3541 4 v 108 3853 4 100 v 160 3823 a Fa(1,9)p 330
-3853 V 347 3853 V 115 w Fd(0,9713)p 677 3853 V 97 w(0,9719)p
-1007 3853 V 98 w(0,9726)p 1337 3853 V 97 w(0,9732)p 1668
-3853 V 97 w(0,9738)p 1998 3853 V 97 w(0,9744)p 2328 3853
-V 97 w(0,9750)p 2658 3853 V 98 w(0,9756)p 2988 3853 V
-97 w(0,9761)p 3319 3853 V 97 w(0,9767)p 3649 3853 V 110
-3857 3541 4 v 108 3956 4 100 v 160 3926 a Fa(2,0)p 330
-3956 V 347 3956 V 115 w Fd(0,9772)p 677 3956 V 97 w(0,9778)p
-1007 3956 V 98 w(0,9783)p 1337 3956 V 97 w(0,9788)p 1668
-3956 V 97 w(0,9793)p 1998 3956 V 97 w(0,9798)p 2328 3956
-V 97 w(0,9803)p 2658 3956 V 98 w(0,9808)p 2988 3956 V
-97 w(0,9812)p 3319 3956 V 97 w(0,9817)p 3649 3956 V 110
-3959 3541 4 v 108 4059 4 100 v 160 4029 a Fa(2,1)p 330
-4059 V 347 4059 V 115 w Fd(0,9821)p 677 4059 V 97 w(0,9826)p
-1007 4059 V 98 w(0,9830)p 1337 4059 V 97 w(0,9834)p 1668
-4059 V 97 w(0,9838)p 1998 4059 V 97 w(0,9842)p 2328 4059
-V 97 w(0,9846)p 2658 4059 V 98 w(0,9850)p 2988 4059 V
-97 w(0,9854)p 3319 4059 V 97 w(0,9857)p 3649 4059 V 110
-4062 3541 4 v 108 4162 4 100 v 160 4132 a Fa(2,2)p 330
-4162 V 347 4162 V 115 w Fd(0,9861)p 677 4162 V 97 w(0,9864)p
-1007 4162 V 98 w(0,9868)p 1337 4162 V 97 w(0,9871)p 1668
-4162 V 97 w(0,9875)p 1998 4162 V 97 w(0,9878)p 2328 4162
-V 97 w(0,9881)p 2658 4162 V 98 w(0,9884)p 2988 4162 V
-97 w(0,9887)p 3319 4162 V 97 w(0,9890)p 3649 4162 V 110
-4165 3541 4 v 108 4265 4 100 v 160 4235 a Fa(2,3)p 330
-4265 V 347 4265 V 115 w Fd(0,9893)p 677 4265 V 97 w(0,9896)p
-1007 4265 V 98 w(0,9898)p 1337 4265 V 97 w(0,9901)p 1668
-4265 V 97 w(0,9904)p 1998 4265 V 97 w(0,9906)p 2328 4265
-V 97 w(0,9909)p 2658 4265 V 98 w(0,9911)p 2988 4265 V
-97 w(0,9913)p 3319 4265 V 97 w(0,9916)p 3649 4265 V 110
-4268 3541 4 v 108 4368 4 100 v 160 4338 a Fa(2,4)p 330
-4368 V 347 4368 V 115 w Fd(0,9918)p 677 4368 V 97 w(0,9920)p
-1007 4368 V 98 w(0,9922)p 1337 4368 V 97 w(0,9925)p 1668
-4368 V 97 w(0,9927)p 1998 4368 V 97 w(0,9929)p 2328 4368
-V 97 w(0,9931)p 2658 4368 V 98 w(0,9932)p 2988 4368 V
-97 w(0,9934)p 3319 4368 V 97 w(0,9936)p 3649 4368 V 110
-4371 3541 4 v 108 4471 4 100 v 160 4441 a Fa(2,5)p 330
-4471 V 347 4471 V 115 w Fd(0,9938)p 677 4471 V 97 w(0,9940)p
-1007 4471 V 98 w(0,9941)p 1337 4471 V 97 w(0,9943)p 1668
-4471 V 97 w(0,9945)p 1998 4471 V 97 w(0,9946)p 2328 4471
-V 97 w(0,9948)p 2658 4471 V 98 w(0,9949)p 2988 4471 V
-97 w(0,9951)p 3319 4471 V 97 w(0,9952)p 3649 4471 V 110
-4474 3541 4 v 108 4574 4 100 v 160 4544 a Fa(2,6)p 330
-4574 V 347 4574 V 115 w Fd(0,9953)p 677 4574 V 97 w(0,9955)p
-1007 4574 V 98 w(0,9956)p 1337 4574 V 97 w(0,9957)p 1668
-4574 V 97 w(0,9959)p 1998 4574 V 97 w(0,9960)p 2328 4574
-V 97 w(0,9961)p 2658 4574 V 98 w(0,9962)p 2988 4574 V
-97 w(0,9963)p 3319 4574 V 97 w(0,9964)p 3649 4574 V 110
-4577 3541 4 v 108 4677 4 100 v 160 4647 a Fa(2,7)p 330
-4677 V 347 4677 V 115 w Fd(0,9965)p 677 4677 V 97 w(0,9966)p
-1007 4677 V 98 w(0,9967)p 1337 4677 V 97 w(0,9968)p 1668
-4677 V 97 w(0,9969)p 1998 4677 V 97 w(0,9970)p 2328 4677
-V 97 w(0,9971)p 2658 4677 V 98 w(0,9972)p 2988 4677 V
-97 w(0,9973)p 3319 4677 V 97 w(0,9974)p 3649 4677 V 110
-4680 3541 4 v 108 4780 4 100 v 160 4750 a Fa(2,8)p 330
-4780 V 347 4780 V 115 w Fd(0,9974)p 677 4780 V 97 w(0,9975)p
-1007 4780 V 98 w(0,9976)p 1337 4780 V 97 w(0,9977)p 1668
-4780 V 97 w(0,9977)p 1998 4780 V 97 w(0,9978)p 2328 4780
-V 97 w(0,9979)p 2658 4780 V 98 w(0,9979)p 2988 4780 V
-97 w(0,9980)p 3319 4780 V 97 w(0,9981)p 3649 4780 V 110
-4783 3541 4 v 108 4883 4 100 v 160 4853 a Fa(2,9)p 330
-4883 V 347 4883 V 115 w Fd(0,9981)p 677 4883 V 97 w(0,9982)p
-1007 4883 V 98 w(0,9982)p 1337 4883 V 97 w(0,9983)p 1668
-4883 V 97 w(0,9984)p 1998 4883 V 97 w(0,9984)p 2328 4883
-V 97 w(0,9985)p 2658 4883 V 98 w(0,9985)p 2988 4883 V
-97 w(0,9986)p 3319 4883 V 97 w(0,9986)p 3649 4883 V 110
-4886 3541 4 v 108 4986 4 100 v 160 4956 a Fa(3,0)p 330
-4986 V 347 4986 V 115 w Fd(0,9987)p 677 4986 V 97 w(0,9987)p
-1007 4986 V 98 w(0,9987)p 1337 4986 V 97 w(0,9988)p 1668
-4986 V 97 w(0,9988)p 1998 4986 V 97 w(0,9989)p 2328 4986
-V 97 w(0,9989)p 2658 4986 V 98 w(0,9989)p 2988 4986 V
-97 w(0,9990)p 3319 4986 V 97 w(0,9990)p 3649 4986 V 110
-4989 3541 4 v 108 5089 4 100 v 160 5059 a Fa(3,1)p 330
-5089 V 347 5089 V 115 w Fd(0,9990)p 677 5089 V 97 w(0,9991)p
-1007 5089 V 98 w(0,9991)p 1337 5089 V 97 w(0,9991)p 1668
-5089 V 97 w(0,9992)p 1998 5089 V 97 w(0,9992)p 2328 5089
-V 97 w(0,9992)p 2658 5089 V 98 w(0,9992)p 2988 5089 V
-97 w(0,9993)p 3319 5089 V 97 w(0,9993)p 3649 5089 V 110
-5092 3541 4 v 108 5192 4 100 v 160 5162 a Fa(3,2)p 330
-5192 V 347 5192 V 115 w Fd(0,9993)p 677 5192 V 97 w(0,9993)p
-1007 5192 V 98 w(0,9994)p 1337 5192 V 97 w(0,9994)p 1668
-5192 V 97 w(0,9994)p 1998 5192 V 97 w(0,9994)p 2328 5192
-V 97 w(0,9994)p 2658 5192 V 98 w(0,9995)p 2988 5192 V
-97 w(0,9995)p 3319 5192 V 97 w(0,9995)p 3649 5192 V 110
-5195 3541 4 v 108 5294 4 100 v 160 5265 a Fa(3,3)p 330
-5294 V 347 5294 V 115 w Fd(0,9995)p 677 5294 V 97 w(0,9995)p
-1007 5294 V 98 w(0,9995)p 1337 5294 V 97 w(0,9996)p 1668
-5294 V 97 w(0,9996)p 1998 5294 V 97 w(0,9996)p 2328 5294
-V 97 w(0,9996)p 2658 5294 V 98 w(0,9996)p 2988 5294 V
-97 w(0,9996)p 3319 5294 V 97 w(0,9997)p 3649 5294 V 110
-5298 3541 4 v 108 5397 4 100 v 160 5368 a Fa(3,4)p 330
-5397 V 347 5397 V 115 w Fd(0,9997)p 677 5397 V 97 w(0,9997)p
-1007 5397 V 98 w(0,9997)p 1337 5397 V 97 w(0,9997)p 1668
-5397 V 97 w(0,9997)p 1998 5397 V 97 w(0,9997)p 2328 5397
-V 97 w(0,9997)p 2658 5397 V 98 w(0,9997)p 2988 5397 V
-97 w(0,9997)p 3319 5397 V 97 w(0,9998)p 3649 5397 V 110
-5401 3541 4 v 0 TeXcolorgray 1860 5956 a(2)p 0 TeXcolorgray
-eop end
+ 1277 1583 a 110 1678 3541 4 v 108 1778 4
+100 v 200 1748 a Fa(z)p 330 1778 V 347 1778 V 186 w(0,00)p
+677 1778 V 160 w(0,01)p 1007 1778 V 159 w(0,02)p 1337
+1778 V 159 w(0,03)p 1668 1778 V 159 w(0,04)p 1998 1778
+V 160 w(0,05)p 2328 1778 V 159 w(0,06)p 2658 1778 V 159
+w(0,07)p 2988 1778 V 159 w(0,08)p 3319 1778 V 160 w(0,09)p
+3649 1778 V 110 1781 3541 4 v 110 1798 V 108 1897 4 100
+v 160 1867 a(0,0)p 330 1897 V 347 1897 V 115 w Fd(0,5000)p
+677 1897 V 97 w(0,5040)p 1007 1897 V 98 w(0,5080)p 1337
+1897 V 97 w(0,5120)p 1668 1897 V 97 w(0,5160)p 1998 1897
+V 97 w(0,5199)p 2328 1897 V 97 w(0,5239)p 2658 1897 V
+98 w(0,5279)p 2988 1897 V 97 w(0,5319)p 3319 1897 V 97
+w(0,5359)p 3649 1897 V 110 1901 3541 4 v 108 2000 4 100
+v 160 1970 a Fa(0,1)p 330 2000 V 347 2000 V 115 w Fd(0,5398)p
+677 2000 V 97 w(0,5438)p 1007 2000 V 98 w(0,5478)p 1337
+2000 V 97 w(0,5517)p 1668 2000 V 97 w(0,5557)p 1998 2000
+V 97 w(0,5596)p 2328 2000 V 97 w(0,5636)p 2658 2000 V
+98 w(0,5675)p 2988 2000 V 97 w(0,5714)p 3319 2000 V 97
+w(0,5753)p 3649 2000 V 110 2003 3541 4 v 108 2103 4 100
+v 160 2073 a Fa(0,2)p 330 2103 V 347 2103 V 115 w Fd(0,5793)p
+677 2103 V 97 w(0,5832)p 1007 2103 V 98 w(0,5871)p 1337
+2103 V 97 w(0,5910)p 1668 2103 V 97 w(0,5948)p 1998 2103
+V 97 w(0,5987)p 2328 2103 V 97 w(0,6026)p 2658 2103 V
+98 w(0,6064)p 2988 2103 V 97 w(0,6103)p 3319 2103 V 97
+w(0,6141)p 3649 2103 V 110 2106 3541 4 v 108 2206 4 100
+v 160 2176 a Fa(0,3)p 330 2206 V 347 2206 V 115 w Fd(0,6179)p
+677 2206 V 97 w(0,6217)p 1007 2206 V 98 w(0,6255)p 1337
+2206 V 97 w(0,6293)p 1668 2206 V 97 w(0,6331)p 1998 2206
+V 97 w(0,6368)p 2328 2206 V 97 w(0,6406)p 2658 2206 V
+98 w(0,6443)p 2988 2206 V 97 w(0,6480)p 3319 2206 V 97
+w(0,6517)p 3649 2206 V 110 2209 3541 4 v 108 2309 4 100
+v 160 2279 a Fa(0,4)p 330 2309 V 347 2309 V 115 w Fd(0,6554)p
+677 2309 V 97 w(0,6591)p 1007 2309 V 98 w(0,6628)p 1337
+2309 V 97 w(0,6664)p 1668 2309 V 97 w(0,6700)p 1998 2309
+V 97 w(0,6736)p 2328 2309 V 97 w(0,6772)p 2658 2309 V
+98 w(0,6808)p 2988 2309 V 97 w(0,6844)p 3319 2309 V 97
+w(0,6879)p 3649 2309 V 110 2312 3541 4 v 108 2412 4 100
+v 160 2382 a Fa(0,5)p 330 2412 V 347 2412 V 115 w Fd(0,6915)p
+677 2412 V 97 w(0,6950)p 1007 2412 V 98 w(0,6985)p 1337
+2412 V 97 w(0,7019)p 1668 2412 V 97 w(0,7054)p 1998 2412
+V 97 w(0,7088)p 2328 2412 V 97 w(0,7123)p 2658 2412 V
+98 w(0,7157)p 2988 2412 V 97 w(0,7190)p 3319 2412 V 97
+w(0,7224)p 3649 2412 V 110 2415 3541 4 v 108 2515 4 100
+v 160 2485 a Fa(0,6)p 330 2515 V 347 2515 V 115 w Fd(0,7257)p
+677 2515 V 97 w(0,7291)p 1007 2515 V 98 w(0,7324)p 1337
+2515 V 97 w(0,7357)p 1668 2515 V 97 w(0,7389)p 1998 2515
+V 97 w(0,7422)p 2328 2515 V 97 w(0,7454)p 2658 2515 V
+98 w(0,7486)p 2988 2515 V 97 w(0,7517)p 3319 2515 V 97
+w(0,7549)p 3649 2515 V 110 2518 3541 4 v 108 2618 4 100
+v 160 2588 a Fa(0,7)p 330 2618 V 347 2618 V 115 w Fd(0,7580)p
+677 2618 V 97 w(0,7611)p 1007 2618 V 98 w(0,7642)p 1337
+2618 V 97 w(0,7673)p 1668 2618 V 97 w(0,7704)p 1998 2618
+V 97 w(0,7734)p 2328 2618 V 97 w(0,7764)p 2658 2618 V
+98 w(0,7794)p 2988 2618 V 97 w(0,7823)p 3319 2618 V 97
+w(0,7852)p 3649 2618 V 110 2621 3541 4 v 108 2721 4 100
+v 160 2691 a Fa(0,8)p 330 2721 V 347 2721 V 115 w Fd(0,7881)p
+677 2721 V 97 w(0,7910)p 1007 2721 V 98 w(0,7939)p 1337
+2721 V 97 w(0,7967)p 1668 2721 V 97 w(0,7995)p 1998 2721
+V 97 w(0,8023)p 2328 2721 V 97 w(0,8051)p 2658 2721 V
+98 w(0,8078)p 2988 2721 V 97 w(0,8106)p 3319 2721 V 97
+w(0,8133)p 3649 2721 V 110 2724 3541 4 v 108 2824 4 100
+v 160 2794 a Fa(0,9)p 330 2824 V 347 2824 V 115 w Fd(0,8159)p
+677 2824 V 97 w(0,8186)p 1007 2824 V 98 w(0,8212)p 1337
+2824 V 97 w(0,8238)p 1668 2824 V 97 w(0,8264)p 1998 2824
+V 97 w(0,8289)p 2328 2824 V 97 w(0,8315)p 2658 2824 V
+98 w(0,8340)p 2988 2824 V 97 w(0,8365)p 3319 2824 V 97
+w(0,8389)p 3649 2824 V 110 2827 3541 4 v 108 2927 4 100
+v 160 2897 a Fa(1,0)p 330 2927 V 347 2927 V 115 w Fd(0,8413)p
+677 2927 V 97 w(0,8438)p 1007 2927 V 98 w(0,8461)p 1337
+2927 V 97 w(0,8485)p 1668 2927 V 97 w(0,8508)p 1998 2927
+V 97 w(0,8531)p 2328 2927 V 97 w(0,8554)p 2658 2927 V
+98 w(0,8577)p 2988 2927 V 97 w(0,8599)p 3319 2927 V 97
+w(0,8621)p 3649 2927 V 110 2930 3541 4 v 108 3030 4 100
+v 160 3000 a Fa(1,1)p 330 3030 V 347 3030 V 115 w Fd(0,8643)p
+677 3030 V 97 w(0,8665)p 1007 3030 V 98 w(0,8686)p 1337
+3030 V 97 w(0,8708)p 1668 3030 V 97 w(0,8729)p 1998 3030
+V 97 w(0,8749)p 2328 3030 V 97 w(0,8770)p 2658 3030 V
+98 w(0,8790)p 2988 3030 V 97 w(0,8810)p 3319 3030 V 97
+w(0,8830)p 3649 3030 V 110 3033 3541 4 v 108 3133 4 100
+v 160 3103 a Fa(1,2)p 330 3133 V 347 3133 V 115 w Fd(0,8849)p
+677 3133 V 97 w(0,8869)p 1007 3133 V 98 w(0,8888)p 1337
+3133 V 97 w(0,8907)p 1668 3133 V 97 w(0,8925)p 1998 3133
+V 97 w(0,8944)p 2328 3133 V 97 w(0,8962)p 2658 3133 V
+98 w(0,8980)p 2988 3133 V 97 w(0,8997)p 3319 3133 V 97
+w(0,9015)p 3649 3133 V 110 3136 3541 4 v 108 3236 4 100
+v 160 3206 a Fa(1,3)p 330 3236 V 347 3236 V 115 w Fd(0,9032)p
+677 3236 V 97 w(0,9049)p 1007 3236 V 98 w(0,9066)p 1337
+3236 V 97 w(0,9082)p 1668 3236 V 97 w(0,9099)p 1998 3236
+V 97 w(0,9115)p 2328 3236 V 97 w(0,9131)p 2658 3236 V
+98 w(0,9147)p 2988 3236 V 97 w(0,9162)p 3319 3236 V 97
+w(0,9177)p 3649 3236 V 110 3239 3541 4 v 108 3338 4 100
+v 160 3309 a Fa(1,4)p 330 3338 V 347 3338 V 115 w Fd(0,9192)p
+677 3338 V 97 w(0,9207)p 1007 3338 V 98 w(0,9222)p 1337
+3338 V 97 w(0,9236)p 1668 3338 V 97 w(0,9251)p 1998 3338
+V 97 w(0,9265)p 2328 3338 V 97 w(0,9279)p 2658 3338 V
+98 w(0,9292)p 2988 3338 V 97 w(0,9306)p 3319 3338 V 97
+w(0,9319)p 3649 3338 V 110 3342 3541 4 v 108 3441 4 100
+v 160 3412 a Fa(1,5)p 330 3441 V 347 3441 V 115 w Fd(0,9332)p
+677 3441 V 97 w(0,9345)p 1007 3441 V 98 w(0,9357)p 1337
+3441 V 97 w(0,9370)p 1668 3441 V 97 w(0,9382)p 1998 3441
+V 97 w(0,9394)p 2328 3441 V 97 w(0,9406)p 2658 3441 V
+98 w(0,9418)p 2988 3441 V 97 w(0,9429)p 3319 3441 V 97
+w(0,9441)p 3649 3441 V 110 3445 3541 4 v 108 3544 4 100
+v 160 3514 a Fa(1,6)p 330 3544 V 347 3544 V 115 w Fd(0,9452)p
+677 3544 V 97 w(0,9463)p 1007 3544 V 98 w(0,9474)p 1337
+3544 V 97 w(0,9484)p 1668 3544 V 97 w(0,9495)p 1998 3544
+V 97 w(0,9505)p 2328 3544 V 97 w(0,9515)p 2658 3544 V
+98 w(0,9525)p 2988 3544 V 97 w(0,9535)p 3319 3544 V 97
+w(0,9545)p 3649 3544 V 110 3548 3541 4 v 108 3647 4 100
+v 160 3617 a Fa(1,7)p 330 3647 V 347 3647 V 115 w Fd(0,9554)p
+677 3647 V 97 w(0,9564)p 1007 3647 V 98 w(0,9573)p 1337
+3647 V 97 w(0,9582)p 1668 3647 V 97 w(0,9591)p 1998 3647
+V 97 w(0,9599)p 2328 3647 V 97 w(0,9608)p 2658 3647 V
+98 w(0,9616)p 2988 3647 V 97 w(0,9625)p 3319 3647 V 97
+w(0,9633)p 3649 3647 V 110 3651 3541 4 v 108 3750 4 100
+v 160 3720 a Fa(1,8)p 330 3750 V 347 3750 V 115 w Fd(0,9641)p
+677 3750 V 97 w(0,9649)p 1007 3750 V 98 w(0,9656)p 1337
+3750 V 97 w(0,9664)p 1668 3750 V 97 w(0,9671)p 1998 3750
+V 97 w(0,9678)p 2328 3750 V 97 w(0,9686)p 2658 3750 V
+98 w(0,9693)p 2988 3750 V 97 w(0,9699)p 3319 3750 V 97
+w(0,9706)p 3649 3750 V 110 3754 3541 4 v 108 3853 4 100
+v 160 3823 a Fa(1,9)p 330 3853 V 347 3853 V 115 w Fd(0,9713)p
+677 3853 V 97 w(0,9719)p 1007 3853 V 98 w(0,9726)p 1337
+3853 V 97 w(0,9732)p 1668 3853 V 97 w(0,9738)p 1998 3853
+V 97 w(0,9744)p 2328 3853 V 97 w(0,9750)p 2658 3853 V
+98 w(0,9756)p 2988 3853 V 97 w(0,9761)p 3319 3853 V 97
+w(0,9767)p 3649 3853 V 110 3857 3541 4 v 108 3956 4 100
+v 160 3926 a Fa(2,0)p 330 3956 V 347 3956 V 115 w Fd(0,9772)p
+677 3956 V 97 w(0,9778)p 1007 3956 V 98 w(0,9783)p 1337
+3956 V 97 w(0,9788)p 1668 3956 V 97 w(0,9793)p 1998 3956
+V 97 w(0,9798)p 2328 3956 V 97 w(0,9803)p 2658 3956 V
+98 w(0,9808)p 2988 3956 V 97 w(0,9812)p 3319 3956 V 97
+w(0,9817)p 3649 3956 V 110 3959 3541 4 v 108 4059 4 100
+v 160 4029 a Fa(2,1)p 330 4059 V 347 4059 V 115 w Fd(0,9821)p
+677 4059 V 97 w(0,9826)p 1007 4059 V 98 w(0,9830)p 1337
+4059 V 97 w(0,9834)p 1668 4059 V 97 w(0,9838)p 1998 4059
+V 97 w(0,9842)p 2328 4059 V 97 w(0,9846)p 2658 4059 V
+98 w(0,9850)p 2988 4059 V 97 w(0,9854)p 3319 4059 V 97
+w(0,9857)p 3649 4059 V 110 4062 3541 4 v 108 4162 4 100
+v 160 4132 a Fa(2,2)p 330 4162 V 347 4162 V 115 w Fd(0,9861)p
+677 4162 V 97 w(0,9864)p 1007 4162 V 98 w(0,9868)p 1337
+4162 V 97 w(0,9871)p 1668 4162 V 97 w(0,9875)p 1998 4162
+V 97 w(0,9878)p 2328 4162 V 97 w(0,9881)p 2658 4162 V
+98 w(0,9884)p 2988 4162 V 97 w(0,9887)p 3319 4162 V 97
+w(0,9890)p 3649 4162 V 110 4165 3541 4 v 108 4265 4 100
+v 160 4235 a Fa(2,3)p 330 4265 V 347 4265 V 115 w Fd(0,9893)p
+677 4265 V 97 w(0,9896)p 1007 4265 V 98 w(0,9898)p 1337
+4265 V 97 w(0,9901)p 1668 4265 V 97 w(0,9904)p 1998 4265
+V 97 w(0,9906)p 2328 4265 V 97 w(0,9909)p 2658 4265 V
+98 w(0,9911)p 2988 4265 V 97 w(0,9913)p 3319 4265 V 97
+w(0,9916)p 3649 4265 V 110 4268 3541 4 v 108 4368 4 100
+v 160 4338 a Fa(2,4)p 330 4368 V 347 4368 V 115 w Fd(0,9918)p
+677 4368 V 97 w(0,9920)p 1007 4368 V 98 w(0,9922)p 1337
+4368 V 97 w(0,9925)p 1668 4368 V 97 w(0,9927)p 1998 4368
+V 97 w(0,9929)p 2328 4368 V 97 w(0,9931)p 2658 4368 V
+98 w(0,9932)p 2988 4368 V 97 w(0,9934)p 3319 4368 V 97
+w(0,9936)p 3649 4368 V 110 4371 3541 4 v 108 4471 4 100
+v 160 4441 a Fa(2,5)p 330 4471 V 347 4471 V 115 w Fd(0,9938)p
+677 4471 V 97 w(0,9940)p 1007 4471 V 98 w(0,9941)p 1337
+4471 V 97 w(0,9943)p 1668 4471 V 97 w(0,9945)p 1998 4471
+V 97 w(0,9946)p 2328 4471 V 97 w(0,9948)p 2658 4471 V
+98 w(0,9949)p 2988 4471 V 97 w(0,9951)p 3319 4471 V 97
+w(0,9952)p 3649 4471 V 110 4474 3541 4 v 108 4574 4 100
+v 160 4544 a Fa(2,6)p 330 4574 V 347 4574 V 115 w Fd(0,9953)p
+677 4574 V 97 w(0,9955)p 1007 4574 V 98 w(0,9956)p 1337
+4574 V 97 w(0,9957)p 1668 4574 V 97 w(0,9959)p 1998 4574
+V 97 w(0,9960)p 2328 4574 V 97 w(0,9961)p 2658 4574 V
+98 w(0,9962)p 2988 4574 V 97 w(0,9963)p 3319 4574 V 97
+w(0,9964)p 3649 4574 V 110 4577 3541 4 v 108 4677 4 100
+v 160 4647 a Fa(2,7)p 330 4677 V 347 4677 V 115 w Fd(0,9965)p
+677 4677 V 97 w(0,9966)p 1007 4677 V 98 w(0,9967)p 1337
+4677 V 97 w(0,9968)p 1668 4677 V 97 w(0,9969)p 1998 4677
+V 97 w(0,9970)p 2328 4677 V 97 w(0,9971)p 2658 4677 V
+98 w(0,9972)p 2988 4677 V 97 w(0,9973)p 3319 4677 V 97
+w(0,9974)p 3649 4677 V 110 4680 3541 4 v 108 4780 4 100
+v 160 4750 a Fa(2,8)p 330 4780 V 347 4780 V 115 w Fd(0,9974)p
+677 4780 V 97 w(0,9975)p 1007 4780 V 98 w(0,9976)p 1337
+4780 V 97 w(0,9977)p 1668 4780 V 97 w(0,9977)p 1998 4780
+V 97 w(0,9978)p 2328 4780 V 97 w(0,9979)p 2658 4780 V
+98 w(0,9979)p 2988 4780 V 97 w(0,9980)p 3319 4780 V 97
+w(0,9981)p 3649 4780 V 110 4783 3541 4 v 108 4883 4 100
+v 160 4853 a Fa(2,9)p 330 4883 V 347 4883 V 115 w Fd(0,9981)p
+677 4883 V 97 w(0,9982)p 1007 4883 V 98 w(0,9982)p 1337
+4883 V 97 w(0,9983)p 1668 4883 V 97 w(0,9984)p 1998 4883
+V 97 w(0,9984)p 2328 4883 V 97 w(0,9985)p 2658 4883 V
+98 w(0,9985)p 2988 4883 V 97 w(0,9986)p 3319 4883 V 97
+w(0,9986)p 3649 4883 V 110 4886 3541 4 v 108 4986 4 100
+v 160 4956 a Fa(3,0)p 330 4986 V 347 4986 V 115 w Fd(0,9987)p
+677 4986 V 97 w(0,9987)p 1007 4986 V 98 w(0,9987)p 1337
+4986 V 97 w(0,9988)p 1668 4986 V 97 w(0,9988)p 1998 4986
+V 97 w(0,9989)p 2328 4986 V 97 w(0,9989)p 2658 4986 V
+98 w(0,9989)p 2988 4986 V 97 w(0,9990)p 3319 4986 V 97
+w(0,9990)p 3649 4986 V 110 4989 3541 4 v 108 5089 4 100
+v 160 5059 a Fa(3,1)p 330 5089 V 347 5089 V 115 w Fd(0,9990)p
+677 5089 V 97 w(0,9991)p 1007 5089 V 98 w(0,9991)p 1337
+5089 V 97 w(0,9991)p 1668 5089 V 97 w(0,9992)p 1998 5089
+V 97 w(0,9992)p 2328 5089 V 97 w(0,9992)p 2658 5089 V
+98 w(0,9992)p 2988 5089 V 97 w(0,9993)p 3319 5089 V 97
+w(0,9993)p 3649 5089 V 110 5092 3541 4 v 108 5192 4 100
+v 160 5162 a Fa(3,2)p 330 5192 V 347 5192 V 115 w Fd(0,9993)p
+677 5192 V 97 w(0,9993)p 1007 5192 V 98 w(0,9994)p 1337
+5192 V 97 w(0,9994)p 1668 5192 V 97 w(0,9994)p 1998 5192
+V 97 w(0,9994)p 2328 5192 V 97 w(0,9994)p 2658 5192 V
+98 w(0,9995)p 2988 5192 V 97 w(0,9995)p 3319 5192 V 97
+w(0,9995)p 3649 5192 V 110 5195 3541 4 v 108 5294 4 100
+v 160 5265 a Fa(3,3)p 330 5294 V 347 5294 V 115 w Fd(0,9995)p
+677 5294 V 97 w(0,9995)p 1007 5294 V 98 w(0,9995)p 1337
+5294 V 97 w(0,9996)p 1668 5294 V 97 w(0,9996)p 1998 5294
+V 97 w(0,9996)p 2328 5294 V 97 w(0,9996)p 2658 5294 V
+98 w(0,9996)p 2988 5294 V 97 w(0,9996)p 3319 5294 V 97
+w(0,9997)p 3649 5294 V 110 5298 3541 4 v 108 5397 4 100
+v 160 5368 a Fa(3,4)p 330 5397 V 347 5397 V 115 w Fd(0,9997)p
+677 5397 V 97 w(0,9997)p 1007 5397 V 98 w(0,9997)p 1337
+5397 V 97 w(0,9997)p 1668 5397 V 97 w(0,9997)p 1998 5397
+V 97 w(0,9997)p 2328 5397 V 97 w(0,9997)p 2658 5397 V
+98 w(0,9997)p 2988 5397 V 97 w(0,9997)p 3319 5397 V 97
+w(0,9998)p 3649 5397 V 110 5401 3541 4 v 0 TeXcolorgray
+1860 5956 a(2)p 0 TeXcolorgray eop end
 %%Trailer
 
 userdict /end-hook known{end-hook}if
