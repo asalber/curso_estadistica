@@ -47,3 +47,6 @@
 #Others
 *.sh
 /tmp/*
+/curso_estadistica.pdf
+/manual_estadistica.pdf
+/tmp/

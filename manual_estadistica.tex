@@ -1,0 +1,217 @@
+% Author: Alfredo Sánchez Alberca (asalber@gmail.com)
+% ASPECT RATIO FOR YOUTUBE VIDEO
+% \documentclass[aspectratio=1610,mathserif,profesionalfont,10pt,svgnames,red,xcolor=table]{beamer}
+% ASPECT RATIO FOR PROJECTOR
+%\documentclass[profesionalfont,10pt,svgnames,xcolor=table]{beamer}
+
+% BEAMER THEME
+%\usetheme[progressbar=frametitle,background=light,titleformat=smallcaps,block=fill]{metropolis}
+
+% ARTICLE VERSION
+% \pdfminorversion=4 % for solving some problems with png graphics in acrobat reader
+\documentclass[10pt,a4paper,titlepage]{article}
+\usepackage[hyperref]{beamerarticle}
+
+% LANGUAGE
+\usepackage{polyglossia}
+\setdefaultlanguage{spanish}
+
+% FONT
+\mode<article>{
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{TeX Gyre Pagella}
+\usepackage{unicode-math}
+\setmathfont[math-style=ISO,bold-style=ISO,vargreek-shape=TeX]{TeX Gyre Pagella Math}
+%\usepackage[sc]{mathpazo}
+%\setromanfont[Mapping=tex-text]{Linux Libertine}
+%\setsansfont[Mapping=tex-text]{Myriad Pro}
+%\setmonofont[Mapping=tex-text]{Courier New}
+}
+% IMPROVE FONT IN PDF
+\mode<article>{\usepackage{microtype}} 
+
+% MATHS
+\usepackage{units}
+
+% MARGINS
+\setbeamersize{text margin left=.5cm, text margin right=.5cm}
+
+% MARGINS FOR ARTICLE
+\mode<article>{\usepackage{fullpage}}
+\mode<article>{\usepackage[headsep=1cm, top=3cm, bottom=3cm, left=2.54cm, right=2.54cm]{geometry}}
+
+% COLORS
+\input{settings/colors.tex}
+
+% TABLE OF CONTENT style
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+
+% TABLES
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{booktabs}
+\newcommand{\tcrule}{\arrayrulecolor{color1!50!white}\toprule}
+\newcommand{\mcrule}{\arrayrulecolor{color1!50!white}\midrule}
+\newcommand{\bcrule}{\arrayrulecolor{color1!50!white}\bottomrule}
+
+% GRAPHICS
+% GRAPHICS
+\usepackage{pgfplots}
+\usepgfplotslibrary{fillbetween}
+% pgfplots styles
+\input{settings/pgfplots}
+\usepackage{tikz}
+\usetikzlibrary{external, arrows, arrows.meta, calc, shapes, shapes.arrows, positioning, decorations.pathreplacing, intersections, fillbetween}
+% TIKZ SETTINGS
+\tikzset{
+	% Overlays
+    invisible/.style={opacity=0},
+    visible on/.style={alt={#1{}{invisible}}},
+    alt/.code args={<#1>#2#3}{%
+      \alt<#1>{\pgfkeysalso{#2}}{\pgfkeysalso{#3}} % \pgfkeysalso doesn't change the path
+    },
+    % Vectors
+    vector/.style={->, color1, thick},
+    % Arrow tips
+    >=stealth,
+  }
+% Graphics export
+\mode<article>{
+\tikzset{
+    png export/.style={
+        external/system call={
+            xelatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname "\image" "\texsource";
+            convert -density 300 -transparent white "\image.pdf" "\image.png"
+        }
+    }
+}
+\tikzset{
+	svg export/.style={
+        external/system call/.add={}%
+        {; pdf2svg "\image.pdf" "\image.svg"}
+    }
+}
+\tikzexternalize[prefix=img/exportados/]
+\tikzset{png export}
+\tikzset{svg export}
+}
+
+\usepackage{graphicx}
+
+% CREATIVE COMMON ICONS
+\usepackage[scale=2]{ccicons}
+
+% LOGO POSITION
+\setbeamertemplate{title graphic}{
+ \vbox to 0pt {
+ 	\vspace*{0.9\textheight}
+ 	\inserttitlegraphic
+ }
+}
+
+% SPACE BETWEEN PARAGRAFS
+\setlength{\parskip}{0.5em}
+
+% THEORMEM ENVIRONMENTS
+\theoremstyle{definition}
+\newtheorem{definicion}[theorem]{Definición}
+\newtheorem{teorema}[theorem]{Teorema}
+
+% BLOCKS COLORS
+\setbeamercolor{block title}{
+	use=normal text,
+	fg=normal text.fg,
+	bg=alerted text.fg!50
+}
+
+
+% HEADINGS AND FOOTERS : Statistics manual 
+
+\mode<article>{
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\rhead{\sffamily\slshape Manual Básico de Estadística}
+\renewcommand{\headrulewidth}{0pt}
+%\renewcommand{\floatpagefraction}{.8}
+%\renewcommand{\textfraction}{.1} 
+} 
+
+% FRAME TITLE CONFIGURATION
+% \defbeamertemplate{frametitle}{myframe}{
+% 	\nointerlineskip
+% 	\begin{beamercolorbox}[wd=\paperwidth,sep=1ex]{frametitle}
+% 		\insertframetitle
+% 	\end{beamercolorbox}
+% } 
+% \setbeamertemplate{frametitle}[myframe] 
+
+% SECTION COLOR FOR ARTICLE
+\mode<article>{
+\usepackage{titlesec}
+\titleformat{\section}{\color{color1}\normalfont\Large\bfseries}{\color{color1}\thesection}{1em}{}
+\titleformat{\subsection}{\color{color1}\normalfont\large\bfseries}{\color{color1}\thesubsection}{1em}{}
+}
+
+% COMMAND FOR HIGHLIGHTING
+\newcommand{\highlight}[1]{\textcolor{orange}{\textbf{#1}}}
+
+% PDF settings
+\hypersetup{colorlinks=true}
+
+
+%=====================================================================BODY=====
+
+%---------------------------------------------------------------------cover----
+\mode<article>{
+\title{\vskip 3cm
+\textcolor{color1}{\Huge Manual Básico de Estadística}}
+\author{
+%Pablo Ares Gastesi (\href{mailto:pablo.aresgastesi@ceu.es}{pablo.aresgastesi@ceu.es}) \and
+Alfredo Sánchez Alberca (\href{mailto:asalber@ceu.es}{asalber@ceu.es})
+}
+\date{Feb 2017\\[1cm]
+Departamento de Matemática Aplicada y Estadística\\ CEU San Pablo\\[1cm]
+\includegraphics[height=2cm]{img/logo_uspceu}
+}
+}
+\mode<presentation>{
+\title{Manual Básico de Estadística}
+\author{
+%Pablo Ares Gastesi (\href{mailto:pablo.aresgastesi@ceu.es}{pablo.aresgastesi@ceu.es}) \\
+Alfredo Sánchez Alberca (\href{mailto:asalber@ceu.es}{asalber@ceu.es})
+}
+\institute{Departamento de Matemática Aplicada y Estadística\\ CEU San Pablo}
+\date{Feb 2017}
+\titlegraphic{\hfill\includegraphics[height=1.5cm]{img/logo_uspceu}}
+}
+
+
+
+\begin{document}
+\mode<article>{\thispagestyle{empty}\maketitle}
+\mode<presentation>{\maketitle}
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\input{preambulo/licencia}
+\end{frame}
+
+\mode<article>{\clearpage}
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\mode<presentation>{\frametitle{Contenidos}}
+\setbeamertemplate{section in toc}[sections numbered]
+\tableofcontents[hideallsubsections]
+\end{frame}
+
+%\include{capitulos/introduccion}
+\include{capitulos/descriptiva}
+% \include{capitulos/regresion}
+% \include{capitulos/probabilidad}
+% \include{capitulos/variables_aleatorias_discretas}
+% \include{capitulos/variables_aleatorias_continuas}
+
+\end{document}

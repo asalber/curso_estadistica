@@ -1,14 +1,14 @@
 #TeXlipse project settings
-#Thu Mar 03 11:44:35 CET 2016
+#Mon Feb 13 18:14:35 CET 2017
 markTmpDer=true
-builderNum=6
+builderNum=7
 outputDir=
 makeIndSty=
 bibrefDir=
 outputFormat=pdf
 tempDir=tmp
-mainTexFile=curso_estadistica.tex
-outputFile=curso_estadistica.pdf
+mainTexFile=manual_estadistica.tex
+outputFile=manual_estadistica.pdf
 langSpell=es
 markDer=true
 srcDir=
