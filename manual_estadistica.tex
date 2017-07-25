@@ -21,7 +21,7 @@
 \usepackage{fontspec}
 \setmainfont[Ligatures=TeX]{TeX Gyre Pagella}
 \usepackage{unicode-math}
-\setmathfont[math-style=ISO,bold-style=ISO,vargreek-shape=TeX]{TeX Gyre Pagella Math}
+\setmathfont[math-style=ISO,bold-style=ISO]{TeX Gyre Pagella Math}
 %\usepackage[sc]{mathpazo}
 %\setromanfont[Mapping=tex-text]{Linux Libertine}
 %\setsansfont[Mapping=tex-text]{Myriad Pro}
@@ -57,13 +57,14 @@
 \newcommand{\bcrule}{\arrayrulecolor{color1!50!white}\bottomrule}
 
 % GRAPHICS
-% GRAPHICS
 \usepackage{pgfplots}
 \usepgfplotslibrary{fillbetween}
 % pgfplots styles
 \input{settings/pgfplots}
 \usepackage{tikz}
-\usetikzlibrary{external, arrows, arrows.meta, calc, shapes, shapes.arrows, positioning, decorations.pathreplacing, intersections, fillbetween}
+\usetikzlibrary{external, arrows, arrows.meta, calc, shapes, shapes.arrows, positioning, decorations.pathreplacing, intersections, fillbetween, snakes}
+\usepackage{tkz-euclide}
+\usetkzobj{all}
 % TIKZ SETTINGS
 \tikzset{
 	% Overlays
@@ -158,7 +159,7 @@
 \newcommand{\highlight}[1]{\textcolor{orange}{\textbf{#1}}}
 
 % PDF settings
-\hypersetup{colorlinks=true}
+%\hypersetup{colorlinks=true}
 
 
 %=====================================================================BODY=====
@@ -186,7 +187,6 @@ Alfredo Sánchez Alberca (\href{mailto:asalber@ceu.es}{asalber@ceu.es})
 \date{Feb 2017}
 \titlegraphic{\hfill\includegraphics[height=1.5cm]{img/logo_uspceu}}
 }
-
 
 
 \begin{document}
