@@ -9,26 +9,25 @@
 }
 
 
-\subsection{Distribución de frecuencias bidimensional}
+
 
 % ---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Relaciones entre variables}
 Hasta ahora se ha visto como describir el comportamiento de una variable, pero en los fenómenos naturales normalmente aparecen más de una
 variable que suelen estar relacionadas. 
-Por ejemplo, en un estudio sobre el peso de las personas, deberíamos incluir todas las variables con las que podría tener relación: altura,
-edad, sexo, dieta, tabaco, ejercicio físico, etc.
+Por ejemplo, en un estudio sobre el peso de las personas, deberíamos incluir todas las variables con las que podría tener relación: altura, edad, sexo, dieta, tabaco, ejercicio físico, etc.
 
-Para comprender el fenómeno no basta con estudiar cada variable por separado y es preciso un estudio conjunto de todas las variables para
-ver cómo interactúan y qué relaciones se dan entre ellas. El objetivo de la estadística en este caso es dar medidas del grado y del tipo de relación
+Para comprender el fenómeno no basta con estudiar cada variable por separado y es preciso un estudio conjunto de todas las variables para ver cómo interactúan y qué relaciones se dan entre ellas. 
+El objetivo de la estadística en este caso es dar medidas del grado y del tipo de relación
 entre dichas variables.
 
-Generalmente, se considera una \emph{variable dependiente} $Y$ que se supone relacionada con otras variables $X_1,\ldots,X_n$ llamadas
-\emph{variables independientes}.
+Generalmente, en un \emph{estudio de dependencia} se considera una \highlight{variable dependiente} $Y$ que se supone relacionada con otras variables $X_1,\ldots,X_n$ llamadas
+\highlight{variables independientes}.
 
 El caso más simple es el de una sola variable independiente, y en tal caso se habla de \emph{estudio de dependencia simple}. Para más de una variable independiente se habla de \emph{estudio de dependencia múltiple}.
 
-En este tema se verán los estudios de dependencia simple que son más sencillos.  
+En este capítulo se verán los estudios de dependencia simple que son más sencillos.  
 
 \note{En el tema anterior aprendimos a describir variables aisladas en una muestra, pero en la mayor parte de los fenómenos naturales
 intervienen más de una variable que suelen estar relacionadas entre si, como por ejemplo en un estudio sobre el peso de las personas, habría
@@ -50,65 +49,25 @@ generalizarse fácilmente a estudios de dependencia múltiple.}
 \end{frame}
 
 
-% ---------------------------------------------------------------------slide----
-\begin{frame}
-\frametitle{Variables bidimensionales}
-Al estudiar la dependencia simple entre dos variables $X$ e $Y$, no se pueden estudiar sus distribuciones por separado, sino que hay que
-estudiarlas en conjunto.
-
-Para ello, conviene definir una \structure{\textbf{variable estadística bidimensional}} $(X,Y)$, cuyos valores serán todos los pares
-formados por los valores de las variables $X$ e $Y$.
-\begin{center}
-\begin{pspicture}(-1,-1)(7,3)
-\rput[b](0.5,2.5){$X$}
-\rput[b](0,2){\textcolor{coral}{$x_1$}}
-\rput[b](1,2){\textcolor{coral}{$x_2$}}
-\rput[b](6.1,2.5){$Y$}
-\rput[b](5.6,2){$\textcolor{royalblue1}{y_1$}}
-\rput[b](6.6,2){$\textcolor{royalblue1}{y_2$}}
-\rput[t](3.1,-0.6){$(X,Y)$}
-\rput[t](0.3,0){$(\textcolor{coral}{x_1},\textcolor{royalblue1}{y_1})$}
-\rput[t](2.3,0){$(\textcolor{coral}{x_1},\textcolor{royalblue1}{y_2})$}
-\rput[t](4.3,0){$(\textcolor{coral}{x_2},\textcolor{royalblue1}{y_1})$}
-\rput[t](6.3,0){$(\textcolor{coral}{x_2},\textcolor{royalblue1}{y_2})$}
-\psline{->}(0,2)(0,0)
-\psline{->}(0,2)(2,0)
-\psline{->}(1,2)(4,0)
-\psline{->}(1,2)(6,0)
-\psline{->}(5.6,2)(0.6,0)
-\psline{->}(5.6,2)(4.6,0)
-\psline{->}(6.6,2)(2.6,0)
-\psline{->}(6.6,2)(6.6,0)
-\end{pspicture}
-\end{center}
-
-\note{Al estudiar la dependencia simple entre dos variables $X$ e $Y$, no se pueden estudiar sus distribuciones por separado, sino que hay que
-estudiarlas en conjunto.
-
-Para ello, conviene definir una \structure{\textbf{variable estadística bidimensional}} $(X,Y)$, cuyos valores serán todos los pares
-formados por los valores de las variables $X$ e $Y$.
-
-Por ejemplo, si $X$ puede tomar valores $x_1$ y $x_2$ e $Y$ puede tomar valores $y_1$ e $y_2$, la variable bidimensional $(X,Y)$ podría
-tomar como valores los pares $(x_1,y_1)$, $(x_1,y_2)$, $(x_2,y_1)$ y $(x_2,y_2)$.} 
-\end{frame}
-
+\subsection{Distribución de frecuencias conjunta}
 
 % ---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Frecuencias de una variable bidimensional}
-\begin{definicion}[Frecuencias muestrales de una variable bidimensional]
-Dada una muestra de tamaño $n$ de una variable bidimensional $(X,Y)$, para cada valor de la variable $(x_i,y_j)$ observado en la muestra se
-define:
+\frametitle{Frecuencias conjuntas}
+Al estudiar la dependencia simple entre dos variables $X$ e $Y$, no se pueden estudiar sus distribuciones por separado, sino que hay que estudiar la distribución conjunta de la \highlight{variable bidimensional} $(X,Y)$, cuyos valores son los pares $(x_i,y_j)$ donde el primer elemento es un valor $X$ y el segundo uno de $Y$.
+
+\begin{definicion}[Frecuencias muestrales conjuntas]
+Dada una muestra de tamaño $n$ de una variable bidimensional $(X,Y)$, para cada valor de la variable $(x_i,y_j)$ observado en la muestra se define:
 \begin{itemize}
-\item \structure{Frecuencia absoluta $n_{ij}$}: Es el número de individuos de la muestra que presentan simultáneamente el valor $x_i$ de la variable $X$ y el valor $y_j$ de la variable $Y$.
-\item \structure{Frecuencia relativa $f_{ij}$}: Es la proporción de individuos de la muestra que presentan simultáneamente el valor $x_i$ de la variable $X$ y el valor $y_j$ de la variable $Y$.
+\item \structure{Frecuencia absoluta $n_{ij}$}: Es el número de veces que el par $(x_i,y_j)$ aparece en la muestra.
+\item \structure{Frecuencia relativa $f_{ij}$}: Es la proporcion de veces que el par $(x_i,y_j)$ aparece en la muestra.
 \[
 f_{ij}=\frac{n_{ij}}{n}
 \]
 \end{itemize}
 \end{definicion}
 \begin{center}
-\alert{\emph{¡Ojo! Para las variables bidimensionales no tienen sentido las frecuencias acumuladas.}}
+\alert{\emph{¡Atención! Para las variables bidimensionales no tienen sentido las frecuencias acumuladas.}}
 \end{center}
 \note{Al igual que para las variables indivuales se definían las frecuencias muestrales, para las variables bidimensionales también se
 pueden calcular frecuencias muestrales. En particular, para cada par de valores $(x_i,y_j)$ se puden calcular dos tipos de frecuencias, las
@@ -125,11 +84,7 @@ pueden ordenar los pares con respecto a las dos variables a la vez.}
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Distribución de frecuencias bidimensional}
-Al conjunto de valores de la variable bidimensional y sus respectivas frecuencias muestrales se le denomina \structure{\textbf{distribución
-conjunta}}.
-
-La distribución conjunta de una variable bidimensional se suele representar mediante una \structure{\textbf{tabla de frecuencias
-bidimensional}}.
+Al conjunto de valores de la variable bidimensional y sus respectivas frecuencias muestrales se le denomina \structure{\textbf{distribución conjunta}}, y se representa mediante una \highlight{tabla de frecuencias bidimensional}.
 
 \[
 \begin{array}{|c|ccccc|}
@@ -174,7 +129,7 @@ $x_i$ y la columna del valor $y_j$.}
 \begin{frame}
 \frametitle{Distribución de frecuencias bidimensional}
 \framesubtitle{Ejemplo con estaturas y pesos}
-Se ha medido la estatura (en cm) y el peso (en Kg) de 30 universitarios obteniendo:
+La estatura (en cm) y el peso (en Kg) de una muestra de 30 estudiantes es:
 \begin{center}
 (179,85), (173,65), (181,71), (170,65), (158,51), (174,66), (172,62),\\ 
 (166,60), (194,90), (185,75),(162,55), (187,78), (198,109), (177,61),\\ 
@@ -182,6 +137,7 @@ Se ha medido la estatura (en cm) y el peso (en Kg) de 30 universitarios obtenien
 (182,60), (167,59), (169,62), (172,70), (186,71), (172,54), (176,68),\\
 (168,67), (187,80).
 \end{center}
+La tabla de frecuencias bidimensional es
 %\setlength\arraycolsep{3mm}
 %\setlength\arrayrulewidth{0.5pt}
 \[
@@ -216,17 +172,19 @@ De este modo se van calculando el resto de las frecuencias hasta completar la ta
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-  \frametitle{Diagrama de dispersión}
-A menudo, la información de la tabla de frecuencias bidimensional se representa también gráficamente.
+\frametitle{Diagrama de dispersión}
+La distribución de frecuencias conjunta de una variable bidimensional puede representarse gráficamente mediante un \highlight{diagrama de dispersión}, donde los datos se representan como una colección de puntos en un plano cartesiano.
 
-La representación gráfica que más se utiliza en el estudio de la dependencia de dos variables es el \structure{\textbf{diagrama de
-dispersión}}, que consiste en representar sobre un plano cartesiano los puntos que se corresponden con los valores $(x_i,y_j)$ de la
-variable bidimensional.
+Habitualmente la variable independiente se representa en el eje $X$ y la variable dependiente en el eje $Y$.
+Por cada par de valores $(x_i,y_j)$ en la muestra se dibuja un punto en el plano con esas coordenadas.
+\begin{center}
+\tikzsetnextfilename{regresion/diagrama_dispersion}
+\resizebox{0.4\textwidth}{!}{\input{img/regresion/diagrama_dispersion}}
+\end{center}
 
-El conjunto de todos estos puntos recibe el nombre de \emph{nube de puntos}.
+El resultado es un conjunto de puntos que se conoce como \emph{nube de puntos}.
 
-En un diagrama de dispersión sólo se recogen los valores observados en la muestra, no las frecuencias de los mismos. Para reflejar las
-frecuencias tendríamos que recurrir a otro tipo de representación como un \emph{diagrama de burbujas} o \emph{histograma tridimensional}.
+%En un diagrama de dispersión sólo se recogen los valores observados en la muestra, no las frecuencias de los mismos. Para reflejar las frecuencias tendríamos que recurrir a otro tipo de representación como un \emph{diagrama de burbujas} o \emph{histograma tridimensional}.
 
 \begin{center}
 \alert{\emph{¡Ojo! No tiene sentido cuando alguna de las variables es un atributo.}}
@@ -246,7 +204,9 @@ atributo. }
 \begin{frame}
 \frametitle{Diagrama de dispersión}
 \begin{center}
-\scalebox{0.8}{\input{img/regresion/diagrama_dispersion_estatura_peso}}
+\tikzsetnextfilename{regresion/diagrama_dispersion_estatura_peso}
+\mode<article>{\resizebox{0.7\textwidth}{!}{\input{img/regresion/diagrama_dispersion_estatura_peso}}}
+\mode<presentation>{\resizebox{0.9\textwidth}{!}{\input{img/regresion/diagrama_dispersion_estatura_peso}}}
 \end{center}
 \note{En este ejemplo se muestra el diagrama de dispersión correspondiente al ejemplo de las estasturas y los pesos de los 30 estudiantes.
 Cada punto de la nube de puntos corresponde a un individuo de la muestra. Así, por ejemplo, este punto, con coordenada $X$ 179 y coordenada
@@ -258,18 +218,10 @@ $Y$ 85 corresponde al primer individuo de la muestra que medía 179 cm y pesaba 
 \begin{frame}
 \frametitle{Interpretación del diagrama de dispersión}
 El diagrama de dispersión da información visual sobre el tipo de relación entre las variables.
-\begin{center}
-\scalebox{0.35}{
-\begin{tabular}{ccc}
-\input{img/regresion/diagrama_dispersion_sin_relacion} &
-\input{img/regresion/diagrama_dispersion_relacion_lineal} &
-\input{img/regresion/diagrama_dispersion_relacion_parabolica}\\
-\input{img/regresion/diagrama_dispersion_relacion_exponencial} &
-\input{img/regresion/diagrama_dispersion_relacion_logaritmica} &
-\input{img/regresion/diagrama_dispersion_relacion_inversa}
-\end{tabular}
-}
-\end{center}
+
+\tikzsetnextfilename{regresion/diagrama_dispersion_tipos_relaciones}
+\resizebox{\textwidth}{!}{\input{img/regresion/diagrama_dispersion_tipos_relaciones}}
+
 \note{Dependiendo del tipo de relación entre las variables, la nube de puntos del diagrama de dispersión tendrá distintas formas. Aquí se
 presentan algunos ejemplos.
 
@@ -293,39 +245,32 @@ Y finalmente el último caso correspondería a una relación inversa.}
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Distribuciones marginales}
-A cada una de las distribuciones de las variables que conforman la variable bidimensional se les llama \structure{\textbf{distribuciones
-marginales}}.
+A cada una de las distribuciones de las variables que conforman la variable bidimensional se les llama \structure{\textbf{distribuciones marginales}}.
 
-Las distribuciones marginales se pueden obtener a partir de la tabla de frecuencias bidimensional, sumando las frecuencias por filas y
-columnas.
+Las distribuciones marginales se pueden obtener a partir de la tabla de frecuencias bidimensional, sumando las frecuencias por filas y columnas.
 \begin{center}
-\begin{pspicture}(0,0)(6,4)
-\rput[bl](0,0){
 \[
-\begin{array}{|c|ccccc|>{\columncolor{royalblue1}}c|}
+\begin{array}{|c|ccccc|>{\columncolor{color1!50}}c|}
 \hline
 X\backslash Y & y_1 & \cdots & y_j & \cdots & y_q & n_x\\
 \hline
-x_1 & n_{11} & \cdots & n_{1j} & \cdots & n_{1q} & n_{x1}\\
-\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots \\
-x_i & n_{i1} & \cdots & n_{ij} & \cdots & n_{iq} & n_{xi}\\
-\vdots & \vdots & \vdots & \vdots & \vdots & \vdots & \vdots\\
-x_p & n_{p1} & \cdots & n_{pj} & \cdots & n_{pq} & n_{xp} \\
+x_1 & n_{11} & \cdots & n_{1j} & \cdots & n_{1q} & n_{x_1}\\
+\vdots & \vdots & \vdots & \tikz[baseline=-0.5ex]{\node at (0,0) [fill=color2!50,single arrow,shape border
+rotate=270, single arrow head extend=1mm]{$+$\phantom{}}; } & \vdots &
+\vdots & \vdots \\
+x_i & n_{i1} & \tikz[baseline=-0.5ex]{\node at (0,0) [fill=color1!50,single arrow,shape border rotate=0,
+single arrow head extend=1mm]{$+$\phantom{}}; }  & n_{ij} & \tikz[baseline=-0.5ex]{\node
+at (0,0) [fill=color1!50,single arrow,shape border rotate=0, single
+arrow head extend=1mm]{$+$\phantom{}}; } & n_{iq} & n_{x_i}\\
+\vdots & \vdots & \vdots & \tikz[baseline=-0.5ex]{\node at (0,0) [fill=color2!50,single arrow,shape border
+rotate=270, single arrow head extend=1mm]{$+$\phantom{}}; } & \vdots & \vdots & \vdots\\
+x_p & n_{p1} & \cdots & n_{pj} & \cdots & n_{pq} & n_{x_p} \\
 \hline
-\rowcolor{coral}
-n_y & n_{y1} & \cdots & n_{yj} & \cdots & n_{yq} & \cellcolor{white} n\\
+\rowcolor{color2!50}
+n_y & n_{y_1} & \cdots & n_{y_j} & \cdots & n_{y_q} & \cellcolor{white} n\\
 \hline
 \end{array}
-\]}
-\psline[linewidth=0.2cm,linecolor=royalblue1]{->}(1.9,1.75)(2.9,1.75)
-\rput[b](2.35,1.65){$+$}
-\psline[linewidth=0.2cm,linecolor=royalblue1]{->}(3.4,1.75)(4.4,1.75)
-\rput[b](3.85,1.65){$+$}
-\psline[linewidth=0.2cm,linecolor=coral]{->}(3.15,2.65)(3.15,1.85)
-\rput[b](3.15,2.2){$+$}
-\psline[linewidth=0.2cm,linecolor=coral]{->}(3.15,1.55)(3.15,0.75)
-\rput[b](3.15,1.1){$+$}
-\end{pspicture}
+\]
 \end{center}
 
 \note{A partir de la tabla de frecuencias bidimensional es posible obtener la distribución de frecuencias de cada una de las variables
@@ -364,7 +309,7 @@ En el ejemplo anterior de las estaturas y los pesos, las distribuciones marginal
   \hline
 \end{array}
 \]
-y los estadísticos asociados:
+y los estadísticos correspondientes son
 \[
 \begin{array}{lllll}
 \bar x = 174.67 \mbox{ cm} & \quad & s^2_x = 102.06 \mbox{ cm}^2 & \quad & s_x = 10.1 \mbox{ cm}\\
@@ -392,10 +337,11 @@ típica de $12.82$ kg.}
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Desviaciones respecto de las medias}
-Para analizar la relación entre dos variables cuantitativas es importante hacer un estudio conjunto de las desviaciones
-respecto de la media de cada variable.
+Para analizar la relación entre dos variables cuantitativas es importante hacer un estudio conjunto de las desviaciones respecto de la media de cada variable.
 \begin{center}
-\scalebox{0.8}{\input{img/regresion/desviaciones}}
+\tikzsetnextfilename{regresion/desviaciones_media}
+\mode<article>{\resizebox{0.7\textwidth}{!}{\input{img/regresion/desviaciones_medias}}}
+\mode<presentation>{\resizebox{0.8\textwidth}{!}{\input{img/regresion/desviaciones_medias}}}
 \end{center}
 
 \note{Como ya hemos dicho, para describir la relación entre dos variables no podemos estudiarlas por separado, sino que hay que estudiarlas
@@ -410,7 +356,7 @@ desviaciones de la variable $Y$ se mide la distancia vertical de cada valor a la
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Estudio de las desviaciones respecto de las medias}
+\frametitle{Signo de las desviaciones respecto de las medias}
 Si dividimos la nube de puntos del diagrama de dispersión en 4 cuadrantes centrados en el punto de medias $(\bar x, \bar y)$, el signo de las desviaciones será:
 \begin{center}
 \mode<presentation>{\rowcolors{1}{red!20}{red!10}}
@@ -424,7 +370,8 @@ Cuadrante & $(x_i-\bar x)$ & $(y_j-\bar y)$ & $(x_i-\bar x)(y_j-\bar y)$\\
 \hline
 \end{tabular}
 
-\scalebox{0.5}{\input{img/regresion/cuadrantes_nube_puntos}}
+\tikzsetnextfilename{regresion/cuadrantes_diagrama_dispersion}
+\resizebox{0.4\textwidth}{!}{\input{img/regresion/cuadrantes_diagrama_dispersion}}
 \end{center}
 
 \note{Si dividimos la nube de puntos del diagrama de dispersión en 4 cuadrantes centrados en el punto de medias $(\bar x, \bar y)$, el signo
@@ -456,19 +403,23 @@ en el segundo y cuarto cuadrantes tendrán signo negativo.}
 \begin{column}{0.5\textwidth}
 Si la relación entre las variables es \emph{lineal y creciente}, entonces la
 mayor parte de los puntos estarán en los cuadrantes 1 y 3 y la suma de los productos de desviaciones será positiva.
-\begin{center}
-\scalebox{0.43}{\input{img/regresion/diagrama_dispersion_relacion_lineal_creciente}}
-\end{center} 
+\centering
+\tikzsetnextfilename{regresion/diagrama_dispersion_lineal_creciente}
+\mode<article>{\resizebox{0.6\textwidth}{!}{\input{img/regresion/diagrama_dispersion_lineal_creciente}}}
+\mode<presentation>{\resizebox{0.9\textwidth}{!}{\input{img/regresion/diagrama_dispersion_lineal_creciente}}}
+
 \[
 \sum(x_i-\bar x)(y_j-\bar y) = +
 \]
 \end{column}
 \begin{column}{0.5\textwidth}
-Si la relación entre las variables es \emph{lineal y decreciente}, entonces la
-mayor parte de los puntos estarán en los cuadrantes 2 y 4 y la suma de los productos de desviaciones será negativa.
-\begin{center}
-\scalebox{0.43}{\input{img/regresion/diagrama_dispersion_relacion_lineal_decreciente}}
-\end{center} 
+Si la relación entre las variables es \emph{lineal y decreciente}, entonces la mayor parte de los puntos estarán en los cuadrantes 2 y 4 y la suma de los productos de desviaciones será negativa.
+
+\centering
+\tikzsetnextfilename{regresion/diagrama_dispersion_lineal_decreciente}
+\mode<article>{\resizebox{0.6\textwidth}{!}{\input{img/regresion/diagrama_dispersion_lineal_decreciente}}}
+\mode<presentation>{\resizebox{0.9\textwidth}{!}{\input{img/regresion/diagrama_dispersion_lineal_decreciente}}}
+
 \[
 \sum(x_i-\bar x)(y_j-\bar y) = -
 \]
@@ -489,7 +440,8 @@ cuyo producto de desviaciones sea positivo, de manera que la suma de los product
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Covarianza}
-Del estudio conjunto de las desviaciones respecto de la media surge el siguiente estadístico de relación lineal:
+Usando el producto de las desviaciones respecto de las medias surge el siguiente estadístico.
+
 \begin{definicion}[Covarianza muestral]
 La \emph{covarianza muestral} de una variable aleatoria bidimensional $(X,Y)$ se define como el promedio de los
 productos de las respectivas desviaciones respecto de las medias de $X$ e $Y$.
@@ -583,19 +535,11 @@ interpretar las unidades de cm por kg.}
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Regresión}
-En muchos casos el objetivo de un estudio no es solo detectar una relación entre variables, sino explicarla mediante
-alguna función matemática.
+En muchos casos el objetivo de un estudio no es solo detectar una relación entre dos variables, sino explicarla mediante alguna función matemática
+\[y=f(x)\]
+que permita predecir la variable dependiente para cada valor de la independiente.
 
-La \structure{\textbf{regresión}} es la parte de la estadística que trata de determinar la posible relación entre una variable numérica
-dependiente $Y$, y otro conjunto de variables numéricas independientes, $X_1,X_2,\ldots,X_n$, de una misma población. Dicha relación se
-refleja mediante un modelo funcional 
-\[ y=f(x_1,\ldots,x_n). \]
-
-El objetivo es determinar una ecuación mediante la que pueda estimarse el valor de la variable dependiente en función de los valores de las independientes.
-
-El caso más sencillo se da cuando sólo hay una variable independiente $X$, entonces se habla de \emph{regresión
-simple}. En este caso el modelo que explica la relación de $Y$ como función de $X$ es una función de una variable
-$y=f(x)$ que se conoce como \structure{\textbf{función de regresión}}.
+La \highlight{regresion} es la parte de la Estadística encargada de construir esta función, que se conoce como \highlight{función de regresión} o \highlight{odelo de regresión}.
 
 \note{En muchos casos el objetivo de un estudio no es solo detectar si existe cierta relación entre variables, sino explicarla mediante
 alguna función matemática.
@@ -612,8 +556,8 @@ sóla variable $y=f(x)$ que se conoce como función de regresión simple.
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Modelos de regresión simple}
-Dependiendo de la forma de función de regresión, existen muchos tipos de regresión simple. Los más habituales son los que aparecen en la
-siguiente tabla:
+Dependiendo de la forma de función de regresión, existen muchos tipos de regresión simple. 
+Los más habituales son los que aparecen en la siguiente tabla:
 \begin{center}
 \mode<presentation>{\rowcolors{1}{red!20}{red!10}}
 \begin{tabular}{|l|c|}
@@ -662,15 +606,13 @@ A la hora de decidir qué modelo construir habrá que tener en cuenta la forma q
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Residuos o errores predictivos}
-Una vez elegida la familia de curvas que mejor se adapta a la nube de puntos, se determina, dentro de dicha familia, la curva que mejor se
-ajusta a la distribución.
+Una vez elegida la familia de curvas que mejor se adapta a la nube de puntos, se determina, dentro de dicha familia, la curva que mejor se ajusta a la distribución, es decir, la función que mejor predice la variable dependiente.
 
-El objetivo es encontrar la función de regresión que haga mínimas las distancias entre los valores de la variable dependiente observados en
-la muestra, y los predichos por la función de regresión. Estas distancias se conocen como \emph{residuos} o \emph{errores predictivos}.
+El objetivo es encontrar la función de regresión que haga mínimas las distancias entre los valores de la variable dependiente observados en la muestra, y los predichos por la función de regresión. 
+Estas distancias se conocen como \emph{residuos} o \emph{errores predictivos}.
 
 \begin{definicion}[Residuos o Errores predictivos]
-Dado el modelo de regresión $y=f(x)$ para una variable bidimensional $(X,Y)$, el \emph{residuo} o \emph{error
-predictivo} de un valor $(x_i,y_j)$ observado en la muestra, es la diferencia entre el valor observado de la variable dependiente $y_j$ y el predicho por la función de regresión para $x_i$:
+Dado el modelo de regresión $y=f(x)$ para una variable bidimensional $(X,Y)$, el \emph{residuo} o \emph{error predictivo} de un valor $(x_i,y_j)$ observado en la muestra, es la diferencia entre el valor observado de la variable dependiente $y_j$ y el predicho por la función de regresión para $x_i$:
 \[
 e_{ij} = y_j-f(x_i) .
 \]
@@ -690,9 +632,11 @@ el valor observado en la variable dependiente $f(x_i)$..
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Residuos o errores predictivos en $Y$}
-\begin{center}
-\scalebox{0.8}{\input{img/regresion/residuos_y}}
-\end{center}
+\centering
+\tikzsetnextfilename{regresion/residuos_y}
+\mode<article>{\resizebox{0.7\textwidth}{!}{\input{img/regresion/residuos_y}}}
+\mode<presentation>{\resizebox{0.9\textwidth}{!}{\input{img/regresion/residuos_y}}}
+
 \note{Es decir, en el caso de representar la variable dependiente en el eje $Y$ los residuos de cada punto serían las distancias verticales
 desde el punto hasta la curva de la función de regresión.
 
@@ -704,15 +648,13 @@ mejor explicará la relación entre las variables.
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Método de mínimos cuadrados}
-Una forma posible de obtener la función de regresión es mediante el método de \emph{mínimos cuadrados} que consiste en calcular la función
-que haga mínima la suma de los cuadrados de los residuos
+\frametitle{Ajuste de mínimos cuadrados}
+Una forma posible de obtener la función de regresión es mediante el método de \emph{mínimos cuadrados} que consiste en calcular la función que haga mínima la suma de los cuadrados de los residuos
 \[
 \sum e_{ij}^2.
 \]
 
-En el caso de un modelo de regresión lineal $f(x) = a + bx$, como la recta depende de dos parámetros (el término independiente $a$ y la
-pendiente $b$), la suma también dependerá de estos parámetros
+En el caso de un modelo de regresión lineal $f(x) = a + bx$, como la recta depende de dos parámetros (el término independiente $a$ y la pendiente $b$), la suma también dependerá de estos parámetros
 \[
 \theta(a,b) = \sum e_{ij}^2 =\sum (y_j - f(x_i))^2 =\sum (y_j-a-bx_i)^2.
 \]
@@ -747,7 +689,7 @@ Tras resolver el sistema se obtienen los valores
 \[
 a= \bar y - \frac{s_{xy}}{s_x^2}\bar x \qquad b=\frac{s_{xy}}{s_x^2}
 \]
-Estos valores hacen mínimos los residuos en $Y$ y por tanto dan la recta de regresión.
+Estos valores hacen mínimos los residuos en $Y$ y por tanto dan la recta de regresión óptima.
 
 \note{Aunque no insistiremos en los detalles matemáticos del cálculo de mínimos, hay que recordar que el cálculo del mínimo de una función
 se hacía entre los puntos que anulaban su derivada. En nuestro caso, puesto que la suma de los residuos al cuadrado depende de dos
@@ -770,8 +712,7 @@ y = \bar y +\frac{s_{xy}}{s_x^2}(x-\bar x).
 \] 
 \end{definicion}
 
-La recta de regresión de $Y$ sobre $X$ es la recta que hace mínimos los errores predictivos en $Y$, y por tanto es la recta que hará mejores
-predicciones de $Y$ para cualquier valor de $X$.
+La recta de regresión de $Y$ sobre $X$ es la recta que hace mínimos los errores predictivos en $Y$, y por tanto es la recta que hará mejores predicciones de $Y$ para cualquier valor de $X$.
 
 \note{Al sustituir estos valores en la ecuación genérica de la recta $f(x)=a+bx$, se obtiene la recta de ecuación $y = \bar y
 +\frac{s_{xy}}{s_x^2}(x-\bar x)$ que se conoce como recta de regresión de $Y$ sobre $X$ y es la recta que mejor explica la relación lineal
@@ -793,14 +734,18 @@ Siguiendo con el ejemplo de las estaturas ($X$) y los pesos ($Y$) con los siguie
 & & s_{xy} = 104.07 \mbox{ cm$\cdot$ Kg} & &
 \end{array}
 \]
-Entonces, la recta de regresión del peso sobre la estatura es:
+Entonces, la recta de regresión del peso sobre la estatura es
 \[
-y = \bar y +\frac{s_{xy}}{s_x^2}(x-\bar x) = 69.67+\frac{104.07}{102.06}(x-174.67) = 1.02 x - 108.49.
+y = \bar y +\frac{s_{xy}}{s_x^2}(x-\bar x) = 69.67+\frac{104.07}{102.06}(x-174.67) = - 108.49+1.02 x .
 \]
-De igual modo, si en lugar de considerar el peso como variable dependiente, tomamos la estatura, entonces la recta de regresión de la estatura sobre el peso es:
+De igual modo, si tomamos la estatura como variable dependiente, la recta de regresión de la estatura sobre el peso es
 \[
-x = \bar x +\frac{s_{xy}}{s_y^2}(y-\bar y) = 174.67+\frac{104.07}{164.42}(y-69.67) = 0.63 y +130.78.
+x = \bar x +\frac{s_{xy}}{s_y^2}(y-\bar y) = 174.67+\frac{104.07}{164.42}(y-69.67) = 130.78+0.63 y .
 \]
+
+\begin{center}
+\emph{¡Obsérvese que ambas rectas de regresión son diferentes!}
+\end{center}
 
 \note{Siguiendo con el ejemplo de las estaturas y los pesos, si tomamos como variable independiente $X$ la estatura, y como variable
 dependiente $Y$ los pesos, la recta de regresión del peso sobre la estarura tendrá como ecuación 
@@ -821,7 +766,9 @@ x = \bar x +\frac{s_{xy}}{s_y^2}(y-\bar y) = 174.67+\frac{104.07}{164.42}(y-69.6
 \frametitle{Rectas de regresión}
 \framesubtitle{Ejemplo de estaturas y pesos}
 \begin{center}
-\scalebox{0.78}{\input{img/regresion/rectas_regresion}}
+\tikzsetnextfilename{regresion/rectas_regresion}
+\mode<article>{\resizebox{0.7\textwidth}{!}{\input{img/regresion/rectas_regresion}}}
+\mode<presentation>{\resizebox{0.9\textwidth}{!}{\input{img/regresion/rectas_regresion}}}
 \end{center}
 
 \note{Si dibujamos ambas rectas, la del peso sobre la estatura y la de la estatura sobre el peso, podemos comprobar que se trata de rectas
@@ -838,13 +785,16 @@ ecuaciones.
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Posición relativa de las rectas de regresión}
-Las rectas de regresión siempre se cortan en el punto de medias $(\bar x,\bar y)$.
+Habitualmente, las rectas de regresión $Y$ sobre $X$ y de $X$
+sobre $Y$ no coinciden, pero siempre se cortan en el punto de medias $(\bar x,\bar y)$.
 
 \begin{columns}
 \begin{column}{0.48\textwidth}
 Si entre las variables la relación lineal es perfecta, entonces ambas rectas coinciden ya que sus residuos son nulos.
 \begin{center}
-\scalebox{0.5}{\input{img/regresion/rectas_dependencia_lineal_perfecta}}
+\tikzsetnextfilename{regresion/regresion_lineal_perfecta}
+\mode<article>{\resizebox{0.6\textwidth}{!}{\input{img/regresion/regresion_lineal_perfecta}}}
+\mode<presentation>{\resizebox{0.9\textwidth}{!}{\input{img/regresion/regresion_lineal_perfecta}}}
 \end{center}
 \end{column}
 \begin{column}{0.48\textwidth}
@@ -852,7 +802,9 @@ Si no hay relación lineal, entonces las ecuaciones de las rectas son\\
 \qquad \qquad $y = \bar y$, \qquad $x = \bar x,$\\
 y se cortan perpendicularmente  
 \begin{center}
-\scalebox{0.5}{\input{img/regresion/rectas_independencia_lineal}}
+\tikzsetnextfilename{regresion/rectas_independencia_lineal}
+\mode<article>{\resizebox{0.6\textwidth}{!}{\input{img/regresion/rectas_independencia_lineal}}}
+\mode<presentation>{\resizebox{0.9\textwidth}{!}{\input{img/regresion/rectas_independencia_lineal}}}
 \end{center}
 \end{column}
 \end{columns}
@@ -875,6 +827,8 @@ Así pues, cuanto menor sea el ángulo con que se cortan las rectas, mayor será
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Coeficiente de regresión}
+El parámetro más importante de una recta de regresión es su pendiente.
+
 \begin{definicion}[Coeficiente de regresión $b_{yx}$]
 Dada una variable bidimensional $(X,Y)$, el \emph{coeficiente de regresión} de la recta de regresión de $Y$ sobre $X$ es su pendiente,
 \[
@@ -882,21 +836,40 @@ b_{yx} = \frac{s_{xy}}{s_x^2}
 \]
 \end{definicion}
 
-El coeficiente de regresión siempre tiene el mismo signo que la covarianza y refleja el crecimiento de la recta de regresión, ya que da el
-número de unidades que aumenta o disminuye la variable dependiente por cada unidad que aumenta la variable independiente, según la recta de
-regresión.
+El coeficiente de regresión siempre tiene el mismo signo que la covarianza.
 
-En el ejemplo de las estaturas y los pesos, el coeficiente de regresión del peso sobre la estatura es $b_{yx}= 1.02$ Kg/cm, lo que indica
-que, según la recta de regresión del peso sobre la estatura, por cada cm más de estatura, la persona pesará $1.02$ Kg más.
-
+Refleja el crecimiento de la variable dependiente en relación a la independiente según la recta de regresión. 
+En concreto da el número de unidades que aumenta o disminuye la variable dependiente por cada unidad que aumenta la variable independiente.
 \note{En la ecuación de la recta de regresión de $Y$ sobre $X$, la parte más importante es la pendiente que se conoce como coeficiente de
 regresión de $Y$ sobre $X$ y vale $b_{yx} = \frac{s_{xy}}{s_x^2}$.
 
-El coeficiente de regresión siempre tiene el mismo signo que la covarianza y refleja el crecimiento de la recta de regresión, ya que da el
-número de unidades que aumenta o disminuye la variable dependiente por cada unidad que aumenta la variable independiente, según la recta de
-regresión.
+El coeficiente de regresión siempre tiene el mismo signo que la covarianza. 
 
-En el ejemplo de las estaturas y los pesos, el coeficiente de regresión del peso sobre la estatura es $b_{yx}= 1.02$ Kg/cm, lo que indica
+Refleja el crecimiento de la variable dependiente en relación a la independiente según la recta de regresión. En concreto da el número de unidades que aumenta o disminuye la variable dependiente por cada unidad que aumenta la variable independiente.}
+\end{frame}
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Regression coefficient}
+\framesubtitle{Example of heights and weights}
+
+En el ejemplo de las estaturas y los pesos, la recta de regresión del peso sobre la estatura era
+\[
+y=-108.49 +1.02 x,
+\]
+de manera que el coeficiente de regresión del peso sobre la estatura es 
+\[
+b_{yx}= 1.02 \mbox{Kg/cm.}
+\]
+Esto significa que, según la recta de regresión del peso sobre la estatura, por cada cm más de estatura, la persona pesará $1.02$ Kg más.
+
+\begin{center}
+\tikzsetnextfilename{regresion/interpretacion_pendiente}
+\input{img/regresion/interpretacion_pendiente}
+\end{center}
+
+
+\note{En el ejemplo de las estaturas y los pesos, el coeficiente de regresión del peso sobre la estatura es $b_{yx}= 1.02$ Kg/cm, lo que indica
 que, según la recta de regresión del peso sobre la estatura, por cada cm más de estatura, la persona pesará $1.02$ Kg más.
 }
 \end{frame}
@@ -944,14 +917,10 @@ Sustituyendo en esta otra recta $Y$ por 79 kg, se obtiene una predicción de la 
 % ---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Correlación}
-Una vez construido un modelo de regresión, para saber si se trata de un buen modelo predictivo, se tiene que analizar
-el grado de dependencia entre las variables según el tipo de dependencia planteada en el modelo. De ello se encarga la
-parte de la estadística conocida como \structure{\textbf{correlación}}.
+Una vez construido un modelo de regresión, para saber si se trata de un buen modelo predictivo, se tiene que analizar el grado de dependencia entre las variables según el tipo de dependencia planteada en el modelo. 
+De ello se encarga la parte de la estadística conocida como \highlight{{correlación}}.
 
-Para cada tipo de modelo existe el correspondiente tipo de correlación.
-
-La correlación se basa en el estudio de los residuos. Cuanto menores sean éstos, más se ajustará la curva de regresión a los puntos, y más
-intensa será la correlación.
+La correlación se basa en el estudio de los residuos: cuanto menores sean éstos, más se ajustará la curva de regresión a los puntos, y más intensa será la correlación.
 
 \note{Una vez construido un modelo de regresión, para saber si se trata de un buen modelo predictivo, se tiene que analizar
 el grado de dependencia entre las variables según el tipo de dependencia planteada en el modelo. De ello se encarga la
@@ -979,6 +948,12 @@ s_{ry}^2 = \frac{\sum e_{ij}^2n_{ij}}{n} = \frac{\sum (y_j - f(x_i))^2n_{ij}}{n}
 \end{definicion}
 Cuanto más alejados estén los puntos de la curva de regresión, mayor será la varianza residual y menor la dependencia.
 
+Cuando la relación lineal es perfecta los residuos se anulan y la varianza residual vale cero. 
+Por contra, cuando no existe relación, los residuos coinciden con las desviaciones de la media, y la varianza residual es igual a la varianza de la variable dependiente.
+\[
+0\leq s_{ry}^2\leq s_y^2
+\]
+
 \note{A partir de los residuos se puede calcular una primera medida de la bondad del ajuste del modelo de regresión de $Y$ sobre $X$,
 conocida como varianza residual. La varianza residual se representa $s_{ry}$ y es la suma de los residuos al cuadrado, dividida por el
 tamaño de la muestra.
@@ -996,7 +971,9 @@ resulta difícil de interpretar.
 \begin{frame}
 \frametitle{Descomposición de la variabilidad total: \\Variabilidad explicada y no explicada}
 \begin{center}
-\scalebox{0.8}{\input{img/regresion/descomposicion_variabilidad}}
+\tikzsetnextfilename{regresion/descomposicion_variabilidad}
+\mode<article>{\resizebox{0.7\textwidth}{!}{\input{img/regresion/descomposicion_variabilidad}}}
+\mode<presentation>{\resizebox{0.9\textwidth}{!}{\input{img/regresion/descomposicion_variabilidad}}}
 \end{center}
 
 \note{Para interpretar mejor la varianza residual, si dibujamos sobre el diagrama de dispersión, podemos comprobar que la variabilidad de
@@ -1028,8 +1005,7 @@ Dado un modelo de regresión simple $y=f(x)$ de una variable bidimensional $(X,Y
 r^2 = 1- \frac{s_{ry}^2}{s_y^2} 
 \]
 \end{definicion}
-El coeficiente de determinación mide la proporción de variabilidad de la variable dependiente explicada por el modelo de regresión, y por
-tanto, 
+Como la varianza residual puede tomar valores entre 0 y $s_y^2$, se tiene que
 \[
 \alert{0\leq r^2\leq 1}
 \]
@@ -1121,18 +1097,18 @@ regresión de la estatura sobre el peso explica el  65\% de la variabilidad de l
 Dada una variable bidimensional $(X,Y)$, el \emph{coeficiente de correlación lineal muestral} es
 la raíz cuadrada de su coeficiente de determinación lineal, con signo el de la covarianza
 \[
-r = \sqrt{r^2} = \dfrac{s_{xy}}{s_xs_y} $. 
+r = \sqrt{r^2} = \dfrac{s_{xy}}{s_xs_y}. 
 \]
 \end{definicion}
-Como $r^2$ toma valores entre 0 y 1, el coeficiente de correlación lineal tomará valores entre -1 y 1:
+Como $r^2$ toma valores entre 0 y 1, $r$ tomará valores entre -1 y 1:
 \[
 \alert{-1\leq r\leq 1}
 \]
-El coeficiente de correlación lineal también mide el grado de dependencia lineal:
+El coeficiente de correlación lineal no sólo mide mide el grado de dependencia lineal sino también su dirección (creciente o decreciente):
 \begin{itemize}
 \item Si $r =0$ entonces no existe relación lineal.
 \item Si $r=1$ entonces existe una relación lineal creciente perfecta.
-\item Si $r=-1$ entonces existe una relación lineal decrececiente perfecta.
+\item Si $r=-1$ entonces existe una relación lineal decreciente perfecta.
 \end{itemize}
 
 \note{Otra media habitual del grado de relación lineal entre dos variables es el coeficiente de correlación lineal, es la raíz cuadrada del
@@ -1150,11 +1126,19 @@ y cuado haya una relación lineal decreciente perfecta valdrá -1.
 \begin{frame}
 \frametitle{Coeficiente de correlación lineal}
 \framesubtitle{Ejemplo}
-En el ejemplo de las estaturas y los pesos, el coeficiente de correlación lineal vale
+En el ejemplo de las estaturas y los pesos se tenía 
+\[
+\begin{array}{lll}
+\bar x = 174.67 \mbox{ cm} & \quad & s^2_x = 102.06 \mbox{ cm}^2\\
+\bar y = 69.67 \mbox{ Kg} & & s^2_y = 164.42 \mbox{ Kg}^2\\
+s_{xy} = 104.07 \mbox{ cm$\cdot$ Kg}
+\end{array}
+\]
+De modo que el coeficiente de correlación lineal vale
 \[
 r = \frac{s_{xy}}{s_xs_y} = \frac{104.07 \mbox{ cm\cdot Kg}}{10.1 \mbox{ cm} \cdot 12.82 \mbox{ Kg}} = +0.8.
 \]
-lo que indica que la relación lineal entre el peso y la estatura es fuerte, y además creciente.
+Esto indica que la relación lineal entre el peso y la estatura es fuerte, y además creciente.
 
 \note{
 Por ejemplo, en el caso de las estaturas y los pesos, el coeficiente de correlación lineal vale 
@@ -1166,13 +1150,20 @@ lo que indica que la relación lineal entre el peso y la estatura es fuerte, y a
 \end{frame}
 
 
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Distintos grados de correlación}
+\centering
+\tikzsetnextfilename{regresion/grados_correlacion}
+\resizebox{\textwidth}{!}{\input{img/regresion/grados_correlacion}}
+\end{frame}
+
+
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Fiabilidad de las predicciones de un modelo de regresión}
-Aunque el coeficiente de determinación o el de correlación hablan de la bondad de un modelo de regresión, no es lo único que hay que
-tener en cuenta a la hora de hacer predicciones.
-
-La fiabilidad de las predicciones que hagamos con un modelo de regresión depende de varias cosas:
+Aunque el coeficiente de determinación o el de correlación determinan la bondad de ajuste de un modelo de regresión, existen otros factores que influyen en la fiabilidad de las predicciones de un modelo de regresión:
 \begin{itemize}
 \item El coeficiente de determinación: Cuanto mayor sea, menores serán los errores predictivos y mayor la fiabilidad de las predicciones.
 \item La variabilidad de la población: Cuanto más variable es una población, más difícil es predecir y por tanto menos fiables serán las
@@ -1181,8 +1172,7 @@ predicciones.
 \end{itemize} 
 
 Además, hay que tener en cuenta que un modelo de regresión es válido únicamente para el rango de valores observados en la muestra.
-Fuera de ese rango no hay información del tipo de relación entre las variables, por lo que no deben hacerse predicciones para valores lejos
-de los observados en la muestra.
+Fuera de ese rango no hay información del tipo de relación entre las variables, por lo que no deben hacerse predicciones para valores lejos de los observados en la muestra.
 
 \note{Aunque el coeficiente de determinación o el de correlación hablan de la bondad de un modelo de regresión, no es el único dato que hay que
 tener en cuenta a la hora de hacer predicciones.
@@ -1204,11 +1194,9 @@ Fuera de ese rango, al no disponer de información del tipo de relación entre l
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Regresión no lineal}
-El ajuste de un modelo de regresión no lineal es similar al del modelo lineal y también puede realizarse mediante la técnica de mínimos
-cuadrados.
+El ajuste de un modelo de regresión no lineal es similar al del modelo lineal y también puede realizarse mediante la técnica de mínimos cuadrados.
  
-No obstante, en determinados casos un ajuste no lineal puede convertirse en un ajuste lineal mediante una sencilla transformación de alguna
-de las variables del modelo.
+No obstante, en determinados casos un ajuste no lineal puede convertirse en un ajuste lineal mediante una sencilla transformación de alguna de las variables del modelo.
 
 \note{Ya hemos visto cómo se construyen las rectas de regresión. Para la construcción de los modelos de regresión no lineales el
 prodecidimiento es similar mediante el método de los mínimos cuadrados, aunque en determinados, transformando alguna de las variables del
@@ -1221,18 +1209,18 @@ modelo, es posible convertir el modelo no lineal en uno lineal que ya sabemos co
 \begin{frame}
 \frametitle{Transformación de modelos de regresión no lineales}
 \begin{itemize}
-\item \structure{\textbf{Modelo logarítmico}}: Un modelo logarítmico $y = a+b \log x$ se convierte en un modelo lineal haciendo el cambio
+\mode<presentation>{\small}
+\item \highlight{Modelo logarítmico}: Un modelo logarítmico $y = a+b \log x$ se convierte en un modelo lineal haciendo el cambio
 $t=\log x$:
 \[y=a+b\log x = a+bt.\]
-\item \structure{\textbf{Modelo exponencial}}: Un modelo exponencial $y = ae^{bx}$ se convierte en un modelo lineal haciendo el cambio $z = \log y$:
+\item \highlight{Modelo exponencial}: Un modelo exponencial $y = ae^{bx}$ se convierte en un modelo lineal haciendo el cambio $z = \log y$:
 \[z = \log y = \log(ae^{bx}) =  \log a + \log e^{bx} = a^\prime +bx. \] 
-\item \structure{\textbf{Modelo potencial}}: Un modelo potencial $y = ax^b$ se convierte en un modelo lineal haciendo los cambios
+\item \highlight{Modelo potencial}: Un modelo potencial $y = ax^b$ se convierte en un modelo lineal haciendo los cambios
 $t=\log x$ y $z=\log y$:
 \[z = \log y = \log(ax^b) = \log a + b \log x = a^\prime+bt.\]
-\item \structure{\textbf{Modelo inverso}}: Un modelo inverso $y = a+b/x$ se convierte en un modelo lineal haciendo el cambio $t=1/x$:
+\item \highlight{Modelo inverso}: Un modelo inverso $y = a+b/x$ se convierte en un modelo lineal haciendo el cambio $t=1/x$:
 \[y = a + b(1/x) = a+bt.\]
-\item \structure{\textbf{Modelo curva S}}: Un modelo curva S $y = e^{a+b/x}$ se convierte en un modelo lineal haciendo los cambios $t=1/x$
-y $z=\log y$:
+\item \highlight{Modelo curva S}: Un modelo curva S $y = e^{a+b/x}$ se convierte en un modelo lineal haciendo los cambios $t=1/x$ y $z=\log y$:
 \[z = \log y = \log (e^{a+b/x}) = a+b(1/x) = a+bt.\]
 \end{itemize}
 
@@ -1253,7 +1241,7 @@ logaritmo de la variable dependiente $z=\log y$.
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Ejemplo de ajuste de un modelo exponencial}
+\frametitle{Relación exponencial}
 \framesubtitle{Evolución del número de bacterias de un cultivo}
 El número de bacterias de un cultivo evoluciona con el tiempo según la siguiente tabla:
 \begin{columns}
@@ -1277,7 +1265,9 @@ El número de bacterias de un cultivo evoluciona con el tiempo según la siguien
 \begin{column}{0.6\textwidth}
 El diagrama de dispersión asociado es
 \begin{center}
-\scalebox{0.6}{\input{img/regresion/diagrama_dispersion_horas_bacterias}}
+\tikzsetnextfilename{regresion/evolucion_bacterias}
+\mode<article>{\resizebox{0.7\textwidth}{!}{\input{img/regresion/evolucion_bacterias}}}
+\mode<presentation>{\resizebox{0.9\textwidth}{!}{\input{img/regresion/evolucion_bacterias}}}
 \end{center}
 \end{column}
 \end{columns}
@@ -1293,7 +1283,7 @@ tiempo transcurrido.
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Ejemplo de ajuste de un modelo exponencial}
+\frametitle{Relación exponencial}
 \framesubtitle{Evolución del número de bacterias de un cultivo}
 Si realizamos un ajuste lineal, obtenemos la siguiente recta de regresión
 \begin{columns}
@@ -1319,7 +1309,9 @@ Si realizamos un ajuste lineal, obtenemos la siguiente recta de regresión
 \end{column}
 \begin{column}{0.6\textwidth}
 \begin{center}
-\scalebox{0.6}{\input{img/regresion/regresion_lineal_horas_bacterias}}
+\tikzsetnextfilename{regresion/regresion_lineal_bacterias}
+\mode<article>{\resizebox{0.7\textwidth}{!}{\input{img/regresion/regresion_lineal_bacterias}}}
+\mode<presentation>{\resizebox{0.9\textwidth}{!}{\input{img/regresion/regresion_lineal_bacterias}}}
 \end{center}
 \end{column}
 \end{columns}
@@ -1335,13 +1327,11 @@ su coefiente de determinación lineal vale $0.85$. Ahora bien, que sea un buen m
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Ejemplo de ajuste de un modelo exponencial}
+\frametitle{Ajuste de un modelo de regresión exponencial}
 \framesubtitle{Evolución del número de bacterias de un cultivo}
 Aunque el modelo lineal no es malo, de acuerdo al diagrama de dispersión es más lógico construir un modelo exponencial o cuadrático.
 
-
-Para construir el modelo exponencial $y = ae^{bx}$ hay que realizar la transformación $z=\log y$, es decir, aplicar el logaritmo a la
-variable dependiente.
+Para construir el modelo exponencial $y = ae^{bx}$ hay que realizar la transformación $z=\log y$, es decir, aplicar el logaritmo a la variable dependiente.
 
 \begin{columns}
 \begin{column}{0.45\textwidth}
@@ -1363,7 +1353,9 @@ variable dependiente.
 \end{column}
 \begin{column}{0.55\textwidth}
 \begin{center}
-\scalebox{0.58}{\input{img/regresion/diagrama_dispersion_horas_logbacterias}}
+\tikzsetnextfilename{regresion/evolucion_log_bacterias}
+\mode<article>{\resizebox{0.7\textwidth}{!}{\input{img/regresion/evolucion_log_bacterias}}}
+\mode<presentation>{\resizebox{0.9\textwidth}{!}{\input{img/regresion/evolucion_log_bacterias}}}
 \end{center}
 \end{column}
 \end{columns}
@@ -1381,7 +1373,7 @@ exponencial en una relación lineal.
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Ejemplo de ajuste de un modelo exponencial}
+\frametitle{Ajuste de un modelo de regresión exponencial}
 \framesubtitle{Evolución del número de bacterias de un cultivo}
 Ahora sólo queda calcular la recta de regresión del logaritmo de Bacterias sobre Horas
 \begin{columns}
@@ -1391,13 +1383,15 @@ Ahora sólo queda calcular la recta de regresión del logaritmo de Bacterias sob
 \]
 Y deshaciendo el cambio de variable, se obtiene el modelo exponencial
 \[
-\mbox{Bacterias} = e^{3.107+0.352\,\textrm{Horas}},
+\mbox{Bacterias} = e^{3.107+0.352\,\textrm{Horas}}, \mbox{ con } r^2=0.99.
 \]
-que, a la vista del coeficiente de determinación, es mucho mejor modelo que el lineal.
+Como se puede apreciar, el modelo exponencial se ajusta mucho mejor que el modelo lineal.
 \end{column}
 \begin{column}{0.55\textwidth}
 \begin{center}
-\scalebox{0.6}{\input{img/regresion/regresion_exponencial_horas_bacterias}}
+\tikzsetnextfilename{regresion/regresion_exponencial_bacterias}
+\mode<article>{\resizebox{0.7\textwidth}{!}{\input{img/regresion/regresion_exponencial_bacterias}}}
+\mode<presentation>{\resizebox{0.9\textwidth}{!}{\input{img/regresion/regresion_exponencial_bacterias}}}
 \end{center}
 \end{column}
 \end{columns}
@@ -1415,13 +1409,14 @@ número de bacterias y las horas que el modelo lineal. }
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Interpretación de un coeficiente de determinación pequeño}
-Tanto el coeficiente de determinación como el de correlación hacen referencia a un modelo concreto, de manera que un coeficiente $r^2=0$
-significa que no existe relación entre las variables del tipo planteado por el modelo, pero \emph{eso no quiere decir que las variables sean
+Es importante señalar que cada modelo de regresión tiene su propio coeficiente de determinación.
+Así, un coeficiente de determinación cercano a cero significa que no existe relación entre las variables del tipo planteado por el modelo, pero \emph{eso no quiere decir que las variables sean
 independientes}, ya que puede existir relación de otro tipo.
 \begin{center}
-\scalebox{0.55}{\input{img/regresion/recta_regresion_relacion_parabolica}}
-\qquad
-\scalebox{0.55}{\input{img/regresion/regresion_parabolica}}
+\tikzsetnextfilename{regresion/regresion_lineal_relacion_cuadratica}
+\resizebox{0.49\textwidth}{!}{\input{img/regresion/regresion_lineal_relacion_cuadratica}}
+\tikzsetnextfilename{regresion/regresion_cuadratica}
+\resizebox{0.49\textwidth}{!}{\input{img/regresion/regresion_cuadratica}}
 \end{center}
 
 \note{Hay que recordar que tanto el coeficiente de determinación hace referencia a un modelo concreto, de manera que
@@ -1437,14 +1432,11 @@ son independientes, tan sólo que no tienen relación lineal.}
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Datos atípicos en regresión}
-En un estudio de regresión es posible que aparezca algún individuo que se aleja notablemente de la tendencia del resto de individuos en la
-nube de puntos.
-
-Aunque el individuo podría no ser un \emph{dato atípico} al considerar las variables de manera separada, sí lo sería al
-considerarlas de manera conjunta.
+Los \emph{datos atípicos} en un estudio de regresión son los puntos que claramente no siguen la tendencia del resto de los puntos en el diagrama de dispersión, incluso si los valores del par no se pueden considerar atípicos para cada variable por separado.
 
 \begin{center}
-\scalebox{0.6}{\input{img/regresion/diagrama_dispersion_con_datos_atipicos}}
+\tikzsetnextfilename{regresion/diagrama_dispersion_con_datos_atipicos}
+\resizebox{0.7\textwidth}{!}{\input{img/regresion/diagrama_dispersion_con_datos_atipicos}}
 \end{center}
 
 \note{Otro de los problemas que pueden plantearse en la construcción de un modelo de regresión es la presencia de datos atípicos. En un
@@ -1459,13 +1451,13 @@ lo sería al considerarlas de manera conjunta.}
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Influencia de los datos atípicos en los modelos de regresión}
-Los datos atípicos en regresión suelen provocar cambios drásticos en el ajuste de los modelos de regresión, y por tanto, habrá que tener
-mucho cuidado con ellos.
+Los datos atípicos en regresión suelen provocar cambios drásticos en el ajuste de los modelos de regresión, y por tanto, habrá que tener mucho cuidado con ellos.
 
 \begin{center}
-\scalebox{0.55}{\input{img/regresion/recta_regresion_con_datos_atipicos}}
-\qquad
-\scalebox{0.55}{\input{img/regresion/recta_regresion_sin_datos_atipicos}}
+\tikzsetnextfilename{regresion/regresion_lineal_con_datos_atipicos}
+\resizebox{0.49\textwidth}{!}{\input{img/regresion/regresion_lineal_con_datos_atipicos}}
+\tikzsetnextfilename{regresion/regresion_lineal_sin_datos_atipicos}
+\resizebox{0.49\textwidth}{!}{\input{img/regresion/regresion_lineal_sin_datos_atipicos}}
 \end{center}
 
 \note{Los datos atípicos en un estudio de regresión son un problema porque suelen provocar cambios drásticos en el modelo de regresión.
@@ -1788,7 +1780,7 @@ se obtienen las siguientes frecuencias esperadas:
 \renewcommand{\arraystretch}{1.5}
 \begin{array}{|l|rr|r|} 
 \hline
-\text{Sexo\Fuma} & \text{Si} & \text{No} & n_i\\
+\mbox{Sexo\backslash Fuma} & \mbox{Si} & \mbox{No} & n_i\\
 \hline
 \text{Mujer} & \frac{40\cdot 38}{100}=15.2 & \frac{40\cdot 62}{100}=24.8 & 40 \\
 \text{Hombre} & \frac{60\cdot 38}{100}=22.8 & \frac{60\cdot 62}{100}=37.2 & 60 \\
