@@ -1,33 +1,28 @@
-\begin{pspicture}(0,0)(11,8)
-\rput(2,7){Distribución de la población}
-\rput(2,6.5){$X$}
-\uncover<2->{
-\psline[linewidth=10pt,linecolor=royalblue1,arrowlength=1,arrowinset=0]{->}(4.5,6.5)(5.5,6.5)
-\rput(5,6.5){?}
-\rput(8,7){Parámetro poblacional}
-\rput(8,6.5){$\theta$}
-}
-\uncover<3->{
-\psline[linewidth=10pt,linecolor=royalblue1,arrowlength=1,arrowinset=0]{->}(2,6)(2,5)
-\rput(2,4.5){Variable aleatoria muestral}
-\rput(2,4){$(X_1,\ldots,X_n)$}
-}
-\uncover<4->{
-\psline[linewidth=10pt,linecolor=royalblue1,arrowlength=1,arrowinset=0]{->}(4.5,4)(5.5,4)
-\rput(8,4.5){Estimador}
-\rput(8,4){$\hat \theta = F(X_1,\ldots,X_n)$}
-}
-\uncover<5->{
-\psline[linewidth=10pt,linecolor=royalblue1,arrowlength=1,arrowinset=0]{->}(2,3.5)(2,2.5)
-\rput(2,2){Muestra de tamaño $n$}
-\rput(2,1.5){$(x_1,\ldots,x_n)$}
-}
-\uncover<6->{
-\psline[linewidth=10pt,linecolor=royalblue1,arrowlength=1,arrowinset=0]{->}(4.5,1.5)(5.5,1.5)
-\rput(8,2){Estimación}
-\rput(8,1.5){$\hat \theta_0 = F(x_1,\ldots,x_n)$}
-}
-\uncover<7->{
-\pscurve[linewidth=5pt,linecolor=royalblue1,arrowlength=1,arrowinset=0]{->}(9.5,1.7)(10,4)(9.5,6.3)
-}
-\end{pspicture}
+% Autor: Alfredo Sánchez Alberca (email:asalber@ceu.es)
+% Gráfico que muestra la diferencia entre estimador y estimación 
+\begin{tikzpicture}
+\tikzstyle{node} = [align=center, node distance=1cm, text=color1]; 
+\tikzstyle{arrow} = [fill=color1, single arrow, shape border rotate=0, text=white, minimum width=1.1cm, align=left];
+
+\node at (0,5) {Distribución de la población}; 
+\node at (0,4.5) {$X$}; 
+\pause
+\node at (3,4.5) [arrow]{Parámetro poblacional};
+\node (parametro) at (6,4.5) {¿$\theta$?};
+\pause
+\draw[-latex, color1, line width=2pt] (0,4) -- (0,3); 
+\node at (0,2.5) {Variable aleatoria muestral}; 
+\node at (0,2) {$(X_1,\ldots,X_n)$};
+\pause
+\node at (3,2) [arrow]{Estimador};
+\node at (6,2) {$\hat\theta=F(X_1,\ldots,X_n)$}; 
+\pause
+\draw[-latex, color1, line width=2pt] (0,1.5) -- (0,0.5); 
+\node at (0,0) {Muestra de tamaño $n$}; 
+\node at (0,-0.5) {$(x_1,\ldots,x_n)$};
+\pause
+\node at (3,-0.5) [arrow]{Estimación};
+\node (estimacion) at (6,-0.5) {$\hat\theta_0=F(x_1,\ldots,x_n)$}; 
+\pause
+\draw [-latex, color1, line width=2pt] (estimacion.northeast) to [out=30,in=-30] (parametro.southeast)
+\end{tikzpicture} 

@@ -1,34 +1,31 @@
-\begin{pspicture}(0,0)(11,8)
-\rput(4.5,8){$X$}
-\rput(4.5,7){\includegraphics[scale=0.5]{img/estimacion/poblacion}}
-\rput(10,7){Población}
-\uncover<2->{
-\psline{->}(4.5,6.2)(1.2,5.2)
-\rput(1,5){$X_1$}
-\rput(1,4){\includegraphics[scale=0.5]{img/estimacion/poblacion}}
-\psline{->}(4.5,6.2)(4,5.2)
-\rput(4,5){$X_2$}
-\rput(4,4){\includegraphics[scale=0.5]{img/estimacion/poblacion}}
-\rput(6,4.2){$n$ copias}
-\rput(6,4){$\ldots$}
-\psline{->}(4.5,6.2)(7.8,5.2)
-\rput(8,5){$X_n$}
-\rput(8,4){\includegraphics[scale=0.5]{img/estimacion/poblacion}}
-\rput(10,5){Variable}
-\rput(10,4.5){aleatoria}
-\rput(10,4){muestral}
-}
-\uncover<3->{
-\psline{->}(1,3)(1,2)
-\rput(0.5,1){$x_1$}
-\rput(1,1){\includegraphics[scale=0.45]{img/estimacion/individuo1}}
-\psline{->}(4,3)(4,2)
-\rput(3.5,1){$x_2$}
-\rput(4,1){\includegraphics[scale=0.45]{img/estimacion/individuo2}}
-\rput(6,1){$\ldots$}
-\psline{->}(8,3)(8,2)
-\rput(7.5,1){$x_n$}
-\rput(8,1){\includegraphics[scale=0.45]{img/estimacion/individuo3}}
-\rput(10,1){Muestra}
-}
-\end{pspicture}
+% Autor: Alfredo Sánchez Alberca (email:asalber@ceu.es)
+% Gráfico que muestra cómo obtener una muestra a partir de la variable muestral
+\begin{tikzpicture}
+\tikzstyle{node} = [align=center, node distance=1cm, text=color1]; 
+\tikzstyle{arrow} = [-latex, color1, line width=2pt];
+
+\node (x) [label=90:$X$] at (0,5) {\includegraphics[height=1.5cm]{img/introduccion/poblacion.png}}; 
+\node [anchor=west, align=left] at (6,5) {Población};
+\pause
+\node (x1) [label=90:$X_1$] at (-5,2.5) {\includegraphics[height=1.5cm]{img/introduccion/poblacion.png}};
+\draw [arrow] (x) -- (x1); 
+\pause
+\node (x2) [label=90:$X_2$] at (-2,2.5) {\includegraphics[height=1.5cm]{img/introduccion/poblacion.png}};
+\draw [arrow] (x) -- (x2); 
+\pause
+\node [label=90:$n$ copias] at (1,2.5) {\LARGE\ldots};
+\node (xn) [label=90:$X_n$] at (4,2.5) {\includegraphics[height=1.5cm]{img/introduccion/poblacion.png}};
+\draw [arrow] (x) -- (xn); 
+\node [anchor=west, align=left] at (6,2.5) {Variable\\ Aleatoria\\ Muestral};
+\pause
+\node (i1) [label=-90:$x_1$, scale=1] at (-5,0) {\includegraphics[height=1.5cm]{img/estimacion/individuo1.png}};
+\draw [arrow] (x1) -- (i1);
+\pause 
+\node (i2) [label=-90:$x_2$] at (-2,0) {\includegraphics[height=1.5cm]{img/estimacion/individuo2.png}};
+\draw [arrow] (x2) -- (i2); 
+\pause
+\node at (1,2.5) {\LARGE\ldots};
+\node (in) [label=-90:$x_n$] at (4,0) {\includegraphics[height=1.5cm]{img/estimacion/individuo3.png}};
+\draw [arrow] (xn) -- (in); 
+\node [anchor=west, align=left] at (6,0) {Muestra};
+\end{tikzpicture} 

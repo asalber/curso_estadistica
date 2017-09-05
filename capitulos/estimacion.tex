@@ -45,21 +45,17 @@ Afortunadamente, estos errores pueden ser superados: La representatividad de la 
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Variable aleatoria muestral}
-Los valores de una variable $X$ en una muestra de tamaño $n$ de una población puede entenderse como un valor de una
-variable aleatoria $n$-dimensional.
+Los valores de una variable $X$ en una muestra de tamaño $n$ de una población pueden verse como el valor de una variable aleatoria $n$-dimensional.
 
 \begin{definicion}[Variable aleatoria muestral]
-Una \emph{variable aleatoria muestral} de una variable $X$ estudiada en una población es una colección de $n$
-variables aleatorias $X_1,\ldots,X_n$ tales que:
+Una \emph{variable aleatoria muestral} de una variable $X$ estudiada en una población es una colección de $n$ variables aleatorias $X_1,\ldots,X_n$ tales que:
 \begin{itemize}
-\item[--] Cada una de las variables $X_i$ sigue la misma distribución de probabilidad que la variable $X$ en
-la población.
+\item[--] Cada una de las variables $X_i$ sigue la misma distribución de probabilidad que la variable $X$ en la población.
 \item[--] Todas las variables $X_i$ son mutuamente independientes. 
 \end{itemize}
 \end{definicion}
 
-Los valores que puede tomar esta variable $n$ dimensional, serán todas las posibles muestras de tamaño $n$ que pueden
-extraerse de la población.
+Los valores que puede tomar esta variable $n$ dimensional, serán todas las posibles muestras de tamaño $n$ que pueden extraerse de la población.
 \end{frame}
 
 
@@ -125,10 +121,13 @@ F-Fisher & $m,n$\\
 La distribución de probabilidad de los valores de la variable muestral depende claramente de la distribución de probabilidad de los valores de la población.
 
 Ejemplo: Sea una población en la que la cuarta parte de las familias no tienen hijos, la mitad de las familias tiene 1 hijo, y el resto tiene 2 hijos.
+
 \begin{center}
-\begin{pspicture}(0,0)(10,4)
-\rput[r](3,2){
-\[ 
+\tikzsetnextfilename{estimacion/distribucion_variable_muestral}
+\begin{tikzpicture}
+\matrix[column sep=2em, ampersand replacement=\&] {
+\node{
+$
 \begin{array}{|c|c|}
 \multicolumn{2}{c}{\mbox{Distribución}}\\
 \multicolumn{2}{c}{\mbox{Poblacional}}\\
@@ -142,13 +141,13 @@ X & P(x)\\
 2 & 0.25 \\
 \hline
 \end{array}
-\]
-}
-\psline[linewidth=15pt,linecolor=royalblue1,arrowlength=1,arrowinset=0]{->}(3.5,2)(5.5,2)
-\rput[c](4.3,2.15){\scriptsize Muestras de}
-\rput[c](4.3,1.85){\scriptsize tamaño 2}
-\rput[l](6,2){
-\[
+$
+};
+\&
+\node at (0,0) [fill=color1, single arrow, shape border rotate=0, text=white, minimum width=1.1cm, align=left]{Muestras de\\ tamaño 2};
+\&
+\node{
+$
 \begin{array}{|c|c|}
 \multicolumn{2}{c}{\mbox{Distribución muestral}}\\
 \hline
@@ -173,9 +172,11 @@ X & P(x)\\
 (2,2) & 0.0625 \\
 \hline
 \end{array}
-\]
-}
-\end{pspicture}
+$
+}; 
+\\
+};
+\end{tikzpicture}
 \end{center}
 \end{frame}
 
@@ -184,15 +185,15 @@ X & P(x)\\
 \begin{frame}
 \frametitle{Distribución de un estadístico muestral}
 Por ser función de una variable aleatoria, un estadístico en el muestreo es también una variable aleatoria.
-
 Por tanto, su distribución de probabilidad también depende de la distribución de la población y de los parámetros que la determinan ($\mu,\sigma,p,\ldots $).
 
-Ejemplo: Si se toma la media muestral $\bar X$ de las muestras de tamaño 2 del ejemplo anterior, su distribución de
-probabilidad es
+Ejemplo: Si se toma la media muestral $\bar X$ de las muestras de tamaño 2 del ejemplo anterior, su distribución de probabilidad es
 \begin{center}
-\begin{pspicture}(0,0)(10,4)
-\rput[r](4,2){
-\[
+\tikzsetnextfilename{estimacion/distribucion_media}
+\begin{tikzpicture}
+\matrix[column sep=2em, ampersand replacement=\&] {
+\node{
+$
 \begin{array}{|c|c|}
 \multicolumn{2}{c}{\mbox{Distribución muestral}}\\
 \hline
@@ -217,13 +218,13 @@ probabilidad es
 (2,2) & 0.0625 \\
 \hline
 \end{array}
-\]
-}
-\psline[linewidth=15pt,linecolor=royalblue1,arrowlength=1,arrowinset=0]{->}(4.5,2)(6.5,2)
-\rput[c](5.3,2.15){\scriptsize Muestras de}
-\rput[c](5.3,1.85){\scriptsize tamaño 2}
-\rput[l](7,2){
-\[ 
+$
+};
+\&
+\node at (0,0) [fill=color1, single arrow, shape border rotate=0, text=white, minimum width=1.1cm, align=left]{$\bar x=\frac{X_1+X_2}{2}$};
+\&
+\node{
+$
 \begin{array}{|c|c|}
 \multicolumn{2}{c}{\mbox{Distribución}}\\
 \multicolumn{2}{c}{\mbox{de $\bar{x}$}}\\
@@ -241,9 +242,11 @@ probabilidad es
 2 & 0.0625 \\
 \hline
 \end{array}
-\]
-}
-\end{pspicture}
+$
+}; 
+\\
+};
+\end{tikzpicture}
 \end{center}
 \end{frame}
 
@@ -251,9 +254,10 @@ probabilidad es
 \begin{frame}
 \frametitle{Distribución de un estadístico muestral}
 \begin{center}
-\scalebox{0.5}{\input{img/estimacion/distribucion_poblacion}}
-\quad
-\scalebox{0.5}{\input{img/estimacion/distribucion_media}}
+\tikzsetnextfilename{estimacion/diagrama_barras_distribucion_poblacion}
+\resizebox{0.49\textwidth}{!}{\input{img/estimacion/diagrama_barras_distribucion_poblacion}}
+\tikzsetnextfilename{estimacion/diagrama_barras_distribucion_media}
+\resizebox{0.49\textwidth}{!}{\input{img/estimacion/diagrama_barras_distribucion_media}}
 
 \emph{¿Cuál es la probabilidad de obtener una media muestral que aproxime la media poblacional con un error máximo de 0.5?}
 \end{center}
@@ -263,8 +267,8 @@ probabilidad es
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Teorema central del límite}
-Como hemos visto, para conocer la distribución de un estadístico muestral, es necesario conocer la distribución de la
-población, lo cual no siempre es posible. Afortunadamente, para muestras grandes es posible aproximar la distribución de algunos estadísticos como la media, gracias al siguiente teorema:
+Como hemos visto, para conocer la distribución de un estadístico muestral, es necesario conocer la distribución de la población, lo cual no siempre es posible. 
+Afortunadamente, para muestras grandes es posible aproximar la distribución de algunos estadísticos como la media, gracias al siguiente teorema:
 
 \begin{teorema}[Teorema central del límite]
 Si $X_1,\ldots, X_n$ son variables aleatorias independientes  ($n\geq 30$) con medias y varianzas $\mu_i=E(X_i)$, $\sigma^2_i=Var(X_i)$, $i=1,\ldots,n$ respectivamente, entonces la variable aleatoria $X=X_1+\cdots+X_n$ sigue una distribución aproximadamente normal de media la suma de las medias y varianza la suma de las varianzas
@@ -289,7 +293,7 @@ De acuerdo a las propiedades de las transformaciones lineales, la media y la var
 \[
 E\left(\frac{X_i}{n}\right) =\frac{\mu}{n} \quad  \mbox{y} \quad Var\left(\frac{X_i}{n}\right) = \frac{\sigma^2}{n^2}
 \]
-con $\mu$ y $\sigma^2$ la media y la varianza de la población de partida. 
+con $\mu$ y $\sigma^2$ la media y la varianza de la población de partida.
 
 Entonces, si el tamaño de la muestra es grande ($n\geq 30$), de acuerdo al teorema central del límite, la distribución de la media muestral será normal:
 \[
@@ -307,7 +311,7 @@ Supongase que se desea estimar el número medio de hijos de una población con m
 \emph{¿Qué probabilidad hay de estimar $\mu$ a partir de $\bar x$ con un error menor de $0.2$?}
 \end{center}
 \begin{columns}
-\begin{column}{0.4\textwidth}
+\begin{column}{0.5\textwidth}
 De acuerdo al teorema central del límite se tiene:
 \begin{itemize}
 \item Para $n=30$, $\bar x\sim N(2,1/\sqrt{30})$ y
@@ -321,9 +325,10 @@ P(1.8<\bar x<2.2) = 0.9545.
 \]
 \end{itemize}
 \end{column}
-\begin{column}{0.6\textwidth}
+\begin{column}{0.5\textwidth}
 \begin{center}
-\scalebox{0.6}{\input{img/estimacion/teorema_central_limite}}
+\tikzsetnextfilename{estimacion/teorema_central_limite}
+\resizebox{0.9\textwidth}{!}{\input{img/estimacion/teorema_central_limite}}
 \end{center}
 \end{column}
 \end{columns}
@@ -334,7 +339,7 @@ P(1.8<\bar x<2.2) = 0.9545.
 \begin{frame}
 \frametitle{Distribución de una proporción muestral}
 \framesubtitle{Muestras grandes ($n\geq 30$)}
-Una proporción $p$ poblacional puede calcularse como la media de una variable dicotómica (0,1). 
+Una proporción $p$ poblacional puede calcularse como la media de una variable dicotómica (0,1).
 Esta variable se conoce como \emph{variable de Bernouilli} $B(p)$, que es un caso particular de la binomial para $n=1$.
 Por tanto, para una muestra aleatoria de tamaño $n$, una proporción muestral $\hat p$ también puede expresarse como la suma de $n$ variables aleatorias independientes, idénticamente distribuidas:
 \[
@@ -368,7 +373,7 @@ Dada una muestra concreta $(x_1,\ldots,x_n)$, el valor del estimador aplicado a 
 \]
 \end{definicion}
 
-Por ser una función de la variable aleatoria muestral, un estimador es, a su vez, una variable aleatoria cuya distribución depende de la población de partida. 
+Por ser una función de la variable aleatoria muestral, un estimador es, a su vez, una variable aleatoria cuya distribución depende de la población de partida.
 
 Mientras que el estimador es una función que es única, la estimación no es única, sino que depende de la muestra tomada.
 \end{frame}
@@ -378,6 +383,7 @@ Mientras que el estimador es una función que es única, la estimación no es ú
 \begin{frame}
 \frametitle{Estimador y estimación}
 \begin{center}
+\tikzsetnextfilename{estimacion/estimador_estimacion}
 \input{img/estimacion/estimador_estimacion}
 \end{center}
 \end{frame}
@@ -387,7 +393,7 @@ Mientras que el estimador es una función que es única, la estimación no es ú
 \begin{frame}
 \frametitle{Estimador y estimación}
 \framesubtitle{Ejemplo}
-Supóngase que se quiere saber la proporción $p$ de fumadores en una ciudad. 
+Supóngase que se quiere saber la proporción $p$ de fumadores en una ciudad.
 En ese caso, la variable dicotómica que mide si una persona fuma (1) o no (0), sigue una distribución de Bernouilli $B(p)$.
 
 Si se toma una muestra aleatoria de tamaño 5, $(X_1,X_2,X_3,X_4,X_5)$, de esta población, se puede utilizar la proporción de fumadores en la muestra como estimador para la proporción de fumadores en la población:
@@ -421,30 +427,30 @@ Si se toman distintas muestras, se obtienen diferentes estimaciones:
 \frametitle{Tipos de estimación}
 La estimación de parámetros puede realizar de de dos formas:
 \begin{description}
-\item[Estimación puntual]: Se utiliza un único estimador que proporciona un valor o estimación aproximada del parámetro. 
+\item[Estimación puntual]: Se utiliza un único estimador que proporciona un valor o estimación aproximada del parámetro.
 El principal inconveniente de este tipo de estimación es que no se especifica la bondad de la estimación.
 \item[Estimación por intervalos]: Se utilizan dos estimadores que proporcionan los extremos de un intervalo dentro del cual se cree que está el verdadero valor del parámetro con un cierto grado de seguridad.
 Esta forma de estimar sí permite controlar el error cometido en la estimación.
 \end{description}
 
 \begin{center}
-\begin{pspicture}(0,0)(10,2)
-\rput(2,2){Estimación puntual}
-\psline{|-|}(0,1)(4,1)
-\psline{-}(2,0.9)(2,1.1)
-\rput(2,0.7){$\theta$}
-\psline[linecolor=red]{-}(3,0.9)(3,1.1)
-\rput(3,0.7){\alert{$\hat \theta$}}
-\rput(8,2){Estimación por intervalos}
-\psline{|-|}(6,1)(8,1)(10,1)
-\psline{-}(8,0.9)(8,1.1)
-\rput(8,0.7){$\theta$}
-\rput(7.5,1){\small \color{red}$[$}
-\rput(7.5,0.7){\alert{$l_1$}}
-\rput(9,1){\small \color{red}$]$}
-\rput(9,0.7){\alert{$l_2$}}
-\psline[linecolor=red]{-}(7.5,1)(9,1)
-\end{pspicture}
+\tikzsetnextfilename{estimacion/estimacion_puntual_intervalo}
+\begin{tikzpicture}
+\node at (1.5,1) {Estimación puntual};
+\draw (0,0.5) -- (3,0.5);
+\draw (1.5,0.6) -- (1.5,0.4);
+\node at (1.5,0) {$\theta$};
+\draw[color=color2] (2,0.6) -- (2,0.4);
+\node[color=color2] at (2,0) {$\hat\theta_0$};
+\node at (7.5,1) {Estimación por intervalo};
+\draw (6,0.5) -- (9,0.5);
+\draw (7.5,0.6) -- (7.5,0.4);
+\node at (7.5,0) {$\theta$};
+\node[color=color2] at (7,0.5) {[};
+\node[color=color2] at (8.2,0.5) {]};
+\node[color=color2] at (7,0) {$l_1$};
+\node[color=color2] at (8.2,0) {$l_2$};
+\end{tikzpicture}
 \end{center}
 \end{frame}
 
@@ -466,7 +472,7 @@ En teoría pueden utilizarse distintos estimadores para estimar un mismo paráme
 \alert{\emph{¿Cuál es el mejor estimador?}}
 \end{center}
 
-La respuesta a esta cuestión depende de las propiedades de cada estimador. 
+La respuesta a esta cuestión depende de las propiedades de cada estimador.
 \end{frame}
 
 
@@ -482,7 +488,7 @@ Las propiedades más deseables en un estimador son:
 \item Consistencia
 \item Normalidad asintótica
 \item Suficiencia
-\end{itemize} 
+\end{itemize}
 \end{frame}
 
 
@@ -496,7 +502,8 @@ E(\hat \theta)=\theta.
 \]
 \end{definicion}
 \begin{center}
-\scalebox{0.58}{\input{img/estimacion/estimadores_sesgados_insesgados}}
+\tikzsetnextfilename{estimacion/estimadores_sesgados_insesgados}
+\scalebox{0.7}{\input{img/estimacion/estimadores_sesgados_insesgados}}
 \end{center}
 \end{frame}
 
@@ -523,8 +530,10 @@ Un estimador $\hat \theta_n$ para muestras de tamaño $n$ es \emph{consistente} 
 \]
 \end{definicion}
 \begin{center}
-\scalebox{0.55}{\input{img/estimacion/estimadores_consistentes}}
-\scalebox{0.55}{\input{img/estimacion/estimadores_consistentes_sesgados}}
+\tikzsetnextfilename{estimacion/estimadores_consistentes}
+\resizebox{0.49\textwidth}{!}{\input{img/estimacion/estimadores_consistentes}}
+\tikzsetnextfilename{estimacion/estimadores_consistentes_sesgados}
+\resizebox{0.49\textwidth}{!}{\input{img/estimacion/estimadores_consistentes_sesgados}}
 \end{center}
 \end{frame}
 
@@ -550,9 +559,10 @@ Un estimador $\hat \theta$ de un parámetro $\theta$ es \emph{eficiente} si tien
 ECM(\hat \theta) = Sesgo(\hat \theta)^2+Var(\theta).
 \]
 \end{definicion}
-%Evidentemente, si el estimador con menor varianza es insesgado, entonces es un estimador eficiente. 
+%Evidentemente, si el estimador con menor varianza es insesgado, entonces es un estimador eficiente.
 \begin{center}
-\scalebox{0.58}{\input{img/estimacion/estimador_eficiente_sesgado}}
+\tikzsetnextfilename{estimacion/estimador_eficiente_sesgado}
+\scalebox{0.7}{\input{img/estimacion/estimador_eficiente_sesgado}}
 \end{center}
 \end{frame}
 
@@ -561,19 +571,21 @@ ECM(\hat \theta) = Sesgo(\hat \theta)^2+Var(\theta).
 \begin{frame}
 \frametitle{Normalidad asintótica}
 \begin{definicion}[Estimador asintóticamente normal]
-Un estimador $\hat \theta$ es \emph{asintóticamente normal} si, independientemente de la distribución de la variable aleatoria muestral, su distribución es normal si el tamaño de la muestra es suficientemente grande. 
+Un estimador $\hat \theta$ es \emph{asintóticamente normal} si, independientemente de la distribución de la variable aleatoria muestral, su distribución es normal si el tamaño de la muestra es suficientemente grande.
 \end{definicion}
 \begin{center}
-\scalebox{0.58}{\input{img/estimacion/estimador_asintoticamente_normal}}
+\tikzsetnextfilename{estimacion/estimador_asintoticamente_normal}
+\scalebox{0.7}{\input{img/estimacion/estimador_asintoticamente_normal}}
 \end{center}
-Como veremos más adelante esta propiedad es muy interesante para hacer estimaciones de parámetros mediante intervalos. 
+Como veremos más adelante esta propiedad es muy interesante para hacer estimaciones de parámetros mediante intervalos.
 \end{frame}
+
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Suficiencia}
 \begin{definicion}[Estimador suficiente]
-Un estimador $\hat \theta$ es \emph{suficiente} para un parámetro $\theta$, si la distribución condicional de la variable aleatoria muestral, una vez dada la estimación $\hat \theta = \hat \theta_0$, no de pende de $\theta$.
+Un estimador $\hat \theta$ es \emph{suficiente} para un parámetro $\theta$, si la distribución condicionada de la variable aleatoria muestral, una vez dada la estimación $\hat \theta = \hat \theta_0$, no depende de $\theta$.
 \end{definicion}
 
 Esto significa que cuando se obtiene una estimación, cualquier otra información es irrelevante para $\theta$.
@@ -583,7 +595,7 @@ Esto significa que cuando se obtiene una estimación, cualquier otra informació
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Estimador de la media poblacional}
-El estimador que se suele utilizar para estimar la media poblacional es la media muestral. 
+El estimador que se suele utilizar para estimar la media poblacional es la media muestral.
 
 Para muestras de tamaño $n$ resulta la siguiente variable aleatoria:
 \[
@@ -594,14 +606,14 @@ Si la población de partida tiene media $\mu$ y varianza $\sigma^2$ se cumple
 E(\bar X) = \mu \quad \mbox{y} \quad Var(\bar X)=\frac{\sigma^2}{n}
 \]
 
-Así pues, la media muestral es un estimador insesgado, y como su varianza disminuye a medida que aumenta el tamaño muestral, también es consistente y eficiente. 
+Así pues, la media muestral es un estimador insesgado, y como su varianza disminuye a medida que aumenta el tamaño muestral, también es consistente y eficiente.
 \end{frame}
 
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Estimador para la varianza poblacional:\\ La cuasivarianza}
-Sin embargo, la varianza muestral 
+Sin embargo, la varianza muestral
 \[
 S^2 = \frac{\sum_{i=1}^n (X_i-\bar X)^2}{n}
 \]
@@ -617,7 +629,7 @@ Dada una muestra de tamaño $n$ de una variable aleatoria $X$, se define la \emp
 \[
 \hat{S}^2 = \frac{\sum_{i=1}^n (X_i-\bar X)^2}{n-1} = \frac{n}{n-1}S^2.
 \]
-\end{definicion} 
+\end{definicion}
 \end{frame}
 
 
@@ -627,28 +639,32 @@ Dada una muestra de tamaño $n$ de una variable aleatoria $X$, se define la \emp
 \frametitle{Estimación por intervalos}
 El principal problema de la estimación puntual es que, una vez seleccionada la muestra y hecha la estimación, resulta imposible saber el error cometido.
 \begin{center}
-\begin{pspicture}(0,0)(10,2)
-\psline{|-|}(3,1)(7,1)
-\psline{-}(5,0.9)(5,1.1)
-\rput(5,0.7){$\theta$}
-\psline[linecolor=red]{-}(6,0.9)(6,1.1)
-\rput(6,0.7){\alert{$\hat \theta$}}
-\rput(5.5,1.4){$\overbrace{\makebox[1cm]{}}^?$}
-\end{pspicture}
+\tikzsetnextfilename{estimacion/error_estimacion_puntual}
+\begin{tikzpicture}
+\node at (3,1.5) {Estimación puntual};
+\draw (0,0.5) -- (6,0.5);
+\draw (3,0.6) -- (3,0.4);
+\node at (3,0) {$\theta$};
+\node[color=color2] at (5,0.5) {|};
+\node[color=color2] at (5,0) {$\hat\theta_0$};
+\draw [decorate, decoration={brace, amplitude=7pt}, yshift=5pt] (3,0.5) -- (5,0.5) node [midway, yshift=12pt] {Error};
+\end{tikzpicture}
 \end{center}
 
 Para controlar el error de la estimación es mejor utilizar la estimación por intervalos
 \begin{center}
-\begin{pspicture}(0,0)(10,2)
-\psline{|-|}(3,1)(7,1)
-\psline{-}(5,0.9)(5,1.1)
-\rput(5,0.7){$\theta$}
-\rput(4.5,1){\small \color{red}$[$}
-\rput(4.5,0.7){\alert{$l_1$}}
-\rput(6,1){\small \color{red}$]$}
-\rput(6,0.7){\alert{$l_2$}}
-\rput(5.25,1.5){$\overbrace{\makebox[1.5cm]{}}^{\mbox{Error}}$}
-\end{pspicture}
+\tikzsetnextfilename{estimacion/error_estimacion_intervalo}
+\begin{tikzpicture}
+\node at (3,1.5) {Estimación por intervalo};
+\draw (0,0.5) -- (6,0.5);
+\draw (3,0.6) -- (3,0.4);
+\node at (3,0) {$\theta$};
+\node[color=color2] at (1.5,0.5) {[};
+\node[color=color2] at (5,0.5) {]};
+\node[color=color2] at (1.5,0) {$l_1$};
+\node[color=color2] at (5,0) {$l_2$};
+\draw [decorate, decoration={brace, amplitude=7pt}, yshift=5pt] (1.5,0.5) -- (5,0.5) node [midway, yshift=12pt] {Error};
+\end{tikzpicture}
 \end{center}
 \end{frame}
 
@@ -656,8 +672,8 @@ Para controlar el error de la estimación es mejor utilizar la estimación por i
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Intervalos de confianza}
-La estimación por intervalos trata de construir a partir de la muestra un intervalo dentro del cual se supone que se encuentra el parámetro a estimar con un cierto grado de confianza. 
-Para ello se utilizan dos estimadores, uno para el límite inferior del intervalo y otro para el superior. 
+La estimación por intervalos trata de construir a partir de la muestra un intervalo dentro del cual se supone que se encuentra el parámetro a estimar con un cierto grado de confianza.
+Para ello se utilizan dos estimadores, uno para el límite inferior del intervalo y otro para el superior.
 
 \begin{definicion}[Intervalo de confianza]
 Dados dos estimadores $\hat l_i(X_1,\ldots,X_n)$ y $\hat l_s(X_1,\ldots,X_n)$, y sus respectivas estimaciones $l_1$ y $l_2$ para una muestra concreta, se dice que el intervalo $I=[l_1,l_2]$ es un intervalo de confianza para un parámetro poblacional $\theta$, con un nivel de confianza $1-\alpha$ (o nivel de significación $\alpha$), si se cumple
@@ -694,7 +710,7 @@ siendo $0.95$ el nivel de confianza más habitual y $0.99$ en casos críticos.
 \frametitle{Nivel de confianza}
 Teóricamente, de cada 100 intervalos para estimar un parámetro $\theta$ con nivel de confianza $1-\alpha=0.95$, 95 contendrían a $\theta$ y sólo 5 lo dejarían fuera.
 \begin{center}
-\scalebox{0.7}{\input{img/estimacion/100_intervalos_confianza}}
+\scalebox{0.9}{\input{img/estimacion/100_intervalos_confianza}}
 \end{center}
 \end{frame}
 
@@ -708,19 +724,20 @@ El \emph{error} o la \emph{imprecisión} de un intervalo de confianza $[l_i,l_s]
 \[
 A=l_s-l_i.
 \]
-\end{definicion} 
+\end{definicion}
 
 \begin{center}
-\begin{pspicture}(0,0.5)(10,2)
-\psline{|-|}(3,1)(7,1)
-\psline{-}(5,0.9)(5,1.1)
-\rput(5,0.7){$\theta$}
-\rput(4.5,1){\small \color{red}$[$}
-\rput(4.5,0.7){\alert{$l_1$}}
-\rput(6,1){\small \color{red}$]$}
-\rput(6,0.7){\alert{$l_2$}}
-\rput(5.25,1.5){$\overbrace{\makebox[1.5cm]{}}^{\mbox{Imprecisión}}$}
-\end{pspicture}
+\tikzsetnextfilename{estimacion/error_estimacion_intervalo}
+\begin{tikzpicture}
+\draw (0,0.5) -- (6,0.5);
+\draw (3,0.6) -- (3,0.4);
+\node at (3,0) {$\theta$};
+\node[color=color2] at (1.5,0.5) {[};
+\node[color=color2] at (5,0.5) {]};
+\node[color=color2] at (1.5,0) {$l_1$};
+\node[color=color2] at (5,0) {$l_2$};
+\draw [decorate, decoration={brace, amplitude=7pt}, yshift=5pt] (1.5,0.5) -- (5,0.5) node [midway, yshift=12pt] {Imprecisión};
+\end{tikzpicture}
 \end{center}
 
 Para que un intervalo sea útil no debe ser demasiado impreciso.
@@ -751,7 +768,8 @@ Habitualmente, para calcular un intervalo de confianza se suele partir de un est
 A partir de este estimador se calculan los extremos del intervalo sobre su distribución, buscando los valores que dejan encerrada una probabilidad $1-\alpha$.
 Estos valores suelen tomarse de manera simétrica, de manera que el extremo inferior deje una probabilidad acumulada inferior $\alpha/2$ y el extremo superior deje una probabilidad acumulada superior también de $\alpha/2$.
 \begin{center}
-\scalebox{0.5}{\input{img/estimacion/extremos_intervalos}}
+\tikzsetnextfilename{estimacion/extremos_intervalos}
+\scalebox{0.65}{\input{img/estimacion/extremos_intervalos}}
 \end{center}
 \end{frame}
 
@@ -764,7 +782,7 @@ Intervalos para una población:
 \item Intervalo para la media de una población normal con varianza conocida.
 \item Intervalo para la media de una población normal con varianza desconocida.
 \item Intervalo para la media de una población con varianza desconocida a partir de muestras grandes.
-\item Intervalo para la varianza de una población normal. 
+\item Intervalo para la varianza de una población normal.
 \item Intervalo para un proporción de una población.
 \end{itemize}
 Intervalos para la comparación de dos poblaciones:
@@ -808,7 +826,8 @@ P(z_i\leq Z \leq z_s) = 1-\alpha.
 \frametitle{Intervalo de confianza para la media de una población normal con varianza conocida}
 Como la distribución normal estándar es simétrica respecto al 0, lo mejor es tomar valores opuestos $-z_{\alpha/2}$ y $z_{\alpha/2}$ que dejen sendas colas de probabilidad acumulada $\alpha/2$.
 \begin{center}
-\scalebox{0.6}{\input{img/estimacion/extremos_intervalo_media_normal}}
+\tikzsetnextfilename{estimacion/extremos_intervalo_media_normal}
+\scalebox{0.8}{\input{img/estimacion/extremos_intervalo_media_normal}}
 \end{center}
 \end{frame}
 
@@ -828,7 +847,7 @@ A partir de aquí, deshaciendo la tipificación, resulta sencillo llegar a los e
 Así pues, el intervalo de confianza para la media de una población normal con varianza conocida es:
 \[
 \alert{\left[\bar{X}-z_{\alpha/2}\frac{\sigma}{\sqrt{n}},\bar{X}+z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right]}
-\mbox{ o bien } 
+\mbox{ o bien }
 \alert{\bar{X}\pm z_{\alpha/2}\frac{\sigma}{\sqrt{n}}}
 \]
 \end{frame}
@@ -844,7 +863,7 @@ De la fórmula del intervalo de confianza
 se deducen varias características:
 \begin{itemize}
 \item El intervalo está centrado en la media muestral $\bar X$ que era el mejor estimador de la media poblacional.
-\item La amplitud o imprecisión del intervalo es 
+\item La amplitud o imprecisión del intervalo es
 \[
 A= 2 z_{\alpha/2}\frac{\sigma}{\sqrt{n}}
 \]
@@ -852,7 +871,7 @@ de manera que depende de:
 \begin{itemize}
 \item[--] $\sigma$: cuanto mayor sea la varianza poblacional, mayor será la imprecisión.
 \item[--] $z_{\alpha/2}$: que a su vez depende del nivel de confianza, y cuanto mayor sea $1-\alpha$, mayor será la imprecisión.
-\item[--] $n$: cuanto mayor sea el tamaño de la muestra, menor será la imprecisión. 
+\item[--] $n$: cuanto mayor sea el tamaño de la muestra, menor será la imprecisión.
 \end{itemize}
 \end{itemize}
 Por tanto, la única forma de reducir la imprecisión del intervalo, manteniendo la confianza, es aumentando el tamaño muestral.
@@ -934,7 +953,7 @@ Como consecuencia, el estimador de referencia ya no sigue una distribución norm
 \displaystyle\frac{(n-1)\hat{S}^2}{\sigma^2}\sim \chi^2(n-1)
 \end{array}
 \right\}
-\Rightarrow 
+\Rightarrow
 \frac{\bar X -\mu}{\hat{S}/\sqrt{n}}\sim T(n-1),
 \]
 \end{frame}
@@ -1028,11 +1047,11 @@ Sea $X$ una variable aleatoria que cumple las siguientes hipótesis:
 
 Si la población no es normal las distribuciones de los estimadores de referencia cambian, de manera que los intervalos anteriores no son válidos.
 
-No obstante, si la muestras es grande ($n\geq 30$), de acuerdo al teorema central del límite, la distribución de la media muestral se aproximará a una normal, de modo que sigue siendo cierto 
+No obstante, si la muestras es grande ($n\geq 30$), de acuerdo al teorema central del límite, la distribución de la media muestral se aproximará a una normal, de modo que sigue siendo cierto
 \[
 \bar X \sim N\left(\mu,\frac{\sigma}{\sqrt{n}}\right)
 \]
-y en consecuencia, sigue siendo válido el intervalo 
+y en consecuencia, sigue siendo válido el intervalo
 \[
 \alert{\bar{X}\pm t^{n-1}_{\alpha/2}\frac{\hat{S}}{\sqrt{n}}}
 \]
@@ -1066,7 +1085,8 @@ P(\chi_i\leq \chi^2(n-1) \leq \chi_s) = 1-\alpha.
 \frametitle{Intervalo de confianza para la varianza de una población normal}
 Como la distribución chi-cuadrado no es simétrica respecto al 0, se toman dos valores $\chi^{n-1}_{\alpha/2}$ y $\chi^{n-1}_{1-\alpha/2}$ que dejen sendas colas de probabilidad acumulada inferior de $\alpha/2$ y $1-\alpha/2$ respectivamente.
 \begin{center}
-\scalebox{0.6}{\input{img/estimacion/extremos_intervalo_varianza_normal}}
+\tikzsetnextfilename{estimacion/extremos_intervalo_varianza_normal}
+\scalebox{0.8}{\input{img/estimacion/extremos_intervalo_varianza_normal}}
 \end{center}
 \end{frame}
 
@@ -1077,9 +1097,9 @@ Como la distribución chi-cuadrado no es simétrica respecto al 0, se toman dos 
 Así pues, se tiene
 \[
 \begin{align*}
-1-\alpha &= P\left(\chi^{n-1}_{\alpha/2}\leq \frac{nS^2}{\sigma^2}  \leq \chi^{n-1}_{1-\alpha/2}\right) = 
+1-\alpha &= P\left(\chi^{n-1}_{\alpha/2}\leq \frac{nS^2}{\sigma^2}  \leq \chi^{n-1}_{1-\alpha/2}\right) =
 P\left(\frac{1}{\chi^{n-1}_{\alpha/2}}\geq \frac{\sigma^2}{nS^2}  \geq \frac{1}{\chi^{n-1}_{1-\alpha/2}}\right)=\\
-&= P\left(\frac{1}{\chi^{n-1}_{1-\alpha/2}}\leq \frac{\sigma^2}{nS^2}  \leq \frac{1}{\chi^{n-1}_{\alpha/2}}\right) 
+&= P\left(\frac{1}{\chi^{n-1}_{1-\alpha/2}}\leq \frac{\sigma^2}{nS^2}  \leq \frac{1}{\chi^{n-1}_{\alpha/2}}\right)
 = P\left(\frac{nS^2}{\chi^{n-1}_{1-\alpha/2}}\leq \sigma^2  \leq \frac{nS^2}{\chi^{n-1}_{\alpha/2}}\right),
 \end{align*}
 \]
@@ -1108,7 +1128,7 @@ acumulada inferior de $0.975$, y vale $19$.
 \end{itemize}
 Sustituyendo estos valores en la fórmula del intervalo, se llega a
 \[
-\left[\frac{nS^2}{\chi^{n-1}_{1-\alpha/2}},\frac{nS^2}{\chi^{n-1}_{\alpha/2}}\right] = 
+\left[\frac{nS^2}{\chi^{n-1}_{1-\alpha/2}},\frac{nS^2}{\chi^{n-1}_{\alpha/2}}\right] =
 \left[\frac{10\cdot 3.21}{19},\frac{10\cdot 3.21}{2.7}\right] = [1.69,\,11.89] \text{ puntos}^2.
 \]
 \end{frame}
@@ -1151,7 +1171,7 @@ P\left(-z_{\alpha/2}\leq \frac{\hat p-p}{\sqrt{p(1-p)/n}}\leq z_{\alpha/2} \righ
 Finalmente, deshaciendo la tipificación y razonando como antes, se llega fácilmente a la fórmula del intervalo
 \[
 \alert{\left[\hat{p}-z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}},\hat{p}+z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\right]}
-\mbox{ o bien } 
+\mbox{ o bien }
 \alert{\hat{p}\pm z_{\alpha/2}\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}}
 \]
 \end{frame}
@@ -1173,7 +1193,7 @@ de donde se deduce
 \alert{n= 4 z_{\alpha/2}^2\frac{\hat{p}(1-\hat{p})}{A^2}}
 \]
 Para poder hacer el cálculo se necesita una estimación de la proporción $\hat{p}$, por lo que suele tomarse una muestra previa pequeña para calcularla.
-En el peor de los casos, si no se dispone de una muestra previa, puede tomarse $\hat{p}=0.5$. 
+En el peor de los casos, si no se dispone de una muestra previa, puede tomarse $\hat{p}=0.5$.
 \end{frame}
 
 
@@ -1228,7 +1248,7 @@ Se verán tres casos:
 \item[Comparación de medias]: Se estima la diferencia de medias $\mu_1-\mu_2$.
 \item[Comparación de varianzas]: Se estima la razón de varianzas $\displaystyle \frac{\sigma^2_1}{\sigma^2_2}$.
 \item[Comparación de proporciones]: Se estima la diferencia de proporciones $\hat p_1-\hat p_2$.
-\end{description}   
+\end{description}
 \end{frame}
 
 
@@ -1352,7 +1372,7 @@ Supóngase que se quiere comparar el rendimiento académico de dos grupos de alu
 Para ello se les realiza un examen y se obtienen las siguientes puntuaciones:
 \begin{align*}
 X_1 &: 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3 \\
-X_2 &: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7  
+X_2 &: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7
 \end{align*}
 Si se supone que ambas variables tienen la misma varianza, se tiene
 \begin{itemize}
@@ -1360,7 +1380,7 @@ Si se supone que ambas variables tienen la misma varianza, se tiene
 \item[--] $S_1^2= \frac{4^2+\cdots + 3^2}{10}-5.3^2=3.21$ y $S_2^2= \frac{8^2+\cdots
 +3^2}{12}-6.75^2=2.6875$ puntos$^2$.
 \item[--] $\hat{S}_p^2 = \frac{10\cdot 3.21+12\cdot 2.6875}{10+12-2}= 3.2175$ puntos$^2$, y $\hat S_p=1.7937$.
-\item[--] $t^{n_1+n_2-2}_{\alpha/2}=t^{20}_{0.025}$ es el valor de la T de Student de 20 grados de libertad que deja una probabilidad acumulada superior de $0.025$, y que vale aproximadamente $2.09$. 
+\item[--] $t^{n_1+n_2-2}_{\alpha/2}=t^{20}_{0.025}$ es el valor de la T de Student de 20 grados de libertad que deja una probabilidad acumulada superior de $0.025$, y que vale aproximadamente $2.09$.
 \end{itemize}
 \end{frame}
 
@@ -1370,7 +1390,7 @@ Si se supone que ambas variables tienen la misma varianza, se tiene
 \frametitle{Intervalo de confianza para la diferencia de medias de dos poblaciones normales con varianzas desconocidas
 e iguales}
 \framesubtitle{Ejemplo}
-Y sustituyendo en la fórmula del intervalo llegamos a 
+Y sustituyendo en la fórmula del intervalo llegamos a
 \[
 5.3-6.75 \pm 2.086\cdot 1.7937\sqrt{\frac{10+12}{10\cdot 12}} = -1.45\pm 1.6021 = [-3.0521,\,0.1521] \text{ puntos}.
 \]
@@ -1400,7 +1420,7 @@ donde el número de gados de libertad es
 \[
 g=n_1+n_2-2-\Delta\quad \text{siendo } \Delta =
 \frac{(\frac{n_2-1}{n_1}\hat{S}_1^2-\frac{n_1-1}{n_2}\hat{S}_2^2)^2}{\frac{n_2-1}{n_1^2}\hat{S}_1^4+\frac{n_1-1}{n_2^2}\hat{S}_2^4}.
-\] 
+\]
 \end{frame}
 
 
@@ -1427,7 +1447,7 @@ o bien
 \frametitle{Elección del intervalo de confianza para la diferencia de medias en función de las varianzas}
 Como se acaba de ver, existen dos intervalos posibles para estimar la diferencia de medias: uno para cuando las varianzas poblacionales son iguales y otro para cuando no lo son.
 
-Ahora bien, si las varianzas poblacionales son desconocidas, 
+Ahora bien, si las varianzas poblacionales son desconocidas,
 \begin{center}
 \emph{¿cómo saber qué intervalo utilizar?}
 \end{center}
@@ -1467,7 +1487,8 @@ En este caso, para muestras de ambas poblaciones de tamaños $n_1$ y $n_2$ respe
 Como la distribución F de Fisher-Snedecor no es simétrica respecto al 0, se toman dos valores $f^{n_2-1,n_1-1}_{\alpha/2}$ y
 $f^{n_2-1,n_1-1}_{1-\alpha/2}$ que dejen sendas colas de probabilidad acumulada inferior de $\alpha/2$ y $1-\alpha/2$ respectivamente.
 \begin{center}
-\scalebox{0.6}{\input{img/estimacion/extremos_intervalo_comparacion_varianzas_normal}}
+\tikzsetnextfilename{estimacion/extremos_intervalo_comparacion_varianzas_normal}
+\scalebox{0.8}{\input{img/estimacion/extremos_intervalo_comparacion_varianzas_normal}}
 \end{center}
 \end{frame}
 
@@ -1518,7 +1539,7 @@ entonces no se puede afirmar que una varianza sea mayor que la otra. En este cas
 Siguiendo con el ejemplo de las puntuaciones en dos grupos:
 \begin{align*}
 X_1 &: 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3 \\
-X_2 &: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7  
+X_2 &: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7
 \end{align*}
 Para calcular el intervalo de confianza para la razón de varianzas con una confianza del $95\%$, se tiene:
 \begin{itemize}
@@ -1546,7 +1567,7 @@ $95\%$.
 
 Como el intervalo tiene tanto valores menores como mayores que 1, no se puede concluir que una varianza sea mayor que la otra, y por tanto se mantiene la hipótesis de que ambas varianzas son iguales.
 
-Si ahora se quisiesen comparar las medias de ambas poblaciones, el intervalo de confianza para la diferencia de medias que habría que tomar es el que parte de la hipótesis de igualdad de varianzas, que precisamente es el que se ha utilizado antes. 
+Si ahora se quisiesen comparar las medias de ambas poblaciones, el intervalo de confianza para la diferencia de medias que habría que tomar es el que parte de la hipótesis de igualdad de varianzas, que precisamente es el que se ha utilizado antes.
 \end{frame}
 
 
@@ -1562,11 +1583,11 @@ X_1\sim B(n_1,p_1)\quad \mbox{y}\quad X_2\sim B(n_2,p_2)
 
 Cuando los tamaños muestrales son grandes (en realidad basta que se cumpla $n_1p_1\geq 5$, $n_1(1-p_1)\geq 5$, $n_2p_2\geq 5$ y $n_2(1-p_2)\geq 5$), el teorema central de límite asegura que $X_1$ y $X_2$ tendrán distribuciones normales
 \[
-X_1\sim N(n_1p_1,\sqrt{n_1p_1(1-p_1)}) \quad \mbox{y}\quad X_2\sim N(n_2p_2,\sqrt{n_2p_2(1-p_2)}), 
+X_1\sim N(n_1p_1,\sqrt{n_1p_1(1-p_1)}) \quad \mbox{y}\quad X_2\sim N(n_2p_2,\sqrt{n_2p_2(1-p_2)}),
 \]
-y las proporciones muestrales 
+y las proporciones muestrales
 \[
-\hat{p}_1=\frac{X_1}{n_1} \sim N\left(p_1,\sqrt{\frac{p_1(1-p_1)}{n_1}}\right) \quad \mbox{y}\quad 
+\hat{p}_1=\frac{X_1}{n_1} \sim N\left(p_1,\sqrt{\frac{p_1(1-p_1)}{n_1}}\right) \quad \mbox{y}\quad
 \hat{p}_2=\frac{X_2}{n_2} \sim N\left(p_2,\sqrt{\frac{p_2(1-p_2)}{n_2}}\right)
 \]
 \end{frame}
@@ -1575,7 +1596,7 @@ y las proporciones muestrales
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Intervalo de confianza para la diferencia de proporciones de dos poblaciones y muestras grandes}
-A partir de las proporciones muestrales se construye el estimador de referencia 
+A partir de las proporciones muestrales se construye el estimador de referencia
 \[
 \hat{p}_1-\hat{p}_2\sim  N\left(p_1-p_2,\sqrt{\frac{p_1(1-p_1)}{n_1}+\frac{p_2(1-p_2)}{n_2}}\right).
 \]
@@ -1594,14 +1615,14 @@ Finalmente, deshaciendo la tipificación, se llega fácilmente a la fórmula del
 \begin{frame}
 \frametitle{Intervalo de confianza para la diferencia de proporciones de dos poblaciones y muestras grandes}
 \framesubtitle{Ejemplo}
-Supóngase que se quieren comparar las proporciones o porcentajes de aprobados en dos grupos que han seguido metodologías distintas. 
-En el primer grupo han aprobado 24 alumnos de un total de 40, mientras que en el segundo han aprobado 48 de 60. 
+Supóngase que se quieren comparar las proporciones o porcentajes de aprobados en dos grupos que han seguido metodologías distintas.
+En el primer grupo han aprobado 24 alumnos de un total de 40, mientras que en el segundo han aprobado 48 de 60.
 
 Para calcular el intervalo de confianza para la diferencia de proporciones con un nivel de confianza del $95\%$, se tiene:
 \begin{itemize}
 \item[--] $\hat{p}_1=24/40= 0.6$ y $\hat{p}_2=48/60=0.8$, de manera que se cumplen las hipótesis $n_1\hat{p}_1=40\cdot 0.6=24\geq 5$, $n_1(1-\hat{p}_1)=40(1-0.6)=26\geq 5$, $n_2\hat{p}_2=60\cdot 0.8 =48\geq 5$ y $n_2(1-\hat{p}_2)=60(1-0.8)=12\geq 5$.
 \item[--] $z_{\alpha/2}=z_{0.025}= 1.96$.
-\end{itemize} 
+\end{itemize}
 Sustituyendo en la fórmula del intervalo se tiene
 \[
 0.6-0.8\pm 1.96 \sqrt{\frac{0.6(1-0.6)}{40}+\frac{0.8(1-0.8)}{60}} = -0.2\pm 0.17 = [-0.37,\, -0.03].
