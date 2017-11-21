@@ -12,19 +12,14 @@
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Introducción}
-La estadística descriptiva permite describir el comportamiento y las relaciones entre las variables en la muestra, pero no permite sacar
-conclusiones sobre el resto de la población.
+La estadística descriptiva permite describir el comportamiento y las relaciones entre las variables en la muestra, pero no permite sacar conclusiones sobre el resto de la población.
 
-Ha llegado el momento de dar el salto de la muestra a la población y pasar de la estadística descriptiva a la inferencia estadística, y el
-puente que lo permite es la \structure{\textbf{teoría de la probabilidad}}.
+Ha llegado el momento de dar el salto de la muestra a la población y pasar de la estadística descriptiva a la inferencia estadística, y el puente que lo permite es la \highlight{teoría de la probabilidad}.
 
-Hay que tener en cuenta que el conocimiento que se puede obtener de la población a partir de la muestra es limitado, pero resulta evidente
-que la aproximación a la realidad de la población será mejor cuanto más representativa sea la muestra de ésta. Y recordemos que para que la
-muestra sea representativa de la población deben utilizarse técnicas de muestreo aleatorio, es decir, en la que los individuos se
-seleccionen al \emph{azar}.
+Hay que tener en cuenta que el conocimiento que se puede obtener de la población a partir de la muestra es limitado, y que para obtener conclusiones válidas para la población la muestra debe ser representativa de esta.
+Por esta razón, para garantizar la representatividad de la muestra, esta debe extraerse \emph{aleatoriamente}, es decir, al \emph{azar}.
 
-La teoría de la probabilidad precisamente se encarga de controlar ese azar para saber hasta qué punto son fiables las conclusiones obtenidas
-a partir de una muestra.
+La teoría de la probabilidad precisamente se encarga de controlar ese azar para saber hasta qué punto son fiables las conclusiones obtenidas a partir de una muestra.
 
 \note{La estadística descriptiva permite describir el comportamiento y las relaciones entre las variables en la muestra, pero no permite sacar
 conclusiones sobre el resto de la población.
@@ -32,9 +27,8 @@ conclusiones sobre el resto de la población.
 Ha llegado el momento de dar el salto de la muestra a la población y pasar de la estadística descriptiva a la inferencia estadística, y el
 puente que lo permite es la \structure{\textbf{teoría de la probabilidad}}.
 
-Hay que tener en cuenta que el conocimiento que se puede obtener de la población a partir de la muestra es limitado, pero resulta evidente que la aproximación a la realidad de la población será mejor
-cuanto más representativa sea la muestra de ésta. Y recordemos que para que la muestra sea representativa de la población deben utilizarse técnicas de muestreo aleatorio, es decir, en la que los individuos se
-seleccionen al \emph{azar}.
+Hay que tener en cuenta que el conocimiento que se puede obtener de la población a partir de la muestra es limitado, y que para obtener conclusiones válidas para la población la muestra debe ser representativa de esta.
+Por esta razón, para garantizar la representatividad de la muestra, esta debe extraerse \emph{aleatoriamente}, es decir, al \emph{azar}.
 
 Es aquí por tanto donde se necesita la teoría de la probabilidad, ya que esta precisamente se encarga de controlar ese azar para
 saber hasta qué punto son fiables las conclusiones obtenidas a partir de una muestra.
@@ -49,12 +43,15 @@ saber hasta qué punto son fiables las conclusiones obtenidas a partir de una mu
 \frametitle{Experimentos y sucesos aleatorios}
 El estudio de una característica en una población se realiza a través de experimentos aleatorios.
 
-\begin{definicion}[Experimento aleatorio] Un \emph{experimento aleatorio} es aquel en el que se conoce cuál es el conjunto de resultados
-posibles antes de su realización pero se desconoce cuál será el resultado concreto del mismo.
+\begin{definicion}[Experimento aleatorio] Un \emph{experimento aleatorio} es un experimento que cumple dos condiciones:
+\begin{enumerate}
+	\item El conjunto de posibles resultados es conocido.
+	\item No se puede predecir con absoluta certeza el resultado del experimento.
+\end{enumerate}
 \end{definicion}
 
-Un ejemplo sencillo de experimentos aleatorios son los juegos de azar. Por ejemplo, el lanzamiento de un dado es un experimento aleatorio ya
-que:
+\textbf{Ejemplo}. Un ejemplo típico de experimentos aleatorios son los juegos de azar.
+El lanzamiento de un dado, por ejemplo, es un experimento aleatorio ya que:
 \begin{itemize}
 \item Se conoce el conjunto posibles de resultados $\{1,2,3,4,5,6\}$.
 \item Antes de lanzar el dado, es imposible predecir con absoluta certeza el valor que saldrá. 
@@ -62,12 +59,15 @@ que:
 
 Otro ejemplo de experimento aleatorio sería la selección de un individuo de una población al azar y la determinación de su grupo sanguíneo.
 
-En general, la obtención de cualquier muestra mediante procedimientos aleatorios será un experimento aleatorio.  
+En general, la obtención de cualquier muestra mediante procedimientos aleatorios será un experimento aleatorio.
 
 \note{El estudio de una característica en una población se realiza a través de experimentos aleatorios.
 
-\begin{definicion}[Experimento aleatorio] Un \emph{experimento aleatorio} es aquel en el que se conoce cuál es el conjunto de resultados
-posibles antes de su realización pero se desconoce cuál será el resultado concreto del mismo.
+\begin{definicion}[Experimento aleatorio] Un \emph{experimento aleatorio} es un experimento que cumple dos condiciones:
+\begin{enumerate}
+	\item El conjunto de posibles resultados es conocido.
+	\item No se puede predecir con absoluta certeza el resultado del experimento.
+\end{enumerate}
 \end{definicion}
 
 Un ejemplo sencillo de experimentos aleatorios son los juegos de azar. Por ejemplo, el lanzamiento de un dado es un experimento aleatorio ya
@@ -78,7 +78,7 @@ que:
 \end{itemize}
 
 A lo largo del tema utilizaremos varias veces los juegos de azar para dar ejemplos sencillos que ayuden a comprender los conceptos de la
-teoría de la probabilidad, pero también daremos ejemplos más aplicacos a las ciencias de la salud. 
+teoría de la probabilidad, pero también daremos ejemplos más aplicados a las ciencias de la salud. 
 
 Otro ejemplo de experimento aleatorio más aplicado a la salud sería la selección de un individuo de una población al azar y la determinación
 de su grupo sanguíneo. En este caso el conjunto de posibles resultados serían los cuatro grupos sanguíneos A, B, 0 y AB. De nuevo antes de
@@ -93,26 +93,27 @@ En general, la obtención de cualquier muestra mediante procedimientos aleatorio
 \begin{frame}
 \frametitle{Espacio muestral}
 \begin{definicion}[Espacio muestral]
-Al conjunto $E$ de todos los posibles resultados de un experimento aleatorio se le llama \emph{espacio muestral}.
+Al conjunto $\Omega$ de todos los posibles resultados de un experimento aleatorio se le llama \emph{espacio muestral}.
 \end{definicion}
 
 Algunos ejemplos de espacios muestrales son:
 \begin{itemize}
-\item Lanzamiento de una moneda: $E=\{c,x\}$.
-\item Lanzamiento de un dado: $E=\{1,2,3,4,5,6\}$.
-\item Grupo sanguíneo de un individuo seleccionado al azar: $E=\{\mbox{A},\mbox{B},\mbox{AB},\mbox{0}\}$.
-\item Estatura de un individuo seleccionado al azar: $\mathbb{R}^+$.
+\item Lanzamiento de una moneda: $\Omega=\{c,x\}$.
+\item Lanzamiento de un dado: $\Omega=\{1,2,3,4,5,6\}$.
+\item Grupo sanguíneo de un individuo seleccionado al azar: $\Omega=\{\mbox{A},\mbox{B},\mbox{AB},\mbox{0}\}$.
+\item Estatura de un individuo seleccionado al azar: $\Omega=\mathbb{R}^+$.
 \end{itemize}
 
-\note{Al conjunto $E$ de todos los posibles resultados de un experimento aleatorio se le llama \emph{espacio muestral}.
+\note{Al conjunto $\Omega$ de todos los posibles resultados de un experimento aleatorio se le llama \emph{espacio muestral}.
 \end{definicion}
 
 Algunos ejemplos de espacios muestrales son:
 \begin{itemize}
-\item Lanzamiento de una moneda: $E=\{c,x\}$.
-\item Lanzamiento de un dado: $E=\{1,2,3,4,5,6\}$.
-\item Grupo sanguíneo de un individuo seleccionado al azar: $E=\{\mbox{A},\mbox{B},\mbox{AB},\mbox{0}\}$.
-\item Estatura de un individuo seleccionado al azar: $\mathbb{R}^+$. En este último caso se trataría de un conjunto con infinitos valores. 
+\item Lanzamiento de una moneda: $\Omega=\{c,x\}$.
+\item Lanzamiento de un dado: $\Omega=\{1,2,3,4,5,6\}$.
+\item Grupo sanguíneo de un individuo seleccionado al azar: $\Omega=\{\mbox{A},\mbox{B},\mbox{AB},\mbox{0}\}$.
+\item Estatura de un individuo seleccionado al azar: $\Omega=\mathbb{R}^+$. 
+En este último caso se trataría de un conjunto con infinitos valores. 
 \end{itemize}
 }
 \end{frame}
@@ -120,65 +121,24 @@ Algunos ejemplos de espacios muestrales son:
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Construcción del espacio muestral}
-En los experimentos donde se miden más de una variable, la construcción del espacio muestral puede complicarse. En tales casos, es
-recomendable utilizar un \structure{\textbf{diagrama de árbol}} de manera que cada nivel del árbol es una variable observada y cada rama un
-posible valor.
-
-Por ejemplo, si el experimento consiste en observar el sexo y el grupo sanguíneo de una persona, el espacio muestral podría construirse
-mediante el siguiente árbol:
-
+\frametitle{Diagrama de árbol}
+En experimentos donde se mide más de una variable, la determinación del espacio muestral puede resultar compleja. 
+En tales casos es recomendable utilizar un \highlight{diagrama de árbol} para construir el espacio muestral.
+	
+En un diagrama de árbol cada variable se representa en un nivel del árbol y cada posible valor de la variable como una rama. 
+\end{frame}
+	
+	
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Diagrama de árbol}
+\framesubtitle{Ejemplo de sexo y grupo sanguíneo}
+	
 \begin{center}
-\psset{treesep=0.2cm, levelsep=2cm}
-\renewcommand{\psedge}[2]{\ncdiag[armA=0.7cm,angleA=180,angleB=0,armB=0cm]{#2}{#1}} 
-\pstree[treemode=R, nodesep=1pt]{\Tp*}{
-	\pstree[linestyle=none]{\TR[edge=none]{Sexo}}{\pstree{\TR{Grupo}}{\TR{$E$}}}
-	\pstree{\TR{Mujer}}{
-		\pstree[linestyle=none]{\TR{A}}{\TR{(Mujer,A)}}
-		\pstree[linestyle=none]{\TR{B}}{\TR{(Mujer,B)}}
-		\pstree[linestyle=none]{\TR{AB}}{\TR{(Mujer,AB)}}
-		\pstree[linestyle=none]{\TR{0}}{\TR{(Mujer,0)}}
-	}
-	\pstree{\TR{Hombre}}{
-		\pstree[linestyle=none]{\TR{A}}{\TR{(Hombre,A)}}
-		\pstree[linestyle=none]{\TR{B}}{\TR{(Hombre,B)}}
-		\pstree[linestyle=none]{\TR{AB}}{\TR{(Hombre,AB)}}
-		\pstree[linestyle=none]{\TR{0}}{\TR{(Hombre,0)}}
-	}
-	\pstree[linestyle=none]{\Tp[edge=none]}{\Tp}
-}
+\tikzsetnextfilename{probabilidad/espacio_muestral}
+\mode<article>{\resizebox{0.6\textwidth}{!}{\input{img/probabilidad/espacio_muestral}}}
+\mode<presentation>{\resizebox{0.6\textwidth}{!}{\input{img/probabilidad/espacio_muestral}}}
 \end{center}
-
-\note{
-Lo primero que hay que conocer de un experimento aleatorio es su espacio muestral.
-
-En los experimentos donde se miden más de una variable, la construcción del espacio muestral puede complicarse. En tales casos, es
-recomendable utilizar un \structure{\textbf{diagrama de árbol}}. En este diagrama, se representa un árbol con distintos niveles de
-ramificación, donde cada nivel del árbol corresponde a una variable observada y cada rama a un posible valor de la variable.
-
-Por ejemplo, si el experimento consiste en observar el sexo y el grupo sanguíneo de una persona, el espacio muestral podría construirse
-mediante el siguiente árbol:
-\begin{center}
-\psset{treesep=0.2cm, levelsep=2cm}
-\renewcommand{\psedge}[2]{\ncdiag[armA=0.7cm,angleA=180,angleB=0,armB=0cm]{#2}{#1}} 
-\pstree[treemode=R, nodesep=1pt]{\Tp*}{
-	\pstree[linestyle=none]{\TR[edge=none]{Sexo}}{\pstree{\TR{Grupo}}{\TR{$E$}}}
-	\pstree{\TR{Mujer}}{
-		\pstree[linestyle=none]{\TR{A}}{\TR{(Mujer,A)}}
-		\pstree[linestyle=none]{\TR{B}}{\TR{(Mujer,B)}}
-		\pstree[linestyle=none]{\TR{AB}}{\TR{(Mujer,AB)}}
-		\pstree[linestyle=none]{\TR{0}}{\TR{(Mujer,0)}}
-	}
-	\pstree{\TR{Hombre}}{
-		\pstree[linestyle=none]{\TR{A}}{\TR{(Hombre,A)}}
-		\pstree[linestyle=none]{\TR{B}}{\TR{(Hombre,B)}}
-		\pstree[linestyle=none]{\TR{AB}}{\TR{(Hombre,AB)}}
-		\pstree[linestyle=none]{\TR{0}}{\TR{(Hombre,0)}}
-	}
-	\pstree[linestyle=none]{\Tp[edge=none]}{\Tp}
-}
-\end{center}
-}
 \end{frame}
 
 
@@ -186,20 +146,20 @@ mediante el siguiente árbol:
 \begin{frame}
 \frametitle{Sucesos aleatorios}
 \begin{definicion}[Suceso aleatorio]
-Un \emph{suceso aleatorio} es cualquier subconjunto del espacio muestral $E$ de un experimento aleatorio. 
+Un \emph{suceso aleatorio} es cualquier subconjunto del espacio muestral $\Omega$ de un experimento aleatorio. 
 \end{definicion}
 
 Existen distintos tipos de sucesos:
 \begin{description}
-\item[Suceso imposible:] Es el subconjunto vacío $\emptyset$. El suceso nunca ocurre.
-\item[Sucesos elementales:] Son los subconjuntos formados por un solo elemento. 
-\item[Sucesos compuestos:] Son los subconjuntos formados por dos o más elementos.
-\item[Suceso seguro:] Es el propio espacio muestral. El suceso seguro siempre ocurre.
+	\item[Suceso imposible:] Es el suceso vacío $\emptyset$. Este suceso nunca ocurre.
+	\item[Sucesos elementales:] Son los sucesos formados por un solo elemento.
+	\item[Sucesos compuestos:] Son los sucesos formados por dos o más elementos.
+	\item[Suceso seguro:] Es el suceso que contiene el propio espacio muestral $\Omega$. Este suceso siempre ocurre.
 \end{description}
 
 \note{
 \begin{definicion}
-Un \emph{suceso aleatorio} es cualquier subconjunto del espacio muestral $E$ de un experimento aleatorio. 
+Un \emph{suceso aleatorio} es cualquier subconjunto del espacio muestral $\Omega$ de un experimento aleatorio. 
 \end{definicion}
 
 Existen distintos tipos de sucesos:
@@ -221,25 +181,25 @@ espacio muestral.
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Espacio de sucesos}
-\begin{definicion}[Espacio de sucesos] Dado un espacio muestral $E$ de un
-experimento aleatorio, el conjunto formado por todos los posibles sucesos de $E$ se llama \emph{espacio de sucesos de $E$} y se denota
-$\mathcal{P}(E)$.
+\begin{definicion}[Espacio de sucesos] Dado un espacio muestral $\Omega$ de un
+experimento aleatorio, el conjunto formado por todos los posibles sucesos de $\Omega$ se llama \emph{espacio de sucesos de $\Omega$} y se denota
+$\mathcal{P}(\Omega)$.
 \end{definicion}
 
-Ejemplo. Dado el espacio muestral $E=\{a,b,c\}$, se tiene 
+Ejemplo. Dado el espacio muestral $\Omega=\{a,b,c\}$, su espacio de sucesos es
 \[
-\mathcal{P}(E)=\left\{\emptyset, \{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\{a,b,c\}\right\}
+\mathcal{P}(\Omega)=\left\{\emptyset, \{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\{a,b,c\}\right\}
 \]
 
 \note{
-\begin{definicion}[Espacio de sucesos] Dado un espacio muestral $E$ de un
-experimento aleatorio, el conjunto formado por todos los posibles sucesos de $E$ se llama \emph{espacio de sucesos de $E$} y se denota
-$\mathcal{P}(E)$, también conocido como partes de $E$.
+\begin{definicion}[Espacio de sucesos] Dado un espacio muestral $\Omega$ de un
+experimento aleatorio, el conjunto formado por todos los posibles sucesos de $\Omega$ se llama \emph{espacio de sucesos de $\Omega$} y se denota
+$\mathcal{P}(\Omega)$, también conocido como partes de $\Omega$.
 \end{definicion}
 
-Ejemplo. Dado el espacio muestral $E=\{a,b,c\}$, se tiene 
+\textbf{Ejemplo}. Dado el espacio muestral $\Omega=\{a,b,c\}$, su espacio de sucesos es
 \[
-\mathcal{P}(E)=\left\{\emptyset, \{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\{a,b,c\}\right\}
+\mathcal{P}(\Omega)=\left\{\emptyset, \{a\},\{b\},\{c\},\{a,b\},\{a,c\},\{b,c\},\{a,b,c\}\right\}
 \]
 }
 \end{frame}
@@ -273,42 +233,22 @@ más habituales que se verán son:
 \begin{frame}
 \frametitle{Unión de sucesos}
 \begin{definicion}[Suceso unión]
-Dados dos sucesos $A,B\in \mathcal{P}(E)$, se llama \emph{suceso unión} de $A$ y $B$, y se denota $A\cup B$, al suceso formado por los
-elementos de $A$ junto a los elementos de $B$, es decir,
+Dados dos sucesos $A,B\subseteq \Omega$, se llama \emph{suceso unión} de $A$ y $B$, y se denota $A\cup B$, al suceso formado por los elementos de $A$ junto a los elementos de $B$, es decir,
 \[
 A\cup B = \{x\,|\, x\in A\textrm{ o }x\in B\}.
 \]
-\begin{center}
-\psset{unit=0.8}
-\begin{pspicture}(-1,-1.5)(4,1.5)
-\psset{fillstyle=solid}
-\pscustom[fillcolor=white]{
-\psframe(-1,-1.5)(4,1.5)}
-\pscustom[fillcolor=yellow]{%
-\psarc(1,0){1}{60}{-60}
-\psarcn(2,0){1}{240}{120}}
-\pscustom[fillcolor=yellow]{%
-\psarc(2,0){1}{240}{120}
-\psarcn(1,0){1}{60}{-60}}
-\pscustom[fillcolor=yellow]{%
-\psarc(1,0){1}{-60}{60}
-\psarc(2,0){1}{120}{240}}
-\rput(-0.7,1.2){$E$}
-\rput(0.5,0){$A$}
-\rput(1.5,-1.2){$A\cup B$}
-\rput(2.5,0){$B$}
-\end{pspicture}
-\end{center}
 \end{definicion}
+
+\begin{center}
+	\tikzsetnextfilename{probabilidad/union}
+	\input{img/probabilidad/union}
+\end{center}
 
 El suceso unión $A\cup B$ ocurre siempre que ocurre $A$ \alert{o} $B$.
 
-Ejemplo. Sea $E=\{1,2,3,4,5,6\}$, el conjunto de los números de un dado, y $A=\{2,4,6\}$ y $B=\{1,2,3,4\}$. Entonces $A\cup
-B=\{1,2,3,4,6\}$.
-
 \note{
 \begin{definicion}[Suceso unión]
-Dados dos sucesos $A,B\in \mathcal{P}(E)$, se llama \emph{suceso unión} de $A$ y $B$, y se denota $A\cup B$, al suceso formado por los
+Dados dos sucesos $A,B\subseteq \Omega$, se llama \emph{suceso unión} de $A$ y $B$, y se denota $A\cup B$, al suceso formado por los
 elementos de $A$ junto a los elementos de $B$, es decir,
 \[
 A\cup B = \{x\,|\, x\in A\textrm{ o }x\in B\}.
@@ -317,7 +257,7 @@ A\cup B = \{x\,|\, x\in A\textrm{ o }x\in B\}.
 
 El suceso unión $A\cup B$ ocurre siempre que ocurre $A$ \alert{o} $B$ y por tanto está asociado al nexo o del castellano.
 
-Ejemplo. Sea $E=\{1,2,3,4,5,6\}$, el conjunto de los números de un dado, y $A=\{2,4,6\}$ y $B=\{1,2,3,4\}$. Entonces $A\cup
+Ejemplo. Sea $\Omega=\{1,2,3,4,5,6\}$, el conjunto de los números de un dado, y $A=\{2,4,6\}$ y $B=\{1,2,3,4\}$. Entonces $A\cup
 B=\{1,2,3,4,6\}$.
 }
 \end{frame}
@@ -327,43 +267,24 @@ B=\{1,2,3,4,6\}$.
 \begin{frame}
 \frametitle{Intersección de sucesos}
 \begin{definicion}[Suceso intersección]
-Dados dos sucesos $A,B\in \mathcal{P}(E)$, se llama \emph{suceso intersección} de $A$ y $B$, y se denota $A\cap B$, al suceso formado por los elementos comunes de $A$ y $B$, es decir,
+Dados dos sucesos $A,B\subseteq \Omega$, se llama \emph{suceso intersección} de $A$ y $B$, y se denota $A\cap B$, al suceso formado por los elementos comunes de $A$ y $B$, es decir,
 \[
 A\cap B = \{x\,|\, x\in A\textrm{ y }x\in B\}.
 \]
-\begin{center}
-\psset{unit=0.8}
-\begin{pspicture}(-1,-1.5)(4,1.5)
-\psset{fillstyle=solid}
-\pscustom[fillcolor=white]{\psframe(-1,-1.5)(4,1.5)}
-\pscustom[fillstyle=none]{%
-\psarc(1,0){1}{60}{-60}
-\psarcn(2,0){1}{240}{120}}
-\pscustom[fillstyle=none]{%
-\psarc(2,0){1}{240}{120}
-\psarcn(1,0){1}{60}{-60}}
-\pscustom[fillcolor=yellow]{%
-\psarc(1,0){1}{-60}{60}
-\psarc(2,0){1}{120}{240}}
-\rput(-0.7,1.2){$E$}
-\rput(0.5,0){$A$}
-\rput(1.5,-1.2){$A\cap B$}
-\rput(2.5,0){$B$}
-\end{pspicture}
-\end{center}
 \end{definicion}
+
+\begin{center}
+	\tikzsetnextfilename{probabilidad/interseccion}
+	\input{img/probabilidad/interseccion}
+\end{center}
 
 El suceso intersección $A\cap B$ ocurre siempre que ocurren $A$ \alert{y} $B$.
 
-Ejemplo. Sea $E=\{1,2,3,4,5,6\}$, el conjunto de los números de un dado, y
-$A=\{2,4,6\}$ y $B=\{1,2,3,4\}$. Entonces $A\cap B=\{2,4\}$.
-
 Diremos que dos sucesos son \structure{\textbf{incompatibles}} si su intersección es vacía.
-Por ejemplo $A=\{2,4,6\}$ y $C=\{1,3\}$ son incompatibles.
 
 \note{
 \begin{definicion}[Suceso intersección]
-Dados dos sucesos $A,B\in \mathcal{P}(E)$, se llama \emph{suceso intersección} de $A$ y $B$, y se denota $A\cap B$, al suceso formado por los elementos comunes de $A$ y $B$, es decir,
+Dados dos sucesos $A,B\subseteq \Omega$, se llama \emph{suceso intersección} de $A$ y $B$, y se denota $A\cap B$, al suceso formado por los elementos comunes de $A$ y $B$, es decir,
 \[
 A\cap B = \{x\,|\, x\in A\textrm{ y }x\in B\}.
 \]
@@ -371,11 +292,7 @@ A\cap B = \{x\,|\, x\in A\textrm{ y }x\in B\}.
 
 El suceso intersección $A\cap B$ ocurre siempre que ocurren $A$ \alert{y} $B$, y por tanto está asociado al nexo y del castellano.
 
-Ejemplo. Sea $E=\{1,2,3,4,5,6\}$, el conjunto de los números de un dado, y
-$A=\{2,4,6\}$ y $B=\{1,2,3,4\}$. Entonces $A\cap B=\{2,4\}$.
-
 Diremos que dos sucesos son \structure{\textbf{incompatibles}} cuando no tienen nada en común, es decir, si su intersección es vacía.
-Por ejemplo $A=\{2,4,6\}$ y $C=\{1,3\}$ son incompatibles. Dos sucesos incompatibles nunca pueden ocurrir a la vez. 
 }
 \end{frame}
 
@@ -384,42 +301,29 @@ Por ejemplo $A=\{2,4,6\}$ y $C=\{1,3\}$ son incompatibles. Dos sucesos incompati
 \begin{frame}
 \frametitle{Contrario de un suceso}
 \begin{definicion}[Suceso contrario]
-Dado un conjunto $A\in \mathcal{P}(E)$, se llama \emph{suceso contrario o complementario} de $A$, y se denota $\bar A$, al suceso formado por los elementos de $E$ que no pertenecen a $A$, es decir,
+Dado suceso $A\subseteq \Omega$, se llama \emph{suceso contrario o complementario} de $A$, y se denota $\overline A$, al suceso formado por los elementos de $\Omega$ que no pertenecen a $A$, es decir,
 \[
 \overline A = \{x\,|\, x\not\in A\}.
 \]
-\begin{center}
-\psset{unit=0.8}
-\begin{pspicture}(-1,-1.5)(4,1.5)
-\psset{fillstyle=solid}
-\pscustom[fillcolor=yellow]{
-\psframe(-1,-1.5)(4,1.5)}
-\pscustom[fillcolor=white]{%
-\psarc(1,0){1}{0}{360}}
-\rput(-0.7,1.2){$E$}
-\rput(1,0){$A$}
-\rput(3,0){$\overline A$}
-\end{pspicture}
-\end{center}
 \end{definicion}
 
-El suceso contrario $\bar A$ ocurre siempre que \alert{no} ocurre $A$.
+\begin{center}
+	\tikzsetnextfilename{probabilidad/contrario}
+	\input{img/probabilidad/contrario}
+\end{center}
 
-Ejemplo. Sea $E=\{1,2,3,4,5,6\}$, el conjunto de los números de un dado, y
-$A=\{2,4,6\}$. Entonces $\overline A=\{1,3,5\}$.
+El suceso contrario $\overline A$ ocurre siempre que \alert{no} ocurre $A$.
+
 
 \note{
 \begin{definicion}[Suceso contrario]
-Dado un conjunto $A\in \mathcal{P}(E)$, se llama \emph{suceso contrario o complementario} de $A$, y se denota $\bar A$, al suceso formado por los elementos de $E$ que no pertenecen a $A$, es decir,
+Dado un suceso $A\subseteq \Omega$, se llama \emph{suceso contrario o complementario} de $A$, y se denota $\overline A$, al suceso formado por los elementos de $\Omega$ que no pertenecen a $A$, es decir,
 \[
 \overline A = \{x\,|\, x\not\in A\}.
 \]
 \end{definicion}
 
-El suceso contrario $\bar A$ ocurre siempre que \alert{no} ocurre $A$, y por tanto esta ligado a la negación en castellano. 
-
-Ejemplo. Sea $E=\{1,2,3,4,5,6\}$, el conjunto de los números de un dado, y
-$A=\{2,4,6\}$. Entonces $\overline A=\{1,3,5\}$.
+El suceso contrario $\overline A$ ocurre siempre que \alert{no} ocurre $A$, y por tanto esta ligado a la negación en castellano. 
 }
 \end{frame}
 
@@ -428,58 +332,51 @@ $A=\{2,4,6\}$. Entonces $\overline A=\{1,3,5\}$.
 \begin{frame}
 \frametitle{Diferencia de sucesos}
 \begin{definicion}[Suceso diferencia]
-Dados dos sucesos $A,B\in \mathcal{P}(E)$, se llama \emph{suceso diferencia} de $A$ y $B$, y se denota $A-B$, al suceso formado por los elementos de $A$ que no pertenecen a $B$, es decir,
+Dados dos sucesos $A,B\subseteq \Omega$, se llama \emph{suceso diferencia} de $A$ y $B$, y se denota $A-B$, al suceso formado por los elementos de $A$ que no pertenecen a $B$, es decir,
 \[
-A-B = \{x\,|\, x\in A\textrm{ y }x\not\in B\}.
+	A-B = \{x\,|\, x\in A\mbox{ y }x\not\in B\} = A \cap \overline B.
 \]
-\begin{center}
-\psset{unit=0.8}
-\begin{pspicture}(-1,-1.5)(4,1.5)
-\psset{fillstyle=solid}
-\pscustom[fillcolor=white]{
-\psframe(-1,-1.5)(4,1.5)}
-\pscustom[fillcolor=yellow]{%
-\psarc(1,0){1}{60}{-60}
-\psarcn(2,0){1}{240}{120}}
-\pscustom[fillstyle=none]{%
-\psarc(2,0){1}{240}{120}
-\psarcn(1,0){1}{60}{-60}}
-\pscustom[fillstyle=none]{%
-\psarc(1,0){1}{-60}{60}
-\psarc(2,0){1}{120}{240}}
-\rput(-0.7,1.2){$E$}
-\rput(0.5,0){$A$}
-\rput(1.5,-1.2){$A-B$}
-\rput(2.5,0){$B$}
-\end{pspicture}
-\end{center}
 \end{definicion}
 
-El suceso diferencia $A-B$ ocurre siempre que ocurre $A$ pero no ocurre $B$, y también puede expresarse como $A\cap \bar B$.
+\begin{center}
+	\tikzsetnextfilename{probabilidad/diferencia}
+	\input{img/probabilidad/diferencia}
+\end{center}
 
-Ejemplo. Sea $E=\{1,2,3,4,5,6\}$, el conjunto de los números de un dado, y
-$A=\{2,4,6\}$ y $B=\{1,2,3,4\}$. Entonces $A-B=\{6\}$ y $B-A=\{1,3\}$.
+El suceso diferencia $A-B$ ocurre siempre que ocurre $A$ pero no ocurre $B$, y también puede expresarse como $A\cap \bar B$.
 
 \note{
 \begin{definicion}[Suceso diferencia]
-Dados dos sucesos $A,B\in \mathcal{P}(E)$, se llama \emph{suceso diferencia} de $A$ y $B$, y se denota $A-B$, al suceso formado por los elementos de $A$ que no pertenecen a $B$, es decir,
+Dados dos sucesos $A,B\in \mathcal{P}(\Omega)$, se llama \emph{suceso diferencia} de $A$ y $B$, y se denota $A-B$, al suceso formado por los elementos de $A$ que no pertenecen a $B$, es decir,
 \[
 A-B = \{x\,|\, x\in A\textrm{ y }x\not\in B\}.
 \]
 \end{definicion}
 
 El suceso diferencia $A-B$ ocurre siempre que ocurre $A$ pero no ocurre $B$, y también puede expresarse como $A\cap \bar B$.
-
-Ejemplo. Sea $E=\{1,2,3,4,5,6\}$, el conjunto de los números de un dado, y
-$A=\{2,4,6\}$ y $B=\{1,2,3,4\}$. Entonces $A-B=\{6\}$.
 }
 \end{frame}
 
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
+\frametitle{Operaciones entre sucesos}
+\framesubtitle{Ejemplo}
+Dado el espacio muestral correspondiente al lanzamiento de un dado $\Omega=\{1,2,3,4,5,6\}$ y los sucesos $A=\{2,4,6\}$ y $B=\{1,2,3,4\}$, 
+\begin{itemize}
+	\item La unión de $A$ y $B$ es $A\cup B=\{1,2,3,4,6\}$.
+	\item La intersección de $A$ y $B$ es $A\cap B=\{2,4\}$.
+	\item El contrario de $A$ es $\overline A=\{1,3,5\}$.
+	\item Los eventos $A$ y $\overline A$ son incompatibles.
+	\item La diferencia de $A$ y $B$ es $A-B=\{6\}$, y la diferencia de $B$ y $A$ es $B-A=\{1,3\}$.
+\end{itemize}
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
 \frametitle{Álgebra de sucesos}
-Dados los sucesos $A,B,C\in  \mathcal{P}(E)$, se cumplen las siguientes propiedades:
+Dados los sucesos $A,B,C\in  \mathcal{P}(\Omega)$, se cumplen las siguientes propiedades:
 \begin{enumerate}
 \item $A\cup A=A$, $A\cap A=A$ (idempotencia).
 \item $A\cup B=B\cup A$, $A\cap B = B\cap A$ (conmutativa).
@@ -517,16 +414,17 @@ comprobar:
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Definición clásica de probabilidad}
-\begin{definicion}[Probabilidad Clásica de Laplace]
-Para un experimento aleatorio donde todos los elementos del espacio muestral $E$ son equiprobables, se define la \emph{probabilidad} de un
-suceso $A\subseteq E $ como el cociente entre el número de elementos de $A$ y el número de elementos de $E$:
-\[ P(A) = \frac{|A|}{|E|} = \frac{\mbox{nº casos favorables a A}}{\mbox{nº casos posibles}}\]
+\begin{definicion}[Probabilidad --- Laplace]
+Dado un espacio muestral $\Omega$ de un experimento aleatorio donde todos los elementos de $\Omega$ son equiprobables, la \emph{probabilidad} de un suceso $A\subseteq \Omega$ es el cociente entre el número de elementos de $A$ y el número de elementos de $\Omega$
+\[ 
+	P(A) = \frac{|A|}{|\Omega|} = \frac{\mbox{nº casos favorables a A}}{\mbox{nº casos posibles}}
+\]
 \end{definicion}
 
 Esta definición es ampliamente utilizada, aunque tiene importantes restricciones:
 \begin{itemize}
-\item No puede utilizarse con espacios muestrales infinitos, o de los que no se conoce el número de casos posibles.
-\item Es necesario que todos los elementos del espacio muestral tengan la misma probabilidad de ocurrir (\emph{equiprobabilidad}).  
+\item Es necesario que todos los elementos del espacio muestral tengan la misma probabilidad de ocurrir (\emph{equiprobabilidad}). 
+\item No puede utilizarse con espacios muestrales infinitos, o de los que no se conoce el número de casos posibles. 
 \end{itemize}
 
 \alert{\emph{¡Ojo! Esto no se cumple en muchos experimentos aleatorios reales.}}
@@ -555,15 +453,15 @@ equiprobables ya que hay mucha más gente con el grupo $A$ que con otro grupo.
 \begin{frame}
 \frametitle{Definición frecuentista de probabilidad}
 \begin{teorema}[Ley de los grandes números]
-Cuando un experimento aleatorio se repite un gran número de veces, las frecuencias relativas de los sucesos del
-experimento tienden a estabilizarse en torno a cierto número, que es precisamente su probabilidad.
+Cuando un experimento aleatorio se repite un gran número de veces, las frecuencias relativas de los sucesos del experimento tienden a estabilizarse en torno a cierto número, que es precisamente su probabilidad.
 \end{teorema}
 
 De acuerdo al teorema anterior, podemos dar la siguiente definición
 \begin{definicion}[Probabilidad frecuentista]
-Para un experimento aleatorio reproducible, se define la \emph{probabilidad} de un suceso $A\subseteq E $ como la frecuencia relativa del
-suceso $A$ en infinitas repeticiones del experimento:
-\[ P(A) = lim_{n\rightarrow \infty}\frac{n_{A}}{n}\]
+Dado un espacio muestral $\Omega$ de un experimento aleatorio reproducible, la \emph{probabilidad} de un suceso $A\subseteq \Omega$ es la frecuencia relativa del suceso $A$ en infinitas repeticiones del experimento
+\[ 
+	P(A) = lim_{n\rightarrow \infty}\frac{n_{A}}{n}
+\]
 \end{definicion}
 
 Aunque esta definición es muy útil en experimentos científicos reproducibles, también tiene serios inconvenientes, ya que
@@ -601,14 +499,20 @@ Aunque esta definición es muy útil en experimentos científicos reproducibles,
 \begin{frame}
 \frametitle{Definición axiomática de probabilidad}
 \begin{definicion}[Kolmogórov]
-Se llama \emph{probabilidad} a toda aplicación que asocia a cada suceso $A$ del espacio de sucesos de un experimento aleatorio, un número
-real $P(A)$, que cumple los siguientes axiomas:
+Dado un espacio muestral $\Omega$ de un experimento aleatorio, una función de \emph{probabilidad} es una aplicación que asocia a cada suceso $A\subseteq \Omega$ un número real $P(A)$, conocido como probabilidad de $A$, que cumple los siguientes axiomas:
 \begin{enumerate}
-\item La probabilidad de un suceso cualquiera es positiva o nula: \[P(A)\geq 0.\]
-\item La probabilidad de la unión de dos sucesos incompatibles es igual a la suma de las probabilidades de cada uno de ellos:       
-\[P(A\cup B) = P(A)+P(B).\]
-\item La probabilidad del suceso seguro es igual a la unidad: 
-\[P(E)=1.\]
+\item La probabilidad de un suceso cualquiera es positiva o nula,
+\[
+	P(A)\geq 0.
+\]
+\item La probabilidad del suceso seguro es igual a la unidad,
+\[
+	P(\Omega)=1.
+\]
+\item La probabilidad de la unión de dos sucesos incompatibles ($A\cap B=\emptyset$) es igual a la suma de las probabilidades de cada uno de ellos,
+\[
+	P(A\cup B) = P(A)+P(B).
+\]
 \end{enumerate}
 \end{definicion}
 
@@ -625,7 +529,7 @@ que cumple tres axiomas:
 \end{enumerate}
 
 Estos axiomas los cumplen todas las definiciones históricas de probabilidad y por tanto, todas ellas tienen cabida bajo la definición
-axiomática de Kolmogorov.
+axiomática de Kolmogórov.
 }
 \end{frame}
 
@@ -635,7 +539,7 @@ axiomática de Kolmogorov.
 \frametitle{Consecuencias de los axiomas de probabilidad}
 A partir de los axiomas de la definición de probabilidad se pueden deducir los siguientes resultados:
 \begin{enumerate}
-\item <2-> $P(\bar A) = 1-P(A)$.
+\item <2-> $P(\overline A) = 1-P(A)$.
 \item <3->$P(\emptyset)= 0$.
 \item <4->Si $A\subseteq B$ entonces $P(A)\leq P(B)$.
 \item <5->$P(A) \leq 1$.
@@ -645,49 +549,48 @@ A partir de los axiomas de la definición de probabilidad se pueden deducir los 
 \[P(A)=\sum_{i=1}^n P(e_i).\]
 \end{enumerate}
 
-\mode<presentation>{
-\begin{center}
-\psset{unit=0.8}
-\begin{pspicture}(0,-1)(0,0)
-\uncover<2>{
-\rput[c](0,0){$A \cup \bar A = E \Leftrightarrow P(A\cup \bar A) = P(E) \Leftrightarrow P(A)+P(\bar A) = 1.$}
-}
-\uncover<3>{
-\rput[c](0,0){$\emptyset = \bar E \Leftrightarrow P(\emptyset) = P(\bar E) = 1-P(E) = 1-1 = 0.$}
-}
-\uncover<4>{
-\rput[c](0,0){$B = A\cup (B-A) \Leftrightarrow P(B) = P(A\cup (B-A) = P(A)+P(B-A) \geq P(A).$}
-}
-\uncover<5>{
-\rput[c](0,0){$A\subseteq E \Leftrightarrow P(A)\leq P(E)=1.$}
-}
-\uncover<6>{
-\psset{fillstyle=solid}
-\pscustom[fillcolor=yellow]{%
-\psarc(-0.5,1){1}{60}{-60}
-\psarcn(0.5,1){1}{240}{120}}
-\pscustom[fillcolor=yellow]{%
-\psarc(0.5,1){1}{240}{120}
-\psarcn(-0.5,1){1}{60}{-60}}
-\pscustom[fillcolor=yellow]{%
-\psarc(-0.5,1){1}{-60}{60}
-\psarc(0.5,1){1}{120}{240}}
-\rput(-0.75,1){$A$}
-\rput(0,-0.5){$A\cup B$}
-\rput(0.75,1){$B$}
-}
-\uncover<7>{
-\rput[c](0,0){$A=\{e_1,\cdots,e_n\} = \{e_1\}\cup \cdots \cup \{e_n\} \Leftrightarrow 
-P(A)=P(\{e_1\}\cup \cdots \cup \{e_n\}) = P(\{e_1\})+ \cdots P(\{e_n\}). $} 
-}
-\end{pspicture}
-\end{center}
-}
+\mode<article>{
+	\textbf{Proof.}
+	\begin{enumerate}
+	\item $\overline A = \Omega \Rightarrow P(A\cup \overline A) = P(\Omega) \Rightarrow P(A)+P(\overline A) = 1 \Rightarrow
+	P(\overline A)=1-P(A)$.
+	\item $\emptyset = \overline \Omega \Rightarrow P(\emptyset) = P(\overline \Omega) = 1-P(\Omega) = 1-1 = 0.$
+	\item $B = A\cup (B-A)$. Como $A$ y $B-A$ son incompatibles, $P(B) = P(A\cup (B-A)) = P(A)+P(B-A) \geq
+	P(A).$
+	
+	Si pensamos en probabilidades como áreas, es fácil de ver gráficamente,
+	\begin{center}
+	\tikzsetnextfilename{probabilidad/inclusion_probabilidad}
+	\input{img/probabilidad/probabilidad_inclusion}
+	\end{center}
+	
+	\item $A\subseteq \Omega \Rightarrow P(A)\leq P(\Omega)=1.$
+	\item $A=(A-B)\cup (A\cap B)$. Como $A-B$ y $A\cap B$ son incompatibles, $P(A)=P(A-B)+P(A\cap B) \Rightarrow 
+	P(A-B)=P(A)-P(A\cap B)$.
+	
+	Si pensamos en probabilidades como áreas, es fácil de ver gráficamente,
+	\begin{center}
+	\tikzsetnextfilename{probabilidad/probabilidad_diferencia}
+	\input{img/probabilidad/probabilidad_diferencia}
+	\end{center}
+	
+	\item $A\cup B= (A-B) \cup (B-A) \cup (A\cap B)$. As $A-B$, $B-A$ and $A\cap B$ are incompatible, $P(A\cup
+	B)=P(A-B)+P(B-A)+P(A\cap B) = P(A)-P(A\cap B)+P(B)-P(A\cap B)+P(A\cap B)= P(A)+P(B)-P(A\cup B)$.
+	
+	Si pensamos en probabilidades como áreas, es fácil de ver gráficamente,
+	\begin{center}
+	\tikzsetnextfilename{probabilidad/probabilidad_union}
+	\input{img/probabilidad/probabilidad_union}
+	\end{center}
+	\item $A=\{e_1,\cdots,e_n\} = \{e_1\}\cup \cdots \cup \{e_n\} \Rightarrow P(A)=P(\{e_1\}\cup \cdots \cup \{e_n\}) =
+	P(\{e_1\})+ \cdots P(\{e_n\}).$
+	\end{enumerate}
+	}
 
 \note{
 A partir de los axiomas de la definición de probabilidad se pueden deducir las siguientes propiedades.
 \begin{enumerate}
-\item $P(\bar A) = 1-P(A)$.
+\item $P(\overline A) = 1-P(A)$.
 \item $P(\emptyset)= 0$.
 \item Si $A\subseteq B$ entonces $P(A)\leq P(B)$.
 \item $P(A) \leq 1$. Esto sumado al primer axioma restringe el valor de la probabilidad al intervalo real $[0,1]$.
@@ -704,34 +607,70 @@ probabilidad de cualquier suceso simplemente sumando las probabilidades de los e
 \end{frame}
 
 
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Interpretación de la probabilidad}
+Como ha quedado claro en los axiomas anteriores, la probabilidad de un evento $A$ es un número real $P(A)$ que está siempre entre 0 y 1. 
+
+En cierto modo, este número expresa la verosimilitud del evento, es decir, la confianza que hay en que ocurra $A$ en el experimento.
+Por tanto, también nos da una medida de la incertidumbre sobre el suceso.
+\begin{itemize}
+	\item La mayor incertidumbre corresponde a $P(A)=0.5$ (Es tan probable que ocurra $A$ como que no ocurra).
+	\item La menor incertidumbre corresponde a $P(A)=1$ ($A$ sucederá con absoluta certeza) y $P(A)=0$ ($A$ no sucederá con absoluta certeza).
+\end{itemize} 
+
+Cuando $P(A)$ está más próximo a 0 que a 1, la confianza en que no ocurra $A$ es mayor que la de que ocurra $A$.
+Por el contrario, cuando $P(A)$ está más próximo a 1 que a 0, la confianza en que ocurra $A$ es mayor que la de que no ocurra $A$.
+\end{frame}
+
+
 \subsection{Probabilidad condicionada}
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Experimentos condicionados}
-En algunas ocasiones puede que haya que calcular la probabilidad de algún suceso $A$ sabiendo que ha ocurrido otro $B$. En tal caso se dice
-que el suceso $B$ es un \emph{condicionante}, y la probabilidad del suceso condicionado suele escribirse como 
-\[P(A/B).\]
+En algunas ocasiones, es posible que tengamos alguna información sobre el experimento antes de su realización. 
+Habitualmente esa información se da en forma de un suceso $B$ del mismo espacio muestral que sabemos que es cierto antes de realizar el experimento.
 
-Los condicionantes, en el fondo, cambian el espacio muestral del experimento y por tanto las probabilidades de sus sucesos.
+En tal caso se dice que el suceso $B$ es un suceso \emph{condicionante}, y la probabilidad de otro suceso $A$ se conoce como \highlight{probabilidad condicionada} y se expresa
+\[
+	P(A|B).
+\]
 
-\textbf{Ejemplo}. Supongamos que hemos observado las siguientes frecuencias de aprobados en un grupo de 100 hombres y 100 mujeres:
+Esto debe leerse como \emph{probabilidad de $A$ dado $B$} o \emph{probabilidad de $A$ bajo la condición de $B$}.
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+	\frametitle{Experimentos condicionados}
+Los condicionantes suelen cambiar el espacio muestral del experimento y por tanto las probabilidades de sus sucesos.
+
+Supongamos que tenemos una muestra de 100 hombres y 100 mujeres con las siguientes frecuencias
 \[
 \begin{array}{|c|c|c|}
 \cline{2-3}
- \multicolumn{1}{c|}{} & \mbox{Aprobados} & \mbox{Suspensos} \\ \hline 
- \rowcolor{coral} \mbox{Mujeres} & 80 & 20 \\ \hline
+ \multicolumn{1}{c|}{} & \mbox{No fumadores} & \mbox{Fumadores} \\ \hline 
+ \rowcolor{color1!30} \mbox{Mujeres} & 80 & 20 \\ \hline
  \mbox{Hombres} & 60 & 40 \\ \hline
 \end{array}
 \]
-Entonces, la probabilidad de que una persona elegida al azar haya aprobado es $P(\mbox{Aprobado})= 140/200=0.7$.
+Entonces, usando la definición frecuentista de probabilidad, la probabilidad de que una persona elegida al azar sea fumadora es 
+\[
+	P(\mbox{Fumadora})= \frac{60}{200}=0.3.
+\]
 
-Sin embargo, si se sabe que la persona elegida es mujer, entonces se tiene $P(\mbox{Aprobado}/\mbox{Mujer})=80/100=0.8$.
+\pause 
+
+Sin embargo, si se sabe que la persona elegida es mujer, entonces la muestra se reduce a la primera fila, y la probabilidad de ser fumadora es 
+\[
+	P(\mbox{Fumadora}|\mbox{Mujer})=\frac{20}{100}=0.2.
+\]
 
 \note{
 La incertidumbre sobre un suceso depende de la información que se tenga sobre el experimento aleatorio. 
 En algunas ocasiones puede que haya que calcular la probabilidad de algún suceso $A$ sabiendo que ha ocurrido otro $B$. En tal caso se dice
-que el suceso $B$ es un \emph{condicionante}, y la probabilidad del suceso condicionado suele escribirse como \[P(A/B)\]
+que el suceso $B$ es un \emph{condicionante}, y la probabilidad del suceso condicionado suele escribirse como \[P(A|B)\]
 
 Los condicionantes, en el fondo, cambian el espacio muestral del experimento y por tanto las probabilidades de sus sucesos.
 
@@ -757,18 +696,19 @@ sólo a las mujeres y la frecuencia relativa de aprobados en mujeres es $P(\mbox
 \begin{frame}
 \frametitle{Probabilidad condicionada}
 \begin{definicion}[Probabilidad condicionada]
-Dados dos sucesos $A$ y $B$ de un mismo espacio de sucesos de un experimento aleatorio, la probabilidad de $A$
-\emph{condicionada} por $B$ es \[ P(A/B) = \frac{P(A\cap B)}{P(B)},\]
+Dado un espacio muestral $\Omega$ de un experimento aleatorio, y dos dos sucesos $A,B\subseteq \Omega$, la probabilidad de $A$ \emph{condicionada} por $B$ es 
+\[ 
+	P(A|B) = \frac{P(A\cap B)}{P(B)},
+\]
 siempre y cuando, $P(B)\neq 0$.
 \end{definicion}
 
 Esta definición permite calcular probabilidades sin tener que alterar el espacio muestral original del experimento.
 
-\textbf{Ejemplo}. En el ejemplo anterior se tiene que la probabilidad del suceso Aprobado condicionada por el suceso
-Mujer es \[P(\mbox{Aprobado}/\mbox{Mujer})= \frac{P(\mbox{Aprobado}\cap \mbox{Mujer})}{P(\mbox{Mujer})} = \frac{80/200}{100/200}=\frac{80}{100}=0.8.\]
-
-De esta definición se deduce que la probabilidad de la intersección es
-\[ P(A\cap B) = P(A)P(B/A) = P(B)P(A/B).\]
+\textbf{Ejemplo}. En el ejemplo anterior 
+\[
+	P(\mbox{Fumadora}|\mbox{Mujer})= \frac{P(\mbox{Fumadora}\cap \mbox{Mujer})}{P(\mbox{Mujer})} =	\frac{20/200}{100/200}=\frac{20}{100}=0.2.
+\]
 
 \note{
 El problema de los condicionamientos es que suelen cambiar el espacio muestral de partida. Afortunadamente, es posible calcular
@@ -777,38 +717,52 @@ probabilidades condicionadas sin cambiar de espacio muestral gracias a la siguie
 \begin{definicion}[Probabilidad condicionada]
 Dados dos sucesos $A$ y $B$ de un mismo espacio de sucesos de un experimento aleatorio, la probabilidad de $A$
 \emph{condicionada} por $B$ es 
-\[ P(A/B) = \frac{P(A\cap B)}{P(B)},\]
+\[ P(A|B) = \frac{P(A\cap B)}{P(B)},\]
 siempre y cuando, $P(B)\neq 0$.
 \end{definicion}
 
-\textbf{Ejemplo}. En el ejemplo anterior se tiene que la probabilidad del suceso Aprobado condicionada por el suceso
-Mujer es \[P(\mbox{Aprobado}/\mbox{Mujer})= \frac{P(\mbox{Aprobado}\cap \mbox{Mujer})}{P(\mbox{Mujer})} = \frac{80/200}{100/200}=\frac{80}{100}=0.8.\]
-
-Por otro lado, de esta definición se deduce también que la probabilidad de la intersección de dos sucesos puede calcularse multiplicando la
-probabilidad de uno de ellos por la probabilidad del otro condicionado por el primero, es decir, 
-\[ P(A\cap B) = P(A)P(B/A) = P(B)P(A/B).\]
-
-Esta será la fórmula que utilizaremos habitualmente para calcular la probabilidad de la intersección de sucesos. 
+\textbf{Ejemplo}.  En el ejemplo anterior 
+\[
+	P(\mbox{Fumadora}|\mbox{Mujer})= \frac{P(\mbox{Fumadora}\cap \mbox{Mujer})}{P(\mbox{Mujer})} =	\frac{20/200}{100/200}=\frac{20}{100}=0.2.
+\] 
 }
 \end{frame}
 
 
-\subsection{Dependencia e independencia de sucesos}
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Probabilidad del suceso intersección}
+A partir de la definición de probabilidad condicionada es posible obtener la fórmula para calcular la probabilidad de la intersección de dos sucesos.
+\[
+P(A\cap B) = P(A)P(B|A) = P(B)P(A|B).
+\]
+	
+\textbf{Ejemplo}. En una población hay un 30\% de fumadores y se sabe que el 40\% de los fumadores tiene cáncer de pulmón. 
+La probabilidad de que una persona elegida al azar sea fumadora y tenga cáncer de pulmón es
+\[
+	P(\mbox{Fumadora}\cap \mbox{Cáncer})= P(\mbox{Fumadora})P(\mbox{Cáncer}|\mbox{Fumadora}) =
+	0.3\times 0.4 = 0.12.
+\]
+\end{frame}
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Independencia de sucesos}
+En ocasiones, la ocurrencia del suceso condicionante no cambia la probabilidad original del suceso principal.
 \begin{definicion}[Sucesos independientes]
-Dados dos sucesos $A$ y $B$ de un mismo espacio de sucesos de un experimento aleatorio, se dice que $A$ es \emph{independiente} de $B$, si
-la probabilidad de $A$ no se ve alterada al condicionar por $B$, es decir,
-\[ P(A/B) = P(A).\]
+Dado un espacio muestral $\Omega$ de un experimento aleatorio, dos sucesos $A,B\subseteq \Omega$ son \emph{independientes} si la probabilidad de $A$ no se ve alterada al condicionar por $B$, y viceversa, es decir, 
+\[
+	P(A|B) = P(A) \quad \mbox{and} \quad P(B|A)=P(B),
+\]
+si $P(A)\neq 0$ y $P(B)\neq 0$.
 \end{definicion}
 
-Si $A$ es independiente de $B$, también se cumple que $B$ es independiente de $A$, y en general simplemente se dice que $A$ y $B$ son
-independientes.
+Esto significa que la ocurrencia de uno evento no aporta información relevante para cambiar la incertidumbre sobre el otro.
 
-También se cumple que si $A$ y $B$ son independientes, entonces 
-\[ P(A\cap B) = P(A)P(B). \]
+Cuando dos eventos son independientes, la probabilidad de su intersección es igual al producto de sus probabilidades,
+\[
+P(A\cap B) = P(A)P(B).
+\]
 
 \note{
 En ocasiones, saber que un determinado suceso ha ocurrido no cambia la incertidumbre sobre otro suceso del mismo experimento. Por ejemplo,
@@ -817,62 +771,54 @@ caso se dice que los sucesos son independientes.
 
 Formalmente,
 \begin{definicion}[Sucesos independientes]
-Dados dos sucesos $A$ y $B$ de un mismo espacio de sucesos de un experimento aleatorio, se dice que $A$ es \emph{independiente} de $B$, si
-la probabilidad de $A$ no se ve alterada al condicionar por $B$, es decir,
-\[ P(A/B) = P(A).\]
+Dado un espacio muestral $\Omega$ de un experimento aleatorio, dos sucesos $A,B\subseteq \Omega$ son \emph{independientes} si la probabilidad de $A$ no se ve alterada al condicionar por $B$, y viceversa, es decir, 
+\[
+	P(A|B) = P(A) \quad \mbox{and} \quad P(B|A)=P(B),
+\]
+si $P(A)\neq 0$ y $P(B)\neq 0$.
 \end{definicion}
 
 Si $A$ es independiente de $B$, también se cumple que $B$ es independiente de $A$, y en general simplemente se dice que $A$ y $B$ son
 independientes.
 
 También se cumple que si $A$ y $B$ son independientes, entonces 
-\[ P(A\cap B) = P(A)P(B/A) = P(A)P(B). \]
+\[ P(A\cap B) = P(A)P(B|A) = P(A)P(B). \]
 }
+\end{frame}
+
+
+\subsection{Espacio probabilístico}
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Espacio probabilístico}
+\begin{definicion}[Espacio probabilístico]
+Un \emph{espacio probabilístico} de un experimento aleatorio es una terna $(\Omega,\mathcal{F},P)$ donde 
+\begin{itemize}
+	\item $\Omega$ es el espacio muestral del experimento.
+	\item $\mathcal{F}$ es un un conjunto de sucesos del experimento.
+	\item $P$ es una función de probabilidad.
+\end{itemize} 
+\end{definicion}
+
+Si conocemos la probabilidad de todos los elementos de $\Omega$, entonces podemos calcular la proabilidad de cualquier suceso en $\mathcal{F}$ y se puede construir fácilmente el espacio probabilístico.
 \end{frame}
 
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Espacios probabilísticos}
-Ya se vio que en experimentos donde se medía más de una variable, era conveniente construir el espacio muestral
-mediante un diagrama de árbol.
-
-Dicho diagrama también es útil para calcular las probabilidades de cada uno de los elementos del espacio muestral del siguiente modo:
+\frametitle{Construcción del espacio probabilístico}
+Para determinar la probabilidad de cada suceso elemental se puede utilizar un diagrama de árbol, mediante las siguientes reglas:
 \begin{enumerate}
-\item Para cada nodo del árbol, etiquetar su rama con la probabilidad de que la variable correspondiente tome el valor del nodo, condicionada por la ocurrencia de todos los nodos que conducen hasta el actual.
-\item La probabilidad de cada suceso elemental se calcula multiplicando las probabilidades que etiquetan las ramas que
-conducen hasta él.
+\item Para cada nodo del árbol, etiquetar la rama que conduce hasta él con la probabilidad de que la variable en ese nivel tome el valor del nodo, condicionada por los sucesos correspondientes a sus nodos antecesores en el árbol.
+\item La probabilidad de cada suceso elemental en las hojas del árbol es el producto de las probabilidades de las ramas que van desde la raíz a la hoja del árbol.
 \end{enumerate}
+
 \begin{center}
-\scalebox{0.9}{
-\psset{treesep=0.6cm, levelsep=2cm, tpos=0.6}
-\renewcommand{\psedge}[2]{\ncdiag[armA=1cm,angleA=180,angleB=0,armB=0cm]{#2}{#1}} 
-\pstree[treemode=R, nodesep=1pt]{\Tp*}{
-	\pstree[linestyle=none]{\TR[edge=none]{$X$}}{\pstree{\TR{$Y$}}{\pstree{\TR{$E$}}{\TR{$P$}}}}
-	\pstree{\TR{$A$}\taput{\scriptsize $P(A)$}}{
-		\pstree[linestyle=none]{\TR{$C$}\taput{\scriptsize $P(C/A)$}}{\pstree{\TR{$(A,C)$}}{\TR{$P(A)P(C/A)$}}}
-		\pstree[linestyle=none]{\TR{$D$}\taput{\scriptsize $P(D/A)$}}{\pstree{\TR{$(A,D)$}}{\TR{$P(A)P(D/A)$}}}
-	}
-	\pstree{\TR{$B$}\taput{\scriptsize $P(B)$}}{
-		\pstree[linestyle=none]{\TR{$C$}\taput{\scriptsize $P(C/B)$}}{\pstree{\TR{$(B,C)$}}{\TR{$P(B)P(C/B)$}}}
-		\pstree[linestyle=none]{\TR{$D$}\taput{\scriptsize $P(D/B)$}}{\pstree{\TR{$(B,D)$}}{\TR{$P(B)P(D/B)$}}}
-	}
-	\pstree[linestyle=none]{\Tp[edge=none]}{\Tp}
-}
-}
+	\tikzsetnextfilename{probabilidad/espacio_probabilistico}
+	\mode<article>{\resizebox{0.7\textwidth}{!}{\input{img/probabilidad/espacio_probabilistico}}}
+	\mode<presentation>{\resizebox{0.9\textwidth}{!}{\input{img/probabilidad/espacio_probabilistico}}}
 \end{center}
-
-\note{
-Ya se vio que en experimentos donde se medía más de una variable, era conveniente construir el espacio muestral
-mediante un diagrama de árbol.
-
-Dicho diagrama también es útil para calcular las probabilidades de cada uno de los elementos del espacio muestral del siguiente modo:
-\begin{enumerate}
-\item Para cada nodo del árbol, etiquetar su rama con la probabilidad de que la variable correspondiente tome el valor del nodo, condicionada por la ocurrencia de todos los nodos que conducen hasta el actual.
-\item La probabilidad de cada suceso elemental se calcula multiplicando las probabilidades que etiquetan las ramas que
-conducen hasta él.
-\end{enumerate}
-}
 \end{frame}
 
 
@@ -880,38 +826,14 @@ conducen hasta él.
 \begin{frame}
 \frametitle{Árboles de probabilidad con variables dependientes}
 \framesubtitle{Ejemplo de dependencia del cáncer con respecto al tabaco}
-Sea una población en la que el 30\% de las personas fuman, y que la incidencia del cáncer de pulmón en fumadores es del 40\% mientras que en
-los no fumadores es del 10\%.
+Sea una población en la que el 30\% de las personas fuman, y que la incidencia del cáncer de pulmón en fumadores es del 40\% mientras que en los no fumadores es del 10\%.
 
-El espacio probabilístico de este experimento es:
+El espacio probabilístico del experimento aleatorio que consiste en elegir una persona al azar y medir las variables Fumar y Cáncer de pulmón se muestra a continuación.
 
 \begin{center}
-\psset{treesep=0.6cm, levelsep=2.5cm, tpos=0.6}
-\renewcommand{\psedge}[2]{\ncdiag[armA=0.8cm,angleA=180,angleB=0,armB=0cm]{#2}{#1}} 
-\pstree[treemode=R, nodesep=1pt]{\Tp*}{
-	\pstree[linestyle=none]{\TR[edge=none]{Tabaco}}{
-		\pstree{\TR{Enfermedad}}{
-			\pstree{\TR{$E$}}{\TR{$P$}}
-		}
-	}
-	\pstree{\TR{Fuma}\taput{\scriptsize $0.3$}}{
-		\pstree[linestyle=none]{\TR{Cáncer}\taput{\scriptsize $0.4$}}{
-			\pstree{\TR{(Fuma,Cáncer)}}{\TR{$0.3\cdot 0.4 = 0.12$}}
-		}
-		\pstree[linestyle=none]{\TR{$\overline{\mbox{Cáncer}}$}\taput{\scriptsize $0.6$}}{
-			\pstree{\TR{(Fuma,$\overline{\mbox{Cáncer}}$)}}{\TR{$0.3\cdot 0.6 = 0.18$}}
-		}
-	}
-	\pstree{\TR{$\overline{\mbox{Fuma}}$}\taput{\scriptsize $0.7$}}{
-		\pstree[linestyle=none]{\TR{Cáncer}\taput{\scriptsize $0.1$}}{
-			\pstree{\TR{($\overline{\mbox{Fuma}}$,Cáncer)}}{\TR{$0.7\cdot 0.1 = 0.07$}}
-		}
-		\pstree[linestyle=none]{\TR{$\overline{\mbox{Cáncer}}$}\taput{\scriptsize $0.9$}}{
-			\pstree{\TR{($\overline{\mbox{Fuma}}$,$\overline{\mbox{Cáncer}}$)}}{\TR{$0.7\cdot 0.9 = 0.63$}}
-		}
-	}
-	\pstree[linestyle=none]{\Tp[edge=none]}{\Tp}
-}
+\tikzsetnextfilename{probabilidad/espacio_probabilistico_fumar_cancer}
+\mode<article>{\resizebox{0.6\textwidth}{!}{\input{img/probabilidad/espacio_probabilistico_fumar_cancer}}}
+\mode<presentation>{\resizebox{0.8\textwidth}{!}{\input{img/probabilidad/espacio_probabilistico_fumar_cancer}}}
 \end{center}
 
 \note{
@@ -930,23 +852,12 @@ salen del suceso hombre. }
 \frametitle{Árboles de probabilidad con variables independientes}
 \framesubtitle{Ejemplo de independencia en el lanzamiento de dos monedas}
 
-El árbol de probabilidad asociado al experimento aleatorio que consiste en el lanzamiento de dos monedas es:
+El árbol de probabilidad asociado al experimento aleatorio que consiste en el lanzamiento de dos monedas se muestra a continuación.
 
 \begin{center}
-\psset{treesep=0.6cm, levelsep=2.5cm, tpos=0.7}
-\renewcommand{\psedge}[2]{\ncdiag[armA=0.8cm,angleA=180,angleB=0,armB=0cm]{#2}{#1}} 
-\pstree[treemode=R, nodesep=1pt]{\Tp*}{
-	\pstree[linestyle=none]{\TR[edge=none]{1ª Moneda}}{\pstree{\TR{2ª Moneda}}{\pstree{\TR{$E$}}{\TR{$P$}}}}
-	\pstree{\TR{C}\taput{\scriptsize $0.5$}}{
-		\pstree[linestyle=none]{\TR{C}\taput{\scriptsize $0.5$}}{\pstree{\TR{(C,C)}}{\TR{$0.5\cdot 0.5 = 0.25$}}}
-		\pstree[linestyle=none]{\TR{X}\taput{\scriptsize $0.5$}}{\pstree{\TR{(C,X)}}{\TR{$0.5\cdot 0.5 = 0.25$}}}
-	}
-	\pstree{\TR{X}\taput{\scriptsize $0.5$}}{
-		\pstree[linestyle=none]{\TR{C}\taput{\scriptsize $0.5$}}{\pstree{\TR{(X,C)}}{\TR{$0.5\cdot 0.5 = 0.25$}}}
-		\pstree[linestyle=none]{\TR{X}\taput{\scriptsize $0.5$}}{\pstree{\TR{(X,X)}}{\TR{$0.5\cdot 0.5 = 0.25$}}}
-	}
-	\pstree[linestyle=none]{\Tp[edge=none]}{\Tp}
-}
+	\tikzsetnextfilename{probabilidad/espacio_probabilistico_monedas}
+	\mode<article>{\resizebox{0.6\textwidth}{!}{\input{img/probabilidad/espacio_probabilistico_monedas}}}
+	\mode<presentation>{\resizebox{0.8\textwidth}{!}{\input{img/probabilidad/espacio_probabilistico_monedas}}}
 \end{center}
 
 \note{
@@ -958,65 +869,19 @@ cara en la primera moneda tienen las mismas probabilidades que las que salen del
 \end{frame}
 
 
-
-
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Árboles de probabilidad con variables independientes}
 \framesubtitle{Ejemplo de independencia en la elección de una muestra aleatoria de tamaño 3}
 Dada una población en la que hay un 40\% de hombres y un 60\% de mujeres, el experimento aleatorio que consiste en tomar una muestra
-aleatoria de tres personas tiene el siguiente árbol de probabilidad:
+aleatoria de tres personas tiene el árbol de probabilidad que se muestra a continuación.
 
 \begin{center}
-\psset{treesep=0.4cm, levelsep=2cm, tpos=0.7}
-\renewcommand{\psedge}[2]{\ncdiag[armA=0.8cm,angleA=180,angleB=0,armB=0cm]{#2}{#1}} 
-\pstree[treemode=R, nodesep=1pt]{\Tp*}{
-	\pstree[linestyle=none]{\TR[edge=none]{1ª Persona}}{
-		\pstree{\TR{2ª Persona}}{
-			\pstree[thislevelsep=1cm]{\TR{3ª Persona}}{
-				\pstree[thislevelsep=2.5cm]{\TR{$E$}}{\TR{$P$}}
-			}
-		}
-	}
-	\pstree{\TR{H}\taput{\scriptsize $0.4$}}{
-		\pstree{\TR{H}\taput{\scriptsize $0.4$}}{
-			\pstree[linestyle=none,thislevelsep=1.5cm]{\TR{H}\taput{\scriptsize $0.4$}}{
-				\pstree[thislevelsep=2.5cm]{\TR{(H,H,H)}}{\TR{$0.4\cdot 0.4\cdot 0.4 = 0.064$}}
-			}
-			\pstree[linestyle=none,thislevelsep=1.5cm]{\TR{M}\taput{\scriptsize $0.6$}}{
-				\pstree[thislevelsep=2.5cm]{\TR{(H,H,M)}}{\TR{$0.4\cdot 0.4\cdot 0.6 = 0.096$}}
-			}
-		}
-		\pstree{\TR{M}\taput{\scriptsize $0.6$}}{
-			\pstree[linestyle=none,thislevelsep=1.5cm]{\TR{H}\taput{\scriptsize $0.4$}}{
-				\pstree[thislevelsep=2.5cm]{\TR{(H,M,H)}}{\TR{$0.4\cdot 0.6\cdot 0.4 = 0.096$}}
-			}
-			\pstree[linestyle=none,thislevelsep=1.5cm]{\TR{M}\taput{\scriptsize $0.6$}}{
-				\pstree[thislevelsep=2.5cm]{\TR{(H,M,M)}}{\TR{$0.4\cdot 0.6\cdot 0.6 = 0.144$}}
-			}
-		}	
-	}
-	\pstree{\TR{M}\taput{\scriptsize $0.6$}}{
-		\pstree{\TR{H}\taput{\scriptsize $0.4$}}{
-			\pstree[linestyle=none,thislevelsep=1.5cm]{\TR{H}\taput{\scriptsize $0.4$}}{
-				\pstree[thislevelsep=2.5cm]{\TR{(M,H,H)}}{\TR{$0.6\cdot 0.4\cdot 0.4 = 0.096$}}
-			}
-			\pstree[linestyle=none,thislevelsep=1.5cm]{\TR{M}\taput{\scriptsize $0.6$}}{
-				\pstree[thislevelsep=2.5cm]{\TR{(M,H,M)}}{\TR{$0.6\cdot 0.4\cdot 0.6 = 0.144$}}
-			}
-		}
-		\pstree{\TR{M}\taput{\scriptsize $0.6$}}{
-			\pstree[linestyle=none,thislevelsep=1.5cm]{\TR{H}\taput{\scriptsize $0.4$}}{
-				\pstree[thislevelsep=2.5cm]{\TR{(M,M,H)}}{\TR{$0.6\cdot 0.6\cdot 0.4 = 0.144$}}
-			}
-			\pstree[linestyle=none,thislevelsep=1.5cm]{\TR{M}\taput{\scriptsize $0.6$}}{
-				\pstree[thislevelsep=2.5cm]{\TR{(M,M,M)}}{\TR{$0.6\cdot 0.6\cdot 0.6 = 0.216$}}
-			}
-		}	
-	}
-	\pstree[linestyle=none]{\Tp[edge=none]}{\Tp}
-}
+	\tikzsetnextfilename{probabilidad/espacio_probabilistico_muestra}
+	\mode<article>{\resizebox{0.7\textwidth}{!}{\input{img/probabilidad/espacio_probabilistico_muestra}}}
+	\mode<presentation>{\resizebox{0.9\textwidth}{!}{\input{img/probabilidad/espacio_probabilistico_muestra}}}
 \end{center}
+
 
 \note{
 Otro ejemplo de árbol con independencia sería la obtención de una muestra aleatoria con reemplazamiento. 
@@ -1034,26 +899,16 @@ Obsérvese de nuevo cómo todas las ramas del suceso hombre tienen las mismas pr
 \begin{frame}
 \frametitle{Sistema completo de sucesos}
 \begin{definicion}[Sistema completo de sucesos]
-Una colección de sucesos $A_1,A_2,\ldots,A_n$ de un mismo espacio de sucesos es un \emph{sistema completo} si cumple las siguientes condiciones:
+Una colección de sucesos $A_1,A_2,\ldots,A_n$ de un mismo espacio muestral $\Omega$ es un \emph{sistema completo} si cumple las siguientes condiciones:
 \begin{enumerate}
-\item La unión de todos es el espacio muestral: $A_1\cup \cdots\cup A_n =E$.
+\item La unión de todos es el espacio muestral: $A_1\cup \cdots\cup A_n =\Omega$.
 \item Son incompatibles dos a dos: $A_i\cap A_j = \emptyset$ $\forall i\neq j$.
 \end{enumerate}
 \end{definicion}
+
 \begin{center}
-\psset{unit=0.8}
-\begin{pspicture}(0,0)(5,3.5)
-\psset{fillstyle=solid}
-\pscustom[fillcolor=white]{\psframe(0,0)(5,3)}
-\psline(1,0)(1,3)
-\psline(2,0)(2,3)
-\psline(4,0)(4,3)
-\rput(0.5,1.5){$A_1$}
-\rput(1.5,1.5){$A_2$}
-\rput(3,1.5){$\cdots$}
-\rput(4.5,1.5){$A_n$}
-\rput[b](0.2,3.2){$E$}
-\end{pspicture}
+	\tikzsetnextfilename{probabilidad/particion_espacio_muestral}
+	\input{img/probabilidad/particion_espacio_muestral}
 \end{center}
 
 En realidad un sistema completo de sucesos es una partición del espacio muestral de acuerdo a algún atributo, como por ejemplo el sexo o el
@@ -1079,32 +934,13 @@ grupo sanguíneo.
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Teorema de la probabilidad total}
-Conocer las probabilidades de un determinado suceso en cada una de las partes de un sistema completo puede ser útil para calcular su
-probabilidad.
+Conocer las probabilidades de un determinado suceso en cada una de las partes de un sistema completo puede ser útil para calcular su probabilidad.
 \begin{teorema}[Probabilidad total]
-Dado un sistema completo de sucesos $A_1,\ldots,A_n$ y un suceso $B$ de un mismo espacio de sucesos, se cumple
+Dado un sistema completo de sucesos $A_1,\ldots,A_n$ y un suceso $B$ de un espacio muestral $\Omega$, la probabilidad de cualquier suceso $B$ del espacio muestral se puede calcular mediante la fórmula
 \[
-P(B) = \sum_{i=1}^n P(A_i)P(B/A_i).
+	P(B) = \sum_{i=1}^n P(A_i\cap B) = \sum_{i=1}^n P(A_i)P(B|A_i).
 \]
 \end{teorema}
-
-\begin{center}
-\psset{unit=1}
-\begin{pspicture}(0,0)(5,3.5)
-\psset{fillstyle=solid}
-\pscustom[fillcolor=white]{\psframe(0,0)(5,3)}
-\pscustom[fillcolor=coral]{\psellipse(2.5,1.5)(2,1)}
-\psline(1,0)(1,3)
-\psline(2,0)(2,3)
-\psline(4,0)(4,3)
-\rput(0.5,0.2){$A_1$}
-\rput(1.5,0.2){$A_2$}
-\rput(3,0.2){$\cdots$}
-\rput(4.5,0.2){$A_n$}
-\rput(3,1.5){$B$}
-\rput[b](0.2,3.2){$E$}
-\end{pspicture}
-\end{center}
 
 \note{
 Conocer las probabilidades de un determinado suceso en cada una de las partes de un sistema completo puede ser útil para calcular su
@@ -1132,6 +968,29 @@ y como estos sucesos son incompatibles entre sí, se tiene
 P(B) &= P((B\cap A_1)\cup \cdots \cup (B\cap A_n)) = P(B\cap A_1)+\cdots + P(B\cap A_n) =\\
 &= P(A_1)P(B/A_1)+\cdots + P(A_n)P(B/A_n) = \sum_{i=1}^n P(A_i)P(B/A_i).
 \end{align*}
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+	\frametitle{Total probability theorem}
+	\framesubtitle{Proof}
+	The proof of the theorem is quite simple.
+	As $A_1,\ldots,A_n$ is a partition of $\Omega$, we have 
+	\[
+	B = B\cap \Omega = B\cap (A_1\cup \cdots \cup A_n) = (B\cap A_1)\cup \cdots \cup (B\cap A_n).
+	\]
+	And all the events of this union are mutually incompatible as $A_1,\ldots,A_n$ are, thus
+	\begin{align*}
+	P(B) &= P((B\cap A_1)\cup \cdots \cup (B\cap A_n)) = P(B\cap A_1)+\cdots + P(B\cap A_n) =\\
+	&= P(A_1)P(B|A_1)+\cdots + P(A_n)P(B|A_n) = \sum_{i=1}^n P(A_i)P(B|A_i).
+	\end{align*}
+	
+\begin{center}
+	\tikzsetnextfilename{probabilidad/probabilidad_total}
+	\mode<article>{\resizebox{0.4\textwidth}{!}{\input{img/probabilidad/probabilidad_total}}}
+	\mode<presentation>{\input{img/probabilidad/probabilidad_total}}
+\end{center}
 
 \note{
 La demostración del teorema es sencilla, ya que al ser $A_1,\ldots,A_n$ un sistema completo tenemos
@@ -1151,15 +1010,15 @@ P(B) &= P((B\cap A_1)\cup \cdots \cup (B\cap A_n)) = P(B\cap A_1)+\cdots + P(B\c
 \begin{frame}
 \frametitle{Teorema de la probabilidad total}
 \framesubtitle{Un ejemplo de diagnóstico}
-Un determinado síntoma $B$ puede ser originado por una enfermedad $A$ pero también lo pueden presentar las personas sin
-la enfermedad. Sabemos que en la población la tasa de personas con la enfermedad A es $0.2$. Además, de las personas
-que presentan la enfermedad, el $90\%$ presentan el síntoma, mientras que de las personas sin la enfermedad sólo lo presentan el $40\%$.
+Un determinado síntoma $S$ puede ser originado por una enfermedad $E$ pero también lo pueden presentar las personas sin la enfermedad. 
+Sabemos que la prevalencia de la enfermedad $E$ es $0.2$. 
+Además, se sabe que el $90\%$ de las personas con la enfermedad presentan el síntoma, mientras que sólo el $40\%$ de las personas sin la enfermedad lo presentan.
 
 Si se toma una persona al azar de la población, \emph{¿qué probabilidad hay de que tenga el síntoma?}
 
-Para responder a la pregunta hay que fijarse en que el conjunto de sucesos $\{A,\overline{A}\}$ es un sistema completo, ya que $A\cup \overline A = E$ y $A\cap \overline A = \emptyset$, de modo que se puede aplicar el teorema de la probabilidad total:
+Para responder a la pregunta se puede aplicar el teorema de la probabilidad total usando el sistema completo $\{E,\overline{E}\}$:
 \[
-P(B) = P(A)P(B/A)+P(\overline A)P(B/\overline A) = 0.2\cdot 0.9 + 0.8\cdot 0.4 = 0.5.
+	P(S) = P(E)P(S|E)+P(\overline E)P(S|\overline E) = 0.2\cdot 0.9 + 0.8\cdot 0.4 = 0.5.
 \]
 Es decir, la mitad de la población tendrá el síntoma. 
 
@@ -1193,38 +1052,17 @@ Es decir, la mitad de la población tendrá el síntoma.
 \begin{frame}
 \frametitle{Teorema de la probabilidad total}
 \framesubtitle{Cálculo con el árbol de probabilidad}
-La respuesta a la pregunta anterior es evidente a la luz del espacio probabilístico del experimento. 
+La respuesta a la pregunta anterior es evidente a la luz del árbol de probabilidad del espacio probabilístico del experimento. 
+
 \begin{center}
-\psset{treesep=0.6cm, levelsep=2.5cm, tpos=0.6}
-\renewcommand{\psedge}[2]{\ncdiag[armA=0.8cm,angleA=180,angleB=0,armB=0cm]{#2}{#1}} 
-\pstree[treemode=R, nodesep=1pt]{\Tp*}{
-	\pstree[linestyle=none]{\TR[edge=none]{Enfermedad}}{
-		\pstree{\TR{Síntoma}}{
-			\pstree{\TR{$E$}}{\TR{$P$}}
-		}
-	}
-	\pstree{\TR{$A$}\taput{\scriptsize $0.2$}}{
-		\pstree[linestyle=none]{\TR{$B$}\taput{\scriptsize $0.9$}}{
-			\pstree{\TR{\alert{$(A,B)$}}}{\TR{\alert{$0.2\cdot 0.9 = 0.18$}}}
-		}
-		\pstree[linestyle=none]{\TR{$\overline B$}\taput{\scriptsize $0.1$}}{
-			\pstree{\TR{$(A,\overline B)$}}{\TR{$0.2\cdot 0.1 = 0.02$}}
-		}
-	}
-	\pstree{\TR{$\overline A$}\taput{\scriptsize $0.8$}}{
-		\pstree[linestyle=none]{\TR{$B$}\taput{\scriptsize $0.4$}}{
-			\pstree{\TR{\alert{$(\overline A,B)$}}}{\TR{\alert{$0.8\cdot 0.4 = 0.32$}}}
-		}
-		\pstree[linestyle=none]{\TR{$\overline B$}\taput{\scriptsize $0.6$}}{
-			\pstree{\TR{$(\overline A,\overline B)$}}{\TR{$0.8\cdot 0.6 = 0.48$}}
-		}
-	}
-	\pstree[linestyle=none]{\Tp[edge=none]}{\Tp}
-}
+	\tikzsetnextfilename{probabilidad/espacio_probabilistico_total}
+	\mode<article>{\resizebox{0.6\textwidth}{!}{\input{img/probabilidad/espacio_probabilistico_total}}}
+	\mode<presentation>{\resizebox{0.8\textwidth}{!}{\input{img/probabilidad/espacio_probabilistico_total}}}
 \end{center}
+
 \begin{align*}
-P(B) &= P(A,B) + P(\overline A,B) =\\
-&= P(A)P(B/A)+P(\overline A)P(B/\overline A) = 0.2\cdot 0.9+ 0.8\cdot 0.4 = 0.18 + 0.32 = 0.5. 
+	P(S) &= P(E,S) + P(\overline E,S) = P(E)P(S|E)+P(\overline E)P(S|\overline E)\\
+		& = 0.2\cdot 0.9+ 0.8\cdot 0.4 = 0.18 + 0.32 = 0.5.
 \end{align*}
 
 \note{
@@ -1238,15 +1076,14 @@ El teorema de la probabilidad total también puede deducirse fácilmente a parti
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Teorema de Bayes}
-Los sucesos de un sistema completo de sucesos $A_1,\cdots,A_n$ también pueden verse como las distintas hipótesis ante
-un determinado hecho $B$.
+Los sucesos de un sistema completo de sucesos $A_1,\cdots,A_n$ también pueden verse como las distintas hipótesis ante un determinado hecho $B$.
 
-En estas condiciones resulta útil poder calcular las probabilidades a posteriori $P(A_i/B)$ de cada una de las hipótesis.
+En estas condiciones resulta útil poder calcular las probabilidades a posteriori $P(A_i|B)$ de cada una de las hipótesis.
 
 \begin{teorema}[Bayes]
-Dado un sistema completo de sucesos $A_1,\ldots,A_n$ y un suceso $B$ de un mismo espacio de sucesos, se cumple
+Dado un sistema completo de sucesos $A_1,\ldots,A_n$ y un suceso $B$ de un espacio muestral $\Omega$ y otro suceso $B$ del mismo espacio muestral, la probabilidad de cada suceso $A_i$ $i=1,\ldots,n$ condicionada por $B$ puede calcularse con la siguiente fórmula
 \[
-P(A_i/B) = \frac{P(A_i\cap B)}{P(B)} = \frac{P(A_i)P(B/A_i)}{\sum_{i=1}^n P(A_i)P(B/A_i)}.
+	P(A_i|B) = \frac{P(A_i\cap B)}{P(B)} = \frac{P(A_i)P(B|A_i)}{\sum_{i=1}^n P(A_i)P(B|A_i)}.
 \]
 \end{teorema}
 
@@ -1271,20 +1108,17 @@ P(A_i/B) = \frac{P(A_i\cap B)}{P(B)} = \frac{P(A_i)P(B/A_i)}{\sum_{i=1}^n P(A_i)
 \begin{frame}
 \frametitle{Teorema de Bayes}
 \framesubtitle{Un ejemplo de diagnóstico}
-En el ejemplo anterior se ha visto cómo calcular la probabilidad de que una persona elegida al azar presente el síntoma, pero desde un punto
-de vista de diagnóstico clínico, una pregunta más interesante es:
-  
-Si llega a la consulta una persona que presenta el síntoma, \emph{¿qué se debe diagnosticar?}
+En el ejemplo anterior, una pregunta más interesante es qué diagnosticar a una persona que presenta el síntoma.
 
-En este caso, las hipótesis ante las que hay que decidir son $A$ y $\overline A$ y sus probabilidades ``a priori'' son $P(A)=0.2$ y
-$P(\overline A)=0.8$.
-
-Esto quiere decir que si no hubiese ninguna información sobre la persona, el diagnóstico sería que no tiene la enfermedad pues es mucho más
-probable que que la tenga.
+En este caso se puede interpretar $E$ y $\overline{E}$ como las dos posibles hipótesis para el síntoma $S$.
+Las probabilidades a priori para ellas son $P(E)=0.2$ y $P(\overline E)=0.8$.
+Esto quiere decir que si no se dispone de información sobre el síntoma, el diagnóstico será que la persona no tiene la enfermedad.
 
 Sin embargo, si al reconocer a la persona se observa que presenta el síntoma, dicha información condiciona a las hipótesis, y para decidir
-entre ellas es necesario calcular sus probabilidades ``a posteriori'', es decir 
-\[ P(A/B) \mbox{ y } P(\overline A/B)\]
+entre ellas es necesario calcular sus probabilidades a posteriori, es decir, 
+\[
+	P(E|S) \mbox{ y } P(\overline{E}|S)
+\]
 
 \note{
 En el ejemplo anterior se ha visto cómo calcular la probabilidad de que una persona elegida al azar presente el síntoma, pero desde un punto
@@ -1300,7 +1134,7 @@ probable que que la tenga.
 
 Sin embargo, si al reconocer a la persona se observa que presenta el síntoma, dicha información condiciona a las hipótesis, y para decidir
 entre ellas es necesario calcular sus probabilidades ``a posteriori'', es decir 
-\[ P(A/B) \mbox{ y } P(\overline A/B)\]
+\[ P(A|B) \mbox{ y } P(\overline A|B)\]
 }
 \end{frame}
 
@@ -1309,22 +1143,22 @@ entre ellas es necesario calcular sus probabilidades ``a posteriori'', es decir
 \begin{frame}
 \frametitle{Teorema de Bayes}
 \framesubtitle{Un ejemplo de diagnóstico}
-Para calcular las probabilidades ``a posteriori'' se puede utilizar el teorema de Bayes:
+Para calcular las probabilidades a posteriori se puede utilizar el teorema de Bayes:
 \begin{align*}
-P(A/B) &= \frac{P(A)P(B/A)}{P(A)P(B/A)+P(\overline A)P(B/\overline A)} = \frac{0.2\cdot 0.9}{0.2\cdot 0.9 + 0.8\cdot 0.4} = \frac{0.18}{0.5}=0.36,\\
-P(\overline A/B) &= \frac{P(\overline A)P(B/\overline A)}{P(A)P(B/A)+P(\overline A)P(B/\overline A)} = \frac{0.8\cdot 0.4}{0.2\cdot 0.9 + 0.8\cdot 0.4} = \frac{0.32}{0.5}=0.64.
+P(E|S) &= \frac{P(E)P(S|E)}{P(E)P(S|E)+P(\overline{E})P(S|\overline{E})} = \frac{0.2\cdot 0.9}{0.2\cdot 0.9 + 0.8\cdot 0.4} = \frac{0.18}{0.5}=0.36,\\
+P(\overline{E}|S) &= \frac{P(\overline{E})P(S|\overline{E})}{P(E)P(S|E)+P(\overline{E})P(S|\overline{E})} = \frac{0.8\cdot 0.4}{0.2\cdot 0.9 + 0.8\cdot 0.4} = \frac{0.32}{0.5}=0.64.
 \end{align*}
-Según esto, a pesar de que la probabilidad de estar enfermo ha aumentado, seguiríamos diagnosticando que no lo está, puesto que es más
-probable.
 
-En este caso se dice que el síntoma $B$ \emph{no es determinante} a la hora de diagnosticar la enfermedad, pues la información que aporta no
-sirve para cambiar el diagnóstico en ningún caso.
+Como se puede ver la probabilidad de tener la enfermedad ha aumentado.
+No obstante, la probabilidad de no tener la enfermedad sigue siendo mayor que la de tenerla, y por esta razón el diagnóstico seguirá siendo que no tiene la enfermedad.
+
+En este caso se dice que el síntoma $S$ \emph{no es determinante} a la hora de diagnosticar la enfermedad.
 
 \note{
 Para calcular las probabilidades ``a posteriori'' se puede utilizar el teorema de Bayes:
 \begin{align*}
-P(A/B) &= \frac{P(A)P(B/A)}{P(A)P(B/A)+P(\overline A)P(B/\overline A)} = \frac{0.2\cdot 0.9}{0.2\cdot 0.9 + 0.8\cdot 0.4} = \frac{0.18}{0.5}=0.36,\\
-P(\overline A/B) &= \frac{P(\overline A)P(B/\overline A)}{P(A)P(B/A)+P(\overline A)P(B/\overline A)} = \frac{0.8\cdot 0.4}{0.2\cdot 0.9 + 0.8\cdot 0.4} = \frac{0.32}{0.5}=0.64.
+P(A|B) &= \frac{P(A)P(B/A)}{P(A)P(B/A)+P(\overline A)P(B/\overline A)} = \frac{0.2\cdot 0.9}{0.2\cdot 0.9 + 0.8\cdot 0.4} = \frac{0.18}{0.5}=0.36,\\
+P(\overline A|B) &= \frac{P(\overline A)P(B/\overline A)}{P(A)P(B/A)+P(\overline A)P(B/\overline A)} = \frac{0.8\cdot 0.4}{0.2\cdot 0.9 + 0.8\cdot 0.4} = \frac{0.32}{0.5}=0.64.
 \end{align*}
 Según esto, a pesar de que la probabilidad de estar enfermo ha aumentado, seguiríamos diagnosticando que no lo está, puesto que es más
 probable.
@@ -1339,168 +1173,240 @@ sirve para cambiar el diagnóstico en ningún caso.
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Tests diagnósticos}
-En epidemiología es común el uso de tests para diagnosticar enfermedades.
+En Epidemiología es común el uso de test para diagnosticar enfermedades.
 
-Generalmente estos tests no son totalmente fiables, sino que hay cierta probabilidad de acierto o fallo en el diagnóstico, que suele
+Generalmente estos test no son totalmente fiables, sino que hay cierta probabilidad de acierto o fallo en el diagnóstico, que suele
 representarse en la siguiente tabla:
 \begin{center}
-\begin{tabular}{|m{3cm}<{\centering}|m{3.5cm}<{\centering}|m{3.5cm}<{\centering}|}
-\cline{2-3}
-\multicolumn{1}{c|}{} & Presencia de la\newline enfermedad ($E$) & Ausencia de la\newline enfermedad ($\overline E$)\\ \hline
-Test positivo\newline ($+$) & \textcolor{green}{Diagnóstico acertado\newline  $P(+/E)$}\qquad
-\structure{Sensibilidad}& \textcolor{red}{Diagnóstico erróneo\newline $P(+/\overline E)$}\\ \hline Test negativo\newline ($-$) &
-\textcolor{red}{Diagnóstico erróneo\newline $P(-/E)$} & \textcolor{green}{Diagnóstico acertado\newline $P(-/\overline
-E)$}\qquad \structure{Especificidad}\\ \hline
-\end{tabular}
+	\begin{tabular}{|m{2.5cm}|m{3cm}<{\centering}|m{3.1cm}<{\centering}|}
+		\cline{2-3}
+		\multicolumn{1}{c|}{} & Presencia enfermedad $E$ & Ausencia enfermedad $\overline D$\\ \hline
+		Test positivo $+$ & \textcolor{green}{Verdadero positivo}\newline $VP$ & \textcolor{red}{Falso positivo}\newline $FP$\\ \hline Test negativo $-$ & \textcolor{red}{Falso negativo}\newline $FN$ &
+		\textcolor{green}{Verdadero Negativo}\newline $VN$\\ \hline
+	\end{tabular}
 \end{center}
 
 \note{
-En epidemiología es común el uso de tests para diagnosticar enfermedades.
+En epidemiología es común el uso de test para diagnosticar enfermedades.
 
-Generalmente estos tests no son totalmente fiables, sino que hay cierta probabilidad de acierto o fallo en el diagnóstico, que suele
+Generalmente estos test no son totalmente fiables, sino que hay cierta probabilidad de acierto o fallo en el diagnóstico, que suele
 representarse en la siguiente tabla:
 \begin{center}
-\begin{tabular}{|m{3cm}<{\centering}|m{3.5cm}<{\centering}|m{3.5cm}<{\centering}|}
-\cline{2-3}
-\multicolumn{1}{c|}{} & Presencia de la\newline enfermedad ($E$) & Ausencia de la\newline enfermedad ($\overline E$)\\ \hline
-Test positivo\newline ($+$) & \textcolor{green}{Diagnóstico acertado\newline  $P(+/E)$}\newline\structure{Sensibilidad}& \textcolor{red}{\noindent Diagnóstico erróneo\newline $P(+/\overline E)$}\\ \hline
-Test negativo\newline ($-$) & \textcolor{red}{Diagnóstico erróneo\newline $P(-/E)$} & \textcolor{green}{Diagnóstico acertado\newline $P(-/\overline E)$}\newline\structure{Especificidad}\\ \hline
-\end{tabular}
+	\begin{tabular}{|m{2.5cm}|m{3cm}<{\centering}|m{3.1cm}<{\centering}|}
+		\cline{2-3}
+		\multicolumn{1}{c|}{} & Presencia enfermedad $E$ & Ausencia enfermedad $\overline D$\\ \hline
+		Test positivo $+$ & \textcolor{green}{Verdadero positivo}\newline $VP$ & \textcolor{red}{Falso positivo}\newline $FP$\\ \hline Test negativo $-$ & \textcolor{red}{Falso negativo}\newline $FN$ &
+		\textcolor{green}{Verdadero negativo}\newline $VN$\\ \hline
+	\end{tabular}
 \end{center}
 }
 \end{frame}
-
 
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Tests diagnósticos}
-La valided de una prueba diagnóstica depende de estas dos probabilidades:
-\begin{description}
-\item[\textbf{Sensibilidad}] Es el porcentaje de positivos entre las personas enfermas: $P(+/E)$.
-\item[\textbf{Especificidad}] Es el porcentaje de negativos entre las personas sanas: $P(-/\bar E)$.
-\end{description}
+	\frametitle{Sensibilidad y especificidad de un test diagnóstico}
+	La fiabilidad de un test diagnóstico depende de las siguientes probabilidades.
+	\begin{definicion}[Sensibilidad]
+	La \emph{sensibilidad} de un test diagnóstico es la proporción de resultados positivos del test en personas con la enfermedad,
+	\[
+	P(+|E)=\frac{VP}{VP+FN}
+	\]
+	\end{definicion}
+	
+	\begin{definicion}[Especificidad]
+	La \emph{especificidad} de un test diagnóstico es la proporción de resultados negativos del test en personas sin la enfermedad,
+	\[
+	P(-|\overline{E})=\frac{VN}{VN+FP}
+	\]
+	\end{definicion}
+	\end{frame}
 
-Pero lo realmente interesante de un un test diagnóstico es su capacidad predictiva para diagnosticar, lo cual se mide mediante las
-siguientes probabilidades a posteriori:
-\begin{description}
-\item[\textbf{Valor predictivo positivo}] Es el porcentaje de enfermos entre los positivos: $P(E/+)$.
-\item[\textbf{Valor predictivo negativo}] Es el porcentaje de sanos entre los negativos: $P(\bar E/-)$.
-\end{description}
 
-Sin embargo, estos últmos valores dependen del porcentaje de enfermos en la población $P(E)$, lo que se conoce como, \structure{\textbf{tasa
-o prevalencia}} de la enfermedad.
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Interpretación de la sensibilidad y la especificidad}
+Normalmente existe un balance entre la sensibilidad y la especificidad. 
+	
+Un test con una alta sensibilidad detectará la enfermedad en la mayoría de las personas enfermas, pero también dará más falsos positivos que un test menos sensible.
+De este modo, un resultado positivo en un test con una gran sensibilidad no es muy útil para confirmar la enfermedad, pero un resultado negativo es útil para descartar la enfermedad, ya que raramente da resultados negativos en personas con la enfermedad.
 
-\note{
-La valided de una prueba diagnóstica depende de estas dos probabilidades:
-\begin{description}
-\item[Sensibilidad] Es el porcentaje de positivos entre las personas enfermas: $P(+/E)$.
-\item[Especificidad] Es el porcentaje de negativos entre las personas sanas: $P(-/\bar E)$.
-\end{description}
+Por otro lado, un test con una alta especificidad descartará la enfermedad en la mayoría de las personas sin la enfermedad, pero también producirá más falsos negativos que un test menos específico.
+Así, un resultado negativo en un test con una gran especificidad no es útil para descartar la enfermedad, pero un resultado positivo es muy útil para confirmar la enfermedad, ya que raramente da resultados positivos en personas sin la enfermedad.
+\end{frame}
 
-Pero lo realmente interesante de un un test diagnóstico es su capacidad predictiva para diagnosticar, lo cual se mide mediante las
-siguientes probabilidades a posteriori:
-\begin{description}
-\item[Valor predictivo positivo] Es el porcentaje de enfermos entre los positivos: $P(E/+)$.
-\item[Valor predictivo negativo] Es el porcentaje de sanos entre los negativos: $P(\bar E/-)$.
-\end{description}
 
-Sin embargo, estos últimos valores dependen del porcentaje de enfermos en la población $P(E)$, lo que se conoce como,
-\structure{\textbf{tasa o prevalencia}} de la enfermedad.
-}
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Interpretación de la sensibilidad y la especificidad}
+Decidir entre un test con una gran sensibilidad o un test con una gran especificidad depende del tipo de enfermedad y el objetivo del test.
+En general, utilizaremos un test sensible cuando:
+	\begin{itemize}
+	\item La enfermedad es grave y es importante detectarla.
+	\item La enfermedad es curable.
+	\item Los falsos positivos no provocan traumas serios.
+\end{itemize}
+	
+Y utilizaremos un test específico cuando:
+\begin{itemize}
+	\item La enfermedad es importante pero difícil o imposible de curar.
+	\item Los falsos positivos pueden provocar traumas serios.
+	\item El tratamiento de los falsos positivos puede tener graves consecuencias. 
+	\end{itemize}
+	\end{frame}
+	
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Valores predictivos de un test diagnóstico}
+Pero el aspecto más importante de un test diagnóstico es su poder predictivo, que se mide con las siguientes probabilidades a posteriori.
+
+\begin{definicion}[Valor predictivo positivo $VPP$]
+El \emph{valor predictivo positivo} de un test diagnóstico es la proporción de personas con la enfermedad entre las personas con resultado positivo en el test,
+\[
+	P(E|+) = \frac{VP}{VP+FP}
+\]
+\end{definicion}
+	
+\begin{definicion}[Valor predictivo negativo $VPN$]
+El \emph{valor predictivo negativo} de un test diagnóstico es la proporción de personas sin la enfermedad entre las personas con resultado negativo en el test,
+\[
+	P(\overline{E}|-) = \frac{VN}{VN+FN}
+\]
+\end{definicion}
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Interpretación de los valores predictivos}
+Los valores predictivos positivo y negativo permiten confirmar o descartar la enferemedad, respectivamente, si alcanzan al menos el umbral de $0.5$.
+\[
+	\begin{array}{rcl}
+	VPP>0.5 & \Rightarrow & \mbox{Diagnosticar la enfermedad}\\
+	VPN>0.5 & \Rightarrow & \mbox{Diagnosticar la no enfermedad} 
+	\end{array}
+\]
+	
+No obstante, estas probabilidades dependen de la proporción de personas con la enfermedad en la población $P(E)$ que se conoce como \highlight{prevalencia} de la enfermedad.
+Pueden calcularse a partir de la sensibilidad y la especificidad del test diagnóstico usando el teorema de Bayes.
+	
+\begin{align*}
+VPP=P(E|+) &= \frac{P(E)P(+|E)}{P(E)P(+|E)+P(\overline{E})P(+|\overline{E})}\\
+VPN=P(\overline{E}|-) &= \frac{P(\overline{E})P(-|\overline{E})}{P(E)P(-|E)+P(\overline{E})P(-|\overline{E})}
+%  = \frac{\mbox{Prevalence}\cdot
+% \mbox{Sensitivity}}{\mbox{Prevalence}\cdot \mbox{Sensitivity}+(1-\mbox{Prevalence})\cdot (1-\mbox{Specificity})}
+\end{align*} 
+	
+Así, con enfermedades frecuentes, el valor predictivo positivo aumenta, y con enfermedades raras, el valor predictivo negativo aumenta.
 \end{frame}
 
 
 % ---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Tests diagnósticos}
-\frametitle{Ejemplo}
-Un test para diagnosticar la gripe tiene una sensibilidad del $95\%$ y una especificidad del $90\%$. Según esto, las probabilidades de
-acierto y fallo del test son:
+\frametitle{Test diagnósticos}
+\framesubtitle{Ejemplo}
+Un test diagnóstico para la gripe se ha aplicado a una muestra aleatoria de 1000 personas.
+Los resultados aparecen resumidos en la siguiente tabla.
 \begin{center}
-\begin{tabular}{|c|c|c|}
-\cline{2-3}
-\multicolumn{1}{c|}{} & Gripe & No gripe\\ \hline
-Test $+$ & \textcolor{green}{$0.95$} & \textcolor{red}{$0.10$}\\ \hline
-Test $-$ & \textcolor{red}{$0.05$} & \textcolor{green}{$0.90$}\\ \hline
-\end{tabular}
+	\begin{tabular}{|m{2.5cm}|m{3.2cm}<{\centering}|m{3.2cm}<{\centering}|}
+	\cline{2-3}
+	\multicolumn{1}{c|}{} & Presencia de gripe $E$ & Ausencia de gripe $\overline E$\\ \hline
+	Test $+$ & 95 & 90 \\
+	\hline
+	Test $-$ & 5 & 810 \\
+	\hline
+	\end{tabular}
 \end{center}
-
-Si la prevalencia de la gripe en la población es del $10\%$ y al aplicar el test a un individuo da positivo, \emph{¿cuál es la probabilidad
-de que tenga gripe?}
-
-Aplicando el teorema de Bayes, se tiene que el valor predictivo positivo del test vale
-\begin{align*}
-P(\mbox{Gripe}/+) &= \frac{P(\mbox{Gripe})P(+/\mbox{Gripe})}{P(\mbox{Gripe})P(+/\mbox{Gripe})+P(\overline{\mbox{Gripe}})P(+/\overline{\mbox{Gripe}})} =\\
-&= \frac{0.1\cdot 0.95}{0.1\cdot 0.95+0.9\cdot 0.1} = 0.5135.
-\end{align*}
-Aunque con esta probabilidad se diagnosticaría la enfermedad en caso de que el test diese positivo, se trata de un valor predictivo positivo
-muy bajo. 
-
-\note{
-Veamos un ejemplo. 
-
-Un test para diagnosticar la gripe tiene una sensibilidad del $95\%$ y una especificidad del $90\%$. Según esto, las probabilidades de
-acierto y fallo del test son:
-\begin{center}
-\begin{tabular}{|c|c|c|}
-\cline{2-3}
-\multicolumn{1}{c|}{} & Gripe & No gripe\\ \hline
-Test $+$ & \textcolor{green}{$0.95$} & \textcolor{red}{$0.10$}\\ \hline
-Test $-$ & \textcolor{red}{$0.05$} & \textcolor{green}{$0.90$}\\ \hline
-\end{tabular}
-\end{center}
-
-Si la prevalencia de la gripe en la población es del $10\%$ y al aplicar el test a un individuo da positivo, \emph{¿cuál es la probabilidad
-de que tenga gripe?}
-
-Aplicando el teorema de Bayes, se tiene
-\begin{align*}
-P(\mbox{Gripe}/+) &= \frac{P(\mbox{Gripe})P(+/\mbox{Gripe})}{P(\mbox{Gripe})P(+/\mbox{Gripe})+P(\overline{\mbox{Gripe}})P(+/\overline{\mbox{Gripe}})} =\\
-&= \frac{0.1\cdot 0.95}{0.1\cdot 0.95+0.9\cdot 0.1} = 0.51.
-\end{align*}
-
-La probabilidad de no tener la gripe sería $1-0.51=0.49$ ya que es el suceso contrario de tener la gripe, y como la probabilidad de tener la
-gripe es mayor que la de no tenerla, se diagnosticaría que tiene gripe. Sin embargo, el valor predictivo positivo de este test es muy bajo y
-nos equivoaríamos en el 49\% de los diagnósticos de enfermedad.
-}
+	
+Según esta muestra, la prevalencia de la gripe puede estimarse como
+\[
+	P(E) = \frac{95+5}{1000} = 0.1.
+\] 
+	
+La sensibilidad del test diagnóstico es 
+\[
+	P(+|E) = \frac{95}{95+5}= 0.95. 
+\] 
+	
+Y la especificidad es 
+\[
+	P(-|\overline{E}) = \frac{810}{90+810}=0.9.
+\]
 \end{frame}
-
-
+	
+	
 % ---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Tests diagnósticos}
-\frametitle{Ejemplo}
-\begin{center}
-\begin{tabular}{|c|c|c|}
-\cline{2-3}
-\multicolumn{1}{c|}{} & Gripe & No gripe\\ \hline
-Test $+$ & \textcolor{green}{$0.95$} & \textcolor{red}{$0.10$}\\ \hline
-Test $-$ & \textcolor{red}{$0.05$} & \textcolor{green}{$0.90$}\\ \hline
-\end{tabular}
-\end{center}
-
-Y si el test da negativo, \emph{¿cuál es la probabilidad de que no tenga gripe?}
-
-De nuevo, aplicando el teorema de Bayes, se tiene que el valor predictivo negativo del test vale
-\begin{align*}
-P(\overline{\mbox{Gripe}}/-) &=
-\frac{P(\overline{\mbox{Gripe}})P(-/\overline{\mbox{Gripe}})}{P(\mbox{Gripe})P(-/\mbox{Gripe})+P(\overline{\mbox{Gripe}})P(-/\overline{\mbox{Gripe}})}
-=\\ &= \frac{0.9\cdot 0.9}{0.1\cdot 0.05+0.9\cdot 0.9} = 0.9939.
-\end{align*}
-De manera que el valor predictivo negativo de este test es mucho más alto que el valor predictivo positivo.
-
-\note{
-Y si el test da negativo, \emph{¿cuál es la probabilidad de que no tenga gripe?}
-
-De nuevo, aplicando el teorema de Bayes, se tiene que el valor predictivo negativo del test vale
-\begin{align*}
-P(\overline{\mbox{Gripe}}/-) &=
-\frac{P(\overline{\mbox{Gripe}})P(-/\overline{\mbox{Gripe}})}{P(\mbox{Gripe})P(-/\mbox{Gripe})+P(\overline{\mbox{Gripe}})P(-/\overline{\mbox{Gripe}})}
-=\\ &= \frac{0.9\cdot 0.9}{0.1\cdot 0.05+0.9\cdot 0.9} = 0.9939.
-\end{align*}
-De manera que el valor predictivo negativo de este test es mucho más alto que el valor predictivo positivo, y por tanto este test es mucho
-más útil para descartar la enfermedad que para detectarla. 
-}
+\frametitle{Test diagnósticos}
+\framesubtitle{Continuación del ejemplo}
+El valor predictivo positivo del test es 
+\[
+	VPP = P(E|+) = \frac{95}{95+90} = 0.5135.
+\]
+	
+Como este valor es mayor que $0.5$, eso significa que se diagnosticará la gripe si el resultado del test es positivo.
+No obstante, la confianza en el diagnóstico será baja, ya que el valor es poco mayor que $0.5$.
+	
+Por otro lado, el valor predictivo negativo es 
+\[
+	VPN = P(\overline{E}|-) = \frac{810}{5+810} = 0.9939. 
+\]
+	
+Como este valor es casi 1, eso significa que es casi seguro que no se tiene la gripe cuando el resultado del test es negativo.
+	
+Así, se puede concluir que este test es muy potente para descartar la gripe, pero no lo est tanto para confirmarla.
 \end{frame}
-
+	
+	
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Razón de verosimilitud de un test diagnóstico}
+La siguientes medidas también se derivan de la sensibilidad y la especificidiad de un test diagnóstico.
+\begin{definicion}[Razón de verosimilitud positiva $RV+$]
+La \emph{razón de verosimilitud positiva} de un test diagnóstico es el cociente entre la probabilidad de un resultado positivo en personas con la enfermedad y personas sin la enfermedad, respectivamente.
+\[
+	RV+=\frac{P(+|E)}{P(+|\overline{E})} = \frac{\mbox{Sensibilidad}}{1-\mbox{Especificidad}}
+\]
+\end{definicion}
+	
+\begin{definicion}[Razón de verosimilitud negativa $RV-$]
+La \emph{razón de verosimilitud negativa} de un test diagnóstico es el cociente entre la probabilidad de un resultado negativo en personas con la enfermedad y personas sin la enfermedad, respectivamente.
+\[
+	RV-=\frac{P(-|E)}{P(-|\overline{E})} = \frac{1-\mbox{Sensibilidad}}{\mbox{Especificidad}}
+\]
+\end{definicion}
+\end{frame}
+	
+	
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Interpretación de las razones de verosimilitud}
+La razón de verosimilitud positiva puede interpretarse como el número de veces que un resultado positivo es más probable en personas con la enfermedad que en personas sin la enfermedad.
+	
+Por otro lado, la razón de verosimilitud negativa puede interpretarse como el número de veces que un resultado negativo es más probable en personas con la enfermedad que en personas sin la enfermedad.
+	
+Las probabiliades a posteriori pueden calculares a partir de las probabilidades a priori usando las razones de verosimilitud
+	
+\[
+	P(E|+) = \frac{P(E)P(+|E)}{P(E)P(+|E)+P(\overline{E})P(+|\overline{E})} = \frac{P(E)RV+}{1-P(E)+P(E)RV+}
+\]
+	
+Así,
+\begin{itemize}
+	\item Una razón de verosimilitud positiva mayor que 1 aumenta la probabilidad de la enfermedad.
+	\item Una razón de verosimilitud positiva menor que 1 disminuye la probabilidad de la enfermedad.
+	\item Una razón de verosimilitud 1 no cambia la probabilidad a priori de la de tener la enfermedad.
+\end{itemize}
+\end{frame}
+	
+	
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Interpretación de las razones de verosimilitud}
+\begin{center}
+	\tikzsetnextfilename{probabilidad/razon_verosimilitud}
+	\mode<article>{\resizebox{0.6\textwidth}{!}{\input{img/probabilidad/razon_verosimilitud}}}
+	\mode<presentation>{\resizebox{0.75\textwidth}{!}{\input{img/probabilidad/razon_verosimilitud}}}
+\end{center}
+\end{frame}

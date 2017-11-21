@@ -11,21 +11,35 @@
 
 \subsection{Hipótesis estadísticas y tipos de contrastes de hipótesis}
 %---------------------------------------------------------------------slide----
+\mode<presentation>{
+\setbeamercolor{background canvas}{bg=DarkTeal}
+\usebeamercolor[fg]{frametitle}
+\begin{frame}[standout]
+\scshape
+\centering
+\Huge
+Hipótesis estadísticas\\ y tipos de contrastes
+\end{frame}
+}
+
+%---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Hipótesis estadística}
 En muchos estudios estadísticos, el objetivo, más que estimar el valor de un parámetro desconocido en la población, es
 comprobar la veracidad de una hipótesis formulada sobre la población objeto de estudio.
 
 El investigador, de acuerdo a su experiencia o a estudios previos, suele tener conjeturas sobre la población estudiada
-que expresa en forma de hipótesis. 
+que expresa en forma de hipótesis.
 
+\pause
 \begin{definicion}[Hipótesis estadística]
 Una \emph{hipótesis estadística} es cualquier afirmación o conjetura que determina, total o parcialmente, la
-distribución de una o varias variables de la población. 
+distribución de una o varias variables de la población.
 \end{definicion}
 
+\pause
 \textbf{Ejemplo}. Para contrastar el rendimiento académico de un grupo de alumnos en una determinada asignatura,
-podríamos platear la hipótesis de si el porcentaje de aprobados es mayor del $50\%$. 
+podríamos platear la hipótesis de si el porcentaje de aprobados es mayor del $50\%$.
 \end{frame}
 
 
@@ -33,17 +47,20 @@ podríamos platear la hipótesis de si el porcentaje de aprobados es mayor del $
 \begin{frame}
 \frametitle{Contraste de hipótesis}
 En general nunca se sabrá con absoluta certeza si una hipótesis estadística es cierta o falsa, ya que para ello habría
-que estudiar a todos los individuos de la población. 
+que estudiar a todos los individuos de la población.
 
+\pause
 Para comprobar la veracidad o falsedad de estas hipótesis hay que contrastarlas con los resultados empíricos obtenidos
-de las muestras. 
+de las muestras.
 Si los resultados observados en las muestras coinciden, dentro del margen de error admisible debido al azar, con lo que cabría
 esperar en caso de que la hipótesis fuese cierta, la hipótesis se aceptará como verdadera, mientras que en caso
 contrario se rechazará como falsa y se buscarán nuevas hipótesis capaces de explicar los datos observados.
 
-Como las muestras se obtienen aleatoriamente, \alert{\emph{la decisión de aceptar o rechar una hipótesis estadística se
+\pause
+Como las muestras se obtienen aleatoriamente, \alert{\emph{la decisión de aceptar o rechazar una hipótesis estadística se
 tomará sobre una base de probabilidad}}.
 
+\pause
 La metodología que se encarga de contrastar la veracidad de las hipótesis estadísticas se conoce como \emph{contraste
 de hipótesis}.
 \end{frame}
@@ -52,38 +69,54 @@ de hipótesis}.
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Tipos de contrastes de hipótesis}
-\begin{itemize}
-\item \structure{\textbf{Pruebas de bondad de ajuste}}: El objetivo es comprobar una hipótesis sobre la forma de la
+\begin{itemize}[<+->]
+\item \structure{\textbf{Contrastes de bondad de ajuste}}: El objetivo es comprobar una hipótesis sobre la forma de la
 distribución de la población.\\
 \textbf{Ejemplo}. Contastar si las notas de un grupo de alumnos siguen una distribución normal.
-\item \structure{\textbf{Pruebas de conformidad}}: El objetivo es comprobar una hipótesis sobre alguno de los parámetros
+\item \structure{\textbf{Contrastes de conformidad}}: El objetivo es comprobar una hipótesis sobre alguno de los parámetros
 de la población.\\
 \textbf{Ejemplo}. Contrastar si las nota media en un grupo de alumnos es igual a 5.
-\item \structure{\textbf{Pruebas de homogeneidad}}: El objetivo es comparar dos poblaciones con respecto a alguno de sus
+\item \structure{\textbf{Contrastes de homogeneidad}}: El objetivo es comparar dos o más poblaciones con respecto a alguno de sus
 parámetros.\\
-\textbf{Ejemplo}. Contrastar si el rendimiento de dos grupos de alumnos es el mismo comparando sus notas medias. 
-\item \structure{\textbf{Pruebas de independencia}}: El objetivo es comprobar si existe relación entre dos
+\textbf{Ejemplo}. Contrastar si el rendimiento de dos grupos de alumnos es el mismo comparando sus notas medias.
+\item \structure{\textbf{Contrastes de independencia}}: El objetivo es comprobar si existe relación entre dos
 variables de la población.\\
-\textbf{Ejemplo}. Contrastar si existe relación entre la notas de dos asignaturas diferentes.  
+\textbf{Ejemplo}. Contrastar si existe relación entre la notas de dos asignaturas diferentes.
 \end{itemize}
-Cuando las hipótesis se plantean sobre parámetros de la población, también se habla de \structure{\textbf{pruebas
-paramétricas}}.
+
+\pause
+Cuando las hipótesis se plantean sobre parámetros de la población, también se habla de \structure{\textbf{contrastes
+paramétricos}}.
 \end{frame}
 
 
 \subsection{Planteamiento de un contraste de hipótesis}
 %---------------------------------------------------------------------slide----
+\mode<presentation>{
+\setbeamercolor{background canvas}{bg=DarkTeal}
+\usebeamercolor[fg]{frametitle}
+\begin{frame}[standout]
+\scshape
+\centering
+\Huge
+Planteamiento de las hipótesis\\ de un contraste
+\end{frame}
+}
+
+%---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Hipótesis nula e hipótesis alternativa}
 En la mayoría de los casos un contraste supone tomar una decisión entre dos hipótesis antagonistas:
-\begin{description}
+
+\pause
+\begin{description}[<+->]
 \item[Hipótesis nula] Es la hipótesis conservadora, ya que se mantendrá mientras que los datos de las muestras
 no reflejen claramente su falsedad. Se representa como $H_0$.
 \item[Hipótesis alternativa] Es la negación de la hipótesis nula y generalmente representa la afirmación que se
 pretende probar. Se representa como $H_1$.
 \end{description}
-
-Ambas hipótesis se eligen de acuerdo con el principio de simplicidad científica: 
+\pause
+Ambas hipótesis se eligen de acuerdo con el principio de simplicidad científica:
 \begin{center}
 \emph{``Solamente se debe abandonar un modelo simple por otro más complejo\\
 cuando la evidencia a favor del último sea fuerte.''} (Navaja de Occam)
@@ -96,7 +129,8 @@ cuando la evidencia a favor del último sea fuerte.''} (Navaja de Occam)
 \frametitle{Elección de las hipótesis nula y alternativa}
 \framesubtitle{Analogía con un juicio}
 En el caso de un juicio, en el que el juez debe decidir si el acusado es culpable o inocente, la elección de hipótesis debería ser
-\begin{center} 
+\pause
+\begin{center}
 \begin{tabular}{ll}
 $H_0$: & Inocente\\
 $H_1$: & Culpable
@@ -104,9 +138,11 @@ $H_1$: & Culpable
 \end{center}
 ya que la inocencia se asume, mientras que la culpabilidad hay que demostrarla.
 
+\pause
 Según esto, el juez sólo aceptaría la hipótesis alternativa cuando hubiese pruebas significativas de la culpabilidad del
 acusado.
 
+\pause
 El investigador jugaría el papel del fiscal, ya que su objetivo consistiría en intentar rechazar la hipótesis
 nula, es decir, demostrar culpabilidad del acusado.
 
@@ -126,7 +162,7 @@ En tal caso, la hipótesis nula siempre asigna al parámetro un valor concreto, 
 hipótesis abierta que, aunque opuesta a la hipótesis nula, no fija el valor del parámetro.
 
 Esto da lugar a tres tipos de contrastes:
-\begin{center} 
+\begin{center}
 \begin{tabular}{|m{3.5cm}<{\centering}|m{3.5cm}<{\centering}|m{3.5cm}<{\centering}|}
 \hline
 \structure{\textbf{Bilateral}} & \structure{\textbf{Unilateral de menor}} & \structure{\textbf{Unilateral de mayor}}\\
@@ -143,18 +179,19 @@ $H_1$: $\theta \neq \theta_0$ & $H_1$: $\theta < \theta_0$ & $H_1$: $\theta > \t
 \begin{frame}
 \frametitle{Elección del tipo de contraste}
 \framesubtitle{Ejemplo}
-Supóngase que existen sospechas de que en una población hay menos hombres que mujeres. 
+Supóngase que existen sospechas de que en una población hay menos hombres que mujeres.
 
-¿Qué tipo de contraste debería plantearse para validar o refutar esta sospecha?
-\begin{enumerate}
+\emph{¿Qué tipo de contraste debería plantearse para validar o refutar esta sospecha?}
+\pause
+\begin{enumerate}[<+->]
 \item Las sospechas se refieren al porcentaje o la proporción $p$ de hombres en la población, por lo que se trata de un \emph{contraste paramétrico}.
-\item El objetivo es averiguar el valor de $p$, por lo que se trata de una \emph{prueba de conformidad}. 
+\item El objetivo es averiguar el valor de $p$, por lo que se trata de una \emph{prueba de conformidad}.
 En la hipótesis nula el valor de $p$ se fijará a $0.5$ ya que, de acuerdo a las leyes de la genética, en la población debería
 haber la misma proporción de hombres que de mujeres.
 \item Finalmente, existen sospechas de que el porcentaje de hombres es menor que el de mujeres, por lo que la
 hipótesis alternativa será de menor $p<0.5$.
 \end{enumerate}
-
+\pause
 Así pues, el contraste que debería plantearse es el siguiente:
 \begin{center}
 \begin{tabular}{ll}
@@ -174,7 +211,7 @@ La aceptación o rechazo de la hipótesis nula depende, en última instancia, de
 La decisión se tomará según el valor que presente algún estadístico de la muestra relacionado con el parámetro o característica que se esté contrastando, y cuya distribución de probabilidad debe ser conocida suponiendo cierta la hipótesis nula y una vez fijado el tamaño de la muestra.
 Este estadístico recibe el nombre de \structure{\textbf{estadístico del contraste}}.
 
-Para cada muestra, el estadístico dará una estimación a partir de la cual se tomará la decisión: 
+Para cada muestra, el estadístico dará una estimación a partir de la cual se tomará la decisión:
 \alert{\emph{Si la estimación difiere demasiado del valor esperado bajo la hipótesis $H_0$, entonces se rechazará, y en caso contrario se aceptará.}}
 
 La lógica que guía la decisión es la de mantener la hipótesis nula a no ser que en la muestra haya pruebas contundentes de su falsedad. Siguiendo con el símil del juicio, se trataría de mantener la inocencia mientras no haya pruebas claras de culpabilidad.
@@ -197,10 +234,10 @@ Si para resolver el contraste se toma una muestra aleatoria de 10 personas, podr
 Suponiendo cierta la hipótesis nula, el estadístico del contraste seguiría una distribución binomial $X\sim B(10,\,0.5)$, de manera que el número esperado de hombres en la muestra sería 5.
 
 Así pues, es lógico aceptar la hipótesis nula si en la muestra se obtiene un número de hombres próximo a 5 y rechazarla cuando el número de hombres sea muy inferior a 5. Pero,
-\begin{center} 
-\emph{¿dónde poner el límite entre los valores $X$ que lleven a la aceptación y los que lleven al rechazo?} 
+\begin{center}
+\emph{¿dónde poner el límite entre los valores $X$ que lleven a la aceptación y los que lleven al rechazo?}
 \end{center}
-% \begin{center} 
+% \begin{center}
 % \begin{tabular}{lcl}
 % Si hay 10 hombres & $\Rightarrow$ & Rechazar la hipótesis nula,\\
 % Si hay 5 hombres & $\Rightarrow$ & Aceptar la hipótesis nula.
@@ -213,11 +250,11 @@ Así pues, es lógico aceptar la hipótesis nula si en la muestra se obtiene un 
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Regiones de aceptación y de rechazo}
-Una vez elegido el estadístico del contraste, lo siguiente es decidir para qué valores de este estadístico se decidirá aceptar la hipótesis nula y para que valores se rechazará. 
+Una vez elegido el estadístico del contraste, lo siguiente es decidir para qué valores de este estadístico se decidirá aceptar la hipótesis nula y para que valores se rechazará.
 Esto divide del conjunto de valores posibles del estadístico en dos regiones:
 \begin{description}
 \item[Región de aceptación]: Es el conjunto de valores del estadístico del contraste a partir de los cuales se decidirá aceptar la hipótesis nula.
-\item[Región de rechazo]: Es el conjunto de valores del estadístico del contraste a partir de los cuales se decidirá rechazar la hipótesis nula, y por tanto, aceptar la hipótesis alternativa. 
+\item[Región de rechazo]: Es el conjunto de valores del estadístico del contraste a partir de los cuales se decidirá rechazar la hipótesis nula, y por tanto, aceptar la hipótesis alternativa.
 \end{description}
 \end{frame}
 
@@ -317,6 +354,18 @@ región de rechazo quedará por debajo del 5. Pero,
 
 \subsection{Errores en un contraste de hipótesis}
 %---------------------------------------------------------------------slide----
+\mode<presentation>{
+\setbeamercolor{background canvas}{bg=DarkTeal}
+\usebeamercolor[fg]{frametitle}
+\begin{frame}[standout]
+\scshape
+\centering
+\Huge
+Riesgos de error en un contraste
+\end{frame}
+}
+
+%---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Errores en un contraste de hipótesis}
 Hemos visto que un contraste de hipótesis se realiza mediante una regla de decisión que permite aceptar o rechazar la hipótesis nula dependiendo del valor que tome el estadístico del contraste.
@@ -325,20 +374,21 @@ Al final el contraste se resuelve tomando una decisión de acuerdo a esta regla.
 El problema es que nunca se conocerá con absoluta certeza la veracidad o falsedad de una hipótesis, de modo que al aceptarla o rechazarla es posible que se esté tomando una decisión equivocada.
 
 Los errores que se pueden cometer en un contraste de hipótesis son de dos tipos:
-\begin{itemize}
+\pause
+\begin{itemize}[<+->]
 \item \structure{\textbf{Error de tipo I}}. Se comete cuando se rechaza la hipótesis nula siendo esta verdadera.
 \item \structure{\textbf{Error de tipo II}}. Se comete cuando se acepta la hipótesis nula siendo esta falsa.
 \end{itemize}
+\pause[\thebeamerpauses]
 \begin{center}
-\smallsize
 \begin{tabular}{|m{2.2cm}<{\centering}|m{4cm}<{\centering}|m{4cm}<{\centering}|}
 \cline{2-3}
 \multicolumn{1}{c|}{} & \multicolumn{2}{|c|}{Hipótesis verdadera}\\
 \hline
 Decisión & $H_0$ & $H_1$\\ \hline
-Aceptar $H_0$ & \textcolor{green}{Decisión correcta} & \textcolor{red}{Error de tipo II}\\
+Aceptar $H_0$ & \onslide<5->{\textcolor{green}{Decisión correcta}} & \onslide<8->{\textcolor{red}{Error de tipo II}}\\
 \hline
-Rechazar $H_0$ & \textcolor{red}{Error de tipo I} & \textcolor{green}{Decisión correcta}\\
+Rechazar $H_0$ & \onslide<7->{\textcolor{red}{Error de tipo I}} & \onslide<6->{\textcolor{green}{Decisión correcta}}\\
 \hline
 \end{tabular}
 \end{center}
@@ -362,18 +412,24 @@ P(\text{Aceptar }H_0|H_1) \leq \beta
 \]
 \end{definicion}
 
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Riesgos de los errores de un contraste de hipótesis}
+
 \begin{center}
-\smallsize
 \begin{tabular}{|m{2.2cm}<{\centering}|m{5cm}<{\centering}|m{5cm}<{\centering}|}
 \cline{2-3}
 \multicolumn{1}{c|}{} & \multicolumn{2}{|c|}{Hipótesis verdadera}\\
 \hline
 Decisión & $H_0$ & $H_1$\\ \hline
-Aceptar $H_0$ & \textcolor{color3}{Decisión correcta\newline $P(\mbox{Aceptar $H_0|H_0$ cierta}) > 1-\alpha$}&
-\textcolor{color2}{Error de tipo II\newline $P(\mbox{Aceptar $H_0|H_0$ falsa}) \leq \beta$}\\
+Aceptar $H_0$ & \textcolor{color3}{Decisión correcta\newline \onslide<3->{$P(\mbox{Aceptar $H_0|H_0$ cierta}) > 1-\alpha$}}&
+\textcolor{color2}{Error de tipo II\newline \onslide<4->{$P(\mbox{Aceptar $H_0|H_0$ falsa}) \leq \beta$}}\\
 \hline
-Rechazar $H_0$ & \textcolor{color2}{Error de tipo I\newline $P(\mbox{Rechazar $H_0|H_0$ cierta}) \leq \alpha$} &
-\textcolor{color3}{Decisión correcta \newline $P(\mbox{Rechazar $H_0|H_0$ falsa}) > 1-\beta$}\\
+Rechazar $H_0$ & \textcolor{color2}{Error de tipo I\newline \onslide<2->{$P(\mbox{Rechazar $H_0|H_0$ cierta}) \leq \alpha$}} &
+\textcolor{color3}{Decisión correcta \newline \onslide<5->{$P(\mbox{Rechazar $H_0|H_0$ falsa}) > 1-\beta$}}\\
 \hline
 \end{tabular}
 \end{center}
@@ -385,9 +441,11 @@ Rechazar $H_0$ & \textcolor{color2}{Error de tipo I\newline $P(\mbox{Rechazar $H
 \frametitle{Interpretación del riesgo $\alpha$}
 En principio, puesto que esta metodología favorece a la hipótesis nula, el error del tipo I suele ser más grave que el error del tipo II, y por tanto, el riesgo $\alpha$ suele fijarse a niveles bajos de $0.1$, $0.05$ o $0.01$, siendo $0.05$ lo más habitual.
 
+\pause
 Debe tenerse cuidado al interpretar el riesgo $\alpha$ ya que se trata de una probabilidad condicionada a que la hipótesis nula sea cierta.
 Por tanto, cuando se rechace la hipótesis nula con un riesgo $\alpha=0.05$, es erróneo decir 5 de cada 100 veces nos equivocaremos, ya que esto sería cierto sólo si la hipótesis nula fuese siempre verdadera.
 
+\pause
 Tampoco tiene sentido hablar de la probabilidad de haberse equivocado una vez tomada una decisión a partir de una muestra concreta, pues en tal caso, si se ha tomado la decisión acertada, la probabilidad de error es 0 y si se ha tomado la decisión equivocada, la probabilidad de error es 1.
 \end{frame}
 
@@ -396,6 +454,7 @@ Tampoco tiene sentido hablar de la probabilidad de haberse equivocado una vez to
 \begin{frame}
 \frametitle{Determinación de las regiones de aceptación y de rechazo en función del riesgo $\alpha$}
 Una vez fijado el riesgo $\alpha$ que se está dispuesto a tolerar, es posible delimitar las regiones de aceptación y de rechazo para el estadístico del contraste de manera que la probabilidad acumulada en la región de rechazo sea $\alpha$, suponiendo cierta la hipótesis nula.
+\mode<presentation>{
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{center}
@@ -410,6 +469,14 @@ Contraste unilateral
 \end{center}
 \end{column}
 \end{columns}
+}
+\mode<article>{
+\noindent
+\tikzsetnextfilename{contrastes/regiones_bilateral_normal}
+\resizebox{0.5\textwidth}{!}{\input{img/contrastes/regiones_bilateral_normal}}
+\tikzsetnextfilename{contrastes/regiones_unilateral_mayor_normal}
+\resizebox{0.5\textwidth}{!}{\input{img/contrastes/regiones_unilateral_mayor_normal}}
+}
 \end{frame}
 
 
@@ -449,7 +516,7 @@ Aunque el error de tipo II pueda parecer menos grave, también interesa que el r
 
 El problema, en el caso de contrastes paramétricos, es que la hipótesis alternativa es una hipótesis abierta en la que no se fija el valor del parámetro a contrastar, de modo que, para poder calcular el riesgo $\beta$ es necesario fijar dicho valor.
 
-Lo normal es fijar el valor del parámetro del contraste a la mínima cantidad para admitir diferencias significativas desde un punto de vista práctico o clínico. 
+Lo normal es fijar el valor del parámetro del contraste a la mínima cantidad para admitir diferencias significativas desde un punto de vista práctico o clínico.
 Esa mínima diferencia que se considera clínicamente significativa se conoce como \highlight{tamaño del efecto} y se representa por $\delta$.
 \end{frame}
 
@@ -519,8 +586,8 @@ parámetro que establece la hipótesis nula.
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Relación del riesgo $\beta$ y la mínima diferencia importante $\delta$}
-Si en el contraste sobre la proporción de hombres se desease detectar una diferencia de al menos un 20\% con respecto al valor que establece la hipótesis nula, es decir, $\delta=0.2$, entonces la hipótesis alternativa se fijaría a 
+\frametitle{Relación del riesgo $\beta$ y el tamaño del efecto $\delta$}
+Si en el contraste sobre la proporción de hombres se desease detectar una diferencia de al menos un 20\% con respecto al valor que establece la hipótesis nula, es decir, $\delta=0.2$, entonces la hipótesis alternativa se fijaría a
 \[
 H_1:\ p=0.5-0.2=0.3,
 \]
@@ -562,7 +629,7 @@ Los riesgos $\alpha$ y $\beta$ están enfrentados, es decir, cuando uno aumenta 
 \begin{frame}
 \frametitle{Relación entre los riesgos $\alpha$ y $\beta$}
 \framesubtitle{Ejemplo}
-Si en el contraste sobre la proporción de hombres toma como riesgo $\alpha=0.1$, entonces la región de rechazo sería $X\leq 2$ ya que, suponiendo cierta la hipótesis nula, $X\sim B(10,\, 0.5)$, y 
+Si en el contraste sobre la proporción de hombres toma como riesgo $\alpha=0.1$, entonces la región de rechazo sería $X\leq 2$ ya que, suponiendo cierta la hipótesis nula, $X\sim B(10,\, 0.5)$, y
 \[
 P(X\leq 2) = 0.0547 \leq 0.1=\alpha.
 \]
@@ -638,6 +705,7 @@ Cuando no se puede fijar el valor concreto del parámetro en la hipótesis alter
 \framesubtitle{Ejemplo}
 La curva de potencia correspondiente al contraste sobre la proporción de hombres en la población es la siguiente
 \begin{center}
+\tikzsetnextfilename{contrastes/potencia}
 \scalebox{0.8}{\input{img/contrastes/potencia}}
 \end{center}
 \end{frame}
@@ -645,11 +713,26 @@ La curva de potencia correspondiente al contraste sobre la proporción de hombre
 
 \subsection{$p$-valor de un contraste}
 %---------------------------------------------------------------------slide----
+\mode<presentation>{
+\setbeamercolor{background canvas}{bg=DarkTeal}
+\usebeamercolor[fg]{frametitle}
+\begin{frame}[standout]
+\scshape
+\centering
+\Huge
+$p$-valor y regla de decisión\\
+de un contraste de hipótesis
+\end{frame}
+}
+
+%---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{$p$-valor de un contraste de hipótesis}
 En general, siempre que la estimación del estadístico caiga dentro de la región de rechazo, rechazaremos la hipótesis nula, pero evidentemente, si dicha estimación se aleja bastante de la región de aceptación tendremos más confianza en el rechazo que si la estimación está cerca del límite entre las regiones de aceptación y rechazo.
 
 Por este motivo, al realizar un contraste, también se calcula la probabilidad de obtener una discrepancia mayor o igual a la observada entre la estimación del estadístico del contraste y su valor esperado según la hipótesis nula.
+
+\pause
 \begin{definicion}[$p$-valor]
 En un contraste de hipótesis, para cada estimación $x_0$ del estadístico del contraste $X$, dependiendo del tipo de
 contraste, se define el $p$-valor del contraste como
@@ -670,12 +753,13 @@ Contraste unilateral de mayor: & $P(X\geq x_0|H_0)$
 En cierto modo, el $p$-valor expresa la confianza que se tiene al tomar la decisión de rechazar la hipótesis nula.
 Cuanto más próximo esté el $p$-valor a 1, mayor confianza existe al aceptar la hipótesis nula, y cuanto más próximo esté a 0, mayor confianza hay al rechazarla.
 
+\pause
 Una vez fijado el riesgo $\alpha$, la regla de decisión para realizar un contraste también puede expresarse de la siguiente manera:
 \begin{alertblock}{Regla de decisión de un contraste}
 \begin{center}
 \begin{tabular}{lcl}
 Si $p$-valor $\leq \alpha$ & $\rightarrow$ & Rechazar $H_0$,\\
-Si $p$-valor $> \alpha$ & $\rightarrow$ & Aceptar $H_0$,\\
+Si $p$-valor $> \alpha$ & $\rightarrow$ & Aceptar $H_0$.\\
 \end{tabular}
 \end{center}
 \end{alertblock}
@@ -1153,12 +1237,13 @@ F= \frac{\frac{\frac{(n_1-1)\hat{S}_1^2}{\sigma_1^2}}{n_1-1}}{\frac{\frac{(n_2-1
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Contraste de comparación de varianzas de dos poblaciones normales}
+\framesubtitle{Ejemplo}
 Siguiendo con el ejemplo de las puntuaciones en dos grupos:
 \begin{align*}
 X_1 &: 4 - 6 - 8 - 7 - 7 - 6 - 5 - 2 - 5 - 3 \\
 X_2 &: 8 - 9 - 5 - 3 - 8 - 7 - 8 - 6 - 8 - 7 - 5 - 7
 \end{align*}
-si se desea comparar las varianzas, el contraste que se plantea es
+Si se desea comparar las varianzas, el contraste que se plantea es
 \[
 H_0: \sigma_1=\sigma_2\qquad H_1: \sigma_1\neq \sigma_2
 \]
@@ -1207,6 +1292,7 @@ H_1: p_1\neq p_2
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Contraste de comparación de proporciones de dos poblaciones}
+\framesubtitle{Ejemplo}
 Se quiere comparar los porcentajes de aprobados en dos grupos que han seguido metodologías distintas.
 En el primer grupo han aprobado 24 alumnos de un total de 40, mientras que en el segundo han aprobado 48 de 60.
 

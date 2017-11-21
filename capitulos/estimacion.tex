@@ -694,13 +694,13 @@ Tampoco se puede decir que la probabilidad de que el parámetro esté dentro del
 Lo que si se deduce de la definición es que el $(1-\alpha)\%$ de los intervalos correspondientes a las todas las posibles muestras aleatorias, contendrán al parámetro. Es por eso que se habla de \alert{confianza} y no de probabilidad.
 
 Para que un intervalo sea útil su nivel de confianza debe ser alto:
-\[
+
 \begin{align*}
 1-\alpha &= 0.90 \mbox{ o } \alpha=0.10\\
 \alert{1-\alpha} &= \alert{0.95} \mbox{ o } \alert{\alpha=0.05}\\
 1-\alpha &= 0.99 \mbox{ o } \alpha=0.01\\
 \end{align*}
-\]
+
 siendo $0.95$ el nivel de confianza más habitual y $0.99$ en casos críticos.
 \end{frame}
 
@@ -836,14 +836,14 @@ Como la distribución normal estándar es simétrica respecto al 0, lo mejor es 
 \begin{frame}
 \frametitle{Intervalo de confianza para la media de una población normal con varianza conocida}
 A partir de aquí, deshaciendo la tipificación, resulta sencillo llegar a los estimadores que darán los extremos del intervalo de confianza:
-\[
+
 \begin{align*}
 1-\alpha &= P(-z_{\alpha/2}\leq Z \leq z_{\alpha/2}) = P\left(-z_{\alpha/2}\leq \frac{\bar X -\mu}{\sigma/\sqrt{n}} \leq z_{\alpha/2}\right) =\\
 &= P\left(-z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\leq \bar X -\mu \leq z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right)=\\
 &= P\left(-\bar{X}-z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\leq -\mu \leq -\bar{X}+z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right)= \\
 &= P\left(\bar{X}-z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\leq \mu \leq \bar{X}+z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right).
 \end{align*}
-\]
+
 Así pues, el intervalo de confianza para la media de una población normal con varianza conocida es:
 \[
 \alert{\left[\bar{X}-z_{\alpha/2}\frac{\sigma}{\sqrt{n}},\bar{X}+z_{\alpha/2}\frac{\sigma}{\sqrt{n}}\right]}
@@ -1095,14 +1095,14 @@ Como la distribución chi-cuadrado no es simétrica respecto al 0, se toman dos 
 \begin{frame}
 \frametitle{Intervalo de confianza para la varianza de una población normal}
 Así pues, se tiene
-\[
+
 \begin{align*}
 1-\alpha &= P\left(\chi^{n-1}_{\alpha/2}\leq \frac{nS^2}{\sigma^2}  \leq \chi^{n-1}_{1-\alpha/2}\right) =
 P\left(\frac{1}{\chi^{n-1}_{\alpha/2}}\geq \frac{\sigma^2}{nS^2}  \geq \frac{1}{\chi^{n-1}_{1-\alpha/2}}\right)=\\
 &= P\left(\frac{1}{\chi^{n-1}_{1-\alpha/2}}\leq \frac{\sigma^2}{nS^2}  \leq \frac{1}{\chi^{n-1}_{\alpha/2}}\right)
 = P\left(\frac{nS^2}{\chi^{n-1}_{1-\alpha/2}}\leq \sigma^2  \leq \frac{nS^2}{\chi^{n-1}_{\alpha/2}}\right),
 \end{align*}
-\]
+
 y el intervalo de confianza para la varianza de una población normal es:
 \[
 \alert{\left[\frac{nS^2}{\chi^{n-1}_{1-\alpha/2}},\frac{nS^2}{\chi^{n-1}_{\alpha/2}}\right]}
@@ -1497,13 +1497,13 @@ $f^{n_2-1,n_1-1}_{1-\alpha/2}$ que dejen sendas colas de probabilidad acumulada 
 \begin{frame}
 \frametitle{Intervalo de confianza para el cociente de varianzas de dos poblaciones normales}
 Así pues, se tiene
-\[
+
 \begin{align*}
 1-\alpha &= P\left(f^{n_2-1,n_1-1}_{\alpha/2}\leq \frac{\sigma_1^2}{\sigma_2^2}\frac{\hat{S}_2^2}{\hat{S}_1^2}  \leq
 f^{n_2-1,n_1-1}_{1-\alpha/2}\right) = \\ &= P\left(f^{n_2-1,n_1-1}_{\alpha/2}\frac{\hat{S}_1^2}{\hat{S}_2^2} \leq
 \frac{\sigma_1^2}{\sigma_2^2}  \leq f^{n_2-1,n_1-1}_{1-\alpha/2}\frac{\hat{S}_1^2}{\hat{S}_2^2}\right)
 \end{align*}
-\]
+
 y el intervalo de confianza para la comparación de varianzas de dos poblaciones normales es:
 \[
 \alert{\left[f^{n_2-1,n_1-1}_{\alpha/2}\frac{\hat{S}_1^2}{\hat{S}_2^2},f^{n_2-1,n_1-1}_{1-\alpha/2}\frac{\hat{S}_1^2}{\hat{S}_2^2}\right]}

@@ -1,0 +1,12 @@
+\beamer@endinputifotherversion {3.36pt}
+\select@language {spanish}
+\select@language {spanish}
+\beamer@sectionintoc {1}{Teoría de la Probabilidad}{4}{0}{1}
+\beamer@subsectionintoc {1}{1}{Experimentos y sucesos aleatorios}{7}{0}{1}
+\beamer@subsectionintoc {1}{2}{Teoría de conjuntos}{12}{0}{1}
+\beamer@subsectionintoc {1}{3}{Definición de probabilidad}{20}{0}{1}
+\beamer@subsectionintoc {1}{4}{Probabilidad condicionada}{31}{0}{1}
+\beamer@subsectionintoc {1}{5}{Espacio probabilístico}{37}{0}{1}
+\beamer@subsectionintoc {1}{6}{Teorema de la probabilidad total}{42}{0}{1}
+\beamer@subsectionintoc {1}{7}{Teorema de Bayes}{52}{0}{1}
+\beamer@subsectionintoc {1}{8}{Tests diagnósticos}{55}{0}{1}

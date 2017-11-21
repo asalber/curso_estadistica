@@ -1,0 +1,49 @@
+% Author: Alfredo Sánchez Alberca (asalber@ceu.es)
+
+\begin{tikzpicture}[
+grow'=right,
+% sloped,
+level 1/.style ={level distance=2cm, sibling distance=3.2cm, parent anchor=east, child anchor=west},
+level 2/.style ={level distance=4cm, sibling distance=0.8cm},
+level 3/.style ={level distance=2cm, sibling distance=0.8cm, dashed}
+]
+
+\node (root) {}
+	child {
+		node {Mujer}
+    	child {node {0}
+				child {node{(Mujer,0)}}
+			}
+ 			child {node {A}
+				child {node{(Mujer,A)}}
+			}
+			child {node {B}
+				child {node{(Mujer,B)}}
+			}
+			child {node {AB}
+				child {node{(Mujer,AB)}}
+			}
+    }
+	child {
+		node {Hombre}
+    	child {node {0}
+				child {node{(Hombre,0)}}
+			}
+ 			child {node {A}
+				child {node{(Hombre,A)}}
+			}
+			child {node {B}
+				child {node{(Hombre,B)}}
+			}
+			child {node {AB}
+				child {node{(Hombre,AB)}}
+			}
+    };
+
+\begin{scope}[every node/.style={text width=2cm, align=center, anchor=center, font=\bfseries,}]
+\node[above= 0.5cm of root-1-1-1] (labels-level) {$\Omega$};
+\node[at =(labels-level-|root-1-1)] {Grupo sanguíneo};
+\node[at =(labels-level-|root-1)] {Sexo};
+\end{scope}
+\end{tikzpicture}
+
