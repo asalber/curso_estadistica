@@ -20,23 +20,23 @@ prob/.style={font=\footnotesize,above}
 				}
 				edge from parent node[prob] {$0.4$}
 			}
-			child {node {$\bar F$}
-				child {node{\only<4>{\color{color2}}$(F,F,\bar F)$}
+			child {node {$\overline F$}
+				child {node{\only<4>{\color{color2}}$(F,F,\overline F)$}
 					child {node {$0.096$} edge from parent node[prob] {$0.4\cdot 0.4\cdot 0.6$}}
 				}
 				edge from parent node[prob,below] {$0.6$}
 			}
 			edge from parent node[prob] {$0.4$}
 		}
-		child {node {M}
+		child {node {$\overline F$}
 	   		child {node {$F$}
-				child {node{\only<4>{\color{color2}}$(F,\bar F,F)$}
+				child {node{\only<4>{\color{color2}}$(F,\overline F,F)$}
 					child {node{$0.096$} edge from parent node[prob] {$0.4\cdot 0.6\cdot 0.4$}}
 				}
 				edge from parent node[prob] {$0.4$}
 			}
-			child {node {$\bar F$}
-				child {node{\only<3>{\color{color2}}$(F,\bar F,\bar F)$}
+			child {node {$\overline F$}
+				child {node{\only<3>{\color{color2}}$(F,\overline F,\overline F)$}
 					child {node{$0.144$} edge from parent node[prob] {$0.4\cdot 0.6\cdot 0.6$}}
 				}
 				edge from parent node[prob,below] {$0.6$}
@@ -45,31 +45,31 @@ prob/.style={font=\footnotesize,above}
 		}
 		edge from parent node[prob,left] {$0.6$}
 	}
-	child {node {$\bar F$}
+	child {node {$\overline F$}
 		child {node {$F$}
 	   		child {node {$F$}
-				child {node{\only<4>{\color{color2}}$(\bar F,F,F)$}
+				child {node{\only<4>{\color{color2}}$(\overline F,F,F)$}
 					child {node {$0.096$} edge from parent node[prob] {$0.6\cdot 0.4\cdot 0.4$}} 
 				}
 				edge from parent node[prob] {$0.4$}
 			}
-			child {node {$\bar F$}
-				child {node{\only<3>{\color{color2}}$(\bar F,F,\bar F)$}
+			child {node {$\overline F$}
+				child {node{\only<3>{\color{color2}}$(\overline F,F,\overline F)$}
 					child {node {$0.144$} edge from parent node[prob] {$0.6\cdot 0.4\cdot 0.6$}}
 				}
 				edge from parent node[prob,below] {$0.6$}
 			}
 			edge from parent node[prob] {$0.4$}
 		}
-		child {node {$\bar X$}
+		child {node {$\overline F$}
 	   		child {node {$F$}
-				child {node{\only<3>{\color{color2}}$(\bar F,\bar F,F)$}
+				child {node{\only<3>{\color{color2}}$(\overline F,\overline F,F)$}
 					child {node{$0.144$} edge from parent node[prob] {$0.6\cdot 0.6\cdot 0.4$}}
 				}
 				edge from parent node[prob] {$0.4$}
 			}
-			child {node {$\bar F$}
-				child {node{\only<2>{\color{color2}}$(\bar F,\bar F,\bar F)$}
+			child {node {$\overline F$}
+				child {node{\only<2>{\color{color2}}$(\overline F,\overline F,\overline F)$}
 					child {node{$0.216$} edge from parent node[prob] {$0.6\cdot 0.6\cdot 0.6$}}
 				}
 				edge from parent node[prob,below] {$0.6$}
