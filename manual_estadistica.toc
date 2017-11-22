@@ -1,8 +1,10 @@
 \beamer@endinputifotherversion {3.36pt}
 \select@language {spanish}
 \select@language {spanish}
-\beamer@sectionintoc {1}{Variables Aleatorias}{4}{0}{1}
-\beamer@subsectionintoc {1}{1}{Distribución de probabilidad de una variable aleatoria discreta}{8}{0}{1}
-\beamer@subsectionintoc {1}{2}{Distribución Uniforme discreta}{15}{0}{1}
-\beamer@subsectionintoc {1}{3}{Distribución Binomial}{17}{0}{1}
-\beamer@subsectionintoc {1}{4}{Distribución de Poisson}{26}{0}{1}
+\beamer@sectionintoc {1}{Variables aleatorias continuas}{4}{0}{1}
+\beamer@subsectionintoc {1}{1}{Distribución de probabilidad de una variable continua}{7}{0}{1}
+\beamer@subsectionintoc {1}{2}{Distribución Uniforme continua}{14}{0}{1}
+\beamer@subsectionintoc {1}{3}{Distribución Normal}{18}{0}{1}
+\beamer@subsectionintoc {1}{4}{Distribución Chi-cuadrado}{35}{0}{1}
+\beamer@subsectionintoc {1}{5}{Distribución T de Student}{38}{0}{1}
+\beamer@subsectionintoc {1}{6}{Distribución F de Fisher-Snedecor}{41}{0}{1}
