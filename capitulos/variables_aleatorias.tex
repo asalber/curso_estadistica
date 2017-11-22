@@ -3,7 +3,7 @@
 \mode<presentation>{
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Variables aleatorias}
+\frametitle{Variables aleatorias discretas}
 \tableofcontents[sectionstyle=show/hide,hideothersubsections]
 \end{frame}
 }
@@ -11,21 +11,24 @@
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Variable aleatoria}
-Cuando seleccionamos una muestra al azar de una población estamos realizando un experimento aleatorio y cualquier variable
-estadística medida a partir de la muestra será una variable aleatoria porque sus valores dependerán del azar. 
+\frametitle{Variables aleatorias}
+Cuando seleccionamos una muestra al azar de una población estamos realizando un experimento aleatorio y cualquier variable estadística medida a partir de la muestra será una variable aleatoria porque sus valores dependerán del azar. 
 
 \begin{definicion}[Variable Aleatoria] 
-Una \emph{variable aleatoria} $X$ es una función que asocia un número real a cada elemento del
-espacio muestral de un experimento aleatorio. \[ X:E\rightarrow \mathbb{R} \]
+Una \emph{variable aleatoria} $X$ es una función que asocia un número real a cada elemento del espacio muestral de un experimento aleatorio. 
+\[ 
+	X:\Omega \rightarrow \mathbb{R} 
+\]
 
-Al conjunto de posibles valores que puede tomar la variable aleatoria se le llama \emph{rango} o \emph{recorrido} de la variable.
+Al conjunto de posibles valores que puede tomar la variable aleatoria se le llama \emph{rango} o \emph{recorrido} de la variable, y se representa por $\mbox{Ran}(X)$.
 \end{definicion}
 
-En el fondo, una variable aleatoria es una variable cuyos valores provienen de la realización de un experimento aleatorio, y por tanto,
-tendrá asociada una determinada distribución de probabilidad.
+En el fondo, una variable aleatoria es una variable cuyos valores provienen de la realización de un experimento aleatorio, y por tanto, tendrá asociada una determinada distribución de probabilidad.
 
-Un ejemplo de variable aleatoria es la que mide el resultado del lanzamiento de un dado.
+\textbf{Ejemplo}. La variable $X$ que mide el resultado del lanzamiento de un dado es una variable aleatoria y su rango es 
+\[
+	\mbox{Ran}(X)=\{1,2,3,4,5,6\}
+\]
 
 \note{
 Con este tema entramos de lleno en la inferencia estadística, que tiene por objeto construir modelos probabilísticos que
@@ -53,16 +56,17 @@ Un ejemplo de variable aleatoria es la que mide el resultado del lanzamiento de 
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Variable aleatoria}
+\frametitle{Tipos de variables aleatorias}
 Las variables aleatorias se clasifican en dos tipos:
 \begin{description}
-\item[Discretas (VAD):] Toman valores aislados (recorrido finito o infinito numerable).\\
-Ejemplo. Número de hijos, número de accidentes, número de cigarrillos, etc. 
-\item[Continuas (VAC):] Toman valores en un intervalo real.\\
-Ejemplo. Peso, estatura, nivel de colesterol, tiempo de respuesta a un fármaco, etc. 
+\item[Discretas (VAD):] Toman valores aislados y su rango es numerable.\\
+Ejemplo. Número de hijos, número de cigarrillos, número de asignaturas aprobadas, etc. 
+\item[Continuas (VAC):] Toman valores en un intervalo real y su rango es no numerable\\
+Ejemplo. Peso, estatura, edad, nivel de colesterol, etc. 
 \end{description}
 
 Los modelos probabilísticos de cada tipo de variables tienen características diferenciadas y por eso se estudiarán por separado. 
+En este capítulo se estudian los modelos probabilísticos de las variables aleatorias discretas.
 
 \note{
 Las variables aleatorias se clasifican en dos tipos:
@@ -78,25 +82,23 @@ Los modelos probabilísticos de cada tipo de variables tienen características d
 \end{frame}
 
 
-\subsection{Variables Aleatorias Discretas}
+\subsection{Distribución de probabilidad de una variable aleatoria discreta}
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Distribución de probabilidad de una variable discreta}
-Como los valores de una variable aleatoria están asociados a los sucesos elementales del correspondiente experimento aleatorio, cada valor
-tendrá asociada una probabilidad.
+\frametitle{Distribución de probabilidad de una variable aleatoria discreta}
+Como los valores de una variable aleatoria están asociados a los sucesos elementales del correspondiente experimento aleatorio, cada valor tendrá asociada una probabilidad.
 \begin{definicion}[Función de probabilidad]
-La \emph{función de probabilidad} de una variable aleatoria discreta $X$ es una función $f(x)$ que asocia a cada valor su probabilidad
+La \emph{función de probabilidad} de una variable aleatoria discreta $X$ es una función $f(x)$ que asocia a cada valor de la variable su probabilidad
 \[
 f(x_i) = P(X=x_i).
 \] 
-\end{definicion} 
+\end{definicion}
 
 Las probabilidades también pueden acumularse, al igual que se acumulaban las frecuencias en las muestras.
 
-\begin{definicion}[Función de distibución] 
-La \emph{función de distribución} de una variable aleatoria discreta $X$ es una función $F(x)$
-que asocia a cada valor $x_i$ la probabilidad de que la variable tome un valor menor o igual que dicho valor. 
+\begin{definicion}[Función de distribución] 
+La \emph{función de distribución} de una variable aleatoria discreta $X$ es una función $F(x)$ que asocia a cada valor $x_i$ de la variable la probabilidad de que la variable tome un valor menor o igual que $x_i$, 
 \[
 F(x_i) = P(X\leq x_i) = f(x_1)+\cdots +f(x_i).
 \]
@@ -128,10 +130,9 @@ F(x_i) = P(X\leq x_i) = f(x_1)+\cdots +f(x_i).
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Distribución de probabilidad de una variable discreta}
-Al recorrido de la variable, junto a su función de probabilidad o de distribución, se le llama \structure{\textbf{Distribución de probabilidad}} de la variable.
+\frametitle{Distribución de probabilidad de una variable aleatoria discreta}
+Al rango de la variable, junto a su función de probabilidad o de distribución, se le llama \highlight{\textbf{Distribución de probabilidad}} de la variable, y se suele representar en forma de tabla
 
-Tanto la función de probabilidad como la de distribución suelen representarse en forma de tabla
 \[
 \begin{array}{|c|cccc|c|}
 \hline
@@ -143,9 +144,7 @@ F(x) & F(x_1) & F(x_2) & \cdots & F(x_n) =1 &\multicolumn{1}{|c}{} \\
 \end{array}
 \]
 
-Al igual que la distribución de frecuencias de una variable reflejaba cómo se distribuían los valores de la variable en una muestra, la
-distribución de probabilidad de una variable aleatoria sirve para reflejar cómo se distribuyen los valores de dicha variable en toda la
-población.
+Al igual que la distribución de frecuencias de una variable reflejaba cómo se distribuían los valores de la variable en una muestra, la distribución de probabilidad de una variable aleatoria sirve para reflejar cómo se distribuyen los valores de dicha variable en toda la población.
 
 \note{
 Al recorrido de la variable, junto a su función de probabilidad o de distribución, se le llama \structure{\textbf{Distribución de probabilidad}} de la variable.
@@ -174,49 +173,14 @@ población.
 \frametitle{Distribución de probabilidad de una variable discreta}
 \framesubtitle{Ejemplo del lanzamiento de dos monedas}
 Sea $X$ la variable aleatoria que mide el número de caras en el lanzamiento de dos monedas. 
+El árbol de probabilidad del espacio probabilístico del experimento se muestra a continuación.
 
-
-El árbol de probabilidad asociado al experimento es 
 \begin{center}
-\scalebox{0.8}{
-\psset{treesep=0.5cm, levelsep=2.5cm, tpos=0.7}
-\renewcommand{\psedge}[2]{\ncdiag[armA=0.8cm,angleA=180,angleB=0,armB=0cm]{#2}{#1}} 
-\pstree[treemode=R, nodesep=1pt]{\Tp*}{
-	\pstree[linestyle=none]{\TR[edge=none]{1ª Moneda}}{
-		\pstree[levelsep=2cm]{\TR{2ª Moneda}}{
-			\pstree{\TR{$E$}}{
-				\pstree{\TR{$P$}}{\TR{$X$}}
-			}
-		}
-	}
-	\pstree{\TR{C}\taput{\scriptsize $0.5$}}{
-		\pstree[linestyle=none,levelsep=2cm]{\TR{C}\taput{\scriptsize $0.5$}}{
-			\pstree{\TR{(C,C)}}{
-				\pstree{\TR{$0.25$}}{\TR{$2$}}
-			}
-		}
-		\pstree[linestyle=none,levelsep=2cm]{\TR{X}\taput{\scriptsize $0.5$}}{
-			\pstree{\TR{(C,X)}}{
-				\pstree{\TR{$0.25$}}{\TR{$1$}}
-			}
-		}
-	}
-	\pstree{\TR{X}\taput{\scriptsize $0.5$}}{
-		\pstree[linestyle=none,levelsep=2cm]{\TR{C}\taput{\scriptsize $0.5$}}{
-			\pstree{\TR{(X,C)}}{
-				\pstree{\TR{$0.25$}}{\TR{$1$}}
-			}
-		}
-		\pstree[linestyle=none,levelsep=2cm]{\TR{X}\taput{\scriptsize $0.5$}}{
-			\pstree{\TR{(X,X)}}{
-				\pstree{\TR{$0.25$}}{\TR{$0$}}
-			}
-		}
-	}
-	\pstree[linestyle=none]{\Tp[edge=none]}{\Tp}
-}
-}
+	\tikzsetnextfilename{variables_aleatorias_discretas/espacio_probabilistico_dos_monedas}
+	\mode<article>{\resizebox{0.6\textwidth}{!}{\input{img/variables_aleatorias_discretas/espacio_probabilistico_dos_monedas}}}
+	\mode<presentation>{\resizebox{0.6\textwidth}{!}{\input{img/variables_aleatorias_discretas/espacio_probabilistico_dos_monedas}}}
 \end{center}
+
 y según esto, su distribución de probabilidad es
 \[
 \begin{array}{|c|ccc|}
@@ -241,16 +205,20 @@ F(x) =
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Gráficos de la funciones de probabilidad y distribución}
+\frametitle{Gráficos de la distribución de probabilidad}
 \framesubtitle{Ejemplo del lanzamiento de dos monedas}
 \begin{center}
-\begin{tabular}{cc}
-Función de probabilidad & Función de distribución\\
-\scalebox{0.5}{\input{img/variables_aleatorias_discretas/funcion_probabilidad_lanzamiento_2_monedas}}
-&
-\scalebox{0.5}{\input{img/variables_aleatorias_discretas/funcion_distribucion_lanzamiento_2_monedas}}
-\end{tabular}
-\end{center}
+	\begin{tabular}{cc}
+	Función de probabilidad & Función de distribución\\
+	\tikzsetnextfilename{discrete_random_variables/funcion_probabilidad_dos_monedas}
+	\mode<article>{\resizebox{0.45\textwidth}{!}{\input{img/discrete_random_variables/funcion_probabilidad_dos_monedas}}}
+	\mode<presentation>{\resizebox{0.45\textwidth}{!}{\input{img/discrete_random_variables/funcion_probabilidad_dos_monedas}}}
+	&
+	\tikzsetnextfilename{discrete_random_variables/funcion_distribucion_dos_monedas}
+	\mode<article>{\resizebox{0.45\textwidth}{!}{\input{img/discrete_random_variables/funcion_distribucion_dos_monedas}}}
+	\mode<presentation>{\resizebox{0.45\textwidth}{!}{\input{img/discrete_random_variables/funcion_distribucion_dos_monedas}}}
+	\end{tabular}
+\end{center} 
 
 \note{
 Tanto la función de probabilidad como la de distribución también suelen representarse gráficamente, de igual modo que representabamos las
@@ -268,11 +236,9 @@ la que aparece a la izquierda, mientras que la de la función de distribución e
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Estadísticos poblacionales}
-Al igual que para describir las variables medidas en las muestras se utilizan estadísticos descriptivos, para describir determinadas
-características de las variables aleatorias se utilizan también estadísticos poblacionales.
+Al igual que para describir las variables medidas en las muestras se utilizan estadísticos descriptivos muestrales, para describir determinadas características de las variables aleatorias se utilizan también estadísticos poblacionales.
 
-La definición de los estadísticos poblacionales es análoga a la de los muestrales, pero utilizando probabilidades en lugar de frecuencias
-relativas.
+La definición de los estadísticos poblacionales es análoga a la de los muestrales, pero utilizando probabilidades en lugar de frecuencias relativas.
 
 Los más importantes son\footnote{Para distinguirlos de los muestrales se suelen representar con letras griegas}:
 \begin{itemize}
@@ -316,8 +282,8 @@ acumulada sea $0.5$.
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Estadísticos poblacionales}
-\framesubtitle{Ejemplo de cálculo en el caso del lanzamiento de dos monedas}
-En el ejemplo del lanzamiento de dos monedas, a partir de la distribución de probabilidad
+\framesubtitle{Ejemplo del lanzamiento de dos monedas}
+En el experimento aleatorio del lanzamiento de dos monedas, a partir de la distribución de probabilidad
 \[
 \begin{array}{|c|ccc|}
 \hline
@@ -328,7 +294,7 @@ F(x) & 0.25 & 0.75 & 1 \\
 \hline 
 \end{array}
 \]
-se pueden calcular fácilmente los estadísticos poblacionales:
+se pueden calcular fácilmente los estadísticos poblacionales
 \begin{align*}
 \mu &= \sum_{i=1}^n x_i f(x_i) = 0\cdot 0.25 + 1\cdot 0.5 + 2\cdot 0.25 = 1 \mbox{ cara},\\
 \sigma^2 &= \sum_{i=1}^n x_i^2 f(x_i) -\mu^2 = (0^0\cdot 0.25 + 1^2\cdot 0.5 + 2^2\cdot 0.25) - 1^2 = 0.5 \mbox{ caras}^2,\\
@@ -344,13 +310,8 @@ Veamos cómo calcular los principales estadísticos de la variable que medía el
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Modelos de distribución de probabilidad}
-En teoría, para obtener la distribución de probabilidad de una variable aleatoria en una población es necesario conocer el valor de la
-variable en todos los individuos de la población, lo cual muchas veces es imposible.
-
-Sin embargo, dependiendo de la naturaleza del experimento, a veces es posible obtener la distribución de probabilidad de una variable
-aleatoria sin medirla en toda la población.
-
-Dependiendo del tipo de experimento, existen diferentes modelos de distribución de probabilidad discretos. Los más habituales son:
+De acuerdo al tipo de experimento en el que se mide la variable aleatoria, existen diferentes modelos de distribución de probabilidad. 
+Los más importantes son
 \begin{itemize}
 \item Distribución Uniforme.
 \item Distribución Binomial.
@@ -376,7 +337,7 @@ A continuación los veremos uno por uno.
 \end{frame}
 
 
-\subsection{Distribución Uniforme}
+\subsection{Distribución Uniforme discreta}
 
 % ---------------------------------------------------------------------slide----
 \begin{frame}
