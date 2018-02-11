@@ -517,7 +517,7 @@ Dado un espacio muestral $\Omega$ de un experimento aleatorio, una función de \
 \end{definicion}
 
 \note{
-La definición de probabilidad más aceptada actualmente es la definición axiomática de Kolmogorov, quien definió la probabilidad como 
+La definición de probabilidad más aceptada actualmente es la definición axiomática de Kolmogórov, quien definió la probabilidad como 
 una medida de verosimilitud que asocia a cada suceso de un experimento aleatorio un número real, conocido como probabilidad del suceso, y
 que cumple tres axiomas:
 \begin{enumerate}
@@ -601,7 +601,7 @@ incompatibles ya que en tal caso la intersección sería el suceso vacío y su p
 \item Si el suceso $A$ está compuesto por los sucesos elementales $e_1,e_2,...,e_n$, entonces
 \[P(A)=\sum_{i=1}^n P(e_i).\]
 Esta propiedad es muy interesante ya que si conocemos las probabilidades de todos los elementos del espacio muestral podremos calcular la
-probabilidad de cualquier suceso simplemente sumando las probabilidades de los elementos que lo componenen. 
+probabilidad de cualquier suceso simplemente sumando las probabilidades de los elementos que lo componen. 
 \end{enumerate}
 }
 \end{frame}
@@ -801,7 +801,7 @@ Un \emph{espacio probabilístico} de un experimento aleatorio es una terna $(\Om
 \end{itemize} 
 \end{definicion}
 
-Si conocemos la probabilidad de todos los elementos de $\Omega$, entonces podemos calcular la proabilidad de cualquier suceso en $\mathcal{F}$ y se puede construir fácilmente el espacio probabilístico.
+Si conocemos la probabilidad de todos los elementos de $\Omega$, entonces podemos calcular la probabilidad de cualquier suceso en $\mathcal{F}$ y se puede construir fácilmente el espacio probabilístico.
 \end{frame}
 
 
@@ -973,18 +973,17 @@ P(B) &= P((B\cap A_1)\cup \cdots \cup (B\cap A_n)) = P(B\cap A_1)+\cdots + P(B\c
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-	\frametitle{Total probability theorem}
-	\framesubtitle{Proof}
-	The proof of the theorem is quite simple.
-	As $A_1,\ldots,A_n$ is a partition of $\Omega$, we have 
-	\[
-	B = B\cap \Omega = B\cap (A_1\cup \cdots \cup A_n) = (B\cap A_1)\cup \cdots \cup (B\cap A_n).
-	\]
-	And all the events of this union are mutually incompatible as $A_1,\ldots,A_n$ are, thus
-	\begin{align*}
-	P(B) &= P((B\cap A_1)\cup \cdots \cup (B\cap A_n)) = P(B\cap A_1)+\cdots + P(B\cap A_n) =\\
-	&= P(A_1)P(B|A_1)+\cdots + P(A_n)P(B|A_n) = \sum_{i=1}^n P(A_i)P(B|A_i).
-	\end{align*}
+\frametitle{Teorema de la probabilidad total}
+\framesubtitle{Demostración}
+La demostración del teorema es sencilla, ya que al ser $A_1,\ldots,A_n$ un sistema completo tenemos
+\[
+B = B\cap E = B\cap (A_1\cup \cdots \cup A_n) = (B\cap A_1)\cup \cdots \cup (B\cap A_n)
+\]
+y como estos sucesos son incompatibles entre sí, se tiene
+\begin{align*}
+P(B) &= P((B\cap A_1)\cup \cdots \cup (B\cap A_n)) = P(B\cap A_1)+\cdots + P(B\cap A_n) =\\
+&= P(A_1)P(B/A_1)+\cdots + P(A_n)P(B/A_n) = \sum_{i=1}^n P(A_i)P(B/A_i).
+\end{align*}
 	
 \begin{center}
 	\tikzsetnextfilename{probabilidad/probabilidad_total}
@@ -1168,6 +1167,334 @@ sirve para cambiar el diagnóstico en ningún caso.
 }
 \end{frame}
 
+
+\subsection{Epidemiología}
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Epidemiología}
+Una de las ramas de la Medicina que hace un mayor uso de la probabilidad es la \highlight{Epidemiología}, que estudia la distribución y las causas de las enfermedades en las poblaciones, identificando factores de riesgos para las enfermedades de cara a la atención médica preventiva. 
+
+En Epidemiología interesa la frecuencia de un \emph{suceso médico} $E$ (típicamente una enfermedad como la gripe, un factor de riesgo como fumar o un factor de protección como vacunarse) que se mide mediante una variable nominal con dos categorías (ocurrencia o no del suceso).
+
+Hay diferentes medidas relativas a la frecuencia de un suceso médico.
+Las más importantes son:
+
+\begin{itemize}
+  \item Prevalencia
+  \item Incidencia
+  \item Riesgo relativo
+  \item Odds ratio
+\end{itemize}
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Prevalencia}
+\begin{definition}[Prevalencia]
+La \emph{prevalencia} de un suceso médico $E$ es la proporción de una población que está afectada por el suceso. 
+\[
+  \mbox{Prevalencia}(E) = \frac{\mbox{Nº individuos afectados por $E$}}{\mbox{Tamaño poblacional}}
+\]
+\end{definition}
+
+A menudo, la prevalencia se estima mediante una muestra como la frecuencia relativa de los individuos afectados por el suceso en la muestra.
+Es también común expresarla est frecuencia como un porcentaje. 
+
+\textbf{Ejemplo}. Para estimar la prevalencia de la gripe se estudió una muestra de 1000 personas de las que 150 presentaron gripe.
+Así, la prevalencia de la gripe es aproximadamente 150/1000=0.15, es decir, un 15\%. 
+\end{frame}
+  
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Incidencia}
+La \highlight{incidencia} mide la probabilidad de ocurrencia de un suceso médico en una población durante un periodo de tiempo específico.
+La incidencia puede medirse como una proporción acumulada o como una tasa.
+
+\begin{definition}[Incidencia acumulada]
+La \emph{incidencia acumulada} de un suceso médico $E$ es la proporción de individuos que adquirieron la característica del evento en un periodo de tiempo, es decir, el número de nuevos casos afectados por el evento en el periodo de tiempo, divido por el tamaño de la población inicialmente en riesgo de verse afectada. 
+\[
+  R(E)=\frac{\mbox{Nº de nuevos casos con $E$}}{\mbox{Tamaño de la población en riesgo}}
+\]
+\end{definition}
+
+\textbf{Ejemplo}. Una población contenía inicialmente $1000$ personas sin gripe y después de dos años se observó que 160 de ellas sufrieron gripe.
+La incidencia acumulada de la gripe es 160 casos pro 1000 personas por dos años, es decir, 16\% en dos años.
+\end{frame}
+  
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Tasa de indicencia}
+  
+\begin{definition}[Tasa de incidencia]
+La \emph{tasa de incidencia} de un suceso médico $E$ es el número de nuevos casos afectados por el evento divido por la población en riesgo y por el número de unidades temporales del periodo considerado.
+\[
+  R(E)=\frac{\mbox{Nº nuevos casos con $E$}}{\mbox{Tamaño población en riesgo}\times \mbox{Nº unidades de tiempo}}
+\]
+\end{definition}
+
+\textbf{Ejemplo}. Una población contenía inicialmente $1000$ personas sin gripe y después de dos años se observó que 160 de ellas sufrieron gripe.
+Si se considera el año como intervalo de tiempo, la tasa de incidencia de la gripe es 160 casos dividida por 1000 personas y por dos años, es decir, 80 casos por 1000 personas-año.
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Prevalencia vs Incidencia}
+La prevalencia no debe confundirse con la incidencia. 
+La prevalencia indica cómo de extendido está el suceso médico en una población, sin preocuparse por cuándo los sujetos se han expuesto al riesgo o durante cuánto tiempo, mientras que la incidencia se fija en el riesgo de verse afectado por el suceso en un periodo concreto de tiempo.
+
+Así, la prevalencia se calcula en estudios transversales en un momento temporal puntual, mientras que para medir la incidencia se necesita un estudio longitudinal que permita observar a los individuos durante un periodo de tiempo.
+
+La incidencia es más útil cuando se pretende entender la causalidad del suceso: por ejemplo, si la incidencia de una enfermedad en una población aumenta, seguramente hay un factor de riesgo que lo está promoviendo.
+
+Cuando la tasa de incidencia es aproximadamente constante en la duración del suceso, la prevalencia es aproximadamente el producto de la incidencia por la duración media del suceso, es decir,
+\begin{center}
+  prevalencia = incidencia $\times$ duración
+\end{center}
+\end{frame}
+  
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Comparación de riesgos}
+En Epidemiología el \emph{riesgo} de un suceso médico es la probabilidad de verse afectado por el suceso en un periodo de tiempo, es decir, la incidencia. 
+
+Para determinar si un factor o característica está asociada con el suceso médico es necesario comparar el riesgo del suceso en dos poblaciones, una expuesta a el factor y la otra no. 
+El grupo expuesto a el factor se conoce como \emph{grupo tratamiento} y el grupo no expuesto como \emph{grupo control}.
+
+Habitualmente los casos observados para cada grupo se representan en una tabla de 2$\times$2 como la siguiente:
+
+\begin{center}
+  \begin{tabular}{|m{3cm}|m{3cm}<{\centering}|m{3cm}<{\centering}|}
+  \cline{2-3}
+  \multicolumn{1}{c|}{} & Suceso $D$ & No suceso $\overline D$\\ 
+  \hline
+  Grupo tratamiento\newline (expuestos) & $a$ & $b$\\ 
+  \hline 
+  Grupo control\newline (no expuestos) & $c$ & $d$\\ 
+  \hline
+  \end{tabular}
+\end{center}
+\end{frame}
+  
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Riesgo relativo $RR$}
+\begin{definition}[Riesgo relativo]
+El \emph{riesgo relativo} de un suceso médico $E$ para los individuos expuestos a un factor es el cociente entre las proporciones de individuos afectados por el suceso en un periodo de tiempo de los grupos tratamiento y control.
+Es decir, el cociente entre las incidencias de grupo tratamiento y el grupo control.
+\[
+  RR(D)=\frac{\mbox{Riesgo grupo tratamiento}}{\mbox{Riesgo grupo control}}=\frac{R_T(E)}{R_C(E)}=\frac{a/(a+b)}{c/(c+d)}
+\]
+\end{definition}
+
+El riesgo relativo compara el riesgo de desarrollar un suceso médico entre el grupo tratamiento y el grupo control.
+\begin{itemize}
+  \item $RR=1$ $\Rightarrow$ No hay asociación entre el suceso y la exposición al factor.
+  \item $RR<1$ $\Rightarrow$ La exposición al factor disminuye el riesgo del suceso.
+  \item $RR>1$ $\Rightarrow$ La exposición al factor aumenta el riesgo del suceso.
+\end{itemize}
+Cuanto más lejos de 1, más fuerte es la asociación. 
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Riesgo relativo $RR$}
+\framesubtitle{Ejemplo de una vacuna}
+Para determinar la efectividad de una vacuna contra la gripe, una muestra de 1000 personas sin gripe fueron seleccionadas al comienzo del año. 
+La mitad de ellas fueron vacunadas (grupo tratamiento) y la otra mitad recibieron un placebo (grupo control).
+La tabla siguiente resume los resultados al final del año.
+
+\begin{center}
+  \begin{tabular}{|m{3cm}|m{1.8cm}<{\centering}|m{1.8cm}<{\centering}|}
+  \cline{2-3}
+  \multicolumn{1}{c|}{} & Gripe $D$ & No gripe $\overline D$\\ 
+  \hline
+  Grupo tratamiento\newline (vacunados) & $20$ & $480$\\ 
+  \hline 
+  Grupo control\newline (No vacunados) & $80$ & $420$\\ 
+  \hline
+\end{tabular}
+\end{center}
+
+El riesgo relativo de contraer la gripe cuando se es vacunado es 
+\[
+  RR(D) = \frac{20/(20+480)}{80/(80+420)} = 0.25.
+\]
+Así, la probabilidad de contraer la gripe en los individuos vacunados fue la cuarta parte de la de contraerla en el caso de no haberse vacunado.
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Odds}
+Una forma alternativa de medir el riesgo de un suceso médico es el \emph{odds}.
+
+\begin{definition}[Odie]
+El \emph{odds} de un suceso médico $E$ en una población es el cociente entre el número de individuos que adquirieron el suceso y los que no en un periodo de tiempo.
+\[
+	ODDS(E)=\frac{\mbox{Nº nuevos casos con $E$}}{\mbox{Nº casos sin $E$}}=\frac{P(E)}{P(\overline E)}
+\]
+\end{definition}
+
+A diferencia de la incidencia, que es una proporción menor o igual que 1, el odds puede ser mayor que 1.
+No obstante es posible convertir el odds en una probabilidad con al fórmula
+\[
+  P(E) = \frac{ODDS(E)}{ODDS(E)+1}
+\]
+
+\textbf{Ejemplo} Una población contenía inicialmente $1000$ personas sin gripe.
+Después de un año 160 de ellas tuvieron gripe.
+Entonces el odds de la gripe es 160/840.
+
+Obsérvese que la incidencia es 160/1000.
+\end{frame}
+ 
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Odds ratio $OR$ }
+\begin{definition}[Odds ratio]
+El \emph{odds ratio} o la \emph{oportunidad relativa} de un suceso médico $E$ para los individuos expuestos a un factor es el cociente entre los odds del sucesos de los grupos tratamiento y control.
+\[
+  OR(E)=\frac{\mbox{Odds en grupo tratamiento}}{\mbox{Odds en grupo control}}=\frac{a/b}{c/d}=\frac{ad}{bc}
+\]
+\end{definition}
+
+El odds ratio compara los odds de un suceso médico entre el grupo tratamiento y control.
+La interpretación es similar a la del riesgo relativo:
+\begin{itemize}
+  \item $OR=1$ $\Rightarrow$ No existe asociación entre el suceso y la exposición al factor.
+  \item $OR<1$ $\Rightarrow$ La exposición al factor disminuye el riesgo del suceso.
+  \item $OR>1$ $\Rightarrow$ La exposición al factor aumenta el riesgo del suceso.
+\end{itemize}
+Cuanto más lejos de 1, más fuerte es la asociación. 
+\end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Odds ratio $OR$}
+\framesubtitle{Ejemplo de una vacuna}
+Para determinar la efectividad de una vacuna contra la gripe, una muestra de 1000 personas sin gripe fueron seleccionadas al comienzo del año. 
+La mitad de ellas fueron vacunadas (grupo tratamiento) y la otra mitad recibieron un placebo (grupo control).
+La tabla siguiente resume los resultados al final del año.
+
+\begin{center}
+  \begin{tabular}{|m{3cm}|m{1.8cm}<{\centering}|m{1.8cm}<{\centering}|}
+  \cline{2-3}
+  \multicolumn{1}{c|}{} & Gripe $D$ & No gripe $\overline D$\\ 
+  \hline
+  Grupo tratamiento\newline (vacunados) & $20$ & $480$\\ 
+  \hline 
+  Grupo control\newline (No vacunados) & $80$ & $420$\\ 
+  \hline
+\end{tabular}
+\end{center}
+
+El odds ratio de sufrir la gripe para los individuos vacunados es
+\[
+  OR(D) = \frac{20/480}{80/420} = 0.21875.
+\]
+Esto quiere decir que el odds de sufrir la gripe frente a no sufrirla en los vacunados es casi un quinto del de los no vacunados.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Riesgo relativo vs Odds ratio} 
+El riesgo relativo y el odds ratio son dos medidas de asociación pero su interpretación es ligeramente diferente. 
+Mientras que el riesgo relativo expresa una comparación de riesgos entre los grupos tratamiento y control, el odds ratio expresa una comparación de odds, que no es lo mismo que el riesgo.
+Así, un odds ratio de 2 \emph{no} significa que el grupo tratamiento tiene el doble de riesgo de adquirir el suceso.
+
+La interpretación del odds ratio es un poco más enrevesada porque es contrafactual, y nos da cuántas veces es más frecuente el suceso en el grupo tratamiento en comparación con el control, asumiendo que en el grupo control es tan frecuente que ocurra el suceso como que no.  
+
+La ventaja del odds ratio es que no depende de la prevalencia o la incidencia del suceso, y debe usarse siempre que el número de individuos que presenta el suceso se selecciona arbitrariamente en ambos grupos, como ocurre en los estudios casos-control.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Riesgo relativo vs Odds ratio}
+\framesubtitle{Ejemplo de cáncer de pulmón y fumar}
+Para determinar la asociación entre el cáncer de pulmón y fumar se tomaron dos muestras (la segunda con el doble de individuos sin cáncer) obteniendo los siguientes resultados:
+
+\bigskip
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\textbf{Sample 1}
+\begin{center}
+\small
+\begin{tabular}{|m{1.9cm}|m{1.2cm}<{\centering}|m{1.5cm}<{\centering}|}
+\cline{2-3}
+\multicolumn{1}{c|}{} & Cáncer & No cáncer\\ 
+\hline
+Fumadores & $60$ & $80$\\ 
+\hline 
+No fumadores & $40$ & $320$\\ 
+\hline
+\end{tabular}
+\end{center}
+
+\begin{align*}
+RR(D) &= \frac{60/(60+80)}{40/(40+320)} = 3.86.\\
+OR(D) &= \frac{60/80}{40/320} = 6. 
+\end{align*}
+\end{column}
+\begin{column}{0.5\textwidth}
+\textbf{Sample 2}
+\begin{center}
+\small
+\begin{tabular}{|m{1.9cm}|m{1.2cm}<{\centering}|m{1.5cm}<{\centering}|}
+\cline{2-3}
+\multicolumn{1}{c|}{} & Cáncer & No cáncer\\ 
+\hline
+Fumadores & $60$ & $160$\\ 
+\hline 
+No fumadores & $40$ & $640$\\ 
+\hline
+\end{tabular}
+\end{center}
+
+\begin{align*}
+RR(D) &= \frac{60/(60+160)}{40/(40+640)} = 4.64.\\
+OR(D) &= \frac{60/160}{40/640} = 6. 
+\end{align*}
+\end{column}
+\end{columns}
+Así, cuando cambia la incidencia o prevalencia de un suceso (cáncer de pulmón) el riesgo relativo cambia, mientras que el odds ratio no.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Riesgo relativo vs Odds ratio} 
+La relación entre el riesgo relativo y el odds ratio viene dada por la siguiente fórmula 
+
+\[
+  RR = \frac{OR}{1-R_0+R_0*OR}=OR*\frac{1-R_1}{1-R_0},
+\]
+
+donde $R_C$ and $R_T$ son la prevalencia o la incidencia en los grupos control y tratamiento respectivamente.
+
+El odds ratio siempre sobreestima el riesgo relativo.
+No obstante, con sucesos médicos raros (con una prevalencia o incidencia baja) el riesgo relativo y el odds ratio son casi iguales.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Riesgo relativo vs Odds ratio} 
+\begin{center}
+\tikzsetnextfilename{probabilidad/odds_ratio_vs_riesgo_relativo}
+\mode<article>{\resizebox{0.6\textwidth}{!}{\input{img/probabilidad/odds_ratio_vs_riesgo_relativo}}}
+\mode<presentation>{\resizebox{!}{0.95\textheight}{\input{img/probabilidad/odds_ratio_vs_riesgo_relativo}}}
+\end{center}
+\end{frame}
+
+
 \subsection{Tests diagnósticos}
 
 %---------------------------------------------------------------------slide----
@@ -1280,7 +1607,7 @@ El \emph{valor predictivo negativo} de un test diagnóstico es la proporción de
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Interpretación de los valores predictivos}
-Los valores predictivos positivo y negativo permiten confirmar o descartar la enferemedad, respectivamente, si alcanzan al menos el umbral de $0.5$.
+Los valores predictivos positivo y negativo permiten confirmar o descartar la enfermedad, respectivamente, si alcanzan al menos el umbral de $0.5$.
 \[
 	\begin{array}{rcl}
 	VPP>0.5 & \Rightarrow & \mbox{Diagnosticar la enfermedad}\\
@@ -1362,7 +1689,7 @@ Así, se puede concluir que este test es muy potente para descartar la gripe, pe
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Razón de verosimilitud de un test diagnóstico}
-La siguientes medidas también se derivan de la sensibilidad y la especificidiad de un test diagnóstico.
+La siguientes medidas también se derivan de la sensibilidad y la especificidad de un test diagnóstico.
 \begin{definicion}[Razón de verosimilitud positiva $RV+$]
 La \emph{razón de verosimilitud positiva} de un test diagnóstico es el cociente entre la probabilidad de un resultado positivo en personas con la enfermedad y personas sin la enfermedad, respectivamente.
 \[
