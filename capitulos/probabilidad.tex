@@ -550,7 +550,7 @@ A partir de los axiomas de la definición de probabilidad se pueden deducir los 
 \end{enumerate}
 
 \mode<article>{
-	\textbf{Proof.}
+	\textbf{Demostración}
 	\begin{enumerate}
 	\item $\overline A = \Omega \Rightarrow P(A\cup \overline A) = P(\Omega) \Rightarrow P(A)+P(\overline A) = 1 \Rightarrow
 	P(\overline A)=1-P(A)$.
@@ -952,22 +952,6 @@ P(B) = \sum_{i=1}^n P(A_i)P(B/A_i).
 \]
 \end{teorema}
 }
-\end{frame}
-
-
-%---------------------------------------------------------------------slide----
-\begin{frame}
-\frametitle{Teorema de la probabilidad total}
-\framesubtitle{Demostración}
-La demostración del teorema es sencilla, ya que al ser $A_1,\ldots,A_n$ un sistema completo tenemos
-\[
-B = B\cap E = B\cap (A_1\cup \cdots \cup A_n) = (B\cap A_1)\cup \cdots \cup (B\cap A_n)
-\]
-y como estos sucesos son incompatibles entre sí, se tiene
-\begin{align*}
-P(B) &= P((B\cap A_1)\cup \cdots \cup (B\cap A_n)) = P(B\cap A_1)+\cdots + P(B\cap A_n) =\\
-&= P(A_1)P(B/A_1)+\cdots + P(A_n)P(B/A_n) = \sum_{i=1}^n P(A_i)P(B/A_i).
-\end{align*}
 \end{frame}
 
 

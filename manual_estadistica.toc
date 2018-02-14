@@ -31,7 +31,7 @@
 \contentsline {subsection}{\numberline {4.5}Espacio probabilístico}{75}{subsection.4.5}
 \contentsline {subsection}{\numberline {4.6}Teorema de la probabilidad total}{77}{subsection.4.6}
 \contentsline {subsection}{\numberline {4.7}Teorema de Bayes}{79}{subsection.4.7}
-\contentsline {subsection}{\numberline {4.8}Epidemiología}{80}{subsection.4.8}
+\contentsline {subsection}{\numberline {4.8}Epidemiología}{79}{subsection.4.8}
 \contentsline {subsection}{\numberline {4.9}Tests diagnósticos}{85}{subsection.4.9}
 \contentsline {section}{\numberline {5}Variables Aleatorias}{89}{section.5}
 \contentsline {subsection}{\numberline {5.1}Distribución de probabilidad de una variable aleatoria discreta}{89}{subsection.5.1}
