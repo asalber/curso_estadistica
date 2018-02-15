@@ -1176,12 +1176,12 @@ Las más importantes son:
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Prevalencia}
-\begin{definition}[Prevalencia]
+\begin{definicion}[Prevalencia]
 La \emph{prevalencia} de un suceso médico $E$ es la proporción de una población que está afectada por el suceso. 
 \[
   \mbox{Prevalencia}(E) = \frac{\mbox{Nº individuos afectados por $E$}}{\mbox{Tamaño poblacional}}
 \]
-\end{definition}
+\end{definicion}
 
 A menudo, la prevalencia se estima mediante una muestra como la frecuencia relativa de los individuos afectados por el suceso en la muestra.
 Es también común expresarla est frecuencia como un porcentaje. 
@@ -1197,12 +1197,12 @@ Así, la prevalencia de la gripe es aproximadamente 150/1000=0.15, es decir, un 
 La \highlight{incidencia} mide la probabilidad de ocurrencia de un suceso médico en una población durante un periodo de tiempo específico.
 La incidencia puede medirse como una proporción acumulada o como una tasa.
 
-\begin{definition}[Incidencia acumulada]
-La \emph{incidencia acumulada} de un suceso médico $E$ es la proporción de individuos que adquirieron la característica del evento en un periodo de tiempo, es decir, el número de nuevos casos afectados por el evento en el periodo de tiempo, divido por el tamaño de la población inicialmente en riesgo de verse afectada. 
+\begin{definicion}[Incidencia acumulada]
+La \emph{incidencia acumulada} de un suceso médico $E$ es la proporción de individuos que experimentaron el evento en un periodo de tiempo, es decir, el número de nuevos casos afectados por el evento en el periodo de tiempo, divido por el tamaño de la población inicialmente en riesgo de verse afectada. 
 \[
   R(E)=\frac{\mbox{Nº de nuevos casos con $E$}}{\mbox{Tamaño de la población en riesgo}}
 \]
-\end{definition}
+\end{definicion}
 
 \textbf{Ejemplo}. Una población contenía inicialmente $1000$ personas sin gripe y después de dos años se observó que 160 de ellas sufrieron gripe.
 La incidencia acumulada de la gripe es 160 casos pro 1000 personas por dos años, es decir, 16\% en dos años.
@@ -1211,17 +1211,17 @@ La incidencia acumulada de la gripe es 160 casos pro 1000 personas por dos años
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Tasa de indicencia}
+\frametitle{Tasa de indicencia o Riesgo absoluto}
   
-\begin{definition}[Tasa de incidencia]
-La \emph{tasa de incidencia} de un suceso médico $E$ es el número de nuevos casos afectados por el evento divido por la población en riesgo y por el número de unidades temporales del periodo considerado.
+\begin{definicion}[Tasa de incidencia]
+La \emph{tasa de incidencia} o \emph{riesgo absoluto} de un suceso médico $E$ es el número de nuevos casos afectados por el evento divido por la población en riesgo y por el número de unidades temporales del periodo considerado.
 \[
   R(E)=\frac{\mbox{Nº nuevos casos con $E$}}{\mbox{Tamaño población en riesgo}\times \mbox{Nº unidades de tiempo}}
 \]
-\end{definition}
+\end{definicion}
 
 \textbf{Ejemplo}. Una población contenía inicialmente $1000$ personas sin gripe y después de dos años se observó que 160 de ellas sufrieron gripe.
-Si se considera el año como intervalo de tiempo, la tasa de incidencia de la gripe es 160 casos dividida por 1000 personas y por dos años, es decir, 80 casos por 1000 personas-año.
+Si se considera el año como intervalo de tiempo, la tasa de incidencia de la gripe es 160 casos dividida por 1000 personas y por dos años, es decir, 80 casos por 1000 personas-año o 8\% de personas al año.
 \end{frame}
 
 
@@ -1245,17 +1245,15 @@ Cuando la tasa de incidencia es aproximadamente constante en la duración del su
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Comparación de riesgos}
-En Epidemiología el \emph{riesgo} de un suceso médico es la probabilidad de verse afectado por el suceso en un periodo de tiempo, es decir, la incidencia. 
-
 Para determinar si un factor o característica está asociada con el suceso médico es necesario comparar el riesgo del suceso en dos poblaciones, una expuesta a el factor y la otra no. 
-El grupo expuesto a el factor se conoce como \emph{grupo tratamiento} y el grupo no expuesto como \emph{grupo control}.
+El grupo expuesto a el factor se conoce como \emph{grupo tratamiento} o \emph{grupo experimental} y el grupo no expuesto como \emph{grupo control}.
 
 Habitualmente los casos observados para cada grupo se representan en una tabla de 2$\times$2 como la siguiente:
 
 \begin{center}
   \begin{tabular}{|m{3cm}|m{3cm}<{\centering}|m{3cm}<{\centering}|}
   \cline{2-3}
-  \multicolumn{1}{c|}{} & Suceso $D$ & No suceso $\overline D$\\ 
+  \multicolumn{1}{c|}{} & Suceso $E$ & No suceso $\overline E$\\ 
   \hline
   Grupo tratamiento\newline (expuestos) & $a$ & $b$\\ 
   \hline 
@@ -1264,18 +1262,62 @@ Habitualmente los casos observados para cada grupo se representan en una tabla d
   \end{tabular}
 \end{center}
 \end{frame}
-  
+ 
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Riesgo atribuible o diferencia de riesgos $RA$}
+\begin{definicion}[Riesgo atribuible]
+El \emph{riesgo atribuible} o \emph{diferencia de riesgo} de un suceso médico $E$ para los individuos expuestos a un factor es la diferencia entre los riesgos absolutos de los grupos tratamiento y control.
+\[
+	RA(E)=R_T(E)-R_C(E)=\frac{a}{a+b}-\frac{c}{c+d}.
+\]
+\end{definicion}
+
+El riesgo atribuible es el riesgo de un suceso que es debido específicamente al factor de interés.
+
+Obsérvese que el riesgo atribuible puede ser positivo, cuando el riesgo del grupo tratamiento es mayor que el del grupo control, o negativo, de lo contrario.
+\end{frame}
+
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Riesgo relativo $RR$}
-\begin{definition}[Riesgo relativo]
+\framesubtitle{Ejemplo de una vacuna}
+Para determinar la efectividad de una vacuna contra la gripe, una muestra de 1000 personas sin gripe fueron seleccionadas al comienzo del año. 
+La mitad de ellas fueron vacunadas (grupo tratamiento) y la otra mitad recibieron un placebo (grupo control).
+La tabla siguiente resume los resultados al final del año.
+
+\begin{center}
+	\begin{tabular}{|m{3cm}|m{1.8cm}<{\centering}|m{1.8cm}<{\centering}|}
+	\cline{2-3}
+	\multicolumn{1}{c|}{} & Gripe $E$ & No gripe $\overline E$\\ 
+	\hline
+	Grupo tratamiento\newline (vacunados) & $20$ & $480$\\ 
+	\hline 
+	Grupo control\newline (No vacunados) & $80$ & $420$\\ 
+	\hline
+\end{tabular}
+\end{center}
+
+El riesgo atribuible de contraer la gripe cuando se es vacunado es 
+\[
+	AR(D) = \frac{20}{20+480}-\frac{80}{80+420} = -0.12.
+\]
+Esto quiere decir que el riesgo de contraer la gripe es un 12\% menor en vacunados que en no vacunados.
+\end{frame}
+
+	
+%---------------------------------------------------------------------slide----
+\begin{frame}
+\frametitle{Riesgo relativo $RR$}
+\begin{definicion}[Riesgo relativo]
 El \emph{riesgo relativo} de un suceso médico $E$ para los individuos expuestos a un factor es el cociente entre las proporciones de individuos afectados por el suceso en un periodo de tiempo de los grupos tratamiento y control.
 Es decir, el cociente entre las incidencias de grupo tratamiento y el grupo control.
 \[
   RR(D)=\frac{\mbox{Riesgo grupo tratamiento}}{\mbox{Riesgo grupo control}}=\frac{R_T(E)}{R_C(E)}=\frac{a/(a+b)}{c/(c+d)}
 \]
-\end{definition}
+\end{definicion}
 
 El riesgo relativo compara el riesgo de desarrollar un suceso médico entre el grupo tratamiento y el grupo control.
 \begin{itemize}
@@ -1298,7 +1340,7 @@ La tabla siguiente resume los resultados al final del año.
 \begin{center}
   \begin{tabular}{|m{3cm}|m{1.8cm}<{\centering}|m{1.8cm}<{\centering}|}
   \cline{2-3}
-  \multicolumn{1}{c|}{} & Gripe $D$ & No gripe $\overline D$\\ 
+  \multicolumn{1}{c|}{} & Gripe $E$ & No gripe $\overline E$\\ 
   \hline
   Grupo tratamiento\newline (vacunados) & $20$ & $480$\\ 
   \hline 
@@ -1311,7 +1353,7 @@ El riesgo relativo de contraer la gripe cuando se es vacunado es
 \[
   RR(D) = \frac{20/(20+480)}{80/(80+420)} = 0.25.
 \]
-Así, la probabilidad de contraer la gripe en los individuos vacunados fue la cuarta parte de la de contraerla en el caso de no haberse vacunado.
+Así, la probabilidad de contraer la gripe en los individuos vacunados fue la cuarta parte de la de contraerla en el caso de no haberse vacunado, es decir, la vacuna reduce el riesgo de gripe un 75\%.
 \end{frame}
 
 
@@ -1320,12 +1362,12 @@ Así, la probabilidad de contraer la gripe en los individuos vacunados fue la cu
 \frametitle{Odds}
 Una forma alternativa de medir el riesgo de un suceso médico es el \emph{odds}.
 
-\begin{definition}[Odie]
+\begin{definicion}[Odie]
 El \emph{odds} de un suceso médico $E$ en una población es el cociente entre el número de individuos que adquirieron el suceso y los que no en un periodo de tiempo.
 \[
 	ODDS(E)=\frac{\mbox{Nº nuevos casos con $E$}}{\mbox{Nº casos sin $E$}}=\frac{P(E)}{P(\overline E)}
 \]
-\end{definition}
+\end{definicion}
 
 A diferencia de la incidencia, que es una proporción menor o igual que 1, el odds puede ser mayor que 1.
 No obstante es posible convertir el odds en una probabilidad con al fórmula
@@ -1344,12 +1386,12 @@ Obsérvese que la incidencia es 160/1000.
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Odds ratio $OR$ }
-\begin{definition}[Odds ratio]
+\begin{definicion}[Odds ratio]
 El \emph{odds ratio} o la \emph{oportunidad relativa} de un suceso médico $E$ para los individuos expuestos a un factor es el cociente entre los odds del sucesos de los grupos tratamiento y control.
 \[
   OR(E)=\frac{\mbox{Odds en grupo tratamiento}}{\mbox{Odds en grupo control}}=\frac{a/b}{c/d}=\frac{ad}{bc}
 \]
-\end{definition}
+\end{definicion}
 
 El odds ratio compara los odds de un suceso médico entre el grupo tratamiento y control.
 La interpretación es similar a la del riesgo relativo:
@@ -1386,7 +1428,7 @@ El odds ratio de sufrir la gripe para los individuos vacunados es
 \[
   OR(D) = \frac{20/480}{80/420} = 0.21875.
 \]
-Esto quiere decir que el odds de sufrir la gripe frente a no sufrirla en los vacunados es casi un quinto del de los no vacunados.
+Esto quiere decir que el odds de sufrir la gripe frente a no sufrirla en los vacunados es casi un quinto del de los no vacunados, es decir, que aproximadamente por cada 22 personas vacunadas con gripe habrá 100 personas no vacunadas con gripe.
 \end{frame}
 
 
@@ -1464,7 +1506,7 @@ La relación entre el riesgo relativo y el odds ratio viene dada por la siguient
 
 donde $R_C$ and $R_T$ son la prevalencia o la incidencia en los grupos control y tratamiento respectivamente.
 
-El odds ratio siempre sobreestima el riesgo relativo.
+El odds ratio siempre sobrestima el riesgo relativo cuando este es mayor que 1 y lo subestima cuando es menor que 1.
 No obstante, con sucesos médicos raros (con una prevalencia o incidencia baja) el riesgo relativo y el odds ratio son casi iguales.
 \end{frame}
 

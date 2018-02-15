@@ -1,23 +1,23 @@
-% Author: Alfredo Sánchez Alberca (asalber@gmail.com)
+% Autor: Alfredo Sánchez Alberca (asalber@gmail.com)
 % !TEX program = xelatex
 % ASPECT RATIO FOR YOUTUBE VIDEO
 %\documentclass[aspectratio=169,profesionalfont,10pt,svgnames,xcolor=table]{beamer}
 % ASPECT RATIO FOR PROJECTOR
 % \documentclass[profesionalfont,10pt,svgnames,xcolor=table]{beamer}
 
-% BEAMER THEME
+% TEMA BEAMER
 % \usetheme[progressbar=frametitle,background=light,titleformat=smallcaps,block=fill, numbering=none]{metropolis}
 
-% ARTICLE VERSION
+% VERSIÓN ARTÍCULO
 % \pdfminorversion=4 % for solving some problems with png graphics in acrobat reader
 \documentclass[10pt,a4paper,titlepage]{article}
 \usepackage[hyperref]{beamerarticle}
 
-% LANGUAGE
+% IDIOMA
 \usepackage{polyglossia}
 \setdefaultlanguage{spanish}
 
-% FONT
+% FUENTES
 \mode<article>{
 \usepackage{fontspec}
 \setmainfont[Ligatures=TeX]{TeX Gyre Pagella}
@@ -28,23 +28,23 @@
 %\setsansfont[Mapping=tex-text]{Myriad Pro}
 %\setmonofont[Mapping=tex-text]{Courier New}
 }
-% IMPROVE FONT IN PDF
+% MEJORA DEL PDF
 \mode<article>{\usepackage{microtype}} 
 
-% MATHS
+% MATEMÁTICAS
 \usepackage{units}
 
-% MARGINS
+% MÁRGENES
 \setbeamersize{text margin left=.5cm, text margin right=.5cm}
 
-% MARGINS FOR ARTICLE
+% MÁRGENES MODO ARTÍCULO
 \mode<article>{\usepackage{fullpage}}
 \mode<article>{\usepackage[headsep=1cm, top=3cm, bottom=3cm, left=2.54cm, right=2.54cm]{geometry}}
 
-% COLORS
+% COLORES
 \input{settings/colors.tex}
 
-% TABLE OF CONTENT style
+% ESTILO DEL ÍNDICE DE CONTENIDOS
 \setbeamertemplate{section in toc}[sections numbered]
 \setbeamertemplate{subsection in toc}[subsections numbered]
 
@@ -57,18 +57,18 @@
 \newcommand{\mcrule}{\arrayrulecolor{color1!50!white}\midrule}
 \newcommand{\bcrule}{\arrayrulecolor{color1!50!white}\bottomrule}
 
-% GRAPHICS
+% GRÁFICOS
 \usepackage{pgfplots}
 \usepgfplotslibrary{fillbetween}
-% pgfplots styles
+% ESTILOS PGFPLOTS
 \input{settings/pgfplots}
 \usepackage{tikz}
 \usetikzlibrary{external, arrows, arrows.meta, calc, shapes, shapes.arrows, positioning, decorations.pathreplacing, intersections, fillbetween, snakes}
 \usepackage{tkz-euclide}
 \usetkzobj{all}
-% TIKZ SETTINGS
+% CONFIGURACIÓN TIKZ
 \tikzset{
-	% Overlays
+	% Transiciones
     invisible/.style={opacity=0},
     visible on/.style={alt={#1{}{invisible}}},
     alt/.code args={<#1>#2#3}{%
@@ -79,7 +79,7 @@
     % Arrow tips
     >=stealth,
   }
-% Graphics export
+% Exportación de gráficos
 \mode<article>{
 \tikzset{
     png export/.style={
@@ -102,10 +102,10 @@
 
 \usepackage{graphicx}
 
-% CREATIVE COMMON ICONS
+% ICONOS CREATIVE COMMON
 \usepackage[scale=2]{ccicons}
 
-% LOGO POSITION
+% POSICIÓN DEL LOGO
 \setbeamertemplate{title graphic}{
  \vbox to 0pt {
  	\vspace*{0.9\textheight}
@@ -113,15 +113,15 @@
  }
 }
 
-% SPACE BETWEEN PARAGRAFS
+% ESPACIO ENTRE PÁRRAFOS
 \setlength{\parskip}{0.5em}
 
-% THEORMEM ENVIRONMENTS
+% TEOREMAS
 \theoremstyle{definition}
 \newtheorem{definicion}[theorem]{Definición}
 \newtheorem{teorema}[theorem]{Teorema}
 
-% BLOCKS COLORS
+% BLOQUES DE COLOR
 \setbeamercolor{block title}{
 	use=normal text,
 	fg=normal text.fg,
@@ -129,7 +129,7 @@
 }
 
 
-% HEADINGS AND FOOTERS : Statistics manual 
+% CABECERAS Y PIÉS 
 
 \mode<article>{
 \usepackage{fancyhdr}
@@ -140,7 +140,7 @@
 %\renewcommand{\textfraction}{.1} 
 } 
 
-% FRAME TITLE CONFIGURATION
+% CONFIGURACIÓN EL TÍTULO
 % \defbeamertemplate{frametitle}{myframe}{
 % 	\nointerlineskip
 % 	\begin{beamercolorbox}[wd=\paperwidth,sep=1ex]{frametitle}
@@ -149,17 +149,17 @@
 % } 
 % \setbeamertemplate{frametitle}[myframe] 
 
-% SECTION COLOR FOR ARTICLE
+% COLOR DE SECCIONES MODO ARTÍCULO
 \mode<article>{
 \usepackage{titlesec}
 \titleformat{\section}{\color{color1}\normalfont\Large\bfseries}{\color{color1}\thesection}{1em}{}
 \titleformat{\subsection}{\color{color1}\normalfont\large\bfseries}{\color{color1}\thesubsection}{1em}{}
 }
 
-% COMMAND FOR HIGHLIGHTING
+% COMANDO PARA RESALTADO
 \newcommand{\highlight}[1]{\textcolor{orange}{\textbf{#1}}}
 
-% PDF settings
+% CONFIGURACIÓN PDF
 %\hypersetup{colorlinks=true}
 
 
@@ -216,6 +216,6 @@ Alfredo Sánchez Alberca (\href{mailto:asalber@ceu.es}{asalber@ceu.es})
 \include{capitulos/variables_aleatorias_discretas}
 \include{capitulos/variables_aleatorias_continuas}
 \include{capitulos/estimacion}
-\include{capitulos/contrastes} 
+\include{capitulos/contrastes}
 
 \end{document}

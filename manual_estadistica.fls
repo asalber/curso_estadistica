@@ -1432,8 +1432,10 @@ INPUT img/exportados/estimacion/teorema_central_limite.pdf
 INPUT img/estimacion/estimador_estimacion.tex
 INPUT img/estimacion/estimador_estimacion.tex
 INPUT img/exportados/estimacion/estimador_estimacion.md5
-OUTPUT manual_estadistica.auxlock
-OUTPUT manual_estadistica.auxlock
+INPUT img/exportados/estimacion/estimador_estimacion.pdf
+INPUT img/exportados/estimacion/estimador_estimacion.dpth
+INPUT img/exportados/estimacion/estimador_estimacion.pdf
+INPUT img/exportados/estimacion/estimador_estimacion.pdf
 INPUT img/exportados/estimacion/estimacion_puntual_intervalo.md5
 INPUT img/exportados/estimacion/estimacion_puntual_intervalo.pdf
 INPUT img/exportados/estimacion/estimacion_puntual_intervalo.dpth

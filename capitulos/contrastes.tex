@@ -61,7 +61,7 @@ de hipótesis}.
 \begin{itemize}[<+->]
 \item \structure{\textbf{Contrastes de bondad de ajuste}}: El objetivo es comprobar una hipótesis sobre la forma de la
 distribución de la población.\\
-\textbf{Ejemplo}. Contastar si las notas de un grupo de alumnos siguen una distribución normal.
+\textbf{Ejemplo}. Contrastar si las notas de un grupo de alumnos siguen una distribución normal.
 \item \structure{\textbf{Contrastes de conformidad}}: El objetivo es comprobar una hipótesis sobre alguno de los parámetros
 de la población.\\
 \textbf{Ejemplo}. Contrastar si las nota media en un grupo de alumnos es igual a 5.
@@ -248,15 +248,15 @@ Dependiendo de la dirección del contraste, la región de rechazo quedará a un 
 \begin{center}
 \tikzsetnextfilename{contrastes/regiones_bilateral}
 \begin{tikzpicture}[every label/.style={text=color1}]
-\useasboundingbox (-2,1.5) rectangle (12,-0.5);
+\useasboundingbox (-1,1.3) rectangle (10,-0.5);
 \node [anchor=east] at (1.9,1) {Región de rechazo};
-\node at (5,1) {Región de aceptación};
-\node [anchor=west] at (8.1,1) {Región de rechazo};
+\node at (4,1) {Región de aceptación};
+\node [anchor=west] at (6.1,1) {Región de rechazo};
 \draw [->, line width=1.4pt, color=color2] (0,0.5) -- (2,0.5);
-\draw [<->, line width=1.4pt,color=color3] (2,0.5) -- (8,0.5);
-\draw [<-, line width=1.4pt, color=color2] (8,0.5) -- (10,0.5);
-\draw [decoration=ticks, segment length=3cm, decorate] (2,0.5) -- (8.1,0.5);
-\node at (5,0) {$\theta_0$};
+\draw [<->, line width=1.4pt,color=color3] (2,0.5) -- (6,0.5);
+\draw [<-, line width=1.4pt, color=color2] (6,0.5) -- (8,0.5);
+\draw [decoration=ticks, segment length=2cm, decorate] (2,0.5) -- (6.1,0.5);
+\node at (4,0) {$\theta_0$};
 \end{tikzpicture}
 \end{center}
 }
@@ -265,13 +265,13 @@ Dependiendo de la dirección del contraste, la región de rechazo quedará a un 
 \begin{center}
 \tikzsetnextfilename{contrastes/regiones_unilateral_menor}
 \begin{tikzpicture}[every label/.style={text=color1}]
-\useasboundingbox (-2,1.5) rectangle (12,-0.5);
+\useasboundingbox (-1,1.3) rectangle (10,-0.5);
 \node [anchor=east] at (1.9,1) {Región de rechazo};
-\node at (5,1) {Región de aceptación};
+\node at (4,1) {Región de aceptación};
 \draw [->, line width=1.4pt, color=color2] (0,0.5) -- (2,0.5);
-\draw [<-, line width=1.4pt,color=color3] (2,0.5) -- (10,0.5);
-\draw [decoration=ticks, segment length=3cm, decorate] (2,0.5) -- (8,0.5);
-\node at (5,0) {$\theta_0$};
+\draw [<-, line width=1.4pt,color=color3] (2,0.5) -- (8,0.5);
+\draw [decoration=ticks, segment length=2cm, decorate] (2,0.5) -- (6,0.5);
+\node at (4,0) {$\theta_0$};
 \end{tikzpicture}
 \end{center}
 }
@@ -280,13 +280,13 @@ Dependiendo de la dirección del contraste, la región de rechazo quedará a un 
 \begin{center}
 \tikzsetnextfilename{contrastes/regiones_unilateral_mayor}
 \begin{tikzpicture}[every label/.style={text=color1}]
-\useasboundingbox (-2,1.5) rectangle (12,-0.5);
-\node at (5,1) {Región de aceptación};
-\node [anchor=west] at (8.1,1) {Región de rechazo};
-\draw [->, line width=1.4pt,color=color3] (0,0.5) -- (8,0.5);
-\draw [<-, line width=1.4pt, color=color2] (8,0.5) -- (10,0.5);
-\draw [decoration=ticks, segment length=3cm, decorate] (5,0.5) -- (8.1,0.5);
-\node at (5,0) {$\theta_0$};
+\useasboundingbox (-1,1.3) rectangle (10,-0.5);
+\node at (4,1) {Región de aceptación};
+\node [anchor=west] at (6.1,1) {Región de rechazo};
+\draw [->, line width=1.4pt,color=color3] (0,0.5) -- (6,0.5);
+\draw [<-, line width=1.4pt, color=color2] (6,0.5) -- (8,0.5);
+\draw [decoration=ticks, segment length=2cm, decorate] (4,0.5) -- (6.1,0.5);
+\node at (4,0) {$\theta_0$};
 \end{tikzpicture}
 \end{center}
 }
@@ -314,7 +314,7 @@ región de rechazo quedará por debajo del 5. Pero,
 \begin{center}
 \tikzsetnextfilename{contrastes/regiones_contraste_proporcion_hombres}
 \begin{tikzpicture}[every label/.style={text=color1}]
-\useasboundingbox (-2,1.5) rectangle (12,-0.5);
+\useasboundingbox (-1,1.3) rectangle (12,-0.5);
 \node [anchor=east] at (1.9,1) {Región de rechazo};
 \node at (5,1) {Región de aceptación};
 \draw [->, line width=1.4pt, color=color2] (0,0.5) -- (2,0.5);
@@ -342,11 +342,11 @@ Hemos visto que un contraste de hipótesis se realiza mediante una regla de deci
 Al final el contraste se resuelve tomando una decisión de acuerdo a esta regla.
 El problema es que nunca se conocerá con absoluta certeza la veracidad o falsedad de una hipótesis, de modo que al aceptarla o rechazarla es posible que se esté tomando una decisión equivocada.
 
-Los errores que se pueden cometer en un contraste de hipótesis son de dos tipos:
+Los errores que se pueden cometer en un contraste son de dos tipos:
 \pause
 \begin{itemize}[<+->]
-\item \structure{\textbf{Error de tipo I}}. Se comete cuando se rechaza la hipótesis nula siendo esta verdadera.
-\item \structure{\textbf{Error de tipo II}}. Se comete cuando se acepta la hipótesis nula siendo esta falsa.
+\item \structure{\textbf{Error de tipo I}}. Rechazar la hipótesis nula siendo esta verdadera.
+\item \structure{\textbf{Error de tipo II}}. Aceptar la hipótesis nula siendo esta falsa.
 \end{itemize}
 \pause[\thebeamerpauses]
 \begin{center}
@@ -389,16 +389,16 @@ P(\text{Aceptar }H_0|H_1) \leq \beta
 \frametitle{Riesgos de los errores de un contraste de hipótesis}
 
 \begin{center}
-\begin{tabular}{|m{2.2cm}<{\centering}|m{5cm}<{\centering}|m{5cm}<{\centering}|}
+\begin{tabular}{|m{2cm}<{\centering}|m{3.7cm}<{\centering}|m{3.7cm}<{\centering}|}
 \cline{2-3}
 \multicolumn{1}{c|}{} & \multicolumn{2}{|c|}{Hipótesis verdadera}\\
 \hline
 Decisión & $H_0$ & $H_1$\\ \hline
-Aceptar $H_0$ & \textcolor{color3}{Decisión correcta\newline \onslide<3->{$P(\mbox{Aceptar $H_0|H_0$ cierta}) > 1-\alpha$}}&
-\textcolor{color2}{Error de tipo II\newline \onslide<4->{$P(\mbox{Aceptar $H_0|H_0$ falsa}) \leq \beta$}}\\
+Aceptar $H_0$ & \textcolor{color3}{Decisión correcta\newline \onslide<3->{$P(\mbox{Aceptar $H_0|H_0$ cierta})$ $> 1-\alpha$}}&
+\textcolor{color2}{Error de tipo II\newline \onslide<4->{$P(\mbox{Aceptar $H_0|H_0$ falsa})$ $\leq \beta$}}\\
 \hline
-Rechazar $H_0$ & \textcolor{color2}{Error de tipo I\newline \onslide<2->{$P(\mbox{Rechazar $H_0|H_0$ cierta}) \leq \alpha$}} &
-\textcolor{color3}{Decisión correcta \newline \onslide<5->{$P(\mbox{Rechazar $H_0|H_0$ falsa}) > 1-\beta$}}\\
+Rechazar $H_0$ & \textcolor{color2}{Error de tipo I\newline \onslide<2->{$P(\mbox{Rechazar $H_0|H_0$ cierta})$ $\leq \alpha$}} &
+\textcolor{color3}{Decisión correcta \newline \onslide<5->{$P(\mbox{Rechazar $H_0|H_0$ falsa})$ $> 1-\beta$}}\\
 \hline
 \end{tabular}
 \end{center}
@@ -466,7 +466,7 @@ Es decir, sólo se podría rechazar la hipótesis nula con 0 o 1 hombres en la m
 \begin{center}
 \tikzsetnextfilename{contrastes/regiones_contraste_proporcion_hombres_2}
 \begin{tikzpicture}[every label/.style={text=color1}]
-\useasboundingbox (-2,1.5) rectangle (12,-0.5);
+\useasboundingbox (-1,0.8) rectangle (12,-0.5);
 \node [anchor=east] at (1.9,1) {Región de rechazo};
 \node at (5,1) {Región de aceptación};
 \draw [->, line width=1.4pt, color=color2] (0,0.5) -- (1.5,0.5);
@@ -1150,7 +1150,7 @@ H_1 &: \mu_1\neq \mu_2
 \textbf{Estadístico del contraste}:
 {%\footnotesize
 \[
-T=\frac{(\bar{X}_1-\bar{X}_2)-(\mu_1-\mu_2)}{\sqrt{\frac{\hat{S}^2_1}{n_1}+\frac{\hat{S}^2_2}{n_2}}} \sim T(g),\quad \text {con } g=n_1+n_2-2-\Delta\quad \text{y } \Delta = \frac{(\frac{n_2-1}{n_1}\hat{S}_1^2-\frac{n_1-1}{n_2}\hat{S}_2^2)^2}{\frac{n_2-1}{n_1^2}\hat{S}_1^4+\frac{n_1-1}{n_2^2}\hat{S}_2^4}.
+T=\frac{(\bar{X}_1-\bar{X}_2)-(\mu_1-\mu_2)}{\sqrt{\frac{\hat{S}^2_1}{n_1}+\frac{\hat{S}^2_2}{n_2}}} \sim T(g), \mbox{ con } g=n_1+n_2-2-\Delta \mbox{ y } \Delta = \frac{(\frac{n_2-1}{n_1}\hat{S}_1^2-\frac{n_1-1}{n_2}\hat{S}_2^2)^2}{\frac{n_2-1}{n_1^2}\hat{S}_1^4+\frac{n_1-1}{n_2^2}\hat{S}_2^4}.
 \]
 }
 
@@ -1270,7 +1270,7 @@ y el $p$-valor del contraste es $2P(Z\leq -2.1483)= 0.0317$, de manera que se re
 \subsection{Realización de contrastes mediante intervalos de confianza}
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Realización de un contraste mediante un intervalo de confianza}
+\frametitle{Realización de contrastes mediante intervalos de confianza}
 Una interesante alternativa a la realización de un contraste
 \[
 H_0: \theta=\theta_0\qquad
@@ -1297,7 +1297,7 @@ Unilateral mayor & $[l_i,\infty]$ con nivel de confianza $1-2\alpha$ & Rechazar 
 
 %---------------------------------------------------------------------slide----
 \begin{frame}
-\frametitle{Realización de un contraste mediante un intervalo de confianza}
+\frametitle{Realización de contrastes mediante intervalos de confianza}
 \framesubtitle{Ejemplo}
 Volviendo al contraste para comparar el rendimiento académico de dos grupos de alumnos que han obtenido las siguientes puntuaciones:
 \begin{align*}
