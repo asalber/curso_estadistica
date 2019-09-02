@@ -1406,6 +1406,7 @@ número de bacterias y las horas que el modelo lineal. }
 \end{frame}
 
 
+\subsection{Riesgos de la regresión}
 %---------------------------------------------------------------------slide----
 \begin{frame}
 \frametitle{Interpretación de un coeficiente de determinación pequeño}
@@ -1472,6 +1473,38 @@ la perfección la relación que hay entre las variables.
 Así pues, cuando haya datos atípicos en un estudio de regresión habrá que tener mucho cuidado con ellos y muchas ocasiones se eliminarán
 para que no distorsionen el modelo de regresión.}
 \end{frame}
+
+
+%---------------------------------------------------------------------slide----
+\begin{frame}
+  \frametitle{Paradoja de Simpson}
+  A veces, una tendencia desaparece o incluso se revierte cuando se divide la muestra en grupos de acuerdo a una variable cualitativa que está relacionada con la variable dependiente.
+  Esto se conoce como la \emph{paradoja de Simpson}. 
+  \begin{center}
+  \tikzsetnextfilename{regresion/paradoja_simpson_1}
+  \resizebox{0.7\textwidth}{!}{\input{img/regresion/paradoja_simpson_1}}
+  \end{center}
+  \mode<article>{
+  \begin{center}
+  \tikzsetnextfilename{regresion/paradoja_simpson_2}
+  \resizebox{0.7\textwidth}{!}{\input{img/regresion/paradoja_simpson_2}}
+  \end{center}
+  }
+  \end{frame}
+  
+  
+  %---------------------------------------------------------------------slide----
+  \mode<presentation>{
+  \begin{frame}
+  \frametitle{Paradoja de Simpson}
+  A veces, una tendencia desaparece o incluso se revierte cuando se divide la muestra en grupos de acuerdo a una variable cualitativa que está relacionada con la variable dependiente.
+  Esto se conoce como la \emph{paradoja de Simpson}. 
+  \begin{center}
+  \tikzsetnextfilename{regresion/paradoja_simpson_2}
+  \resizebox{0.7\textwidth}{!}{\input{img/regresion/paradoja_simpson_2}}
+  \end{center}
+  \end{frame}
+  }
 
 
 \subsection{Medidas de relación entre atributos}

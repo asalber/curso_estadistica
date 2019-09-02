@@ -9,56 +9,57 @@
 \contentsline {section}{\numberline {2}Distribución de frecuencias: Tabulación y gráficos}{13}{section.2}
 \contentsline {subsection}{\numberline {2.1}Distribución de frecuencias}{13}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Representaciones gráficas}{16}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Estadísticos muestrales}{22}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Estadísticos de posición}{22}{subsection.2.4}
-\contentsline {subsection}{\numberline {2.5}Estadísticos de dispersión}{29}{subsection.2.5}
-\contentsline {subsection}{\numberline {2.6}Estadísticos de forma}{34}{subsection.2.6}
-\contentsline {subsection}{\numberline {2.7}Transformaciones de variables}{40}{subsection.2.7}
-\contentsline {section}{\numberline {3}Regresión y Correlación}{44}{section.3}
-\contentsline {subsection}{\numberline {3.1}Distribución de frecuencias conjunta}{44}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Covarianza}{47}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Regresión}{50}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Recta de regresión}{51}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}Correlación}{54}{subsection.3.5}
-\contentsline {subsection}{\numberline {3.6}Coeficientes de determinación y correlación}{55}{subsection.3.6}
-\contentsline {subsection}{\numberline {3.7}Regresión no lineal}{58}{subsection.3.7}
-\contentsline {subsection}{\numberline {3.8}Medidas de relación entre atributos}{63}{subsection.3.8}
-\contentsline {section}{\numberline {4}Teoría de la Probabilidad}{67}{section.4}
-\contentsline {subsection}{\numberline {4.1}Experimentos y sucesos aleatorios}{67}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Teoría de conjuntos}{68}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Definición de probabilidad}{71}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Probabilidad condicionada}{73}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Espacio probabilístico}{75}{subsection.4.5}
-\contentsline {subsection}{\numberline {4.6}Teorema de la probabilidad total}{77}{subsection.4.6}
-\contentsline {subsection}{\numberline {4.7}Teorema de Bayes}{79}{subsection.4.7}
-\contentsline {subsection}{\numberline {4.8}Epidemiología}{79}{subsection.4.8}
-\contentsline {subsection}{\numberline {4.9}Tests diagnósticos}{85}{subsection.4.9}
-\contentsline {section}{\numberline {5}Variables Aleatorias}{90}{section.5}
-\contentsline {subsection}{\numberline {5.1}Distribución de probabilidad de una variable aleatoria discreta}{90}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Distribución Uniforme discreta}{93}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Distribución Binomial}{94}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Distribución de Poisson}{96}{subsection.5.4}
-\contentsline {section}{\numberline {6}Variables aleatorias continuas}{99}{section.6}
-\contentsline {subsection}{\numberline {6.1}Distribución de probabilidad de una variable continua}{99}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}Distribución Uniforme continua}{101}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Distribución Normal}{104}{subsection.6.3}
-\contentsline {subsection}{\numberline {6.4}Distribución Chi-cuadrado}{110}{subsection.6.4}
-\contentsline {subsection}{\numberline {6.5}Distribución T de Student}{111}{subsection.6.5}
-\contentsline {subsection}{\numberline {6.6}Distribución F de Fisher-Snedecor}{112}{subsection.6.6}
-\contentsline {section}{\numberline {7}Estimación de Parámetros}{114}{section.7}
-\contentsline {subsection}{\numberline {7.1}Distribuciones muestrales}{114}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Estimadores}{119}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}Estimación puntual}{120}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}Estimación por intervalos}{124}{subsection.7.4}
-\contentsline {subsection}{\numberline {7.5}Intervalos de confianza para una población}{126}{subsection.7.5}
-\contentsline {subsection}{\numberline {7.6}Intervalos de confianza para la comparación dos poblaciones}{134}{subsection.7.6}
-\contentsline {section}{\numberline {8}Contraste de hipótesis}{141}{section.8}
-\contentsline {subsection}{\numberline {8.1}Planteamiento de un contraste de hipótesis}{141}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}Estadístico del contraste}{143}{subsection.8.2}
-\contentsline {subsection}{\numberline {8.3}Regiones de aceptación y de rechazo}{143}{subsection.8.3}
-\contentsline {subsection}{\numberline {8.4}Errores en un contraste de hipótesis}{145}{subsection.8.4}
-\contentsline {subsection}{\numberline {8.5}Potencia de un contraste}{146}{subsection.8.5}
-\contentsline {subsection}{\numberline {8.6}$p$-valor de un contraste}{151}{subsection.8.6}
-\contentsline {subsection}{\numberline {8.7}Pruebas de conformidad}{153}{subsection.8.7}
-\contentsline {subsection}{\numberline {8.8}Pruebas de homogeneidad}{157}{subsection.8.8}
-\contentsline {subsection}{\numberline {8.9}Realización de contrastes mediante intervalos de confianza}{160}{subsection.8.9}
+\contentsline {subsection}{\numberline {2.3}Estadísticos muestrales}{28}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Estadísticos de posición}{28}{subsection.2.4}
+\contentsline {subsection}{\numberline {2.5}Estadísticos de dispersión}{35}{subsection.2.5}
+\contentsline {subsection}{\numberline {2.6}Estadísticos de forma}{40}{subsection.2.6}
+\contentsline {subsection}{\numberline {2.7}Transformaciones de variables}{46}{subsection.2.7}
+\contentsline {section}{\numberline {3}Regresión y Correlación}{50}{section.3}
+\contentsline {subsection}{\numberline {3.1}Distribución de frecuencias conjunta}{50}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Covarianza}{53}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Regresión}{56}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Recta de regresión}{57}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Correlación}{60}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}Coeficientes de determinación y correlación}{61}{subsection.3.6}
+\contentsline {subsection}{\numberline {3.7}Regresión no lineal}{64}{subsection.3.7}
+\contentsline {subsection}{\numberline {3.8}Riesgos de la regresión}{67}{subsection.3.8}
+\contentsline {subsection}{\numberline {3.9}Medidas de relación entre atributos}{70}{subsection.3.9}
+\contentsline {section}{\numberline {4}Teoría de la Probabilidad}{74}{section.4}
+\contentsline {subsection}{\numberline {4.1}Experimentos y sucesos aleatorios}{74}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Teoría de conjuntos}{75}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Definición de probabilidad}{78}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Probabilidad condicionada}{80}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Espacio probabilístico}{82}{subsection.4.5}
+\contentsline {subsection}{\numberline {4.6}Teorema de la probabilidad total}{84}{subsection.4.6}
+\contentsline {subsection}{\numberline {4.7}Teorema de Bayes}{86}{subsection.4.7}
+\contentsline {subsection}{\numberline {4.8}Epidemiología}{86}{subsection.4.8}
+\contentsline {subsection}{\numberline {4.9}Tests diagnósticos}{92}{subsection.4.9}
+\contentsline {section}{\numberline {5}Variables Aleatorias}{97}{section.5}
+\contentsline {subsection}{\numberline {5.1}Distribución de probabilidad de una variable aleatoria discreta}{97}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Distribución Uniforme discreta}{100}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Distribución Binomial}{101}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Distribución de Poisson}{103}{subsection.5.4}
+\contentsline {section}{\numberline {6}Variables aleatorias continuas}{106}{section.6}
+\contentsline {subsection}{\numberline {6.1}Distribución de probabilidad de una variable continua}{106}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Distribución Uniforme continua}{108}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Distribución Normal}{111}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Distribución Chi-cuadrado}{117}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}Distribución T de Student}{118}{subsection.6.5}
+\contentsline {subsection}{\numberline {6.6}Distribución F de Fisher-Snedecor}{119}{subsection.6.6}
+\contentsline {section}{\numberline {7}Estimación de Parámetros}{121}{section.7}
+\contentsline {subsection}{\numberline {7.1}Distribuciones muestrales}{121}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Estimadores}{126}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Estimación puntual}{127}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}Estimación por intervalos}{131}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.5}Intervalos de confianza para una población}{133}{subsection.7.5}
+\contentsline {subsection}{\numberline {7.6}Intervalos de confianza para la comparación dos poblaciones}{141}{subsection.7.6}
+\contentsline {section}{\numberline {8}Contraste de hipótesis}{148}{section.8}
+\contentsline {subsection}{\numberline {8.1}Planteamiento de un contraste de hipótesis}{148}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Estadístico del contraste}{150}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}Regiones de aceptación y de rechazo}{150}{subsection.8.3}
+\contentsline {subsection}{\numberline {8.4}Errores en un contraste de hipótesis}{152}{subsection.8.4}
+\contentsline {subsection}{\numberline {8.5}Potencia de un contraste}{153}{subsection.8.5}
+\contentsline {subsection}{\numberline {8.6}$p$-valor de un contraste}{158}{subsection.8.6}
+\contentsline {subsection}{\numberline {8.7}Pruebas de conformidad}{160}{subsection.8.7}
+\contentsline {subsection}{\numberline {8.8}Pruebas de homogeneidad}{164}{subsection.8.8}
+\contentsline {subsection}{\numberline {8.9}Realización de contrastes mediante intervalos de confianza}{167}{subsection.8.9}

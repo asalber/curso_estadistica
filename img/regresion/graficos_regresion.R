@@ -1,4 +1,16 @@
-setwd("/media/disk/ceu/docencia/materiales/estadistica/presentaciones/curso_estadistica")
+setwd("/media/alf/datos/drive/CEU/DOCENCIA/materiales/estadistica/presentaciones/manual_estadistica")
+library(tikzDevice)
+library(plyr)
+library(plotly)
+library(shape)
+require(Hmisc)
+
+# Color definition
+color1=rgb(5,161,230,max=255)
+color2=rgb(238,50,36,max=255)
+
+options(tikzDefaultEngine = "xetex")
+
 Datos <- read.table("datos/datos estaturas pesos sexo.csv", header=TRUE, sep="\t", na.strings="NA", dec=".", strip.white=TRUE)
 
 #Diagrama de dispersión de estaturas y pesos
@@ -587,3 +599,47 @@ par(mai=c(1,1,0.5,0.5), cex.lab=1.2)
 plot(y~x, col ="coral", main="Diagrama de dispersión con datos atípicos", xlim=c(0,10), ylim=c(0,10), xlab=expression(italic(X)), ylab=expression(italic(Y)), pch=16)
 text(9,8.3,"Dato atípico")
 dev.off()
+
+
+
+# Paradoja de Simpson
+set.seed(1234)
+hours1 <- runif(50, 0, 9)
+score1 <- 0.4 * hours1 + 4 + rnorm(50, mean = 0, sd = 1)
+hours2 <- runif(50, 5, 15)
+score2 <-  0.2 * hours2 + 1 + rnorm(50, mean = 0, sd = 1)
+score <- c(score1, score2)
+hours <- c(hours1, hours2)
+tikz(file="img/regresion/paradoja_simpson_1.tex", width=4.5, height=3.3)
+par(mar = c(2.9, 2.9, 2, 1), mgp = c(1.8, 0.6, 0), cex.lab = 1, cex.axis = 0.8, las = 1, tck = -0.02)
+plot(score ~ hours, col =color1, main="Regresión lineal de la nota sobre las horas de estudio", xlim=c(0,16), ylim=c(0,10), xlab="Horas de estudio semanales", ylab="Nota", pch=16)
+model <- lm(score ~ hours)
+abline(model, lwd=2)
+coeffs <- floor(model$coeff*100)/100
+plusorminus <- c("+")
+if (coeffs[1] < 0 ) plusorminus <- c("")
+text(10, 9, paste("$y=", coeffs[2], "x", plusorminus, coeffs[1], "$"), pos = 4)
+text(10, 8.2, paste("$r=", round(cor(hours, score), 2), "$"), pos = 4)
+dev.off()
+
+tikz(file="img/regresion/paradoja_simpson_2.tex", width=4.5, height=3.3)
+par(mar = c(2.9, 2.9 , 2, 1), mgp = c(1.8, 0.6, 0), cex.lab = 1, cex.axis = 0.8, las = 1, tck = -0.02)
+plot(score1 ~ hours1, col =color1, main="Regresión lineal de la nota sobre las horas de estudio", xlim=c(0,16), ylim=c(0,10), xlab="Horas de estudio semanales", ylab="Nota", pch=16)
+points(score2 ~ hours2, col =color2, pch=16)
+model1 <- lm(score1 ~ hours1)
+abline(model1, lwd=2, col = color1)
+coeffs1 <- floor(model1$coeff*100)/100
+plusorminus <- c("+")
+if (coeffs1[1] < 0 ) plusorminus <- c("")
+text(0, 8.5, paste("$y=", coeffs1[2], "x", plusorminus, coeffs1[1], "$"), pos = 4)
+text(0, 7.7, paste("$r=", round(cor(hours1, score1), 2), "$"), pos = 4)
+model2 <- lm(score2 ~ hours2)
+abline(model2, lwd=2, col = color2)
+coeffs2 <- floor(model2$coeff*100)/100
+plusorminus <- c("+")
+if (coeffs2[1] < 0 ) plusorminus <- c("")
+text(10, 0.8, paste("$y=", coeffs2[2], "x", plusorminus, coeffs2[1], "$"), pos = 4)
+text(10, 0, paste("$r=", round(cor(hours2, score2), 2), "$"), pos = 4)
+legend("top", legend=c("Buenos estudiantes", "Malos estudiantes"), fill=c(color1, color2), cex = 0.8, horiz = T)
+dev.off()
+
